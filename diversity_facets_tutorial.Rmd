@@ -1,6 +1,6 @@
 ---
-title: "Tutorial"
-author: "Matthias Grenié"
+title: "Biodiversity Facets tutorial"
+author: "Matthias Grenié & Marten Winter"
 date: "30/06/2021"
 output: html_document
 ---
@@ -13,7 +13,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## RStudio
 
-create an RStudio project for the data
+create an RStudio project for the tutorial.
 
 ## Installing needed packages
 
