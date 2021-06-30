@@ -1,0 +1,61 @@
+---
+title: "Tutorial"
+author: "Matthias Grenié"
+date: "30/06/2021"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Setup
+
+## RStudio
+
+create an RStudio project for the data
+
+## Installing needed packages
+
+We will use some specific packages in the rest of the tutorial. To make sure you have them please run the following command:
+
+```{r}
+install.packages("")
+```
+
+
+
+# Loading the data
+
+## Getting the data
+
+
+## Summarizing the data
+
+**Questions for you**
+
+
+# Functional diversity
+
+## Building the functional space
+
+## Computing functional diversity indices
+
+## Mapping functional diversity
+
+
+# Phylogenetic diversity
+
+## Getting the phylogenetic tree
+
+## Computing phylogenetic diversity indices
+
+## Mapping phylogenetic diversity
+
+
+# Comparing facets
+
+
+# Looking at the effect of logging
+
+
