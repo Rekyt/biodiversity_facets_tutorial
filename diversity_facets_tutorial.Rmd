@@ -6,40 +6,316 @@ output: html_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = TRUE, eval = FALSE)
 ```
 
 # Setup
 
 ## RStudio
 
-create an RStudio project for the tutorial.
+To make sure you follow along the whole tutorial you can create a new RStudio project to put all related code and data in.
+Click on `File` > `New Project...` > `New Directory` > `RStudio Project` > Give it a name like `diversity_facets_tutorial` and place it in your computer.
+
+This will create a new folder with an `.Rproj` file. This will let you easily return to the project without having to manually change your working directory with `setwd()` and `getwd()`.
+
+```{r create_project, eval=FALSE, include=FALSE}
+ifelse(require("rstudioapi"), NULL,install.packages("rstudioapi"))
+
+# Create and open the new project directly
+rstudioapi::openProject("diversity_facets_tutorial", newSession = TRUE)
+```
 
 ## Installing needed packages
 
 We will use some specific packages in the rest of the tutorial. To make sure you have them please run the following command:
 
-```{r}
-install.packages("")
+```{r install-pkgs}
+install.packages(
+  c("fundiversity",
+    "ade4",
+    "FD")
+)
 ```
 
 
 
+# Context of the study
+
+We will be using the data from the following study:
+
+> Döbert, T.F., Webber, B.L., Sugau, J.B., Dickinson, K.J.M. and Didham, R.K. (2017), Logging increases the functional and phylogenetic dispersion of understorey plant communities in tropical lowland rain forest. J Ecol, 105: 1235-1245. https://doi.org/10.1111/1365-2745.12794
+
+Logging is the major cause of forest degradation in the Tropics. The effect of logging on taxonomic diversity is well known but more rarely studied on other facets of biodiversity such as functional diversity and phylogenetic diversity. Functional diversity and phylogenetic diversity should better reflect the impact of logging on ecosystem. For example logging can decrease the functional "redundancy" observed in ecosystems, meaning that some functional traits could be lost.
+
+The tropical lowland rain forests on the island of Borneo are floristically among the most diverse systems on the planet, yet large-scale timber extraction and conversion to commercial tree plantations continue to drive their rapid degradation and loss. As is the case for the majority of tropical forests, the effects of logging on habitat quality in these forests have rarely been assessed, despite the critical implications for biodiversity conservation. Moreover, studies investigating the effects of logging on plant community dynamics across both tropical and temperate forest ecosystems have rarely focused on the understorey, despite its crucial relevance for successional trajectories.
+
+Our goal with this tutorial is to reproduce the analyses from the paper and analyze how logging impacts the different facets of the diversity of the understorey vegetation, and to reveal to what extent similar facets give similar answers. The general goal is to familiarize yourself with the data and functions needed to compute diversity indices. As well the general principles behind them.
+
+
 # Loading the data
+
+Fortunately for us, the authors of the study have shared openly the data they used in their article. They are available through the Dryad platform at the following link: https://doi.org/10.5061/dryad.f77p7
+
+> Döbert, Timm F. et al. (2018), Data from: Logging increases the functional and phylogenetic dispersion of understorey plant communities in tropical lowland rainforest, Dryad, Dataset, https://doi.org/10.5061/dryad.f77p7
+
+The fact that these data researchers provided the full dataset including all data and meta-data will help us reproduce the exact same analyses as well as additional analyses not in their paper.
 
 ## Getting the data
 
+To get the data you can follow the above-mentioned link https://doi.org/10.5061/dryad.f77p7 and click on the "Download Dataset" button available on the top right of the webpage. It will download a .zip file that you can unzip in the folder you created for the project. This will create a folder named `doi_10.5061_dryad.f77p7__v1` that contains all needed data files. We've also included a copy of the target zip file in the `data` folder of the practical project.
 
 ## Summarizing the data
 
-**Questions for you**
+The zip file contains 4 files (also available in the `data/` folder):
+
+* `README.txt` which is a text file that describes the content of the other files with great precision. It details all the columns available in the other files.
+* `PlotData.csv` is a comma-separated file that describes characteristics for each of the sampled vegetation plots including logging metrics, environmental variables as well as taxonomic, functional and phylogenetic diversity indices (to which we'll compare the indices we compute ourselves).
+* `PlotSpeciesData.csv` is a comma-separated file that contains a matrix of biomass values for the plant taxa sampled across the sampled vegetation plots.
+* `SpeciesTraitData.csv` contains the complete list of species  sampled across all vegetation plots, with their associated traits both continuous and discrete.
+
+We will load each of the file in your workspace now with the `read.csv()` function:
+
+```{r loading-data}
+plot_data         = read.csv("data/doi_10.5061_dryad.f77p7__v1/PlotData.csv",
+                             na.strings = c("NA", "na"),
+                             stringsAsFactors = TRUE)
+plot_species_data = read.csv("data/doi_10.5061_dryad.f77p7__v1/PlotSpeciesData.csv")
+species_traits    = read.csv("data/doi_10.5061_dryad.f77p7__v1/SpeciesTraitData.csv",
+                             na.strings = c("NA", "na"), stringsAsFactors = TRUE)
+```
+
+To describe the data we will use the `str()` and `summary()` functions.
+
+```{r str-summary-data}
+str(plot_data)
+summary(plot_data)
+
+str(plot_species_data)
+summary(plot_species_data)
+
+# Transform one column for further analyzed
+species_traits$seed = ordered(species_traits$seed)
+str(species_traits)
+summary(species_traits)
+```
+
+**Questions for you:**
+
+* **Q1**: How many plots were sampled?
+* **Q2**: How many species are there in the dataset?
+* **Q3**: How many traits are available?
+* **Q4**: How many of them are continuous? How many of them are discrete?
+* **Q5**: What is the most numerous family among all observed species?
+* **Q6**: What is the most numerous genus?
+
+## Description of the environment variables
+
+Forest loss proportion is one of the main driver variable. The data has been acquired across different block with different proportion of logging and compared to unlogged forest.
+
+```{r forest-block}
+boxplot(forestloss17 ~ block, data = plot_data,
+        xlab = "Block of plot", ylab = "Forest loss (%)",
+        main = "Forest loss in funciton of block of data")
+```
+
 
 
 # Functional diversity
 
+Now that we loaded all the datasets we can proceed to compute functional diversity per plots.
+
+## Computing Biomass-weighted mean traits per plot
+
+One first way to compute functional diversity is to compute mono-dimensional trait dimension.
+We can compute the average trait observed at each plot to described the effect of logging on the understorey vegetation. Because we're interested in the average trait possessed by the community we can compute the community-weighted mean trait $CWM_i$ as follow:
+
+\begin{equation}
+CWM_i = \sum_{j = 1}^{S} b_{ij} \times t_j
+\end{equation}
+
+$CWM_i$ is the community-weighted mean trait in plot $i$, $S$ is the total number of species, $b_{ij}$ is the biomass of species $j$ in plot $i$, and $t_j$ is the trait of species $j$.
+
+To do so we will use the function `functcomp()` in the `FD` package. But we first need to organize our data.
+
+```{r data-wrangle}
+# Make site-species data.frame
+sp_com           = plot_species_data[, -1]
+rownames(sp_com) = plot_species_data$X
+sp_com = as.matrix(sp_com)
+
+# Make synthesized trait data.frame
+traits = species_traits[, -c(1:5)]
+rownames(traits) = species_traits$species.code
+```
+
+Now that the data is organized we can compute the CWM per site for all traits:
+
+```{r get-cwm}
+# Get only continuous CWM
+quanti_cwm = FD::functcomp(traits[, c("height", "sla", "wood.dens")],
+                           sp_com, CWM.type = "dom")
+quanti_cwm$plot.code = rownames(quanti_cwm)
+```
+
+The function outputs the CWM as expressed above for continuous traits. We will then merge this information with the CWM values.
+
+```{r cwm-env}
+# Merge environmental data with CWM
+cwm_env = merge(
+  quanti_cwm,
+  plot_data[, c("plot.code", "block", "forestloss17", "roaddensprim")],
+  by = "plot.code"
+)
+```
+
+We can now visualize the relationship between the CWM and the environmental gradients.
+
+```{r plot-cwm-env}
+par(mfrow = c(2, 2))
+plot(cwm_env$forestloss17, cwm_env$height,
+     xlab = "Forest loss (%)", ylab = "Biomass-weighted height",
+     main = "CWM Height vs. forest loss")
+plot(cwm_env$forestloss17, cwm_env$sla,
+     xlab = "Forest loss (%)", ylab = "Biomass-weighted SLA",
+     main = "CWM SLA vs. forest loss")
+plot(cwm_env$forestloss17, cwm_env$wood.dens,
+     xlab = "Forest loss (%)", ylab = "Biomass-weighted wood density",
+     main = "CWM Wood density vs. forest loss")
+plot(cwm_env$roaddensprim, cwm_env$height,
+     xlab = "Road density", ylab = "Biomass-weighted height",
+     main = "CWM Height vs. road density")
+```
+**Questions for you:**
+
+* **Q7**: How would you describe the relationship between the different CWMs and forest loss?
+* **Q8**: Can you test the correlation using the function `cor.test()` and does it support your previous statements?
+* **Q9**: How would you describe the understorey vegetation changes with increasing forest loss?
+
+```{r cor-env-cwm, include = FALSE}
+cor.test(cwm_env$forestloss17, cwm_env$height)
+cor.test(cwm_env$forestloss17, cwm_env$sla)
+cor.test(cwm_env$forestloss17, cwm_env$wood.dens)
+cor.test(cwm_env$roaddensprim, cwm_env$height)
+```
+
+Recompute the CWM by proportion of each category of each trait along the environmental gradient.
+
+```{r get-non-quanti-cwm}
+non_quanti_cwm = FD::functcomp(traits[, -c(5:7)],
+                           sp_com, CWM.type = "all")
+non_quanti_cwm$plot.code = rownames(non_quanti_cwm)
+
+non_quanti_cwm = merge(
+  non_quanti_cwm,
+  plot_data[, c("plot.code", "block", "forestloss17", "roaddensprim")],
+  by = "plot.code"
+)
+```
+
+We used the same function as above `functcomp()` with the option `CWM.type = "all"`. The function computes the sum of biomass of each category for categorical traits.
+
+```{r categorical-cwm}
+par(mfrow = c(1, 1))
+plot(non_quanti_cwm$forestloss17, non_quanti_cwm$woody_no,
+     xlab = "Forest loss (%)", ylab = "Sum of biomass of non-woody species",
+     main = "Biomass of non-woody species vs. forest loss")
+```
+
+**Questions for you**
+
+* **Q10**: How does this observation compare to description of the evolution of understorey vegetation along a forest loss gradient?
+
+
 ## Building the functional space
 
+Before computing the functional diversity indices we need first to place the species on a functional space.
+The way to do is to visualize the species cloud onto the synthetic axes that represent their trait values. Because we cannot visualize that different traits (our vision is still limited to only 3 dimensions!) we need to use dimension reduction techniques such as *Principal Component Analysis* (PCA). Dimension reduction techniques combines the different variables to give synthetic axes accounting for the correlations between the different input variables Because we have a dataset that contain both continuous and categorical trait data, we cannot use PCA and we will have to use a slighly different statistical tool called *Principal Coordinates Analysis* (PCoA, also named Metric Dimensional Scaling) that follow similar principles.
+
+To compute the PCoA we first need to compute a distance matrix that expresses the difference between each pair of species. Because we have a mixture of continuous and categorical traits, we cannot use the Euclidean distance and have to resort to use the Gower's dissimilarity metric through the `daisy()` function with the package `cluster`. 
+
+```{r gower-dissim}
+gower_dissim = cluster::daisy(traits)
+```
+
+To perform the PCoA we will be using the `ade4` package with the function `dudi.pco()`:
+
+```{r ade4-pcoa}
+trait_pcoa = ade4::dudi.pco(gower_dissim, nf = 5, scannf = FALSE)
+trait_pcoa
+```
+
+The `trait_pcoa` object contains the coordinates of each species along the different PCoA axes (we chose 5 to have a limit).
+We can visualize the results with the following command:
+
+```{r visualize-pcoa}
+ade4::scatter(trait_pcoa, clab.row = 0)
+```
+We see two well separated groups indicating strong differences along the two first axes of the PCoA. We can visualize the meaning of the groups. We can try to better understand this group by looking at the distribution of traits along these groups:
+
+```{r woody-pcoa}
+ade4::s.class(trait_pcoa$li[,1:2], fac = traits$pgf)
+```
+
+**Questions for you**
+
+* **Q11**: Using the metadata available in the `README.txt` file, what is the meaning `pgf` column means?
+* **Q12**: How do you interpret the PCoA results given your answer to the previous question?
+
+
 ## Computing functional diversity indices
+
+Now that we have species positioned in a multidimensional space we can actually compute distinct functional diversity indices. For that we'll be using the `fundiversity` package that offers both flexibility and consistency to compute the indices.
+
+We will first compute Functional Richness (FRic) with the `fd_fric()` function:
+
+```{r fric}
+site_fric = fundiversity::fd_fric(trait_pcoa$li, sp_com, stand = TRUE)
+```
+
+We used the `stand = TRUE` argument to standardize the value of FRic between 0 and 1 compared to the maximum achievable FRic given all the species together.
+
+Then we will also compute Rao's Quadratic Entropy (Rao's Q) and Functional Evenness (FEve):
+
+```{r feve-raoq, options}
+site_raoq = fundiversity::fd_raoq(trait_pcoa$li, sp_com)
+site_feve = fundiversity::fd_feve(trait_pcoa$li, sp_com)
+
+site_fd = merge(
+  merge(site_fric, site_raoq, by = "site"),
+  site_feve,
+  by = "site"
+)
+site_fd$plot.code = site_fd$site
+site_fd = site_fd[, -1]
+```
+
+We can now compare the observed relationship with forest loss:
+
+```{r fd-forestloss}
+site_env_fd = merge(site_fd,
+                    plot_data[, c("plot.code", "forestloss17", "roaddensprim")],
+                    by = "plot.code")
+
+par(mfrow = c(2, 2))
+plot(site_env_fd$forestloss17, site_env_fd$FRic,
+     xlab = "Forest loss (%)", ylab = "Functional Richness (FRic)",
+     main = "Functional Richness in function of forest loss")
+plot(site_env_fd$forestloss17, site_env_fd$Q,
+     xlab = "Forest loss (%)", ylab = "Rao's Quadratic Entropy",
+     main = "site Q in function of forest loss")
+plot(site_env_fd$forestloss17, site_env_fd$FEve,
+     xlab = "Forest loss (%)", ylab = "Functional Evenness (FEve)",
+     main = "FEve in function of forest loss")
+plot(site_env_fd$roaddensprim, site_env_fd$FRic,
+     xlab = "Primary Road Density", ylab = "Functional Richness (FRic)",
+     main = "FRic in function of road density")
+```
+**Questions for you**
+
+* **Q13**: How would you describe the relationships between functional diversity and forest loss and road density?
+* **Q14**: Using the `plot()` and `cor.test()` functions could you describe the relationships between the three different functional diversity indices we computed?
+
+One issue we're having is that 
 
 ## Mapping functional diversity
 

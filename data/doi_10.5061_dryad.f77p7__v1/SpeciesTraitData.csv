@@ -1,0 +1,692 @@
+species.code,family,genus,species,species.name,tree,woody,origin,pgf,height,sla,wood.dens,dispersal,fruit,seed,reproduction,lifehistory,pollination
+acaunk,Acanthaceae,Unknown,sp.,Unknown sp.,no,no,n,E,na,207.18,na,L,U,4,s,p,h
+act231,Lauraceae,Actinodaphne,sp. TFD231,Actinodaphne sp. TFD231,yes,yes,n,F,na,153.36,0.51,J,W,1,s,p,na
+actglo,Lauraceae,Actinodaphne,glomerata,Actinodaphne glomerata,yes,yes,n,F,24,153.36,0.41,M,W,1,s,p,na
+adecor,Passifloraceae,Adenia,cordifolia,Adenia cordifolia,no,yes,n,G,na,177.1,na,J,S,na,s,p,h
+adisar1,Pentaphyllacaceae,Adinandra,cf. sarosanthera,Adinandra cf. sarosanthera,yes,yes,n,F,na,175.22,0.53,J,S,4,s,p,na
+aestri1,Gesneriaceae,Aeschynanthus,cf. tricolor,Aeschynanthus cf. tricolor,no,no,n,D,na,206.25,na,N,S,4,s,p,na
+age044,Connaraceae,Agelaea,sp. TFD044,Agelaea sp. TFD044,no,yes,n,G,na,172.81,na,N,X,1,s,p,d
+agebor,Connaraceae,Agelaea,borneensis,Agelaea borneensis,no,yes,n,G,na,172.25,na,N,X,1,s,p,d
+agecon,Compositae,Ageratum,conyzoides,Ageratum conyzoides,no,no,e,C,1,884.32,na,Q,R,1,s,ap,h
+agetri,Connaraceae,Agelaea,trinervis,Agelaea trinervis,no,yes,n,G,na,141.55,na,N,X,1,s,p,d
+agl115,Meliaceae,Aglaia,sp. TFD115,Aglaia sp. TFD115,yes,yes,n,F,na,167.39,0.67,J,S,2,s,p,i
+agl251,Araceae,Aglaonema,sp. TFD251,Schismatoglottis sp. TFD027,no,no,n,C,na,223.2,na,J,S,1,s,p,j
+aglarg,Meliaceae,Aglaia,argentea,Aglaia argentea,yes,yes,n,F,30,167.39,0.63,O,S,2,s,p,i
+aglbec,Meliaceae,Aglaia,beccarii,Aglaia beccarii,yes,yes,n,F,25,167.39,0.67,J,S,2,s,p,i
+aglelle,Meliaceae,Aglaia,elliptica var. elliptica,Aglaia elliptica var. elliptica,yes,yes,n,F,40,167.39,0.66,O,S,2,s,p,i
+aglellel,Meliaceae,Aglaia,elliptica ssp. elliptica,Aglaia elliptica ssp. elliptica,yes,yes,n,F,40,167.39,0.66,O,S,2,s,p,i
+aglkor,Meliaceae,Aglaia,korthalsii,Aglaia korthalsii,yes,yes,n,F,26,167.39,0.67,O,S,2,s,p,d
+agllax,Meliaceae,Aglaia,laxiflora,Aglaia laxiflora,yes,yes,n,F,27,167.39,0.67,O,S,2,s,p,i
+aglleu,Meliaceae,Aglaia,leucophylla,Aglaia leucophylla,yes,yes,n,F,27,167.39,0.72,O,S,2,s,p,i
+aglluz,Meliaceae,Aglaia,luzoniensis,Aglaia luzoniensis,yes,yes,n,F,10,167.39,0.65,O,S,2,s,p,i
+aglodo,Meliaceae,Aglaia,odoratissima,Aglaia odoratissima,yes,yes,n,F,25,167.39,0.72,O,S,2,s,p,i
+aglodo1,Meliaceae,Aglaia,cf. odoratissima,Aglaia cf. odoratissima,yes,yes,n,F,25,167.39,0.72,O,S,2,s,p,i
+agloli,Meliaceae,Aglaia,oligophylla,Aglaia oligophylla,yes,yes,n,F,20,167.39,0.67,O,S,2,s,p,i
+aglpac,Meliaceae,Aglaia,pachyphylla,Aglaia pachyphylla,yes,yes,n,F,43,167.39,0.69,O,S,2,s,p,i
+aglruf,Meliaceae,Aglaia,rufinervis,Aglaia rufinervis,yes,yes,n,F,na,167.39,0.67,O,S,2,s,p,i
+aglsil,Meliaceae,Aglaia,silvestris,Aglaia silvestris,yes,yes,n,F,30,167.39,0.67,O,S,2,s,p,i
+agltom,Meliaceae,Aglaia,tomentosa,Aglaia tomentosa,yes,yes,n,F,20,167.39,0.68,O,S,2,s,p,i
+agltomt,Meliaceae,Aglaia,tomentosa var. tomentosa,Aglaia tomentosa var. tomentosa,yes,yes,n,F,20,167.39,0.68,O,S,2,s,p,i
+agltomto,Meliaceae,Aglaia,tomentosa ssp. tomentosa,Aglaia tomentosa ssp. tomentosa,yes,yes,n,F,20,167.39,0.68,O,S,2,s,p,i
+agrlon,Euphorbiaceae,Agrostistachys,longifolia,Agrostistachys longifolia,yes,yes,n,F,9,183.13,0.82,na,U,4,s,p,d
+ala048,Cornaceae,Alangium,sp. TFD048,Alangium sp. TFD048,yes,yes,n,F,na,144.02,0.73,J,W,2,s,p,d
+alajave,Cornaceae,Alangium,javanicum var. ebenaceaum,Alangium javanicum var. ebenaceaum,yes,yes,n,F,40,144.02,0.73,J,W,2,s,p,d
+alajavj,Cornaceae,Alangium,javanicum var. javanicum,Alangium javanicum var. javanicum,yes,yes,n,F,40,151.14,0.73,J,W,2,s,p,d
+alajavt,Cornaceae,Alangium,javanicum var. tutela,Alangium javanicum var. tutela,yes,yes,n,F,40,136.9,0.73,J,W,2,s,p,d
+allcob,Sapindaceae,Allophylus,cobbe,Allophylus cobbe,yes,yes,n,F,25,149.06,0.39,J,W,1,s,p,e
+alo023,Araceae,Alocasia,sp. TFD023,Alocasia sp. TFD023,no,no,n,C,na,223.2,na,J,S,2,s,p,i
+alowon1,Araceae,Alocasia,cf. wongii,Alocasia sp. TFD023,no,no,n,C,1,223.2,na,J,S,2,s,p,i
+alsobl,Lauraceae,Alseodaphne,oblanceolata,Alseodaphne oblanceolata,yes,yes,n,F,18,142.1,0.43,J,W,1,s,p,d
+alyrei,Apocynaceae,Alyxia,reinwardtii,Alyxia reinwardtii,no,yes,n,G,na,84.4,na,N,W,1,sv,p,h
+ami042,Commelinaceae,Amischotolype,sp. TFD042,Amischotolype sp. TFD042,no,no,n,C,1,150.9,na,na,U,3,s,p,i
+amigla,Commelinaceae,Amischotolype,glabrata,Amischotolype glabrata,no,no,n,C,1,150.9,na,na,U,3,s,p,i
+amp180,Thelypteridaceae,Amphineuron,sp. TFD180,Amphineuron sp. TFD180,no,no,n,A,1,172.31,na,Q,na,na,v,na,m
+amp191,Vitaceae,Ampelocissus,sp. TFD191,Ampelocissus sp. TFD191,no,yes,n,G,na,442.62,na,J,S,2,s,p,h
+amplow,Vitaceae,Ampelocissus,lowii,Ampelocissus lowii,no,yes,n,G,na,442.62,na,J,S,2,s,p,h
+ampoch,Vitaceae,Ampelocissus,ochracea,Ampelocissus ochracea,no,yes,n,G,na,442.62,na,J,S,2,s,p,h
+amymed,Araceae,Amydrium,medium,Amydrium medium,no,no,n,D,na,223.2,na,J,S,1,s,p,h
+anaunk,Anacardiaceae,Unknown,sp.,Unknown sp.,yes,yes,n,F,na,112.83,na,na,W,1,s,p,na
+ani057,Dipterocarpaceae,Anisoptera,sp. TFD057,Anisoptera sp. TFD057,yes,yes,n,F,na,172.08,0.55,Q,Z,1,s,p,h
+anidis,Anisophylleaceae,Anisophyllea,disticha,Anisophyllea disticha,yes,yes,n,F,7,251.13,0.67,N,W,1,s,p,na
+annunk,Annonaceae,Unknown,sp.,Unknown sp.,yes,yes,n,F,na,168.03,na,J,na,na,s,p,h
+ant132,Phyllanthaceae,Antidesma,sp. TFD132,Antidesma sp. TFD132,yes,yes,n,F,na,130.14,0.63,J,W,1,s,p,h
+antbanb,Phyllanthaceae,Antidesma,banguensis var. banguensis,Antidesma banguensis var. banguensis,yes,yes,n,F,na,130.14,0.63,J,W,1,s,p,h
+antneu1,Phyllanthaceae,Antidesma,cf. neurocarpum,Antidesma cf. neurocarpum,yes,yes,n,F,11,130.14,0.63,J,W,1,s,p,h
+anttom,Phyllanthaceae,Antidesma,tomentosum,Antidesma tomentosum,yes,yes,n,F,17,130.14,0.63,J,W,1,s,p,h
+aph116,Meliaceae,Aphanamixis,sp. TFD116,Aphanamixis sp. TFD116,yes,yes,n,F,7,167.39,0.55,na,U,2,s,p,h
+aphbor,Meliaceae,Aphanamixis,borneensis,Aphanamixis borneensis,yes,yes,n,F,7,167.39,0.55,na,U,2,s,p,h
+apo207,Phyllanthaceae,Aporosa,sp. TFD207,Aporosa sp. TFD207,yes,yes,n,F,na,197.1,0.62,J,U,2,s,p,h
+apoacu,Phyllanthaceae,Aporosa,acuminatissima,Aporosa acuminatissima,yes,yes,n,F,17,197.1,0.62,J,U,2,s,p,h
+apofru,Phyllanthaceae,Aporosa,frutescens,Aporosa frutescens,yes,yes,n,F,18,197.1,0.62,J,U,2,s,p,h
+apogra,Phyllanthaceae,Aporosa,grandistipula,Aporosa grandistipula,yes,yes,n,F,24,197.1,0.62,J,U,2,s,p,h
+apogra1,Phyllanthaceae,Aporosa,cf. grandistipula,Aporosa cf. grandistipula,yes,yes,n,F,24,197.1,0.62,J,U,2,s,p,h
+aposub,Phyllanthaceae,Aporosa,subcaudata,Aporosa subcaudata,yes,yes,n,F,18,197.1,0.62,J,U,2,s,p,h
+apounk,Apocynaceae,Unknown,sp.,Unknown sp.,na,na,n,na,na,135.5,na,na,na,na,na,na,na
+araunk,Araceae,Unknown,sp.,Unknown sp.,no,no,n,D,na,223.2,na,J,S,na,s,p,h
+arcclyc,Leguminosae,Archidendron,Clypearia var. casai,Archidendron Clypearia var. casai,yes,yes,n,F,23,304.91,0.32,na,Y,4,s,p,d
+ard144,Primulaceae,Ardisia,sp. TFD144,Ardisia sp. TFD144,yes,yes,n,F,na,135.06,0.57,J,W,1,s,p,f
+ardell,Primulaceae,Ardisia,elliptica,Ardisia elliptica,yes,yes,n,F,5,135.06,0.57,J,W,1,s,p,f
+ardfor,Primulaceae,Ardisia,forbesii,Ardisia forbesii,yes,yes,n,F,13,135.06,0.57,J,W,1,s,p,f
+ardfor1,Primulaceae,Ardisia,cf. forbesii,Ardisia cf. forbesii,yes,yes,n,F,13,135.06,0.57,J,W,1,s,p,f
+ardlan,Primulaceae,Ardisia,lanceolata,Ardisia lanceolata,yes,yes,n,F,8,135.06,0.44,J,W,1,s,p,f
+ardooc1,Primulaceae,Ardisia,cf. oocarpa,Ardisia cf. oocarpa,yes,yes,n,F,na,135.06,0.57,J,W,1,s,p,f
+arimin,Aristolochiaceae,Aristolochia,minutiflora,Aristolochia minutiflora,no,no,n,D,na,167.95,na,K,U,4,s,p,j
+aripap,Aristolochiaceae,Aristolochia,papillifolia,Aristolochia papillifolia,no,no,n,D,na,167.95,na,K,U,4,s,p,j
+art011,Annonaceae,Artabotrys,sp. TFD011,Artabotrys sp. TFD011,no,yes,n,G,na,225.52,na,J,T,2,s,p,e
+art216,Moraceae,Artocarpus,sp. TFD216,Artocarpus sp. TFD216,yes,yes,n,F,na,151.51,0.48,O,W,4,s,p,h
+artani,Moraceae,Artocarpus,anisophyllus,Artocarpus anisophyllus,yes,yes,n,F,45,151.51,0.61,O,W,4,s,p,h
+artani1,Moraceae,Artocarpus,cf. anisophyllus,Artocarpus cf. anisophyllus,yes,yes,n,F,45,151.51,0.61,O,W,4,s,p,h
+artcos,Annonaceae,Artabotrys,costatus,Artabotrys costatus,no,yes,n,G,na,225.52,na,N,T,2,s,p,e
+artros,Annonaceae,Artabotrys,roseus,Artabotrys roseus,no,yes,n,G,na,225.52,na,N,T,2,s,p,e
+artsua,Annonaceae,Artabotrys,suaveolens,Artabotrys suaveolens,no,yes,n,G,na,225.52,na,J,T,2,s,p,e
+artsua1,Annonaceae,Artabotrys,cf. suaveolens,Artabotrys cf. suaveolens,no,yes,n,G,na,225.52,na,J,T,2,s,p,e
+asp031,Aspleniaceae,Asplenium,sp. TFD031,Asplenium sp. TFD031,no,no,n,A,1,172.31,na,Q,na,na,v,p,m
+aspnid1,Aspleniaceae,Asplenium,cf. nidus,Asplenium cf. nidus,no,no,n,A,1,172.31,na,Q,na,na,v,p,m
+asyint,Acanthaceae,Asystasia,intrusa,Asystasia intrusa,no,no,e,D,1,207.18,na,L,U,2,sv,p,d
+aturac,Chrysobalanaceae,Atuna,racemosa,Atuna racemosa,yes,yes,n,F,35,197.81,0.67,J,W,1,s,p,na
+axocom,Poaceae,Axonopus,compressus,Axonopus compressus,no,no,e,B,0.5,172.92,na,Q,V,na,sv,p,p
+bac133,Phyllanthaceae,Baccaurea,sp. TFD133,Baccaurea sp. TFD133,yes,yes,n,F,na,91.41,0.62,J,U,3,s,p,i
+bacsti,Phyllanthaceae,Baccaurea,stipulata,Baccaurea stipulata,yes,yes,n,F,15,114.27,0.79,J,U,3,s,p,i
+bacsti1,Phyllanthaceae,Baccaurea,cf.stipulata,Baccaurea cf.stipulata,yes,yes,n,F,15,114.27,0.79,J,U,3,s,p,i
+bactet,Phyllanthaceae,Baccaurea,tetranda,Baccaurea tetranda,yes,yes,n,F,20,68.55,0.79,J,U,3,s,p,i
+bactet1,Phyllanthaceae,Baccaurea,cf. tetrandra,Baccaurea cf. tetrandra,yes,yes,n,F,20,68.55,0.79,J,U,3,s,p,i
+barlan,Lecythidaceae,Barringtonia,lanceolata,Barringtonia lanceolata,yes,yes,n,F,30,175.22,0.49,na,U,1,s,p,k
+bau088,Leguminosae,Bauhinia,sp. TFD088,Bauhinia sp. TFD088,no,yes,n,G,na,268.74,0.61,L,Y,3,s,p,g
+baubasb,Leguminosae,Bauhinia,bassacensis var. backeri,Bauhinia bassacensis var. backeri,no,yes,n,G,na,272.1,0.61,L,Y,3,s,p,g
+baudip,Leguminosae,Bauhinia,diptera,Bauhinia diptera,no,yes,n,G,na,248.59,0.61,L,Y,3,s,p,g
+bauend1,Leguminosae,Bauhinia,cf. endertii,Bauhinia cf. endertii,no,yes,n,G,na,268.74,0.61,L,Y,3,s,p,g
+bauint1i,Leguminosae,Bauhinia,cf. integrifolia var. integrifolia,Bauhinia cf. integrifolia var. integrifolia,no,yes,n,G,na,268.74,0.61,L,Y,3,s,p,g
+bauintc,Leguminosae,Bauhinia,integrifolia ssp. cumingiana,Bauhinia intergrifolia ssp. cumingiana,no,yes,n,G,na,268.74,0.61,L,Y,3,s,p,g
+baukoc,Leguminosae,Bauhinia,kockiana,Bauhinia kockiana,no,yes,n,G,na,318.36,0.61,L,Y,3,s,p,g
+baukocb,Leguminosae,Bauhinia,kockiana var. beccarii,Bauhinia kockiana var. beccarii,no,yes,n,G,na,239.29,0.61,L,Y,3,s,p,g
+baukock,Leguminosae,Bauhinia,kockiana var. kockiana,Bauhinia kockiana var. kockiana,no,yes,n,G,na,278.82,0.61,L,Y,3,s,p,g
+baukocs,Leguminosae,Bauhinia,kockiana var. scarlatina,Bauhinia kockiana var. scarlatina,no,yes,n,G,na,239.29,0.61,L,Y,3,s,p,g
+bausems,Leguminosae,Bauhinia,semibifida var. semibifida,Bauhinia semibifida var. semibifida,no,yes,n,G,na,268.74,0.61,L,Y,3,s,p,g
+beg032,Begoniaceae,Begonia,sp. TFD032,Begonia sp. TFD032,no,no,n,C,0.5,251.13,na,N,U,4,s,p,i
+begber1,Begoniaceae,Begonia,cf. berhamanii,Begonia cf. berhamanii,no,no,n,C,0.5,251.13,na,N,U,4,s,p,i
+begkee,Begoniaceae,Begonia,keeana,Begonia keeana,no,no,n,C,0.5,251.13,na,N,U,4,s,p,i
+begunk,Begoniaceae,Unknown,sp.,Unknown sp.,no,no,n,C,0.5,251.13,na,N,U,4,s,p,i
+bei083,Lauraceae,Beilschmiedia,sp. TFD083,Beilschmiedia sp. TFD083,yes,yes,n,F,na,94.1,0.5,J,W,1,s,p,d
+blebor,Blechnaceae,Blechnum,borneense,Blechnum borneense,no,no,n,A,2,172.31,na,Q,na,na,v,p,m
+bleori,Blechnaceae,Blechnum,orientale,Blechnum orientale,no,no,n,A,2,172.31,na,Q,na,na,v,p,m
+blukur,Euphorbiaceae,Blumeodendron,kurzii,Blumeodendron kurzii,yes,yes,n,F,50,89.47,0.53,J,U,1,s,p,d
+blurip,Compositae,Blumea,riparia,Blumea riparia,no,no,n,E,2,179.56,na,Q,R,na,s,p,h
+boe200,Zingiberaceae,Boesenbergia,sp. TFD200,Boesenbergia sp. TFD200,no,no,n,C,na,332.82,na,na,U,na,sv,na,d
+bolhet,Lomariopsidaceae,Bolbitis,heteroclita,Bolbitis heteroclita,no,no,n,A,0.5,172.31,na,Q,na,na,v,p,m
+bolhet1,Lomariopsidaceae,Bolbitis,cf. heteroclita,Bolbitis cf. heteroclita,no,no,n,A,0.5,172.31,na,Q,na,na,v,p,m
+bri135,Phyllanthaceae,Bridelia,sp. TFD135,Bridelia sp. TFD135,yes,yes,n,F,na,143.64,0.57,J,W,2,s,p,h
+brigla1,Phyllanthaceae,Bridelia,cf. glauca,Bridelia cf. glauca,yes,yes,n,F,30,143.64,0.44,J,W,2,s,p,h
+bripen,Phyllanthaceae,Bridelia,penangiana,Bridelia penangiana,yes,yes,n,F,na,143.64,0.47,J,W,2,s,p,h
+bripen1,Phyllanthaceae,Bridelia,cf. penangiana,Bridelia cf. penangiana,yes,yes,n,F,na,143.64,0.47,J,W,2,s,p,h
+bropel,Malvaceae,Brownlowia,peltata,Brownlowia peltata,yes,yes,n,F,30,252.44,0.47,P,Z,1,s,p,h
+buc009,Anacardiaceae,Buchanania,sp. TFD009,Buchanania sp. TFD009,yes,yes,n,F,na,178.82,0.41,J,W,1,s,p,i
+bucses,Anacardiaceae,Buchanania,sessilifolia,Buchanania sessilifolia,yes,yes,n,F,42,178.82,0.43,J,W,1,s,p,i
+byt102,Malvaceae,Byttneria,sp. TFD102,Byttneria sp. TFD102,no,yes,n,G,na,173.39,na,na,U,1,s,p,h
+bytrei,Malvaceae,Byttneria,reinwardtii,Byttneria reinwardtii,no,yes,n,G,na,173.39,na,na,U,1,s,p,h
+bytrei1,Malvaceae,Byttneria,cf. reinwardtii,Byttneria cf. reinwardtii,no,yes,n,G,na,173.39,na,na,U,1,s,p,h
+cae089,Leguminosae,Caesalpinia,sp. TFD089,Caesalpinia sp. TFD089,no,yes,n,G,na,304.91,0.83,na,X,na,s,p,d
+caelat,Leguminosae,Caesalpinia,latisiliqua,Caesalpinia latisiliqua,no,yes,n,G,na,304.91,0.83,na,X,3,s,p,d
+caeopp,Leguminosae,Caesalpinia,oppositifolia,Caesalpinia oppositifolia,no,yes,n,G,na,304.91,0.83,na,X,na,s,p,d
+caepar,Leguminosae,Caesalpinia,parviflora,Caesalpinia parviflora,no,yes,n,G,na,304.91,0.83,na,X,na,s,p,d
+caepar1,Leguminosae,Caesalpinia,cf. parviflora,Caesalpinia cf. parviflora,no,yes,n,G,na,304.91,0.83,na,X,na,s,p,d
+cal036,Calophyllaceae,Calophyllum,sp. TFD036,Calophyllum sp. TFD036,yes,yes,n,F,na,141.03,0.55,J,S,1,s,p,d
+cal079,Lamiaceae,Callicarpa,sp. TFD079,Callicarpa sp. TFD079,yes,yes,n,F,na,233.28,0.35,N,W,2,s,p,d
+calbla,Calophyllaceae,Calophyllum,blancoi,Calophyllum blancoi,yes,yes,n,F,40,141.03,0.46,J,S,1,s,p,d
+calcae,Arecaceae,Calamus,caesius,Calamus caesius,no,yes,n,G,na,223.2,na,na,na,1,s,p,h
+callon,Lamiaceae,Callicarpa,longifolia,Callicarpa longifolia,yes,yes,n,F,6,282.06,0.35,N,W,2,s,p,d
+calmuc,Leguminosae,Calopogonium,mucunoides,Calopogonium mucunoides,no,no,e,D,0.5,310.74,na,J,Y,3,s,p,m
+calnie,Leguminosae,Callerya,nieuwenhuisii,Callerya nieuwenhuisii,no,yes,n,G,na,304.91,na,na,Y,3,s,p,d
+calnod,Calophyllaceae,Calophyllum,nodosum,Calophyllum nodosum,yes,yes,n,F,35,141.03,0.55,J,S,1,s,p,d
+calplu,Lamiaceae,Callicarpa,plumosa,Callicarpa plumosa,yes,yes,n,F,6,142.19,0.35,N,W,2,s,p,d
+can035,Burseraceae,Canarium,sp. TFD035,Canarium sp. TFD035,yes,yes,n,F,na,154.17,0.53,J,W,2,s,p,h
+cancon,Rubiaceae,Canthium,confertum,Canthium confertum,yes,yes,n,F,13,131.69,0.6,na,W,1,s,p,h
+canden,Burseraceae,Canarium,denticulatum,Canarium denticulatum,yes,yes,n,F,50,154.17,0.53,J,W,2,s,p,h
+carbra,Rhizophoraceae,Carallia,brachiata,Carallia brachiata,yes,yes,n,F,35,275.36,0.68,J,W,1,s,p,h
+celunk,Celastraceae,Unknown,sp.,Unknown sp.,yes,yes,n,F,na,134.81,na,na,na,na,s,p,na
+cen140,Poaceae,Centotheca,sp. TFD140,Centotheca sp. TFD140,no,no,n,B,0.5,172.92,na,Q,V,na,na,na,p
+cenpub,Leguminosae,Centrosema,pubescens,Centrosema pubescens,no,no,e,D,2,304.91,na,na,Y,3,s,p,h
+cepbec,Euphorbiaceae,Cephalomappa,beccariana,Cephalomappa beccariana,yes,yes,n,F,na,181.76,0.51,na,U,2,s,p,h
+chi218,Oleaceae,Chionanthus,sp. TFD218,Chionanthus sp. TFD218,yes,yes,n,F,na,101.76,0.61,J,W,1,s,p,h
+chi236,Meliaceae,Chisocheton,sp. TFD236,Chisocheton sp. TFD236,yes,yes,n,F,na,167.39,0.5,N,U,3,s,p,i
+chicer,Meliaceae,Chisocheton,ceramicus,Chisocheton ceramicus,yes,yes,n,F,30,167.39,0.45,N,U,2,s,p,i
+chicur,Oleaceae,Chionanthus,curvicarpus,Chionanthus curvicarpus,yes,yes,n,F,23,101.76,0.61,J,W,1,s,p,h
+chipat,Meliaceae,Chisocheton,patens,Chisocheton patens,yes,yes,n,F,35,167.39,0.48,N,U,2,s,p,i
+chipen1p,Meliaceae,Chisocheton,cf. pentandrus ssp. pancijugus,Chisocheton cf. pentandrus ssp. pancijugus,yes,yes,n,F,40,167.39,0.51,N,U,2,s,p,i
+chipub,Oleaceae,Chionanthus,pubicalyx,Chionanthus pubicalyx,yes,yes,n,F,40,104.2,0.61,J,W,1,s,p,h
+chlere,Chloranthaceae,Chloranthus,erectus,Chloranthus erectus,no,no,n,E,2,208.3,na,N,W,na,s,p,h
+chr181,Thelypteridaceae,Christella,sp. TFD181,Christella sp. TFD181,no,no,n,A,1,172.31,na,Q,na,na,v,na,m
+chrcon,Thelypteridaceae,Christella,contiguus,Christella contiguus,no,no,n,A,1,172.31,na,Q,na,na,v,na,m
+chrodo,Compositae,Chromolaena,odorata,Chromolaena odorata,no,no,e,D,2,957.94,na,Q,R,1,sv,p,g
+cis193,Vitaceae,Cissus,sp. TFD193,Cissus sp. TFD193,no,yes,n,G,na,649.83,na,J,S,2,s,p,h
+cisang,Vitaceae,Cissus,angustata,Cissus angustata,no,yes,n,G,na,649.83,na,J,S,2,s,p,h
+cishas,Vitaceae,Cissus,hastata,Cissus hastata,no,yes,n,G,na,649.83,na,J,S,1,s,p,h
+claexc,Rutaceae,Clausena,excavata,Clausena excavata,yes,yes,n,F,15,134.47,0.48,J,S,1,s,p,h
+cle065,Phyllanthaceae,Cleistanthus,sp. TFD065,Cleistanthus sp. TFD065,yes,yes,n,F,na,178.22,0.58,J,U,2,s,p,d
+clemyr,Phyllanthaceae,Cleistanthus,myrianthus,Cleistanthus myrianthus,yes,yes,n,F,16,178.22,0.54,J,U,2,s,p,d
+clemyr1,Phyllanthaceae,Cleistanthus,cf. myrianthus,Cleistanthus cf. myrianthus,yes,yes,n,F,16,178.22,0.54,J,U,2,s,p,d
+clepod,Phyllanthaceae,Cleistanthus,podopyxis,Cleistanthus podopyxis,yes,yes,n,F,na,178.22,0.58,J,U,2,s,p,d
+clepod1,Phyllanthaceae,Cleistanthus,cf. podopyxis,Cleistanthus cf. podopyxis,yes,yes,n,F,na,178.22,0.58,J,U,2,s,p,d
+cleven,Phyllanthaceae,Cleistanthus,venosus,Cleistanthus venosus,yes,yes,n,F,na,178.22,0.58,J,U,2,s,p,d
+clihir,Melastomataceae,Clidemia,hirta,Clidemia hirta,no,no,e,E,3,247.98,na,J,S,4,sv,p,d
+com041,Combretaceae,Combretum,sp. TFD041,Combretum sp. TFD041,no,yes,n,G,na,137.57,0.8,Q,U,1,s,p,h
+comnig,Combretaceae,Combretum,nigrescens,Combretum nigrescens,no,yes,n,G,na,137.57,0.8,Q,U,1,s,p,h
+comsun,Combretaceae,Combretum,sundaicum,Combretum sundaicum,no,yes,n,G,na,137.57,0.8,Q,U,1,s,p,h
+comunk,Compositae,Unknown,sp.,Unknown sp.,na,na,i,na,na,535.08,na,Q,R,na,s,p,h
+conaga,Connaraceae,Connarus,agamae,Connarus agamae,yes,yes,n,F,20,163.15,0.55,N,X,1,s,p,d
+congra1,Connaraceae,Connarus,cf. grandis,Connarus cf. grandis,no,yes,n,G,na,163.15,0.55,N,X,1,s,p,d
+cos049,Costaceae,Costus,sp. TFD049,Costus sp. TFD049,no,no,n,C,2,332.82,na,J,U,4,sv,p,d
+cosfen,Menispermaceae,Coscinium,fenestratum,Coscinium fenestratum,no,yes,n,G,na,184.24,na,N,W,1,s,p,na
+cosglo,Costaceae,Costus,globosus,Costus globosus,no,no,n,C,2,216.37,na,J,U,4,sv,p,d
+cosglo1,Costaceae,Costus,cf. globosus,Costus cf. globosus,no,no,n,C,2,216.37,na,J,U,4,sv,p,d
+cosspe,Costaceae,Costus,speciosus,Costus speciosus,no,no,n,C,2,449.28,na,J,U,4,sv,p,d
+cosspe1,Costaceae,Costus,cf. speciosus,Costus cf. speciosus,no,no,n,C,2,449.28,na,J,U,4,sv,p,d
+cowbor,Rubiaceae,Cowiea,borneensis,Cowiea borneensis,yes,yes,n,F,9,182.34,na,na,na,na,s,p,h
+cro066,Euphorbiaceae,Croton,sp. TFD066,Croton sp. TFD066,yes,yes,n,F,na,182.9,0.55,K,U,2,s,p,i
+croarg,Euphorbiaceae,Croton,argyratus,Croton argyratus,yes,yes,n,F,27,182.9,0.66,K,U,2,s,p,i
+croobl,Euphorbiaceae,Croton,oblongifolius,Croton oblongifolius,yes,yes,n,F,8,182.9,0.61,K,U,2,s,p,i
+croobl3,Euphorbiaceae,Croton,oblongus,Croton oblongus,yes,yes,n,F,19,182.9,0.55,K,U,2,s,p,i
+crypanp,Crypteroniaceae,Crypteronia,paniculata var. paniculata,Crypteronia paniculata var. paniculata,yes,yes,n,F,30,137.57,0.66,Q,U,4,s,p,p
+cur077,Hypoxidaceae,Curculigo,sp. TFD077,Curculigo sp. TFD077,no,no,n,C,1,223.2,na,na,S,na,sv,na,d
+cya012,Annonaceae,Cyathostemma,sp. TFD012,Cyathostemma sp. TFD012,no,yes,n,G,na,168.03,na,J,T,4,s,p,e
+cyc182,Thelypteridaceae,Cyclosorus,sp. TFD182,Cyclosorus sp. TFD182,no,no,n,A,2,172.31,na,Q,na,na,v,na,m
+cycari,Thelypteridaceae,Cyclosorus,aridus,Cyclosorus aridus,no,no,n,A,2,172.31,na,Q,na,na,v,na,m
+cycele,Menispermaceae,Cyclea,elegans,Cyclea elegans,no,yes,n,G,na,164.41,na,N,W,na,s,p,na
+cychet,Thelypteridaceae,Cyclosorus,heterocarpus,Cyclosorus heterocarpus,no,no,n,A,2,172.31,na,Q,na,na,v,na,m
+cycpar,Thelypteridaceae,Cyclosorus,parasiticus,Cyclosorus parasiticus,no,no,n,A,1,172.31,na,Q,na,na,v,na,m
+cynelm,Leguminosae,Cynometra,elmeri,Cynometra elmeri,yes,yes,n,F,25,304.91,0.8,na,Y,2,s,p,h
+cynmir,Leguminosae,Cynometra,mirabilis,Cynometra mirabilis,yes,yes,n,F,50,304.91,0.8,na,Y,2,s,p,h
+cyp222,Cyperaceae,Cyperus,sp.  TFD222,Cyperus sp.  TFD222,no,no,e,B,0.5,126.53,na,N,R,1,sv,ap,p
+cypkyl,Cyperaceae,Cyperus,kyllingia,Cyperus kyllingia,no,no,e,B,0.5,126.53,na,N,R,1,sv,p,p
+cypluz,Cyperaceae,Cyperus,luzulae,Cyperus luzulae,no,no,e,B,0.5,126.53,na,N,R,1,sv,p,p
+cypunk,Cyperaceae,Unknown,sp.,Unknown sp.,no,no,e,B,na,126.53,na,na,R,1,sv,p,p
+cyr075,Gesneriaceae,Cyrtandra,sp. TFD075,Cyrtandra sp. TFD075,no,no,n,C,2,206.25,na,N,S,4,s,p,na
+cyrdid1,Gesneriaceae,Cyrtandra,cf. didisandriformis,Cyrtandra cf. didisandriformis,no,no,n,C,2,206.25,na,N,S,4,s,p,na
+cyrgib1,Gesneriaceae,Cyrtandra,cf. gibbsiae,Cyrtandra cf. gibbsiae,no,no,n,C,2,206.25,na,N,S,4,s,p,na
+cyrped1,Gesneriaceae,Cyrtandra,cf. pedicellata,Cyrtandra cf. pedicellata,no,no,n,C,2,206.25,na,N,S,4,s,p,na
+dacros,Burseraceae,Dacryodes,rostrata,Dacryodes rostrata,yes,yes,n,F,45,154.17,0.55,J,W,1,s,p,d
+dacrug,Burseraceae,Dacryodes,rugosa,Dacryodes rugosa,yes,yes,n,F,30,154.17,0.74,J,W,1,s,p,d
+dae205,Arecaceae,Daemonorops ,sp. TFD205,Daemonorops  sp. TFD205,no,yes,n,G,na,223.2,na,na,na,1,s,p,h
+dal092,Leguminosae,Dalbergia,sp. TFD092,Dalbergia sp. TFD092,yes,yes,n,F,na,304.91,0.73,na,Y,2,s,p,h
+daljun,Leguminosae,Dalbergia,junghuhnii,Dalbergia junghuhnii,yes,yes,n,F,na,304.91,0.73,na,Y,2,s,p,h
+dalpin,Leguminosae,Dalbergia,pinnata,Dalbergia pinnata,yes,yes,n,F,12,304.91,0.73,na,Y,2,s,p,h
+daplau,Daphniphyllaceae,Daphniphyllum,laurinum,Daphniphyllum laurinum,yes,yes,n,F,21,206.09,0.47,J,W,1,s,p,na
+deh085,Lauraceae,Dehaassia,sp. TFD085,Dehaassia sp. TFD085,yes,yes,n,F,na,130.94,0.57,J,W,1,s,p,na
+denell,Urticaceae,Dendrocnide,elliptica,Dendrocnide elliptica,yes,yes,n,F,17,309.09,0.21,na,R,na,s,p,d
+derele,Leguminosae,Derris,elegans,Derris elegans,no,yes,n,G,na,304.91,0.67,na,Y,3,s,p,h
+desgyr,Leguminosae,Desmodium,gyroides,Desmodium gyroides,no,no,n,E,2,661.74,na,na,Y,3,s,p,m
+diccur,Gleicheniaceae,Dicranopteris,curranii,Dicranopteris curranii,no,no,n,A,3,172.31,na,Q,na,na,v,na,m
+dicgel,Dichapetalaceae,Dichapetalum,gelonioides,Dichapetalum gelonioides,yes,yes,n,F,5,278.88,0.76,J,W,1,s,p,na
+diclin,Gleicheniaceae,Dicranopteris,linearis,Dicranopteris linearis,no,no,n,A,3,172.31,na,Q,na,na,v,p,m
+dilexc,Dilleniaceae,Dillenia,excelsa,Dillenia excelsa,yes,yes,n,F,40,91.47,0.68,N,X,4,s,p,d
+dimlonm,Sapindaceae,Dimocarpus,longan var. malesianus,Dimocarpus longan var. malesianus,yes,yes,n,F,40,143.08,0.7,J,S,1,s,p,na
+din141,Poaceae,Dinochloa,sp. TFD141,Dinochloa sp. TFD141,no,no,n,D,na,172.92,na,na,V,na,sv,p,na
+dintri,Poaceae,Dinochloa,trichogona,Dinochloa trichogona,no,no,n,D,na,172.92,na,na,V,na,sv,p,na
+dio056,Dioscoreaceae,Dioscorea,sp. TFD056,Dioscorea sp. TFD056,no,no,n,D,na,223.2,na,na,na,na,s,p,h
+dio063,Ebenaceae,Diospyros,sp. TFD063,Diospyros sp. TFD063,yes,yes,n,F,na,133.02,0.66,J,S,3,s,p,e
+diocau1,Ebenaceae,Diospyros,cf. cauliflora,Diospyros cf. cauliflora,yes,yes,n,F,17,133.02,0.54,J,S,2,s,p,e
+diocur1,Ebenaceae,Diospyros,cf. curranii,Diospyros cf. curranii,yes,yes,n,F,30,133.02,0.66,J,S,3,s,p,e
+dioeup,Ebenaceae,Diospyros,euphlebia,Diospyros euphlebia,yes,yes,n,F,13,109,0.66,J,S,3,s,p,e
+diofox,Ebenaceae,Diospyros,foxworthyi,Diospyros foxworthyi,yes,yes,n,F,20,106.17,0.54,J,S,3,s,p,e
+diofox1,Ebenaceae,Diospyros,cf. foxworthyi,Diospyros cf. foxworthyi,yes,yes,n,F,20,106.17,0.54,J,S,3,s,p,e
+diofru1,Ebenaceae,Diospyros,cf. frutescens,Diospyros cf. frutescens,yes,yes,n,F,18,133.02,0.66,J,S,3,s,p,e
+diomac,Ebenaceae,Diospyros,macrophylla,Diospyros macrophylla,yes,yes,n,F,45,133.02,0.48,J,S,3,s,p,e
+diooli,Ebenaceae,Diospyros,oligantha,Diospyros oligantha,yes,yes,n,F,30,133.02,0.66,J,S,3,s,p,e
+diopyr1,Ebenaceae,Diospyros,cf. pyrrhocarpa,Diospyros cf. pyrrhocarpa,yes,yes,n,F,23,133.02,0.64,J,S,3,s,p,e
+diosub,Ebenaceae,Diospyros,subrhomboidea,Diospyros subrhomboidea,yes,yes,n,F,20,183.9,0.82,J,S,3,s,p,e
+diotub,Ebenaceae,Diospyros,tuberculata,Diospyros tuberculata,yes,yes,n,F,15,133.02,0.45,J,S,3,s,p,e
+diounk,Dioscoreaceae,Unknown,sp.,Unknown sp.,no,no,n,D,na,223.2,na,na,na,na,s,na,na
+dip058,Dipterocarpaceae,Dipterocarpus,sp. TFD058,Dipterocarpus sp. TFD058,yes,yes,n,F,na,172.08,0.66,Q,Z,1,s,p,i
+dip103,Malvaceae,Diplodiscus,sp. TFD103,Diplodiscus sp. TFD103,yes,yes,n,F,na,252.44,na,na,U,2,s,p,h
+dipcor,Woodsiaceae,Diplazium,cordifolium,Diplazium cordifolium,no,no,n,A,0.5,172.31,na,Q,na,na,v,na,m
+dipdiv,Melastomataceae,Diplectria,divaricata,Diplectria divaricata,no,yes,n,G,na,183.84,na,J,S,4,s,p,d
+dippar,Malvaceae,Diplodiscus,parviflorus,Diplodiscus parviflorus,yes,yes,n,F,18,252.44,na,na,U,2,s,p,h
+disann1,Melastomataceae,Dissochaeta,cf. annulata,Dissochaeta cf. annulata,no,yes,n,G,na,183.84,na,J,S,na,s,p,na
+disbec,Melastomataceae,Dissochaeta,beccariana,Dissochaeta beccariana,no,yes,n,G,na,183.84,na,J,S,na,s,p,na
+doncan,Marantaceae,Donax,canniformis,Donax canniformis,no,no,n,C,4,332.82,na,na,U,2,s,p,na
+draang,Asparagaceae,Dracaena,angustifolia,Dracaena angustifolia,no,yes,n,H,8,223.2,0.35,J,S,2,s,p,na
+dry149,Putranjivaceae,Drypetes,sp. TFD149,Drypetes sp. TFD149,yes,yes,n,F,na,89.92,0.68,J,W,1,s,p,h
+drylan,Dipterocarpaceae,Dryobalanops,lanceolata,Dryobalanops lanceolata,yes,yes,n,F,80,145.7,0.62,Q,Z,1,s,p,d
+dysall,Meliaceae,Dysoxylum,alliaceum,Dysoxylum alliaceum,yes,yes,n,F,38,167.39,0.57,N,U,2,s,p,k
+ela064,Elaeocarpaceae,Elaeocarpus,sp. TFD064,Elaeocarpus sp. TFD064,yes,yes,n,F,na,163.15,0.49,J,W,3,s,p,d
+ela190,Urticaceae,Elatostema,sp. TFD190,Elatostema sp. TFD190,no,no,n,C,na,206.18,na,na,R,na,s,na,p
+elabru,Elaeocarpaceae,Elaeocarpus,brunnescens,Elaeocarpus brunnescens,yes,yes,n,F,20,163.15,0.49,M,W,3,s,p,d
+elasti1,Elaeocarpaceae,Elaeocarpus,cf. stipularis,Elaeocarpus cf. stipularis,yes,yes,n,F,38,163.15,0.45,J,W,3,s,p,d
+ellbecp,Connaraceae,Ellipanthus,beccarii var. peltatus,Ellipanthus beccarii var. peltatus,yes,yes,n,F,10,134.16,na,N,X,1,s,p,h
+ellcun,Annonaceae,Ellipeia,cuneifolia,Ellipeia cuneifolia,no,yes,n,G,na,168.03,na,N,T,na,s,p,h
+embeff,Primulaceae,Embelia,effusa,Embelia effusa,no,yes,n,G,na,285.05,na,J,W,1,s,p,h
+embphi,Primulaceae,Embelia,philippinensis,Embelia philippinensis,no,yes,n,G,na,156.12,na,J,W,1,s,p,h
+end086,Lauraceae,Endiandra,sp. TFD086,Endiandra sp. TFD086,yes,yes,n,F,na,130.94,0.6,J,W,1,s,p,h
+enigra,Annonaceae,Enicosanthum,grandifolium,Enicosanthum grandifolium,yes,yes,n,F,20,126.23,0.49,N,T,1,s,p,e
+ery046,Convolvulaceae,Erycibe,sp. TFD046,Erycibe sp. TFD046,no,yes,n,H,na,169.62,na,J,S,1,s,p,i
+erybor,Convolvulaceae,Erycibe,borneensis,Erycibe borneensis,yes,yes,n,F,8,169.62,na,J,S,1,s,p,i
+eryborb,Convolvulaceae,Erycibe,borneensis var. borneensis,Erycibe borneensis var. borneensis,yes,yes,n,F,8,169.62,na,J,S,1,s,p,i
+eryborc,Convolvulaceae,Erycibe,borneensis var. collina,Erycibe borneensis var. collina,yes,yes,n,F,8,169.62,na,J,S,1,s,p,i
+eryprab1,Convolvulaceae,Erycibe,cf. praecipua ssp. borneensis,Erycibe cf. praecipua ssp. borneensis,no,yes,n,H,na,169.62,na,J,S,1,s,p,i
+etl201,Zingiberaceae,Etlingera,sp. TFD201,Etlingera sp. TFD201,no,no,n,C,na,332.82,na,na,U,na,sv,na,f
+eur131,Pentaphyllacaceae,Eurya,sp. TFD131,Eurya sp. TFD131,yes,yes,n,F,na,175.22,na,J,T,4,s,p,d
+eurlon,Simaroubaceae,Eurycoma,longifolia,Eurycoma longifolia,yes,yes,n,F,8,233.83,0.51,na,Z,1,s,p,na
+fag072,Gentianaceae,Fagraea,sp. TFD072,Fagraea sp. TFD072,yes,yes,n,F,na,113.4,0.7,J,S,4,s,p,c
+ferunk,FERN,Unknown,sp.,Unknown sp.,no,no,i,A,na,172.31,na,Q,na,na,v,na,m
+fic119,Moraceae,Ficus,sp. TFD119,Ficus sp. TFD119,yes,yes,n,F,na,207.15,0.4,J,R,4,s,p,o
+ficbecl,Moraceae,Ficus,beccarii var. latifolia,Ficus beccarii var. latifolia,yes,yes,n,F,10,224.42,0.4,J,R,4,s,p,o
+ficcar1,Moraceae,Ficus,cf. carrii-corner,Ficus cf. carrii-corner,yes,yes,n,F,5,207.15,0.4,J,R,4,s,p,o
+ficcha,Moraceae,Ficus,chartacea,Ficus chartacea,yes,yes,n,F,12,151.58,0.4,J,R,4,s,p,o
+ficgul1,Moraceae,Ficus,cf. gul,Ficus cf. gul,yes,yes,n,F,22,207.15,0.4,J,R,4,s,p,o
+ficmeg,Moraceae,Ficus,megaleia,Ficus megaleia,yes,yes,n,F,7,183.07,0.4,J,R,4,s,p,o
+ficmeg1,Moraceae,Ficus,cf. megaleia,Ficus cf. megaleia,yes,yes,n,F,7,183.07,0.4,J,R,4,s,p,o
+ficobsb,Moraceae,Ficus,obscura var. borneensis,Ficus obscura var. borneensis,yes,yes,n,F,7,207.15,0.4,J,R,4,s,p,o
+ficpar,Moraceae,Ficus,parietalis,Ficus parietalis,no,yes,n,G,na,207.15,0.4,J,R,4,s,p,o
+ficrub1,Moraceae,Ficus,cf. rubocuspidata,Ficus cf. rubocuspidata,yes,yes,n,F,na,207.15,0.4,J,R,4,s,p,o
+fictre,Moraceae,Ficus,treubii,Ficus treubii,yes,yes,n,F,15,216.92,0.4,J,R,4,s,p,o
+fimdur,Cyperaceae,Fimbristylis,dura,Fimbristylis dura,no,no,e,B,0.5,126.53,na,na,R,1,sv,p,p
+fis014,Annonaceae,Fissistigma,sp. TFD014,Fissistigma sp. TFD014,no,yes,n,G,na,160.35,na,N,T,3,s,p,e
+fisful,Annonaceae,Fissistigma,fulgens,Fissistigma fulgens,no,yes,n,G,na,160.35,na,N,T,3,s,p,e
+forfil,Leguminosae,Fordia,filipes,Fordia filipes,yes,yes,n,F,8,143.84,0.64,na,X,2,s,p,d
+forspl,Leguminosae,Fordia,splendidissima,Fordia splendidissima,yes,yes,n,F,13,143.84,0.64,na,X,2,s,p,d
+forspl1,Leguminosae,Fordia,cf. splendidissima,Fordia cf. splendidissima,yes,yes,n,F,13,143.84,0.64,na,X,2,s,p,d
+fri015,Annonaceae,Friesodielsia,sp. TFD015,Friesodielsia sp. TFD015,no,yes,n,G,na,138.76,na,N,T,1,s,p,e
+friacu,Annonaceae,Friesodielsia,acuminata,Friesodielsia acuminata,no,yes,n,G,na,152.2,na,N,T,1,s,p,e
+galful,Pandaceae,Galearia,fulva,Galearia fulva,yes,yes,n,F,20,192.15,0.64,J,W,1,s,p,na
+galmai,Pandaceae,Galearia,maingayi,Galearia maingayi,yes,yes,n,F,27,192.15,0.64,J,W,1,s,p,na
+gar040,Clusiaceae,Garcinia,sp. TFD040,Garcinia sp. TFD040,yes,yes,n,F,na,145.49,0.72,J,S,3,s,p,h
+garben,Clusiaceae,Garcinia,benthamiana,Garcinia benthamiana,yes,yes,n,F,35,145.49,0.72,J,S,3,s,p,h
+garfor,Clusiaceae,Garcinia,forbesii,Garcinia forbesii,yes,yes,n,F,15,145.49,0.72,O,S,3,s,p,h
+garfor1,Clusiaceae,Garcinia,cf. forbesii,Garcinia cf. forbesii,yes,yes,n,F,15,145.49,0.72,O,S,3,s,p,h
+gartub,Rubiaceae,Gardenia,tubifera,Gardenia tubifera,yes,yes,n,F,29,182.34,0.67,J,S,4,s,p,k
+gesunk,Gesneriaceae,Unknown,sp.,Unknown sp.,no,no,n,C,na,206.25,na,N,S,4,s,p,na
+gletru,Gleicheniaceae,Gleichenia,truncata,Gleichenia truncata,no,no,n,A,2,172.31,na,Q,na,na,v,na,m
+glo137,Phyllanthaceae,Glochidion,sp. TFD137,Glochidion sp. TFD137,yes,yes,n,F,na,160.08,0.53,na,U,2,s,p,d
+gloelm,Phyllanthaceae,Glochidion,elmeri,Glochidion elmeri,yes,yes,n,F,na,178.22,0.53,na,U,2,s,p,d
+glorub,Phyllanthaceae,Glochidion,rubrum,Glochidion rubrum,yes,yes,n,F,18,160.08,0.64,na,U,2,s,p,i
+glorub1,Phyllanthaceae,Glochidion,cf. rubrum,Glochidion cf. rubrum,yes,yes,n,F,18,160.08,0.64,na,U,2,s,p,i
+glu010,Anacardiaceae,Gluta,sp. TFD010,Gluta sp. TFD010,yes,yes,n,F,na,112.83,0.56,Q,W,1,s,p,d
+glusab1,Anacardiaceae,Gluta,cf. sabahana,Gluta cf. sabahana,yes,yes,n,F,31,112.83,0.53,Q,W,1,s,p,d
+gluwal,Anacardiaceae,Gluta,wallichii,Gluta wallichii,yes,yes,n,F,51,112.83,0.53,Q,W,1,s,p,d
+gluwal1,Anacardiaceae,Gluta,cf. wallichii,Gluta cf. wallichii,yes,yes,n,F,51,112.83,0.53,Q,W,1,s,p,d
+gne076,Gnetaceae,Gnetum,sp. TFD076,Gnetum sp. TFD076,na,na,n,na,na,143.6,na,J,W,na,s,p,i
+gnegne,Gnetaceae,Gnetum,gnemon,Gnetum gnemon,yes,yes,n,F,10,143.6,0.61,J,W,1,s,p,k
+gomser,Ochnaceae,Gomphia,serrata,Gomphia serrata,yes,yes,n,F,5,203.11,0.7,N,W,1,s,p,na
+gon016,Annonaceae,Goniothalamus,sp. TFD016,Goniothalamus sp. TFD016,yes,yes,n,F,na,168.03,0.44,J,T,3,s,p,e
+graunk,GRASS,Unknown,sp.,Unknown sp.,no,no,i,B,na,134.28,na,na,na,na,s,na,na
+grelae,Malvaceae,Grewia,laevigata,Grewia laevigata,yes,yes,n,F,14,605.05,0.42,N,W,2,s,p,h
+harper,Rutaceae,Harrisonia,perforata,Harrisonia perforata,no,yes,n,G,na,134.47,0.79,J,S,na,s,p,h
+hel146,Proteaceae,Helicia,sp. TFD146,Helicia sp. TFD146,yes,yes,n,F,na,181.46,0.59,J,W,1,s,p,na
+hersum,Malvaceae,Heritiera,sumatrana,Heritiera sumatrana,yes,yes,n,F,40,252.44,0.53,Q,Z,1,s,p,e
+hetste1,Dryopteridaceae,Heterogonium,cf. stenosemioides,Heterogonium cf. stenosemioides,no,no,n,A,1,172.31,na,Q,na,na,v,na,m
+hom025,Araceae,Homalomena,sp. TFD025,Homalomena sp. TFD025,no,no,n,D,na,223.2,na,J,S,3,s,p,i
+hompop,Euphorbiaceae,Homalanthus,populneus,Homalanthus populneus,yes,yes,n,F,12,181.76,0.29,na,U,2,s,p,h
+hopdry,Dipterocarpaceae,Hopea,dryobalanoides,Hopea dryobalanoides,yes,yes,n,F,45,154.63,0.61,Q,Z,1,s,p,i
+hopdry1,Dipterocarpaceae,Hopea,cf. dryobalanoides,Hopea cf. dryobalanoides,yes,yes,n,F,45,154.63,0.61,Q,Z,1,s,p,i
+hopfer,Dipterocarpaceae,Hopea,ferruginea,Hopea ferruginea,yes,yes,n,F,40,154.63,0.7,Q,Z,1,s,p,i
+hopfer1,Dipterocarpaceae,Hopea,cf. ferruginea,Hopea cf. ferruginea,yes,yes,n,F,40,154.63,0.7,Q,Z,1,s,p,i
+hopsan,Dipterocarpaceae,Hopea,sangal,Hopea sangal,yes,yes,n,F,40,154.63,0.69,Q,Z,1,s,p,i
+hor121,Myristicaceae,Horsfieldia,sp. TFD121,Horsfieldia sp. TFD121,yes,yes,n,F,na,205.13,0.45,J,X,1,s,p,n
+horgra,Myristicaceae,Horsfieldia,grandis,Horsfieldia grandis,yes,yes,n,F,25,205.13,0.39,J,X,1,s,p,n
+hydbor,Achariaceae,Hydnocarpus,borneensis,Hydnocarpus borneensis,yes,yes,n,F,17,123.03,0.63,J,U,4,s,p,i
+hydsum,Achariaceae,Hydnocarpus,sumatrana,Hydnocarpus sumatrana,yes,yes,n,F,48,162.31,0.63,J,U,4,s,p,i
+hydwoo,Achariaceae,Hydnocarpus,woodii,Hydnocarpus woodii,yes,yes,n,F,na,136.77,0.63,J,S,4,s,p,i
+hypcap,Lamiaceae,Hyptis,capitata,Hyptis capitata,no,no,e,C,1,402.53,na,J,U,2,sv,a,l
+icaunk,Icacinaceae,Unknown,sp.,Unknown sp.,no,yes,n,G,na,181.24,na,na,na,na,s,p,na
+ichfru,Apocynaceae,Ichnocarpus,frutescens,Ichnocarpus frutescens,no,yes,n,G,na,135.5,na,na,X,4,s,p,na
+imp235,Poaceae,Imperata,sp. TFD235,Imperata sp. TFD235,no,no,n,B,3,172.92,na,Q,V,4,sv,p,p
+impcyl,Poaceae,Imperata,cylindrica,Imperata cylindrica,no,no,n,B,3,172.92,na,Q,V,4,sv,p,p
+indunk,INDET,Unknown,sp.,Unknown sp.,na,na,i,na,na,194.54,na,na,na,na,na,na,na
+ixo154,Rubiaceae,Ixora,sp. TFD154,Ixora sp. TFD154,no,yes,n,H,na,123.8,0.73,N,W,2,s,p,i
+ixoell,Rubiaceae,Ixora,elliptica,Ixora elliptica,no,yes,n,H,25,75.99,0.73,N,W,2,s,p,i
+ixofuc,Rubiaceae,Ixora,fucosa,Ixora fucosa,no,yes,n,H,10,171.62,0.73,N,W,2,s,p,i
+ixopyr1,Rubiaceae,Ixora,cf. pyrantha,Ixora cf. pyrantha,no,yes,n,H,8,123.8,0.73,N,W,2,s,p,i
+jactom,Convolvulaceae,Jacquemontia,tomentella,Jacquemontia tomentella,no,no,n,D,na,204.74,na,P,U,2,sv,p,h
+jus004,Acanthaceae,Justicia,sp. TFD004,Justicia sp. TFD004,no,no,n,E,na,207.18,na,L,U,4,s,p,h
+kaybor,Calophyllaceae,Kayea,borneensis,Kayea borneensis,yes,yes,n,F,25,98.18,0.69,na,U,na,s,p,na
+kne122,Myristicaceae,Knema,sp. TFD122,Knema sp. TFD122,yes,yes,n,F,na,147.67,0.53,N,U,1,s,p,h
+knecin1,Myristicaceae,Knema,cf. cinerea,Knema cf. cinerea,yes,yes,n,F,na,147.67,0.53,N,U,1,s,p,e
+knelat,Myristicaceae,Knema,latericia,Knema latericia,yes,yes,n,F,20,174.7,0.53,N,U,1,s,p,e
+knelau,Myristicaceae,Knema,laurina,Knema laurina,yes,yes,n,F,30,120.65,0.47,N,U,1,s,p,h
+koi067,Euphorbiaceae,Koilodepas,sp. TFD067,Koilodepas sp. TFD067,yes,yes,n,F,na,172.78,na,na,U,2,s,p,d
+koibre,Euphorbiaceae,Koilodepas,brevis,Koilodepas brevis,yes,yes,n,F,7,172.78,na,na,U,2,s,p,d
+koilae,Euphorbiaceae,Koilodepas,laevigatum,Koilodepas laevigatum,yes,yes,n,F,12,112.36,na,na,U,2,s,p,d
+koilon,Euphorbiaceae,Koilodepas,longifolium,Koilodepas longifolium,yes,yes,n,F,na,172.78,na,na,U,2,s,p,d
+koipec,Euphorbiaceae,Koilodepas,pectinatum,Koilodepas pectinatum,yes,yes,n,F,9,233.2,na,na,U,2,s,p,d
+kor030,Arecaceae,Korthalsia,sp. TFD030,Korthalsia sp. TFD030,no,yes,n,G,na,223.2,na,na,na,na,s,p,na
+kun097,Leguminosae,Kunstleria,sp. TFD097,Kunstleria sp. TFD097,no,yes,n,G,na,304.91,na,na,Y,na,s,p,h
+landom,Meliaceae,Lansium,domesticum,Lansium domesticum,yes,yes,n,F,30,167.39,0.71,M,S,2,s,p,h
+las155,Rubiaceae,Lasianthus,sp. TFD155,Lasianthus sp. TFD155,yes,yes,n,F,na,328.52,na,J,W,2,s,p,h
+lauunk,Lauraceae,Unknown,sp.,Unknown sp.,yes,yes,n,F,na,130.94,na,na,W,na,s,p,na
+lee194,Vitaceae,Leea,sp. TFD194,Leea sp. TFD194,no,yes,n,H,na,235.4,0.46,N,S,3,s,p,j
+leeind,Vitaceae,Leea,indica,Leea indica,no,yes,n,H,16,235.4,0.46,N,S,3,s,p,j
+leeind1,Vitaceae,Leea,cf. indica,Leea cf. indica,no,yes,n,H,16,235.4,0.46,N,S,3,s,p,j
+legunk,Leguminosae,Unknown,sp.,Unknown sp.,no,yes,n,G,na,304.91,na,na,na,1,s,p,h
+lep245,Sapindaceae,Lepisanthes,sp. TFD245,Lepisanthes sp. TFD245,yes,yes,n,F,na,149.06,0.62,N,W,2,s,p,d
+lepamo,Sapindaceae,Lepisanthes,amoena,Lepisanthes amoena,yes,yes,n,F,na,149.06,0.56,N,W,2,s,p,d
+lepfru,Sapindaceae,Lepisanthes,fruticosa,Lepisanthes fruticosa,yes,yes,n,F,14,149.06,0.62,N,W,2,s,p,d
+leucap,Urticaceae,Leucosyke,capitellata,Leucosyke capitellata,yes,yes,n,F,5,206.18,na,na,R,4,s,p,p
+licspl,Chrysobalanaceae,Licania,splendens,Licania splendens,yes,yes,n,F,25,170.06,0.82,N,W,1,s,p,d
+lit071,Fagaceae,Lithocarpus,sp. TFD071,Lithocarpus sp. TFD071,yes,yes,n,F,na,156.46,0.7,J,Z,1,s,p,h
+lit087,Lauraceae,Litsea,sp. TFD087,Litsea sp. TFD087,yes,yes,n,F,na,132.56,0.41,N,W,1,s,p,h
+litenc1,Fagaceae,Lithocarpus,cf. encleisacarpus,Lithocarpus cf. encleisacarpus,yes,yes,n,F,na,156.46,0.55,J,Z,1,s,p,h
+litewy1,Fagaceae,Lithocarpus,cf. ewyckii,Lithocarpus cf. ewyckii,yes,yes,n,F,na,156.46,0.7,J,Z,1,s,p,h
+litlep,Fagaceae,Lithocarpus,leptogyne,Lithocarpus leptogyne,yes,yes,n,F,40,156.46,0.7,J,Z,1,s,p,h
+litses,Lauraceae,Litsea,sessiliflora,Litsea sessiliflora,yes,yes,n,F,5,132.33,0.41,N,W,1,s,p,h
+liturc1,Fagaceae,Lithocarpus,cf. urceolaris,Lithocarpus cf. urceolaris,yes,yes,n,F,na,156.46,0.7,J,Z,1,s,p,h
+loepau,Celastraceae,Loeseneriella,pauciflora,Loeseneriella pauciflora,yes,yes,n,F,na,120.21,na,na,U,3,s,p,na
+logunk,Loganiaceae,Unknown,sp.,Unknown sp.,no,yes,n,G,na,174.21,0.75,na,na,na,s,p,na
+lop037,Celastraceae,Lophopetalum,sp. TFD037,Lophopetalum sp. TFD037,yes,yes,n,F,na,145.51,0.53,Q,U,4,s,p,h
+lopbec,Celastraceae,Lophopetalum,beccarianum,Lophopetalum beccarianum,yes,yes,n,F,36,134.82,0.51,Q,U,4,s,p,h
+lopjav,Celastraceae,Lophopetalum,javanicum,Lophopetalum javanicum,yes,yes,n,F,56,193.64,0.53,Q,U,4,s,p,h
+loprig,Celastraceae,Lophopetalum,rigidum,Lophopetalum rigidum,yes,yes,n,F,30,108.06,0.53,Q,U,4,s,p,h
+lunama,Rutaceae,Lunasia,amara,Lunasia amara,yes,yes,n,F,15,134.47,na,na,X,1,s,p,h
+luvsar,Rutaceae,Luvunga,sarmentosa,Luvunga sarmentosa,no,yes,n,G,na,134.47,na,J,S,2,s,p,h
+lyg176,Schizaeaceae,Lygodium,sp. TFD176,Lygodium sp. TFD176,no,no,n,A,0.5,203.46,na,Q,na,na,v,p,m
+lygcir,Schizaeaceae,Lygodium,circinnatum,Lygodium circinnatum,no,no,n,A,0.5,203.46,na,Q,na,na,v,p,m
+mac068,Euphorbiaceae,Macaranga,sp. TFD068,Macaranga sp. TFD068,yes,yes,n,F,na,204.9,0.38,na,U,2,s,p,i
+mac170,Rutaceae,Maclurodendron,sp. TFD170,Maclurodendron sp. TFD170,yes,yes,n,F,na,134.47,0.55,J,S,2,s,p,h
+machyp1,Euphorbiaceae,Macaranga,cf. hypoleuca,Macaranga cf. hypoleuca,yes,yes,n,F,30,204.9,0.26,na,U,2,s,p,n
+maclow,Euphorbiaceae,Macaranga,lowii,Macaranga lowii,yes,yes,n,F,20,204.9,0.68,na,U,2,s,p,i
+mactan,Euphorbiaceae,Macaranga,tanarius,Macaranga tanarius,yes,yes,n,F,19,204.9,0.46,N,U,2,s,p,d
+mactri,Euphorbiaceae,Macaranga,triloba,Macaranga triloba,yes,yes,n,F,20,204.9,0.32,na,U,2,s,p,n
+mactri1,Euphorbiaceae,Macaranga,cf. triloba,Macaranga cf. triloba,yes,yes,n,F,20,204.9,0.32,na,U,2,s,p,n
+macwin1,Euphorbiaceae,Macaranga,cf. winkleri,Macaranga cf. winkleri,yes,yes,n,F,20,204.9,0.38,na,U,2,s,p,d
+maddub,Sapotaceae,Madhuca,dubardii,Madhuca dubardii,yes,yes,n,F,16,175.22,0.66,J,W,1,s,p,f
+maddub1,Sapotaceae,Madhuca,cf. dubardii,Madhuca cf. dubardii,yes,yes,n,F,16,175.22,0.66,J,W,1,s,p,f
+madelm1,Sapotaceae,Madhuca,cf. elmeri,Madhuca cf. elmeri,yes,yes,n,F,20,175.22,0.66,J,W,2,s,p,f
+madmin,Sapotaceae,Madhuca,mindanaensis,Madhuca mindanaensis,yes,yes,n,F,20,175.22,0.66,J,W,2,s,p,f
+mal069,Euphorbiaceae,Mallotus,sp. TFD069,Mallotus sp. TFD069,yes,yes,n,F,na,204.48,0.5,L,U,3,s,p,d
+malgra,Euphorbiaceae,Mallotus,graffithii,Mallotus graffithii,yes,yes,n,F,na,204.48,0.5,L,U,3,s,p,d
+malkor,Euphorbiaceae,Mallotus,korthalsii,Mallotus korthalsii,yes,yes,n,F,15,258.41,0.5,L,U,3,s,p,d
+mallac,Euphorbiaceae,Mallotus,lackeyi,Mallotus lackeyi,yes,yes,n,F,15,282.09,0.5,L,U,3,s,p,d
+mallac1,Euphorbiaceae,Mallotus,cf. lackeyi,Mallotus cf. lackeyi,yes,yes,n,F,15,282.09,0.5,L,U,3,s,p,d
+malmiq,Euphorbiaceae,Mallotus,miquelianus,Mallotus miquelianus,yes,yes,n,F,10,158.91,0.5,L,U,3,s,p,d
+malpel,Euphorbiaceae,Mallotus,peltatus,Mallotus peltatus,yes,yes,n,F,8,287.12,0.47,L,U,3,s,p,d
+malpen,Euphorbiaceae,Mallotus,penangensis,Mallotus penangensis,yes,yes,n,F,20,127.5,0.59,L,U,3,s,p,d
+malste,Melastomataceae,Macrolens,stellulata,Macrolens stellulata,na,na,n,na,na,183.84,na,J,na,na,s,na,na
+malwra,Euphorbiaceae,Mallotus,wrayi,Mallotus wrayi,yes,yes,n,F,12,134.18,0.5,L,U,3,s,p,d
+marpal,Annonaceae,Marsypopetalum,pallidum,Marsypopetalum pallidum,yes,yes,n,F,7,144.33,na,N,T,1,s,p,na
+marunk,Marantaceae,Unknown,sp.,Unknown sp.,no,no,n,C,na,332.82,na,na,U,na,s,p,na
+mel171,Rutaceae,Melicope,sp. TFD171,Melicope sp. TFD171,yes,yes,n,F,na,134.47,0.37,N,X,2,s,p,h
+melmal,Melastomataceae,Melastoma,malabathricum,Melastoma malabathricum,no,yes,n,H,6,130.69,0.44,N,S,4,s,p,h
+melmal1,Melastomataceae,Melastoma,cf. malabathricum,Melastoma cf. malabathricum,no,yes,n,H,6,130.69,0.44,N,S,4,s,p,h
+membor,Melastomataceae,Memecylon,borneense,Memecylon borneense,yes,yes,n,F,20,183.84,0.78,N,W,1,s,p,h
+memcal,Melastomataceae,Memecylon,calypterum,Memecylon calypterum,na,na,i,na,na,183.84,0.78,N,W,1,s,na,h
+memcos,Melastomataceae,Memecylon,costatum,Memecylon costatum,yes,yes,n,F,13,183.84,0.78,N,W,1,s,p,h
+menunk,Menispermaceae,Unknown,sp.,Unknown sp.,na,na,i,na,na,181.46,na,N,W,na,na,na,na
+mer047,Convolvulaceae,Merremia,sp. TFD047,Merremia sp. TFD047,no,yes,n,G,na,242.04,na,P,U,2,sv,p,h
+merbor,Convolvulaceae,Merremia,borneensis,Merremia borneensis,no,yes,n,G,na,247.05,na,P,U,2,sv,p,h
+merbor1,Convolvulaceae,Merremia,cf. borneensis,Merremia cf. borneensis,no,yes,n,G,na,247.05,na,P,U,2,sv,p,h
+mergra,Convolvulaceae,Merremia,gracilis,Merremia gracilis,no,yes,n,G,na,237.04,na,P,U,2,sv,p,h
+mergra1,Convolvulaceae,Merremia,cf. gracilis,Merremia cf. gracilis,no,yes,n,G,na,237.04,na,P,U,2,sv,p,h
+merpel,Convolvulaceae,Merremia,peltata,Merremia peltata,no,yes,n,G,na,242.04,na,P,U,2,sv,p,h
+merpel1,Convolvulaceae,Merremia,cf. peltata,Merremia cf. peltata,no,yes,n,G,na,242.04,na,P,U,2,sv,p,h
+mes183,Thelypteridaceae,Mesophlebion,sp. TFD183,Mesophlebion sp. TFD183,no,no,n,A,1,172.31,na,Q,na,na,v,na,m
+mezhav,Annonaceae,Mezzettia,havilandii,Mezzettia havilandii,yes,yes,n,F,20,168.03,0.54,J,T,2,s,p,e
+mic105,Malvaceae,Microcos,sp. TFD105,Microcos sp. TFD105,yes,yes,n,F,na,322.74,0.49,J,W,na,s,p,h
+micanth,Malvaceae,Microcos,antidesmifolia var. hirsuta,Microcos antidesmifolia var. hirsuta,yes,yes,n,F,10,322.74,0.47,J,W,na,s,p,h
+miccra1,Malvaceae,Microcos,cf. crassifolia,Microcos cf. crassifolia,yes,yes,n,F,36,322.74,0.49,J,W,na,s,p,h
+michet,Polypodiaceae,Microsorum,heterocarpum,Microsorum heterocarpum,no,no,n,A,0.5,172.31,na,Q,na,na,v,p,m
+michir,Malvaceae,Microcos,hirsuta,Microcos hirsuta,yes,yes,n,F,16,322.74,0.49,J,W,na,s,p,h
+mickin,Celastraceae,Microtropis,kinabaluensis,Microtropis kinabaluensis,yes,yes,n,F,na,126.98,0.54,na,U,1,s,p,na
+micret,Malvaceae,Microcos,reticulata,Microcos reticulata,yes,yes,n,F,50,223.75,0.49,J,W,na,s,p,h
+micspe,Dryopteridaceae,Microlepia,speluncae,Microlepia speluncae,no,no,n,A,1,172.31,na,Q,na,na,v,p,m
+micspe1,Dennstaedtiaceae,Microlepia,cf. speluncae,Microlepia cf. speluncae,no,no,n,A,2,172.31,na,Q,na,na,v,p,m
+mikcor,Compositae,Mikania,cordata,Mikania cordata,no,no,n,D,10,499.82,na,Q,R,1,sv,p,d
+milbor1,Leguminosae,Milletia,cf. borneensis,Milletia cf. borneensis,yes,yes,n,F,46,304.91,na,na,X,2,s,p,h
+miminv,Leguminosae,Mimosa,invisa,Mimosa invisa,no,no,e,D,1,304.91,na,J,Y,2,sv,abp,l
+mimpud,Leguminosae,Mimosa,pudica,Mimosa pudica,no,no,e,D,1,304.91,na,Q,Y,2,sv,abp,l
+mispen,Sapindaceae,Mischocarpus,pentapetalus,Mischocarpus pentapetalus,yes,yes,n,F,25,149.06,0.75,na,U,1,s,p,na
+mitken,Annonaceae,Mitrella,kentii,Mitrella kentii,no,yes,n,G,na,246.62,na,N,T,2,s,p,na
+myrunk,Myrtaceae,Unknown,sp.,Unknown sp.,yes,yes,n,F,na,117.74,na,na,na,na,s,p,na
+myx220,Oleaceae,Myxopyrum,sp. TFD220,Myxopyrum sp. TFD220,no,yes,n,H,na,129.58,na,J,S,na,s,p,h
+nau157,Rubiaceae,Nauclea,sp. TFD157,Nauclea sp. TFD157,yes,yes,n,F,na,165.32,0.52,J,W,4,s,p,h
+nausub,Rubiaceae,Nauclea,subdita,Nauclea subdita,yes,yes,n,F,36,165.32,0.44,J,W,4,s,p,h
+neoacu,Annonaceae,Neo-uvaria,acuminatissima,Neo-uvaria acuminatissima,yes,yes,n,F,22,185.1,na,N,T,2,s,p,na
+neocal,Rubiaceae,Neonauclea,calycina,Neonauclea calycina,yes,yes,n,F,34,182.34,0.66,J,U,4,s,p,h
+neofoe,Annonaceae,Neo-uvaria,foetida,Neo-uvaria foetida,yes,yes,n,F,13,190.08,na,N,T,2,s,p,na
+neophi,Euphorbiaceae,Neoscortechinia,philippinensis,Neoscortechinia philippinensis,yes,yes,n,F,35,181.76,0.61,na,U,1,s,p,h
+nep127,Oleandraceae,Nephrolepis,sp. TFD127,Nephrolepis sp. TFD127,no,no,n,A,1,172.31,na,Q,na,na,v,na,m
+nepaur,Oleandraceae,Nephrolepis,auriculata,Nephrolepis auriculata,no,no,n,A,1,172.31,na,Q,na,na,v,na,m
+nepbis,Oleandraceae,Nephrolepis,biserrata,Nephrolepis biserrata,no,no,n,A,1,172.31,na,Q,na,na,v,p,m
+nepbis1,Oleandraceae,Nephrolepis,cf. biserrata,Nephrolepis cf. biserrata,no,no,n,A,1,172.31,na,Q,na,na,v,p,m
+nephir,Oleandraceae,Nephrolepis,hirsutula,Nephrolepis hirsutula,no,no,n,A,1,172.31,na,Q,na,na,v,p,m
+neppil1,Oleandraceae,Nephrolepis,cf. pilosula,Nephrolepis cf. pilosula,no,no,n,A,1,172.31,na,Q,na,na,v,na,m
+nepram,Sapindaceae,Nephelium,rambutan ake,Nephelium rambutan ake,yes,yes,n,F,24,155.04,0.72,J,S,1,s,p,d
+nepunc,Sapindaceae,Nephelium,uncinatum,Nephelium uncinatum,yes,yes,n,F,40,155.04,0.63,J,S,1,s,p,d
+ompsar,Euphorbiaceae,Omphalea,sargentii,Omphalea sargentii,no,yes,n,G,na,124.34,0.48,na,U,na,s,p,d
+oph158,Rubiaceae,Ophiorrhiza,sp. TFD158,Ophiorrhiza sp. TFD158,no,no,n,C,na,490.49,na,na,U,4,s,na,d
+ophwin,Rubiaceae,Ophiorrhiza,winkleri,Ophiorrhiza winkleri,no,no,n,C,0.5,490.49,na,na,U,4,s,na,d
+orcunk,Orchidaceae,Unknown,sp.,Unknown sp.,no,no,n,C,na,223.2,na,na,na,na,na,na,h
+oro018,Annonaceae,Orophea,sp. TFD018,Orophea sp. TFD018,yes,yes,n,F,na,235.89,na,N,W,2,s,p,h
+oroalb1,Annonaceae,Orophea,cf. alba,Orophea cf. alba,no,yes,n,H,20,235.89,na,N,W,2,s,p,h
+oromyr,Annonaceae,Orophea,myriantha,Orophea myriantha,yes,yes,n,F,15,235.89,na,N,W,2,s,p,h
+ororub,Annonaceae,Orophea,rubra,Orophea rubra,yes,yes,n,F,7,235.89,na,N,W,2,s,p,h
+pae159,Rubiaceae,Paederia,sp. TFD159,Paederia sp. TFD159,no,yes,n,G,na,182.34,na,na,b,na,s,p,h
+paldas,Sapotaceae,Palaquium,dasyphyllum,Palaquium dasyphyllum,yes,yes,n,F,36,175.22,0.51,M,W,1,s,p,f
+palunk,Palmae,Unknown,sp.,Unknown sp.,yes,yes,i,F,na,223.2,na,na,na,na,s,p,na
+panunk,Pandaceae,Unknown,sp.,Unknown sp.,yes,yes,n,F,na,192.15,na,na,na,na,s,p,na
+parmai,Anacardiaceae,Parishia,maingayi,Parishia maingayi,yes,yes,n,F,36,46.84,0.51,Q,W,1,s,p,d
+parmal,Dipterocarpaceae,Parashorea,malaanonan,Parashorea malaanonan,yes,yes,n,F,60,154.28,0.42,Q,Z,1,s,p,d
+parobl,Chrysobalanaceae,Parinari,oblongifolia,Parinari oblongifolia,yes,yes,n,F,40,225.56,0.63,J,W,1,s,p,d
+parpar,Dipterocarpaceae,Parashorea,parvifolia,Parashorea parvifolia,yes,yes,n,F,60,254.28,0.61,Q,Z,1,s,p,d
+partom,Dipterocarpaceae,Parashorea,tomentella,Parashorea tomentella,yes,yes,n,F,65,181.67,0.51,Q,Z,1,s,p,d
+parxes,Sapindaceae,Paranephelium,xestophyllum,Paranephelium xestophyllum,yes,yes,n,F,40,149.06,0.81,O,U,1,s,p,na
+pen106,Malvaceae,Pentace,sp. TFD106,Pentace sp. TFD106,yes,yes,n,F,na,248.26,0.6,na,a,1,s,p,d
+penbor,Malvaceae,Pentace,borneensis,Pentace borneensis,yes,yes,n,F,13,148.16,0.6,na,a,1,s,p,d
+penbor1,Malvaceae,Pentace,cf. borneensis,Pentace cf. borneensis,yes,yes,n,F,13,148.16,0.6,na,a,1,s,p,d
+penlax,Malvaceae,Pentace,laxiflora,Pentace laxiflora,yes,yes,n,F,40,248.26,0.36,na,a,1,s,p,d
+per215,Menispermaceae,Pericampyllus,sp. TFD215,Pericampyllus sp. TFD215,no,yes,n,G,na,181.46,na,N,W,na,s,p,h
+peralpp,Dipentodontaceae,Perrottetia,alpestris ssp. philippinesis,Perrottetia alpestris spp. philippinesis,yes,yes,n,F,12,196.97,na,na,S,2,s,p,na
+pha244,Thymelaeaceae,Phaleria,sp. TFD244,Phaleria sp. TFD244,yes,yes,n,F,na,100.25,na,J,W,2,s,p,h
+phrpub,Marantaceae,Phrynium,pubinerve,Unknown sp.,no,no,n,C,1,332.82,na,na,U,2,s,p,na
+phy078,Icacinaceae,Phytocrene,sp. TFD078,Phytocrene sp. TFD078,no,yes,n,G,na,181.24,na,na,W,na,s,p,na
+phyama,Phyllanthaceae,Phyllanthus,amarus,Phyllanthus amarus,no,no,e,C,1,143.64,na,na,U,3,s,abp,h
+phyama1,Phyllanthaceae,Phyllanthus,cf. amarus,Phyllanthus cf. amarus,no,no,e,C,1,143.64,na,na,U,3,s,abp,h
+phyano,Icacinaceae,Phytocrene,anomala,Phytocrene anomala,no,yes,n,G,na,181.24,na,na,W,na,s,p,na
+pip139,Piperaceae,Piper,sp. TFD139,Piper sp. TFD139,no,no,n,D,na,168.67,na,J,T,1,s,na,h
+pip253,Araceae,Piptospatha,sp. TFD253,Unknown sp.,no,no,n,D,na,223.2,na,P,S,na,s,p,i
+piparb1,Piperaceae,Piper,cf. arborescens,Piper cf. arborescens,no,no,n,D,na,168.67,na,J,T,1,s,na,h
+pipcan1,Piperaceae,Piper,cf. caninum,Piper cf. caninum,no,no,n,D,na,168.67,na,J,T,1,s,na,h
+pla238,Lecythidaceae,Planchonia,sp. TFD238,Planchonia sp. TFD238,yes,yes,n,F,na,175.22,0.49,na,U,4,s,p,na
+ple061,Dryopteridaceae,Pleocnemia,sp. TFD061,Pleocnemia sp. TFD061,no,no,n,A,na,172.31,na,Q,na,na,v,na,m
+ple160,Rubiaceae,Pleiocarpidia,sp. TFD160,Pleiocarpidia sp. TFD160,yes,yes,n,F,na,182.34,na,J,S,4,s,p,h
+pleirr,Dryopteridaceae,Pleocnemia,irregularis,Pleocnemia irregularis,no,no,n,A,1,172.31,na,Q,na,na,v,na,m
+plesan,Rubiaceae,Pleiocarpidia,sandakanica,Pleiocarpidia sandakanica,yes,yes,n,F,20,182.34,na,J,S,4,s,p,h
+pne184,Thelypteridaceae,Pneumatopteris,sp. TFD184,Pneumatopteris sp. TFD184,no,no,n,A,1,172.31,na,Q,na,na,v,na,m
+pnemic1,Thelypteridaceae,Pneumatopteris,cf. michaelis,Pneumatopteris cf. michaelis,no,no,n,A,1,172.31,na,Q,na,na,v,na,m
+poaunk,Poaceae,Unknown,sp.,Unknown sp.,no,no,i,B,na,172.92,na,na,V,na,na,na,na
+pol019,Annonaceae,Polyalthia,sp. TFD019,Polyalthia sp. TFD019,yes,yes,n,F,na,185.03,0.53,N,T,2,s,p,e
+polbor,Annonaceae,Polyalthia,borneensis,Polyalthia borneensis,yes,yes,n,F,7,141.88,0.53,N,T,2,s,p,e
+polcau,Annonaceae,Polyalthia,cauliflora,Polyalthia cauliflora,yes,yes,n,F,14,228.19,0.53,N,T,2,s,p,e
+polcau1,Annonaceae,Polyalthia,cf. cauliflora,Polyalthia cf. cauliflora,yes,yes,n,F,14,228.19,0.53,N,T,2,s,p,e
+polins,Annonaceae,Polyalthia,insignis,Polyalthia insignis,yes,yes,n,F,5,185.03,0.43,N,T,2,s,p,e
+pollat,Annonaceae,Polyalthia,lateriflora,Polyalthia lateriflora,yes,yes,n,F,42,185.03,0.5,N,T,1,s,p,h
+polmic,Annonaceae,Polyalthia,microtus,Polyalthia microtus,yes,yes,n,F,13,185.03,0.53,N,T,2,s,p,e
+polpan,Polygalaceae,Polygala,paniculata,Polygala paniculata,no,no,e,C,0.5,100.2,na,K,U,2,s,a,d
+polsum,Annonaceae,Polyalthia,sumatrana,Polyalthia sumatrana,yes,yes,n,F,23,185.03,0.52,N,T,1,s,p,e
+pop246,Annonaceae,Popowia,sp. TFD246,Popowia sp. TFD246,yes,yes,n,F,na,160.78,0.55,N,T,1,s,p,n
+popodo,Annonaceae,Popowia,odoardoi,Popowia odoardoi,yes,yes,n,F,10,171.83,0.55,N,T,1,s,p,n
+poppis,Annonaceae,Popowia,pisocarpa,Popowia pisocarpa,yes,yes,n,F,12,149.72,0.55,N,T,1,s,p,n
+pot026,Araceae,Pothos,sp. TFD026,Pothos sp. TFD026,no,no,n,D,na,223.2,na,J,S,2,s,p,d
+potbec,Araceae,Pothos,beccarianus,Pothos sp. TFD026,no,no,n,D,na,223.2,na,J,S,2,s,p,d
+potbor1,Araceae,Pothos,cf. borneensis,Unknown sp.,no,no,n,D,na,223.2,na,J,S,2,s,p,d
+pou248,Sapotaceae,Pouteria,sp. TFD248,Pouteria sp. TFD248,yes,yes,n,F,na,175.22,0.6,J,S,2,s,p,na
+pra161,Rubiaceae,Praravinia,sp. TFD161,Praravinia sp. TFD161,yes,yes,n,F,na,135.92,na,J,S,4,s,p,h
+prasub,Rubiaceae,Praravinia,suberosa,Praravinia suberosa,yes,yes,n,F,15,152.54,na,J,S,4,s,p,h
+pritet,Rubiaceae,Prismatomeris,tetranda,Prismatomeris tetranda,yes,yes,n,F,8,196.22,na,J,W,2,s,p,h
+pro185,Thelypteridaceae,Pronephrium,sp. TFD185,Pronephrium sp. TFD185,no,no,n,A,1,172.31,na,Q,na,na,v,na,m
+proasp,Thelypteridaceae,Pronephrium,asperum,Pronephrium asperum,no,no,n,A,1,172.31,na,Q,na,na,v,na,m
+pru151,Rosaceae,Prunus,sp. TFD151,Prunus sp. TFD151,yes,yes,n,F,na,166.73,0.53,J,W,1,s,p,h
+pruarb,Rosaceae,Prunus,arborea,Prunus arborea,yes,yes,n,F,40,166.73,0.46,J,W,1,s,p,h
+pselap,Acanthaceae,Pseuderanthemum,lapathifolium,Pseuderanthemum lapathifolium,no,no,n,E,2,207.18,na,L,U,4,s,p,h
+psyelm,Rubiaceae,Psychotria,elmeri,Psychotria elmeri,no,yes,n,G,na,75.41,0.45,J,W,2,s,p,h
+pte107,Malvaceae,Pterospermum,sp. TFD107,Pterospermum sp. TFD107,yes,yes,n,F,na,235.78,0.52,na,U,4,s,p,h
+pte114,Melastomataceae,Pternandra,sp. TFD114,Pternandra sp. TFD114,yes,yes,n,F,na,172.84,0.53,N,S,4,s,p,h
+pte195,Vitaceae,Pterisanthes,sp. TFD195,Pterisanthes sp. TFD195,no,yes,n,G,na,442.62,na,J,S,na,s,p,h
+ptecog,Melastomataceae,Pternandra,cogniauxii,Pternandra cogniauxii,yes,yes,n,F,6,172.84,0.53,N,S,4,s,p,h
+pteelo1,Malvaceae,Pterospermum,cf. elongatum,Pterospermum cf. elongatum,yes,yes,n,F,na,235.78,0.52,na,U,4,s,p,h
+ptesub,Malvaceae,Pterospermum,subpeltatum,Pterospermum subpeltatum,yes,yes,n,F,na,235.78,0.52,na,U,4,s,p,h
+ptesub1,Malvaceae,Pterospermum,cf. subpeltatum,Pterospermum cf. subpeltatum,yes,yes,n,F,na,235.78,0.52,na,U,4,s,p,h
+ptetri,Pteridaceae,Pteris,tripartita,Pteris tripartita,no,no,n,A,2,172.31,na,Q,na,na,v,p,m
+quearg1,Fagaceae,Quercus,cf. argentata,Quercus cf. argentata,yes,yes,n,F,40,156.46,0.74,J,Z,1,s,p,p
+rha254,Araceae,Rhaphidophora,sp. TFD254,Unknown sp.,no,no,n,D,na,223.2,na,J,S,4,s,p,i
+rhagra,Araceae,Rhaphidophora,gracilipes,Unknown sp.,no,no,n,D,1,223.2,na,J,S,4,s,p,i
+rhalat,Araceae,Rhaphidophora,latevaginata,Pothos sp. TFD026,no,no,n,D,na,223.2,na,J,S,4,s,p,i
+rhaunk,Rhamnaceae,Unknown,sp.,Unknown sp.,na,na,i,na,na,161.32,na,na,na,na,s,p,na
+rinlon1,Violaceae,Rinorea,cf. longiracemosa,Rinorea cf. longiracemosa,yes,yes,n,F,na,177.1,0.67,na,U,2,s,p,h
+rot237,Rubiaceae,Rothmannia,sp. TFD237,Rothmannia sp. TFD237,yes,yes,n,F,na,182.34,0.64,na,na,4,s,p,h
+roumim,Connaraceae,Rourea,mimosoides,Rourea mimosoides,no,yes,n,G,na,163.15,na,N,X,1,s,p,h
+roumin1,Connaraceae,Rourea,cf. minor,Rourea cf. minor,no,yes,n,G,na,163.15,na,N,X,1,s,p,h
+rubcle,Rosaceae,Rubus,clementis,Rubus clementis,no,yes,n,G,na,166.73,0.35,N,W,1,s,p,h
+rubmol,Rosaceae,Rubus,moluccanus,Rubus moluccanus,no,yes,n,G,na,166.73,0.35,N,W,1,sv,p,h
+rubunk,Rubiaceae,Unknown,sp.,Unknown sp.,na,na,i,na,na,182.34,na,na,na,na,s,na,h
+ryphul,Achariaceae,Ryparosa,hullettii,Ryparosa hullettii,yes,yes,n,F,10,134.34,0.61,J,S,na,s,p,h
+sal038,Celastraceae,Salacia,sp. TFD038,Salacia sp. TFD038,yes,yes,n,F,na,110.56,0.76,J,W,3,s,p,h
+sarpan,Icacinaceae,Sarcostigma,paniculata,Sarcostigma paniculata,no,yes,n,G,na,138.09,na,na,na,na,s,p,na
+sau007,Actinidiaceae,Saurauia,sp. TFD007,Saurauia sp. TFD007,yes,yes,n,F,na,251.22,0.43,J,S,4,s,p,d
+sauaga,Actinidiaceae,Saurauia,agamae,Saurauia agamae,yes,yes,n,F,8,251.22,0.43,J,S,4,s,p,d
+sauaga1,Actinidiaceae,Saurauia,cf. agamae,Saurauia cf. agamae,yes,yes,n,F,8,251.22,0.43,J,S,4,s,p,d
+saufer,Actinidiaceae,Saurauia,ferox,Saurauia ferox,yes,yes,n,F,10,251.22,0.43,J,S,4,s,p,d
+saulon,Actinidiaceae,Saurauia,longistyla,Saurauia longistyla,yes,yes,n,F,12,251.22,0.43,J,S,4,s,p,d
+sauobl,Actinidiaceae,Saurauia,oblancifolia,Saurauia oblancifolia,yes,yes,n,F,4,251.22,0.43,J,S,4,s,p,d
+scamac,Malvaceae,Scaphium,macropodum,Scaphium macropodum,yes,yes,n,F,41,205.75,0.53,Q,X,1,s,p,d
+schdic,Schizaeaceae,Schizaea,dichotoma,Schizaea dichotoma,no,no,n,A,0.5,203.46,na,Q,na,na,v,p,m
+sci028,Araceae,Scindapsus,sp. TFD028,Scindapsus sp. TFD028,no,no,n,D,na,223.2,na,J,S,na,s,p,h
+scipic,Araceae,Scindapsus,pictus,Pothos sp. TFD026,no,no,n,D,na,223.2,na,J,S,na,s,p,h
+scipic1,Araceae,Scindapsus,cf. pictus,Scindapsus cf. pictus,no,no,n,D,na,223.2,na,J,S,na,s,p,h
+scl051,Cyperaceae,Scleria,sp. TFD051,Scleria sp. TFD051,no,no,e,B,na,126.53,na,na,R,1,sv,ap,p
+scllev,Cyperaceae,Scleria,levis,Scleria levis,no,no,e,B,1,126.53,na,na,R,1,sv,p,p
+sclsum,Cyperaceae,Scleria,sumatrensis,Scleria sumatrensis,no,no,n,B,2,126.53,na,na,R,1,sv,p,p
+scospi,Salicaceae,Scolopia,spinosa,Scolopia spinosa,yes,yes,n,F,15,109.82,0.74,J,S,na,s,p,na
+sel225,Polypodiaceae,Selliguea,sp. TFD225,Selligueae sp. TFD225,no,no,n,A,0.5,172.31,na,Q,na,na,v,p,m
+selobs,Hymenophyllaceae,Selenodesmium,obscurum,Selenodesmium obscurum,no,no,n,A,0.5,172.31,na,Q,na,na,v,na,m
+sem209,Acanthaceae,Semnostachys,sp. TFD209,Semnostachys sp. TFD209,no,no,n,E,na,207.18,na,L,U,4,s,p,h
+sho059,Dipterocarpaceae,Shorea,sp. TFD059,Shorea sp. TFD059,yes,yes,n,F,na,170.98,0.57,Q,Z,1,s,p,e
+shoaga1,Dipterocarpaceae,Shorea,cf. agari,Shorea cf. agari,yes,yes,n,F,na,170.98,0.57,Q,Z,1,s,p,e
+shoagaa,Dipterocarpaceae,Shorea,agamii ssp. agamii,Shorea agamii ssp. agamii,yes,yes,n,F,50,170.98,0.53,Q,Z,1,s,p,e
+shoang,Dipterocarpaceae,Shorea,angustifolia,Shorea angustifolia,yes,yes,n,F,40,90.95,0.57,Q,Z,1,s,p,e
+shoang1,Dipterocarpaceae,Shorea,cf. angustifolia,Shorea cf. angustifolia,yes,yes,n,F,40,90.95,0.57,Q,Z,1,s,p,e
+shoatr,Dipterocarpaceae,Shorea,atrinervosa,Shorea atrinervosa,yes,yes,n,F,50,118.9,0.77,Q,Z,1,s,p,e
+shodry1,Dipterocarpaceae,Shorea,cf. dryobalanoides,Shorea cf. dryobalanoides,yes,yes,n,F,na,170.98,0.57,Q,Z,1,s,p,e
+shogui,Dipterocarpaceae,Shorea,guiso,Shorea guiso,yes,yes,n,F,60,162.06,0.71,Q,Z,1,s,p,e
+shogui1,Dipterocarpaceae,Shorea,cf. guiso,Shorea cf. guiso,yes,yes,n,F,60,162.06,0.69,Q,Z,1,s,p,e
+sholae,Dipterocarpaceae,Shorea,laevis,Shorea laevis,yes,yes,n,F,70,283.93,0.69,Q,Z,1,s,p,e
+sholep,Dipterocarpaceae,Shorea,leprosula,Shorea leprosula,yes,yes,n,F,60,206.5,0.44,Q,Z,1,s,p,e
+shomac1,Dipterocarpaceae,Shorea,cf. macrophylla,Shorea cf. macrophylla,yes,yes,n,F,45,170.98,0.32,Q,Z,1,s,p,e
+shomac3,Dipterocarpaceae,Shorea,macroptera,Shorea macroptera,yes,yes,n,F,50,153.93,0.43,Q,Z,1,s,p,h
+shoobs1,Dipterocarpaceae,Shorea,cf. obscura,Shorea cf. obscura,yes,yes,n,F,60,170.98,0.57,Q,Z,1,s,p,e
+shoova,Dipterocarpaceae,Shorea,ovata,Shorea ovata,yes,yes,n,F,50,190.53,0.64,Q,Z,1,s,p,e
+shopar,Dipterocarpaceae,Shorea,parvifolia,Shorea parvifolia,yes,yes,n,F,65,170.98,0.41,Q,Z,1,s,p,e
+shopar3,Dipterocarpaceae,Shorea,parvistipulata,Shorea parvistipulata,yes,yes,n,F,70,224.09,0.4,Q,Z,1,s,p,e
+shopau1,Dipterocarpaceae,Shorea,cf. pauciflora,Shorea cf. pauciflora,yes,yes,n,F,60,170.98,0.63,Q,Z,1,s,p,e
+shopil,Dipterocarpaceae,Shorea,pilosa,Shorea pilosa,yes,yes,n,F,na,156.61,0.57,Q,Z,1,s,p,e
+shoscr,Dipterocarpaceae,Shorea,scrobiculata,Shorea scrobiculata,yes,yes,n,F,40,186.17,0.81,Q,Z,1,s,p,e
+shoscr1,Dipterocarpaceae,Shorea,cf. scrobiculata,Shorea cf. scrobiculata,yes,yes,n,F,40,186.17,0.81,Q,Z,1,s,p,e
+sinirp,Leguminosae,Sindora,irpicina,Sindora irpicina,yes,yes,n,F,40,304.91,0.48,na,Y,2,s,p,i
+smi178,Smilacaceae,Smilax,sp. TFD178,Smilax sp. TFD178,no,yes,n,G,na,223.2,na,J,S,2,s,p,h
+spa098,Leguminosae,Spatholobus,sp. TFD098,Spatholobus sp. TFD098,no,yes,n,G,na,211.84,0.47,na,Y,1,s,p,d
+spagyr,Leguminosae,Spatholobus,gyrocarpus,Spatholobus gyrocarpus,no,yes,n,G,na,211.84,0.47,na,Y,1,s,p,d
+spagyr1,Leguminosae,Spatholobus,cf. gyrocarpus,Spatholobus cf. gyrocarpus,no,yes,n,G,na,211.84,0.47,na,Y,1,s,p,d
+spahir1,Leguminosae,Spatholobus,cf. hirsutus,Spatholobus cf. hirsutus,no,yes,n,G,na,211.84,0.47,na,Y,1,s,p,d
+spalat,Leguminosae,Spatholobus,latistipulus,Spatholobus latistipulus,no,yes,n,G,na,211.84,0.47,na,Y,1,s,p,d
+spalat1,Leguminosae,Spatholobus,cf. latistipulus,Spatholobus cf. latistipulus,no,yes,n,G,na,211.84,0.47,na,Y,1,s,p,d
+spamac,Leguminosae,Spatholobus,macropterus,Spatholobus macropterus,no,yes,n,G,na,211.84,0.47,na,Y,1,s,p,d
+spamai,Leguminosae,Spatholobus,maingayi,Spatholobus maingayi,no,yes,n,G,na,211.84,0.47,na,Y,1,s,p,d
+spamai1,Leguminosae,Spatholobus,cf. maingayi,Spatholobus cf. maingayi,no,yes,n,G,na,211.84,0.47,na,Y,1,s,p,d
+spavir1,Leguminosae,Spatholobus,cf. viridis,Spatholobus cf. viridis,no,yes,n,G,na,211.84,0.47,na,Y,1,s,p,d
+spe163,Rubiaceae,Spermacoce,sp. TFD163,Spermacoce sp. TFD163,no,no,n,E,na,182.34,na,na,U,na,s,na,h
+sph082,Lamiaceae,Sphenodesme,sp. TFD082,Sphenodesma sp. TFD082,no,yes,n,G,na,275.6,na,J,W,2,s,p,d
+sph187,Thelypteridaceae,Sphaerostephanos,sp. TFD187,Sphaerostephanos sp. TFD187,no,no,n,A,1,172.31,na,Q,na,na,v,na,m
+sphhet,Thelypteridaceae,Sphaerostephanos,heterocarpus,Sphaerostephanos heterocarpus,no,no,n,A,1,172.31,na,Q,na,na,v,na,m
+sphoos,Thelypteridaceae,Sphaerostephanos,oosorus,Sphaerostephanos oosorus,no,no,n,A,1,172.31,na,Q,na,na,v,na,m
+sphoos1,Thelypteridaceae,Sphaerostephanos,cf. oosorus,Sphaerostephanos cf. oosorus,no,no,n,A,1,172.31,na,Q,na,na,v,na,m
+sphper,Thelypteridaceae,Sphaerostephanos,perglanduliferus,Sphaerostephanos perglanduliferus,no,no,n,A,1,172.31,na,Q,na,na,v,na,m
+sphper1,Thelypteridaceae,Sphaerostephanos,cf. perglanduliferus,Sphaerostephanos cf. perglanduliferus,no,no,n,A,1,172.31,na,Q,na,na,v,na,m
+sphpor,Thelypteridaceae,Sphaerostephanos,porphyricola,Sphaerostephanos porphyricola,no,no,n,A,1,172.31,na,Q,na,na,v,na,m
+sphrac1s,Lamiaceae,Sphenodesme,cf. racemosa var. sabahensis,Sphenodesme cf. racemosa var. sabahensis,no,yes,n,G,na,275.6,na,J,W,2,s,p,d
+sphste,Lamiaceae,Sphenodesme,stellata,Sphenodesme stellata,no,yes,n,G,na,275.6,na,J,W,2,s,p,d
+sphste1,Lamiaceae,Sphenodesme,cf. stellata,Sphenodesme cf. stellata,no,yes,n,G,na,275.6,na,J,W,2,s,p,d
+stasum,Marantaceae,Stachyphrynium,sumatranum,Unknown sp.,no,no,n,C,1,332.82,na,na,U,2,s,p,d
+ste118,Menispermaceae,Stephania,sp. TFD118,Stephania sp. TFD118,no,yes,n,G,na,181.46,na,N,W,na,s,p,na
+stecor,Menispermaceae,Stephania,corymbosa,Stephania corymbosa,no,yes,n,G,na,181.46,na,N,W,na,s,p,na
+stemal,Stemonaceae,Stemonorus,malaccensis,Stemonorus malaccensis,yes,yes,n,F,na,223.2,na,na,na,na,s,p,h
+sterubs,Malvaceae,Sterculia,rubiginosa var. setistipula,Sterculia rubiginosa var. setistipula,yes,yes,n,F,7,138.56,0.36,na,X,4,s,p,e
+stitrut,Gleicheniaceae,Sticherus,truncatus var. truncatus,Sticherus truncatus var. truncatus,no,no,n,A,3,172.31,na,Q,na,na,v,na,m
+str099,Loganiaceae,Strychnos,sp. TFD099,Strychnos sp. TFD099,no,yes,n,G,na,174.21,0.75,J,S,3,s,p,h
+strbra,Rubiaceae,Streblosa,bracteata,Streblosa bracteata,na,na,n,na,na,182.34,na,na,na,na,s,na,h
+strign,Loganiaceae,Strychnos,ignatii,Strychnos ignatii,no,yes,n,G,na,174.21,0.75,J,S,3,s,p,h
+strign1,Loganiaceae,Strychnos,cf. ignatii,Strychnos cf. ignatii,no,yes,n,G,na,174.21,0.75,J,S,3,s,p,h
+strmac,Moraceae,Streblus,macrophyllus,Streblus macrophyllus,yes,yes,n,F,10,136.2,0.72,J,W,1,s,p,na
+strpol,Loganiaceae,Strychnos,polytrichantha,Strychnos polytrichantha,no,yes,n,G,na,174.21,0.75,J,S,3,s,p,h
+sym179,Symplocaceae,Symplocos,sp. TFD179,Symplocos sp. TFD179,yes,yes,n,F,na,188.98,0.61,N,W,na,s,p,h
+symfas,Symplocaceae,Symplocos,fasciculata,Symplocos fasciculata,yes,yes,n,F,22,188.98,0.3,N,W,1,s,p,h
+symfas1,Symplocaceae,Symplocos,cf. fasciculata,Symplocos cf. fasciculata,yes,yes,n,F,22,188.98,0.3,N,W,na,s,p,h
+syz124,Myrtaceae,Syzygium,sp. TFD124,Syzygium sp. TFD124,yes,yes,n,F,na,117.74,0.61,J,W,1,s,p,na
+syzbar,Myrtaceae,Syzygium,barringtonioides,Syzygium barringtonioides,yes,yes,n,F,18,107.75,0.61,J,W,1,s,p,na
+syzcas,Myrtaceae,Syzygium,castaneum,Syzygium castaneum,yes,yes,n,F,16,98.95,0.61,J,W,1,s,p,na
+syzchr1,Myrtaceae,Syzygium,cf. chrysanthum,Syzygium cf. chrysanthum,yes,yes,n,F,na,117.74,0.61,J,W,1,s,p,na
+syzfas,Myrtaceae,Syzygium,fastigiatum,Syzygium fastigiatum,yes,yes,n,F,25,117.74,0.61,J,W,1,s,p,na
+syzpen,Myrtaceae,Syzygium,penibukanense,Syzygium penibukanense,yes,yes,n,F,15,89.58,0.61,J,W,1,s,p,na
+syzrac,Myrtaceae,Syzygium,racemosum,Syzygium racemosum,yes,yes,n,F,30,79.23,0.91,J,W,1,s,p,na
+syzros,Myrtaceae,Syzygium,rostratum,Syzygium rostratum,yes,yes,n,F,15,133.51,0.75,J,W,1,s,p,na
+syzval,Myrtaceae,Syzygium,valdevenosa,Syzygium valdevenosa,yes,yes,n,F,20,117.74,0.61,J,W,1,s,p,na
+tapacu,Dennstaedtiaceae,Tapeinidium,acuminatum,Tapeinidium acuminatum,no,no,n,A,1,172.31,na,Q,na,na,v,na,m
+tec062,Dryopteridaceae,Tectaria,sp. TFD062,Tectaria sp. TFD062,no,no,n,A,1,172.31,na,Q,na,na,v,na,m
+tecdec1,Dryopteridaceae,Tectaria,cf. decurrens,Tectaria cf. decurrens,no,no,n,A,1,172.31,na,Q,na,na,v,na,m
+tecple,Dryopteridaceae,Tectaria,pleiosora,Tectaria pleiosora,no,no,n,A,1,172.31,na,Q,na,na,v,na,m
+tecter,Dryopteridaceae,Tectaria,ternata,Tectaria ternata,no,no,n,A,1,172.31,na,Q,na,na,v,na,m
+teipte,Lamiaceae,Teijsmanniodendron,pteropodum,Teijsmanniodendron pteropodum,yes,yes,n,F,10,275.6,0.39,Q,Z,1,s,p,h
+tet055,Dilleniaceae,Tetracera,sp. TFD055,Tetracera sp. TFD055,no,yes,n,G,na,126.8,na,N,X,3,s,p,d
+tet196,Vitaceae,Tetrastigma,sp. TFD196,Tetrastigma sp. TFD196,no,yes,n,G,na,442.62,na,J,S,2,s,p,h
+tetaka,Dilleniaceae,Tetracera,akara,Tetracera akara,no,yes,n,G,na,103.6,na,N,X,3,s,p,d
+tetaka1,Dilleniaceae,Tetracera,cf. akara,Tetracera cf. akara,no,yes,n,G,na,103.6,na,N,X,3,s,p,d
+tetdie,Vitaceae,Tetrastigma,diepenhorstii,Tetrastigma diepenhorstii,no,yes,n,G,na,442.62,na,J,S,2,s,p,h
+tetdie1,Vitaceae,Tetrastigma,cf. diepenhorstii,Tetrastigma cf. diepenhorstii,no,yes,n,G,na,442.62,na,J,S,2,s,p,h
+tetkor,Dilleniaceae,Tetracera,korthalsii,Tetracera korthalsii,no,yes,n,G,na,149.99,na,N,X,3,s,p,d
+tetkor1,Dilleniaceae,Tetracera,cf. korthalsii,Tetracera cf. korthalsii,no,yes,n,G,na,149.99,na,N,X,3,s,p,d
+tetlan,Vitaceae,Tetrastigma,lanceolarium,Tetrastigma lanceolarium,no,yes,n,G,na,442.62,na,J,S,2,s,p,h
+tetpap,Vitaceae,Tetrastigma,papillosum,Tetrastigma papillosum,no,yes,n,G,na,442.62,na,J,S,2,s,p,h
+tetped,Vitaceae,Tetrastigma,pedunculare,Tetrastigma pedunculare,no,yes,n,G,na,442.62,na,J,S,2,s,p,h
+tetped1,Vitaceae,Tetrastigma,cf. pedunculare,Tetrastigma cf. pedunculare,no,yes,n,G,na,442.62,na,J,S,2,s,p,h
+tettub1,Vitaceae,Tetrastigma,cf. tuberculatum,Tetrastigma cf. tuberculatum,no,yes,n,G,na,442.62,na,J,S,2,s,p,h
+the188,Thelypteridaceae,Thelypteris,sp. TFD188,Thelypteris sp. TFD188,no,no,i,A,2,172.31,na,Q,na,na,v,na,m
+thotri,Aristolochiaceae,Thottea,triserialis,Thottea triserialis,no,yes,n,H,na,169.38,na,na,U,4,s,p,j
+tinpet,Menispermaceae,Tinomiscium,petiolore,Tinomiscium petiolore,no,yes,n,G,na,181.46,na,N,W,na,s,p,h
+tri050,Cucurbitaceae,Trichosanthes,sp. TFD050,Trichosanthes sp. TFD050,no,no,n,D,na,251.13,na,J,S,4,s,ap,k
+tri070,Euphorbiaceae,Trigonostemon,sp. TFD070,Trigonostemon sp. TFD070,yes,yes,n,F,na,181.76,na,na,U,2,s,p,h
+tri125,Myrtaceae,Tristaniopsis,sp. TFD125,Tristaniopsis sp. TFD125,yes,yes,n,F,na,117.74,0.61,na,U,4,s,p,na
+tribec,Cucurbitaceae,Trichosanthes,beccariana,Trichosanthes beccariana,no,no,n,D,na,251.13,na,J,S,4,s,p,k
+trihyp,Trigoniaceae,Trigoniastrum,hypoleucum,Trigoniastrum hypoleucum,yes,yes,n,F,30,391.55,0.7,Q,b,1,s,p,d
+tripen,Cucurbitaceae,Trichosanthes,pendula,Trichosanthes pendula,no,no,n,D,na,251.13,na,J,S,4,s,p,k
+tripol,Euphorbiaceae,Trigonostemon,polyanthus,Trigonostemon polyanthus,yes,yes,n,F,5,181.76,na,na,U,2,s,p,h
+tripos,Cucurbitaceae,Trichosanthes,postarii,Trichosanthes postarii,no,no,n,D,na,251.13,na,J,S,4,s,p,k
+unc166,Rubiaceae,Uncaria,sp. TFD166,Uncaria sp. TFD166,no,yes,n,G,na,202.19,na,Q,U,4,s,p,i
+uncbor,Rubiaceae,Uncaria,borneensis,Uncaria borneensis,no,yes,n,G,na,202.19,na,Q,U,4,s,p,i
+uncbor1,Rubiaceae,Uncaria,cf. borneensis,Uncaria cf. borneensis,no,yes,n,G,na,202.19,na,Q,U,4,s,p,i
+uncfer,Rubiaceae,Uncaria,ferrea,Uncaria ferrea,no,yes,n,G,na,239.89,na,Q,U,4,s,p,i
+uncgla,Rubiaceae,Uncaria,glabrata,Uncaria glabrata,no,yes,n,G,na,208.64,na,Q,U,4,s,p,i
+unclon,Rubiaceae,Uncaria,longiflora,Uncaria longiflora,no,yes,n,G,na,125.27,na,Q,U,4,s,p,i
+uro167,Rubiaceae,Urophyllum,sp. TFD167,Urophyllum sp. TFD167,yes,yes,n,F,na,193.01,0.48,J,S,4,s,p,d
+urogla,Rubiaceae,Urophyllum,glabrum,Urophyllum glabrum,yes,yes,n,F,10,153.83,0.48,J,S,4,s,p,d
+urogri,Rubiaceae,Urophyllum,griffithianum,Urophyllum griffithianum,yes,yes,n,F,15,193.01,0.48,J,S,4,s,p,d
+uva020,Annonaceae,Uvaria,sp. TFD020,Uvaria sp. TFD020,no,yes,n,G,na,111.64,na,J,T,4,s,p,h
+uvagra,Annonaceae,Uvaria,grandiflora,Uvaria grandiflora,no,yes,n,G,na,111.64,na,J,T,4,s,p,h
+uvalit,Annonaceae,Uvaria,littoralis,Uvaria littoralis,no,yes,n,G,na,111.64,na,N,T,4,s,p,h
+uvalur,Annonaceae,Uvaria,lurida,Uvaria lurida,no,yes,n,G,na,111.64,na,J,T,3,s,p,h
+vatalb,Dipterocarpaceae,Vatica,albiramis,Vatica albiramis,yes,yes,n,F,25,155.05,0.71,Q,Z,1,s,p,e
+vatmic,Dipterocarpaceae,Vatica,micrantha,Vatica micrantha,yes,yes,n,F,28,155.05,0.75,Q,Z,1,s,p,e
+vatsar,Dipterocarpaceae,Vatica,sarawakensis,Vatica sarawakensis,yes,yes,n,F,25,155.05,0.71,Q,Z,1,s,p,i
+vendic,Rhamnaceae,Ventilago,dichotoma,Ventilago dichotoma,no,yes,n,G,na,270.28,na,Q,a,1,s,p,d
+verarb,Compositae,Vernonia,arborea,Vernonia arborea,yes,yes,n,F,26,535.08,0.33,Q,R,1,s,p,d
+vitves,Lamiaceae,Vitex,vestita,Vitex vestita,yes,yes,n,F,15,275.6,0.46,Q,W,2,s,p,d
+wilcor,Apocynaceae,Willughbeia,coriacea,Willughbeia coriacea,no,yes,n,G,na,186.6,na,J,S,3,s,p,na
+wilsar1,Apocynaceae,Willughbeia,cf. sarawakensis,Willughbeia cf. sarawakensis,no,yes,n,G,na,186.6,na,J,S,3,s,p,na
+xan143,Polygalaceae,Xanthophyllum,sp. TFD143,Xanthophyllum sp. TFD143,yes,yes,n,F,na,178.66,0.71,J,W,1,s,p,d
+xanadea,Polygalaceae,Xanthophyllum,adenotus var. adenotus,Xanthophyllum adenotus var. adenotus,yes,yes,n,F,8,126.12,0.71,J,W,1,s,p,d
+xanfla,Polygalaceae,Xanthophyllum,flavescens,Xanthophyllum flavescens,yes,yes,n,F,42,126.8,0.69,J,W,1,s,p,d
+xanfla1,Polygalaceae,Xanthophyllum,cf. flavescens,Xanthophyllum cf. flavescens,yes,yes,n,F,42,126.8,0.69,J,W,1,s,p,d
+xanvit,Polygalaceae,Xanthophyllum,vitellinum,Xanthophyllum vitellinum,yes,yes,n,F,41,178.66,0.73,J,W,1,s,p,d
+xylste,Annonaceae,Xylopia,stenopetala,Xylopia stenopetala,yes,yes,n,F,39,178.45,0.56,J,S,3,s,p,na
+zinunk,Zingiberaceae,Unknown,sp.,Unknown sp.,no,no,n,C,na,332.82,na,N,U,na,sv,p,na
+ziz150,Rhamnaceae,Ziziphus,sp. TFD150,Ziziphus sp. TFD150,no,yes,n,G,na,265.49,0.77,J,W,1,s,p,h
+zizang,Rhamnaceae,Ziziphus,angustifolius,Ziziphus angustifolius,yes,yes,n,F,30,177.04,0.77,J,W,1,s,p,h
+zizcal,Rhamnaceae,Ziziphus,calophylla,Ziziphus calophylla,no,yes,n,G,na,265.49,0.77,J,W,1,s,p,h
+zizhav,Rhamnaceae,Ziziphus,havilandii,Ziziphus havilandii,no,yes,n,G,na,452.48,0.77,J,W,1,s,p,h
+zizhor,Rhamnaceae,Ziziphus,horsfieldii,Ziziphus horsfieldii,no,yes,n,G,na,254.12,0.77,J,W,1,s,p,h
+zizhor1,Rhamnaceae,Ziziphus,cf. horsfieldii,Ziziphus cf. horsfieldii,no,yes,n,G,na,254.12,0.77,J,W,1,s,p,h
