@@ -715,9 +715,11 @@ We can now check that we have all the names of the phylogenetic tree available a
 length(intersect(phylo_tree$tip.label, code_species$species))
 ```
 
-Now that we have a clear correspondance between species code and phylogenetic name we can proceed to the computation of phylogenetic diversity indices.
+Now that we have a clear correspondance between species code and phylogenetic name we can proceed to the computation of phylogenetic diversity indices. This won't let use reproduce exactly the same analyses as in the paper but this is the best we can do, given the data at our disposal. If all the species were determined another possibility could have to re-create a phylogenetic tree from genetic sequences available from genetic databases. This approach however needs specific skills and is a story for another time!
 
 ## Computing phylogenetic diversity indices
+
+To compute phylogenetic diversity analyses we need to make the phylogenetic tree correspond to the site-species matrix.
 
 ## Mapping phylogenetic diversity
 
