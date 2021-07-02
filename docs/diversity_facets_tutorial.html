@@ -786,15 +786,49 @@ ggspatial::annotation_scale() +
 <p>We can read it with the <code>read.tree()</code> function in the <code>ape</code> package:</p>
 <pre class="r"><code>phylo_tree = ape::read.tree(&quot;data/doi_10.5061_dryad.f77p7__v1/phylo_tree.nwk&quot;)
 
-phylo_tree</code></pre>
+phylo_tree
+str(phylo_tree)</code></pre>
 <p><strong>Questions from you</strong></p>
 <ul>
 <li><strong>Q20</strong>: How many taxa are in the phylogenetic tree?</li>
 <li><strong>Q21</strong>: How does this number compare to the number of taxa found in the dataset?</li>
 </ul>
+<p>You can visualize the taxa in the phylogenetic tree in the <code>tip.label</code> slot of the phylogenetic tree:</p>
+<pre class="r"><code>phylo_tree$tip.label</code></pre>
+<ul>
+<li>**Q22*: What do you notice with the species names? Especially compared to the ones available in <code>species_traits</code>.</li>
+</ul>
+<p>To solve the naming issue we’ll have to match the names used in the phylogenetic tree to the species code used in the site-species matrix. For that we’ll match the epitheton to the first code available. You do not need to understand this code and can just copy-paste it to execute it because we’re going to use it further down.</p>
+<pre class="r"><code># Create an indexed list of names
+phylo_names = species_traits[, c(&quot;species.code&quot;, &quot;species&quot;)]
+phylo_names$code_id = seq(nrow(phylo_names))
+
+# Get the first species code based on species epithet
+code_id_to_use = aggregate(code_id ~ species, phylo_names,
+                           FUN = function(x) head(x, 1))
+
+# Get back the data.frame of species names with the actual species.code
+code_species = merge(
+  code_id_to_use, phylo_names[, c(&quot;code_id&quot;, &quot;species.code&quot;)], by = &quot;code_id&quot;
+)
+
+# Tidying code for edge cases
+code_species$species = gsub(&quot; &quot;, &quot;&quot;, code_species$species)
+code_species$species = paste0(
+  tolower(substr(code_species$species, 1, 1)),
+  substr(code_species$species, 2, nchar(code_species$species))
+)
+
+code_species = code_species[, c(&quot;species.code&quot;, &quot;species&quot;)]
+
+dim(code_species)</code></pre>
+<p>We can now check that we have all the names of the phylogenetic tree available as codes:</p>
+<pre class="r"><code>length(intersect(phylo_tree$tip.label, code_species$species))</code></pre>
+<p>Now that we have a clear correspondance between species code and phylogenetic name we can proceed to the computation of phylogenetic diversity indices. This won’t let use reproduce exactly the same analyses as in the paper but this is the best we can do, given the data at our disposal. If all the species were determined another possibility could have to re-create a phylogenetic tree from genetic sequences available from genetic databases. This approach however needs specific skills and is a story for another time!</p>
 </div>
 <div id="computing-phylogenetic-diversity-indices" class="section level2">
 <h2>Computing phylogenetic diversity indices</h2>
+<p>To compute phylogenetic diversity analyses we need to make the phylogenetic tree correspond to the site-species matrix.</p>
 </div>
 <div id="mapping-phylogenetic-diversity" class="section level2">
 <h2>Mapping phylogenetic diversity</h2>
