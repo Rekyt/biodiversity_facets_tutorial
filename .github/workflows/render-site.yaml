@@ -47,6 +47,7 @@ jobs:
 
       - name: Commit results
         run: |
+          git pull origin
           git config --local user.name "$GITHUB_ACTOR"
           git config --local user.email "$GITHUB_ACTOR@users.noreply.github.com"
           git commit docs/ -m 'Re-build site' || echo "No changes to commit"
