@@ -35,12 +35,11 @@ jobs:
 
       - name: Render README 
         run: |
-          RMD_PATH=($(git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep 'README.Rmd$'))
-          Rscript -e 'for (f in commandArgs(TRUE)) if (file.exists(f)) rmarkdown::render(f, output_format = "github_document"' ${RMD_PATH[*]} 
+          Rscript -e 'rmarkdown::render("README.Rmd", "github_document")'
 
       - name: Commit results
         run: |
           git config --local user.name "$GITHUB_ACTOR"
           git config --local user.email "$GITHUB_ACTOR@users.noreply.github.com"
-          git commit ${RMD_PATH[*]/.Rmd/.md} -m 'Re-build README' || echo "No changes to commit"
+          git commit README.md -m 'Re-build README' || echo "No changes to commit"
           git push origin || echo "No changes to commit"
