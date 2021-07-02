@@ -18,7 +18,7 @@ Click on `File` > `New Project...` > `New Directory` > `RStudio Project` > Give 
 
 This will create a new folder with an `.Rproj` file. This will let you easily return to the project without having to manually change your working directory with `setwd()` and `getwd()`.
 
-```{r create_project, eval=FALSE, include=FALSE}
+```{r create_project, include=FALSE}
 ifelse(require("rstudioapi"), NULL,install.packages("rstudioapi"))
 
 # Create and open the new project directly
@@ -66,14 +66,15 @@ To get the data you can follow the above-mentioned link https://doi.org/10.5061/
 
 ## Summarizing the data
 
-The zip file contains 4 files (also available in the `data/` folder):
+The zip file contains 5 files (also available in the `data/` folder):
 
 * `README.txt` which is a text file that describes the content of the other files with great precision. It details all the columns available in the other files.
 * `PlotData.csv` is a comma-separated file that describes characteristics for each of the sampled vegetation plots including logging metrics, environmental variables as well as taxonomic, functional and phylogenetic diversity indices (to which we'll compare the indices we compute ourselves).
 * `PlotSpeciesData.csv` is a comma-separated file that contains a matrix of biomass values for the plant taxa sampled across the sampled vegetation plots.
+* `phylo_tree.nwk` the phylogenetic tree describing the relationships between species.
 * `SpeciesTraitData.csv` contains the complete list of species  sampled across all vegetation plots, with their associated traits both continuous and discrete.
 
-We will load each of the file in your workspace now with the `read.csv()` function:
+We will load each of the file (apart from the phylogenetic tree) in your workspace now with the `read.csv()` function:
 
 ```{r loading-data}
 plot_data         = read.csv("data/doi_10.5061_dryad.f77p7__v1/PlotData.csv",
@@ -84,14 +85,15 @@ species_traits    = read.csv("data/doi_10.5061_dryad.f77p7__v1/SpeciesTraitData.
                              na.strings = c("NA", "na"), stringsAsFactors = TRUE)
 ```
 
-To describe the data we will use the `str()` and `summary()` functions.
+To describe the data we will use the `str()`, `summary()`, and `dim()` functions.
 
 ```{r str-summary-data}
 str(plot_data)
 summary(plot_data)
 
-str(plot_species_data)
-summary(plot_species_data)
+str(plot_species_data[, 1:5])
+summary(head(plot_species_data)[,1:5])
+dim(plot_species_data)
 
 # Transform one column for further analyzed
 species_traits$seed = ordered(species_traits$seed)
@@ -240,7 +242,8 @@ gower_dissim = cluster::daisy(traits)
 To perform the PCoA we will be using the `ade4` package with the function `dudi.pco()`:
 
 ```{r ade4-pcoa}
-trait_pcoa = ade4::dudi.pco(gower_dissim, nf = 5, scannf = FALSE)
+trait_pcoa = ade4::dudi.pco(ade4::quasieuclid(gower_dissim), nf = 5,
+                            scannf = FALSE)
 trait_pcoa
 ```
 
@@ -269,10 +272,8 @@ Now that we have species positioned in a multidimensional space we can actually 
 We will first compute Functional Richness (FRic) with the `fd_fric()` function:
 
 ```{r fric}
-site_fric = fundiversity::fd_fric(trait_pcoa$li, sp_com, stand = TRUE)
+site_fric = fundiversity::fd_fric(trait_pcoa$li, sp_com, stand = FALSE)
 ```
-
-We used the `stand = TRUE` argument to standardize the value of FRic between 0 and 1 compared to the maximum achievable FRic given all the species together.
 
 Then we will also compute Rao's Quadratic Entropy (Rao's Q) and Functional Evenness (FEve):
 
@@ -330,7 +331,7 @@ panel.cor = function(x, y, digits = 2, prefix = "", cex.cor, ...)
 pairs(~FEve + Q + FRic, data = site_env_fd, lower.panel = panel.smooth,
       upper.panel = panel.cor, gap = 0, row1attop = FALSE)
 ```
-One issue we're having with our functional diversity indices is also that some of them correlate with the species richness:
+One issue we're having with our functional diversity indices is also that some of them correlate with species richness:
 
 ```{r pairs-fd-richness}
 site_rich_fd = merge(
@@ -341,11 +342,92 @@ site_rich_fd = merge(
 
 pairs(ntaxa ~ FRic + FEve + Q, data = site_rich_fd, upper.panel = panel.cor)
 ```
-To tackle this issue we need to do null modeling.
+
+Because we are using indices computed with biomass values the indices should be more related to the total biomass values than species richness. Let's get the total biomass values per site and correlate it with functional diversity indices.
+
+```{r biomass-fd}
+site_biomass = rowSums(sp_com)
+site_biomass = stack(site_biomass)
+
+site_biomass$plot.code = site_biomass$ind
+site_biomass$tot_biomass   = site_biomass$values
+
+site_biomass = site_biomass[, c("plot.code", "tot_biomass")]
+
+site_rich_fd = merge(
+  site_rich_fd,
+  site_biomass,
+  by = "plot.code"
+)
+
+pairs(tot_biomass ~ FRic + FEve + Q, data = site_rich_fd,
+      upper.panel = panel.cor)
+```
+**Questions for you**
+
+* **Q15**: How does the relationship between indices with species richness compare with total biomass values? (You can use the function `cor.test()` if you want to test the association)
 
 ## Null modeling
 
+The principle of null modelling is to create random communities following certain rules to get an expected distribution of diversity metrics while keeping some properties of the data constant. In our case, we know that functional diversity is directly linked to the number of species, so we want to keep the species richness constant while changing the distribution of functional diversity.
 
+Because the site-species matrix contains biomass values which are not discrete, the classical swapping algorithms will not work to maintain total biomass per site and species overall biomass. The solution is then to perform a null model based on trait values only. In this way it will give us a null distribution of trait values while maintaining the same richness per plot and the same relative biomass distribution.
+
+To do so we'll shuffle the trait table along species. **Caution**: in our case we do not want to break the links that exist between trait values, so we will be shuffling entire rows of traits and not trait individually. This would result in a different null model otherwise.
+
+Because we were using the PCoA axes as our "synthetic traits" above we'll perform the shuffling between species names on these PCoA axes.
+
+```{r null_traits}
+# Number of null simulations
+n_null = 99
+
+# Repeat the operation as many times as set aboev
+null_traits = lapply(seq.int(n_null), function(x) {
+  null_trait = trait_pcoa$li
+  
+  # Shuffle species names
+  null_species = sample(rownames(trait_pcoa$li), nrow(trait_pcoa$li))
+  
+  # Replace species name in table
+  rownames(null_trait) = null_species
+  
+  # Do not forget to return the modified table!
+  return(null_trait)
+})
+
+str(null_traits, max.l = 0)
+head(null_traits[[1]])
+```
+
+We now obtain a distribution of null traits on which we still need to compute functional diversity indices. We'll apply similar steps as above to perform the functional diversity computation. But in this case we'll have to apply the step for each distribution of null trait.
+
+```{r null_fd}
+# Beware this make take a long time
+null_fd = lapply(null_traits, function(x) {
+  
+  # Specific code to avoid edge cases when computing null FRic
+  null_fric = lapply(rownames(sp_com), function(y) {
+    
+    tryCatch({
+      fundiversity::fd_fric(x, sp_com[y,, drop = FALSE], stand = FALSE)
+    },
+    error = function(error) {
+      data.frame(site = y, FRic = NA)
+    })
+    
+  })
+  # Combine all null FRic values
+  null_fric_df = do.call(rbind.data.frame, null_fric)
+  
+  null_raoq = fundiversity::fd_raoq(x, sp_com)
+  null_feve = fundiversity::fd_feve(x, sp_com)
+  
+  # Combine all null functional diversity values
+  null_all = merge(
+    merge(null_fric, null_raoq, by = "site"), null_feve, by = "site"
+  )
+})
+```
 
 ## Mapping functional diversity
 
