@@ -665,12 +665,57 @@ We can read it with the `read.tree()` function in the `ape` package:
 phylo_tree = ape::read.tree("data/doi_10.5061_dryad.f77p7__v1/phylo_tree.nwk")
 
 phylo_tree
+str(phylo_tree)
 ```
 
 **Questions from you**
 
 * **Q20**: How many taxa are in the phylogenetic tree?
 * **Q21**: How does this number compare to the number of taxa found in the dataset?
+
+You can visualize the taxa in the phylogenetic tree in the `tip.label` slot of the phylogenetic tree:
+
+```{r phylo-species}
+phylo_tree$tip.label
+```
+
+* **Q22*: What do you notice with the species names? Especially compared to the ones available in `species_traits`.
+
+To solve the naming issue we'll have to match the names used in the phylogenetic tree to the species code used in the site-species matrix. For that we'll match the epitheton to the first code available. You do not need to understand this code and can just copy-paste it to execute it because we're going to use it further down.
+
+```{r phylo-name-corres}
+# Create an indexed list of names
+phylo_names = species_traits[, c("species.code", "species")]
+phylo_names$code_id = seq(nrow(phylo_names))
+
+# Get the first species code based on species epithet
+code_id_to_use = aggregate(code_id ~ species, phylo_names,
+                           FUN = function(x) head(x, 1))
+
+# Get back the data.frame of species names with the actual species.code
+code_species = merge(
+  code_id_to_use, phylo_names[, c("code_id", "species.code")], by = "code_id"
+)
+
+# Tidying code for edge cases
+code_species$species = gsub(" ", "", code_species$species)
+code_species$species = paste0(
+  tolower(substr(code_species$species, 1, 1)),
+  substr(code_species$species, 2, nchar(code_species$species))
+)
+
+code_species = code_species[, c("species.code", "species")]
+
+dim(code_species)
+```
+
+We can now check that we have all the names of the phylogenetic tree available as codes:
+
+```{r phylo-code-intersect}
+length(intersect(phylo_tree$tip.label, code_species$species))
+```
+
+Now that we have a clear correspondance between species code and phylogenetic name we can proceed to the computation of phylogenetic diversity indices.
 
 ## Computing phylogenetic diversity indices
 
