@@ -34,22 +34,25 @@ Contact us via Slack or email for any further questions.
 
 ## How to use it?
 
-Visualizing the tutorial. githubhtmlpreview
+You can view the tutorial through the associated website: https://rekyt.github.io/biodiversity_facets_tutorial/
 
-Downloading the data
-
-Cloning the repo to get the do
-
+In case there is a problem you can access a similar version on https://htmlpreview.github.io/?https://github.com/Rekyt/biodiversity_facets_tutorial/blob/main/docs/index.html
 
 ## Data provenance
 
+The data we'll be using throughout the tutorial comes from the following article: 
+
+> Döbert, T.F., Webber, B.L., Sugau, J.B., Dickinson, K.J.M. and Didham, R.K. (2017), Logging increases the functional and phylogenetic dispersion of understorey plant communities in tropical lowland rain forest. J Ecol, 105: 1235-1245. https://doi.org/10.1111/1365-2745.12794
+
+The data has been deposited on a open data repository called dryad with the following reference:
+
+> Döbert, Timm F. et al. (2018), Data from: Logging increases the functional and phylogenetic dispersion of understorey plant communities in tropical lowland rainforest, Dryad, Dataset, https://doi.org/10.5061/dryad.f77p7
+
 ## Going Further
 
-Other courses on biodiversity facets and potential interesting papers:
+Other courses on biodiversity facets and potential interesting papers & tools:
 
 * The [`FD`](https://cran.r-project.org/package=FD) package is the reference package to compute functional diversity indices.
-*
-*
 
 ## License
 
