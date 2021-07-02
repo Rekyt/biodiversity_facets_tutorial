@@ -1,5 +1,6 @@
 ---
-output: github_document
+title: Macroecology and Macroevolution under Global Changes - "Biodiversity facets in macro-space"
+author: "Matthias Grenié & Marten Winter"
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
@@ -11,7 +12,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-# MMGC - Practical session 01 - "Biodiversity facets in macro-space"
+# Macroecology and Macroevolution under Global Changes - Practical session 01 - "Biodiversity facets in macro-space"
 
 This the first practical session in the course "Macroecology and Macroevolution under Global Change". This practical session is going to be linked to lectures 2 and 3 on biodiversity facets.
 
