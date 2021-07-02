@@ -3,10 +3,12 @@ title: "Biodiversity Facets tutorial"
 author: "Matthias Grenié & Marten Winter"
 date: "30/06/2021"
 output: html_document
+editor_options: 
+  chunk_output_type: console
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE, eval = FALSE)
+knitr::opts_chunk$set(echo = TRUE, eval = TRUE)
 ```
 
 # Setup
@@ -14,7 +16,7 @@ knitr::opts_chunk$set(echo = TRUE, eval = FALSE)
 ## RStudio
 
 To make sure you follow along the whole tutorial you can create a new RStudio project to put all related code and data in.
-Click on `File` > `New Project...` > `New Directory` > `RStudio Project` > Give it a name like `diversity_facets_tutorial` and place it in your computer.
+Click on `File` > `New Project...` > `New Directory` > `New Project` > Give it a name like `diversity_facets_tutorial` and place it in your computer.
 
 This will create a new folder with an `.Rproj` file. This will let you easily return to the project without having to manually change your working directory with `setwd()` and `getwd()`.
 
@@ -29,13 +31,12 @@ rstudioapi::openProject("diversity_facets_tutorial", newSession = TRUE)
 
 We will use some specific packages in the rest of the tutorial. To make sure you have them please run the following command:
 
-```{r install-pkgs}
+```{r install-pkgs, eval = FALSE}
 install.packages(
   c("fundiversity",
     "ade4",
     "FD",
     "ape",
-    
     "picante")
 )
 ```
@@ -65,7 +66,7 @@ The fact that these data researchers provided the full dataset including all dat
 
 ## Getting the data
 
-To get the data you can follow the above-mentioned link https://doi.org/10.5061/dryad.f77p7 and click on the "Download Dataset" button available on the top right of the webpage. It will download a .zip file that you can unzip in the folder you created for the project. This will create a folder named `doi_10.5061_dryad.f77p7__v1` that contains all needed data files. We've also included a copy of the target zip file in the `data` folder of the practical project.
+To get the data you can follow the above-mentioned link https://doi.org/10.5061/dryad.f77p7 and click on the "Download Dataset" button available on the top right of the webpage. It will download a .zip file that you can unzip in the folder you created for the project. This will create a folder named `doi_10.5061_dryad.f77p7__v1` that contains all needed data files. We've also included a copy of the unzipped file in the `data` folder of the practical project.
 
 ## Summarizing the data
 
@@ -187,7 +188,7 @@ plot(cwm_env$forestloss17, cwm_env$wood.dens,
      xlab = "Forest loss (%)", ylab = "Biomass-weighted wood density",
      main = "CWM Wood density vs. forest loss")
 plot(cwm_env$roaddensprim, cwm_env$height,
-     xlab = "Road density", ylab = "Biomass-weighted height",
+     xlab = "Road density (km.km^-2)", ylab = "Biomass-weighted height",
      main = "CWM Height vs. road density")
 ```
 **Questions for you:**
@@ -228,7 +229,7 @@ plot(non_quanti_cwm$forestloss17, non_quanti_cwm$woody_no,
 
 **Questions for you**
 
-* **Q10**: How does this observation compare to description of the evolution of understorey vegetation along a forest loss gradient?
+* **Q10**: How does this observation compare to above description of the change of understorey vegetation along the forest loss gradient?
 
 
 ## Building the functional space
@@ -245,7 +246,7 @@ gower_dissim = cluster::daisy(traits)
 To perform the PCoA we will be using the `ade4` package with the function `dudi.pco()`:
 
 ```{r ade4-pcoa}
-trait_pcoa = ade4::dudi.pco(ade4::quasieuclid(gower_dissim), nf = 5,
+trait_pcoa = ade4::dudi.pco(ade4::quasieuclid(gower_dissim), nf = 3,
                             scannf = FALSE)
 trait_pcoa
 ```
@@ -303,16 +304,16 @@ site_env_fd = merge(site_fd,
 par(mfrow = c(2, 2))
 plot(site_env_fd$forestloss17, site_env_fd$FRic,
      xlab = "Forest loss (%)", ylab = "Functional Richness (FRic)",
-     main = "Functional Richness in function of forest loss")
+     main = "Functional Richness vs. forest loss")
 plot(site_env_fd$forestloss17, site_env_fd$Q,
      xlab = "Forest loss (%)", ylab = "Rao's Quadratic Entropy",
-     main = "site Q in function of forest loss")
+     main = "Q vs. forest loss")
 plot(site_env_fd$forestloss17, site_env_fd$FEve,
      xlab = "Forest loss (%)", ylab = "Functional Evenness (FEve)",
-     main = "FEve in function of forest loss")
+     main = "FEve vs. forest loss")
 plot(site_env_fd$roaddensprim, site_env_fd$FRic,
-     xlab = "Primary Road Density", ylab = "Functional Richness (FRic)",
-     main = "FRic in function of road density")
+     xlab = "Primary Road Density (km.km^-2)", ylab = "Functional Richness (FRic)",
+     main = "FRic vs. road density")
 ```
 **Questions for you**
 
@@ -380,8 +381,12 @@ To do so we'll shuffle the trait table along species. **Caution**: in our case w
 
 Because we were using the PCoA axes as our "synthetic traits" above we'll perform the shuffling between species names on these PCoA axes.
 
-```{r null_traits}
+```{r null-traits}
+# Set random seed so that everybody gets the same null traits
+set.seed(20210705)
+
 # Number of null simulations
+# CAUTION: increasing this number may increase future computation time by a lot
 n_null = 99
 
 # Repeat the operation as many times as set aboev
@@ -404,24 +409,13 @@ head(null_traits[[1]])
 
 We now obtain a distribution of null traits on which we still need to compute functional diversity indices. We'll apply similar steps as above to perform the functional diversity computation. But in this case we'll have to apply the step for each distribution of null trait.
 
-```{r null_fd}
+```{r null-fd}
 # Beware this make take a long time
-null_fd = lapply(null_traits, function(x) {
+null_fd = lapply(seq(length(null_traits)), function(y) {
   
-  # Specific code to avoid edge cases when computing null FRic
-  null_fric = lapply(rownames(sp_com), function(y) {
-    
-    tryCatch({
-      fundiversity::fd_fric(x, sp_com[y,, drop = FALSE], stand = FALSE)
-    },
-    error = function(error) {
-      data.frame(site = y, FRic = NA)
-    })
-    
-  })
-  # Combine all null FRic values
-  null_fric_df = do.call(rbind.data.frame, null_fric)
+  x = null_traits[[y]]
   
+  null_fric = fundiversity::fd_fric(x, sp_com, stand = FALSE)
   null_raoq = fundiversity::fd_raoq(x, sp_com)
   null_feve = fundiversity::fd_feve(x, sp_com)
   
@@ -429,7 +423,58 @@ null_fd = lapply(null_traits, function(x) {
   null_all = merge(
     merge(null_fric, null_raoq, by = "site"), null_feve, by = "site"
   )
+  
+  # Null Index to separate between all null simulations
+  null_all$null_id = y
+  
+  return(null_all)
 })
+
+null_fd_all = do.call(rbind.data.frame, null_fd)
+head(null_fd_all)
+```
+
+We now observe a list of null functional diversity metrics for each site.
+Because computing functional diversity on null traits is computationally intensive, running more simulations can take a long time. We've included a version of the null functional diversity values with 999 simulations in the `data/` folder. We're now going to use this precomputed version to get a better approximation of the expected distribution under the null hypothesis.
+
+```{r null-fd-999}
+null_fd_999 = readRDS("data/null_fd_999.Rds")
+
+head(null_fd_999)
+```
+
+With this null distribution we can now compare the observed values of functional diversity with the null ones. Let's for example focus on the site `"a100f177r"`:
+
+```{r null-fd-comp}
+# The observed value of FRic for the site
+subset(site_fd, plot.code == "a100f177r")$FRic
+
+# The null distribution of FRic for the same site
+summary(subset(null_fd_999, site == "a100f177r")$FRic)
+```
+
+We can visualize this comparison with an histogram:
+
+```{r hist-null-fric}
+par(mfrow = c(1, 1))
+# Visualize histogram of null values
+hist(subset(null_fd_999, site == "a100f177r")$FRic,
+     breaks = 20,
+     xlab = "null Functional Richness",
+     ylab = "Frequency",
+     main = "FRic comparison for site 'a100f177r'")
+abline(v = subset(site_fd, plot.code == "a100f177r")$FRic,
+       col = "darkred", lwd = 2)
+```
+
+**Question for you**
+
+* **Q16**: How would describe verbally the position of the observed value of FRic for site "a100f177r" compared to the null distribution?
+
+To get a proper estimate of the relartive position of the observed value compared to the null distribution we have to build the Empirical Cumulative Distribution Function (ECDF) that will give us the exact quantile of the observed value. We will do so with the `ecdf()` function:
+
+```{r ecdf-one-site}
+
 ```
 
 ## Mapping functional diversity
