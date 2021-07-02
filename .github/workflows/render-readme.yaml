@@ -3,8 +3,10 @@ on:
     paths:
       - 'README.Rmd'
 
+name: Render README
+
 jobs:
-  build:
+  render:
     runs-on: macOS-latest
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}

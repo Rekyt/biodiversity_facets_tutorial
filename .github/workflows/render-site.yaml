@@ -4,8 +4,10 @@ on:
       - 'README.Rmd'
       - 'diversity_facets_tutorial.Rmd'
 
+name: Render site
+
 jobs:
-  build:
+  render:
     runs-on: macOS-latest
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
