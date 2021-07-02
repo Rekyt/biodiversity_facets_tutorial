@@ -1,0 +1,824 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+<meta name="author" content="Matthias Grenié &amp; Marten Winter" />
+
+
+<title>Biodiversity Facets tutorial</title>
+
+<script src="site_libs/header-attrs-2.9/header-attrs.js"></script>
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/united.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.tab('show');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-inverse  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Biodiversity Facets Tutorial</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="README.html">
+    <span class="fa fa-home"></span>
+     
+    Home
+  </a>
+</li>
+<li>
+  <a href="diversity_facets_tutorial.html">Tutorial</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Biodiversity Facets tutorial</h1>
+<h4 class="author">Matthias Grenié &amp; Marten Winter</h4>
+<h4 class="date">30/06/2021</h4>
+
+</div>
+
+
+<div id="setup" class="section level1">
+<h1>Setup</h1>
+<div id="rstudio" class="section level2">
+<h2>RStudio</h2>
+<p>To make sure you follow along the whole tutorial you can create a new RStudio project to put all related code and data in. Click on <code>File</code> &gt; <code>New Project...</code> &gt; <code>New Directory</code> &gt; <code>New Project</code> &gt; Give it a name like <code>diversity_facets_tutorial</code> and place it in your computer.</p>
+<p>This will create a new folder with an <code>.Rproj</code> file. This will let you easily return to the project without having to manually change your working directory with <code>setwd()</code> and <code>getwd()</code>.</p>
+</div>
+<div id="installing-needed-packages" class="section level2">
+<h2>Installing needed packages</h2>
+<p>We will use some specific packages in the rest of the tutorial. To make sure you have them please run the following command:</p>
+<pre class="r"><code>install.packages(
+  c(&quot;ade4&quot;,
+    &quot;ape&quot;,
+    &quot;FD&quot;,
+    &quot;fundiversity&quot;
+    &quot;ggplot2&quot;,
+    &quot;ggspatial&quot;,
+    &quot;picante&quot;,
+    &quot;rnaturalearth&quot;,
+    &quot;sf&quot;)
+)</code></pre>
+</div>
+</div>
+<div id="context-of-the-study" class="section level1">
+<h1>Context of the study</h1>
+<p>We will be using the data from the following study:</p>
+<blockquote>
+<p>Döbert, T.F., Webber, B.L., Sugau, J.B., Dickinson, K.J.M. and Didham, R.K. (2017), Logging increases the functional and phylogenetic dispersion of understorey plant communities in tropical lowland rain forest. J Ecol, 105: 1235-1245. <a href="https://doi.org/10.1111/1365-2745.12794" class="uri">https://doi.org/10.1111/1365-2745.12794</a></p>
+</blockquote>
+<p>Logging is the major cause of forest degradation in the Tropics. The effect of logging on taxonomic diversity is well known but more rarely studied on other facets of biodiversity such as functional diversity and phylogenetic diversity. Functional diversity and phylogenetic diversity should better reflect the impact of logging on ecosystem. For example logging can decrease the functional “redundancy” observed in ecosystems, meaning that some functional traits could be lost.</p>
+<p>The tropical lowland rain forests on the island of Borneo are floristically among the most diverse systems on the planet, yet large-scale timber extraction and conversion to commercial tree plantations continue to drive their rapid degradation and loss. As is the case for the majority of tropical forests, the effects of logging on habitat quality in these forests have rarely been assessed, despite the critical implications for biodiversity conservation. Moreover, studies investigating the effects of logging on plant community dynamics across both tropical and temperate forest ecosystems have rarely focused on the understorey, despite its crucial relevance for successional trajectories.</p>
+<p>Our goal with this tutorial is to reproduce the analyses from the paper and analyze how logging impacts the different facets of the diversity of the understorey vegetation, and to reveal to what extent similar facets give similar answers. The general goal is to familiarize yourself with the data and functions needed to compute diversity indices. As well the general principles behind them.</p>
+</div>
+<div id="loading-the-data" class="section level1">
+<h1>Loading the data</h1>
+<p>Fortunately for us, the authors of the study have shared openly the data they used in their article. They are available through the Dryad platform at the following link: <a href="https://doi.org/10.5061/dryad.f77p7" class="uri">https://doi.org/10.5061/dryad.f77p7</a></p>
+<blockquote>
+<p>Döbert, Timm F. et al. (2018), Data from: Logging increases the functional and phylogenetic dispersion of understorey plant communities in tropical lowland rainforest, Dryad, Dataset, <a href="https://doi.org/10.5061/dryad.f77p7" class="uri">https://doi.org/10.5061/dryad.f77p7</a></p>
+</blockquote>
+<p>The fact that these data researchers provided the full dataset including all data and meta-data will help us reproduce the exact same analyses as well as additional analyses not in their paper.</p>
+<div id="getting-the-data" class="section level2">
+<h2>Getting the data</h2>
+<p>To get the data you can follow the above-mentioned link <a href="https://doi.org/10.5061/dryad.f77p7" class="uri">https://doi.org/10.5061/dryad.f77p7</a> and click on the “Download Dataset” button available on the top right of the webpage. It will download a .zip file that you can unzip in the folder you created for the project. This will create a folder named <code>doi_10.5061_dryad.f77p7__v1</code> that contains all needed data files. We’ve also included a copy of the unzipped file in the <code>data</code> folder of the practical project.</p>
+</div>
+<div id="summarizing-the-data" class="section level2">
+<h2>Summarizing the data</h2>
+<p>The zip file contains 5 files (also available in the <code>data/</code> folder):</p>
+<ul>
+<li><code>README.txt</code> which is a text file that describes the content of the other files with great precision. It details all the columns available in the other files.</li>
+<li><code>PlotData.csv</code> is a comma-separated file that describes characteristics for each of the sampled vegetation plots including logging metrics, environmental variables as well as taxonomic, functional and phylogenetic diversity indices (to which we’ll compare the indices we compute ourselves).</li>
+<li><code>PlotSpeciesData.csv</code> is a comma-separated file that contains a matrix of biomass values for the plant taxa sampled across the sampled vegetation plots.</li>
+<li><code>phylo_tree.nwk</code> the phylogenetic tree describing the relationships between species.</li>
+<li><code>SpeciesTraitData.csv</code> contains the complete list of species sampled across all vegetation plots, with their associated traits both continuous and discrete.</li>
+</ul>
+<p>We will load each of the file (apart from the phylogenetic tree) in your workspace now with the <code>read.csv()</code> function:</p>
+<pre class="r"><code>plot_data         = read.csv(&quot;data/doi_10.5061_dryad.f77p7__v1/PlotData.csv&quot;,
+                             na.strings = c(&quot;NA&quot;, &quot;na&quot;),
+                             stringsAsFactors = TRUE)
+plot_species_data = read.csv(&quot;data/doi_10.5061_dryad.f77p7__v1/PlotSpeciesData.csv&quot;)
+species_traits    = read.csv(&quot;data/doi_10.5061_dryad.f77p7__v1/SpeciesTraitData.csv&quot;,
+                             na.strings = c(&quot;NA&quot;, &quot;na&quot;), stringsAsFactors = TRUE)</code></pre>
+<p>To describe the data we will use the <code>str()</code>, <code>summary()</code>, and <code>dim()</code> functions.</p>
+<pre class="r"><code>str(plot_data)
+summary(plot_data)
+
+str(plot_species_data[, 1:5])
+summary(head(plot_species_data)[,1:5])
+dim(plot_species_data)
+
+# Transform one column for further analyzed
+species_traits$seed = ordered(species_traits$seed)
+str(species_traits)
+summary(species_traits)</code></pre>
+<p><strong>Questions for you:</strong></p>
+<ul>
+<li><strong>Q1</strong>: How many plots were sampled?</li>
+<li><strong>Q2</strong>: How many species are there in the dataset?</li>
+<li><strong>Q3</strong>: How many traits are available?</li>
+<li><strong>Q4</strong>: How many of them are continuous? How many of them are discrete?</li>
+<li><strong>Q5</strong>: What is the most numerous family among all observed species?</li>
+<li><strong>Q6</strong>: What is the most numerous genus?</li>
+</ul>
+</div>
+<div id="description-of-the-environment-variables" class="section level2">
+<h2>Description of the environment variables</h2>
+<p>Forest loss proportion is one of the main driver variable. The data has been acquired across different block with different proportion of logging and compared to unlogged forest.</p>
+<pre class="r"><code>boxplot(forestloss17 ~ block, data = plot_data,
+        xlab = &quot;Block of plot&quot;, ylab = &quot;Forest loss (%)&quot;,
+        main = &quot;Forest loss in funciton of block of data&quot;)</code></pre>
+</div>
+</div>
+<div id="functional-diversity" class="section level1">
+<h1>Functional diversity</h1>
+<p>Now that we loaded all the datasets we can proceed to compute functional diversity per plots.</p>
+<div id="computing-biomass-weighted-mean-traits-per-plot" class="section level2">
+<h2>Computing Biomass-weighted mean traits per plot</h2>
+<p>One first way to compute functional diversity is to compute mono-dimensional trait dimension. We can compute the average trait observed at each plot to described the effect of logging on the understorey vegetation. Because we’re interested in the average trait possessed by the community we can compute the community-weighted mean trait <span class="math inline">\(CWM_i\)</span> as follow:</p>
+<p><span class="math display">\[\begin{equation}
+CWM_i = \sum_{j = 1}^{S} b_{ij} \times t_j
+\end{equation}\]</span></p>
+<p><span class="math inline">\(CWM_i\)</span> is the community-weighted mean trait in plot <span class="math inline">\(i\)</span>, <span class="math inline">\(S\)</span> is the total number of species, <span class="math inline">\(b_{ij}\)</span> is the biomass of species <span class="math inline">\(j\)</span> in plot <span class="math inline">\(i\)</span>, and <span class="math inline">\(t_j\)</span> is the trait of species <span class="math inline">\(j\)</span>.</p>
+<p>To do so we will use the function <code>functcomp()</code> in the <code>FD</code> package. But we first need to organize our data.</p>
+<pre class="r"><code># Make site-species data.frame
+sp_com           = plot_species_data[, -1]
+rownames(sp_com) = plot_species_data$X
+sp_com = as.matrix(sp_com)
+
+# Make synthesized trait data.frame
+traits = species_traits[, -c(1:5)]
+rownames(traits) = species_traits$species.code</code></pre>
+<p>Now that the data is organized we can compute the CWM per site for all traits:</p>
+<pre class="r"><code># Get only continuous CWM
+quanti_cwm = FD::functcomp(traits[, c(&quot;height&quot;, &quot;sla&quot;, &quot;wood.dens&quot;)],
+                           sp_com, CWM.type = &quot;dom&quot;)
+quanti_cwm$plot.code = rownames(quanti_cwm)</code></pre>
+<p>The function outputs the CWM as expressed above for continuous traits. We will then merge this information with the CWM values.</p>
+<pre class="r"><code># Merge environmental data with CWM
+cwm_env = merge(
+  quanti_cwm,
+  plot_data[, c(&quot;plot.code&quot;, &quot;block&quot;, &quot;forestloss17&quot;, &quot;roaddensprim&quot;)],
+  by = &quot;plot.code&quot;
+)</code></pre>
+<p>We can now visualize the relationship between the CWM and the environmental gradients.</p>
+<pre class="r"><code>par(mfrow = c(2, 2))
+plot(cwm_env$forestloss17, cwm_env$height,
+     xlab = &quot;Forest loss (%)&quot;, ylab = &quot;Biomass-weighted height&quot;,
+     main = &quot;CWM Height vs. forest loss&quot;)
+plot(cwm_env$forestloss17, cwm_env$sla,
+     xlab = &quot;Forest loss (%)&quot;, ylab = &quot;Biomass-weighted SLA&quot;,
+     main = &quot;CWM SLA vs. forest loss&quot;)
+plot(cwm_env$forestloss17, cwm_env$wood.dens,
+     xlab = &quot;Forest loss (%)&quot;, ylab = &quot;Biomass-weighted wood density&quot;,
+     main = &quot;CWM Wood density vs. forest loss&quot;)
+plot(cwm_env$roaddensprim, cwm_env$height,
+     xlab = &quot;Road density (km.km^-2)&quot;, ylab = &quot;Biomass-weighted height&quot;,
+     main = &quot;CWM Height vs. road density&quot;)</code></pre>
+<p><strong>Questions for you:</strong></p>
+<ul>
+<li><strong>Q7</strong>: How would you describe the relationship between the different CWMs and forest loss?</li>
+<li><strong>Q8</strong>: Can you test the correlation using the function <code>cor.test()</code> and does it support your previous statements?</li>
+<li><strong>Q9</strong>: How would you describe the understorey vegetation changes with increasing forest loss?</li>
+</ul>
+<p>Recompute the CWM by proportion of each category of each trait along the environmental gradient.</p>
+<pre class="r"><code>non_quanti_cwm = FD::functcomp(traits[, -c(5:7)],
+                               sp_com, CWM.type = &quot;all&quot;)
+non_quanti_cwm$plot.code = rownames(non_quanti_cwm)
+
+non_quanti_cwm = merge(
+  non_quanti_cwm,
+  plot_data[, c(&quot;plot.code&quot;, &quot;block&quot;, &quot;forestloss17&quot;, &quot;roaddensprim&quot;)],
+  by = &quot;plot.code&quot;
+)</code></pre>
+<p>We used the same function as above <code>functcomp()</code> with the option <code>CWM.type = "all"</code>. The function computes the sum of biomass of each category for categorical traits.</p>
+<pre class="r"><code>par(mfrow = c(1, 1))
+plot(non_quanti_cwm$forestloss17, non_quanti_cwm$woody_no,
+     xlab = &quot;Forest loss (%)&quot;, ylab = &quot;Sum of biomass of non-woody species&quot;,
+     main = &quot;Biomass of non-woody species vs. forest loss&quot;)</code></pre>
+<p><strong>Questions for you</strong></p>
+<ul>
+<li><strong>Q10</strong>: How does this observation compare to above description of the change of understorey vegetation along the forest loss gradient?</li>
+</ul>
+</div>
+<div id="building-the-functional-space" class="section level2">
+<h2>Building the functional space</h2>
+<p>Before computing the functional diversity indices we need first to place the species on a functional space. The way to do is to visualize the species cloud onto the synthetic axes that represent their trait values. Because we cannot visualize that different traits (our vision is still limited to only 3 dimensions!) we need to use dimension reduction techniques such as <em>Principal Component Analysis</em> (PCA). Dimension reduction techniques combines the different variables to give synthetic axes accounting for the correlations between the different input variables Because we have a dataset that contain both continuous and categorical trait data, we cannot use PCA and we will have to use a slighly different statistical tool called <em>Principal Coordinates Analysis</em> (PCoA, also named Metric Dimensional Scaling) that follow similar principles.</p>
+<p>To compute the PCoA we first need to compute a distance matrix that expresses the difference between each pair of species. Because we have a mixture of continuous and categorical traits, we cannot use the Euclidean distance and have to resort to use the Gower’s dissimilarity metric through the <code>daisy()</code> function with the package <code>cluster</code>.</p>
+<pre class="r"><code>gower_dissim = cluster::daisy(traits)</code></pre>
+<p>To perform the PCoA we will be using the <code>ade4</code> package with the function <code>dudi.pco()</code>:</p>
+<pre class="r"><code>trait_pcoa = ade4::dudi.pco(ade4::quasieuclid(gower_dissim), nf = 3,
+                            scannf = FALSE)
+trait_pcoa</code></pre>
+<p>The <code>trait_pcoa</code> object contains the coordinates of each species along the different PCoA axes (we chose 5 to have a limit). We can visualize the results with the following command:</p>
+<pre class="r"><code>ade4::scatter(trait_pcoa, clab.row = 0)</code></pre>
+<p>We see two well separated groups indicating strong differences along the two first axes of the PCoA. We can visualize the meaning of the groups. We can try to better understand this group by looking at the distribution of traits along these groups:</p>
+<pre class="r"><code>ade4::s.class(trait_pcoa$li[,1:2], fac = traits$pgf)</code></pre>
+<p><strong>Questions for you</strong></p>
+<ul>
+<li><strong>Q11</strong>: Using the metadata available in the <code>README.txt</code> file, what is the meaning <code>pgf</code> column means?</li>
+<li><strong>Q12</strong>: How do you interpret the PCoA results given your answer to the previous question?</li>
+</ul>
+</div>
+<div id="computing-functional-diversity-indices" class="section level2">
+<h2>Computing functional diversity indices</h2>
+<p>Now that we have species positioned in a multidimensional space we can actually compute distinct functional diversity indices. For that we’ll be using the <code>fundiversity</code> package that offers both flexibility and consistency to compute the indices.</p>
+<p>We will first compute Functional Richness (FRic) with the <code>fd_fric()</code> function:</p>
+<pre class="r"><code>site_fric = fundiversity::fd_fric(trait_pcoa$li, sp_com, stand = FALSE)</code></pre>
+<p>Then we will also compute Rao’s Quadratic Entropy (Rao’s Q) and Functional Evenness (FEve):</p>
+<pre class="r"><code>site_raoq = fundiversity::fd_raoq(trait_pcoa$li, sp_com)
+site_feve = fundiversity::fd_feve(trait_pcoa$li, sp_com)
+
+site_fd = merge(
+  merge(site_fric, site_raoq, by = &quot;site&quot;),
+  site_feve,
+  by = &quot;site&quot;
+)
+site_fd$plot.code = site_fd$site
+site_fd = site_fd[, -1]</code></pre>
+<p>We can now compare the observed relationship with forest loss:</p>
+<pre class="r"><code>site_env_fd = merge(site_fd,
+                    plot_data[, c(&quot;plot.code&quot;, &quot;forestloss17&quot;, &quot;roaddensprim&quot;)],
+                    by = &quot;plot.code&quot;)
+
+par(mfrow = c(2, 2))
+plot(site_env_fd$forestloss17, site_env_fd$FRic,
+     xlab = &quot;Forest loss (%)&quot;, ylab = &quot;Functional Richness (FRic)&quot;,
+     main = &quot;Functional Richness vs. forest loss&quot;)
+plot(site_env_fd$forestloss17, site_env_fd$Q,
+     xlab = &quot;Forest loss (%)&quot;, ylab = &quot;Rao&#39;s Quadratic Entropy&quot;,
+     main = &quot;Q vs. forest loss&quot;)
+plot(site_env_fd$forestloss17, site_env_fd$FEve,
+     xlab = &quot;Forest loss (%)&quot;, ylab = &quot;Functional Evenness (FEve)&quot;,
+     main = &quot;FEve vs. forest loss&quot;)
+plot(site_env_fd$roaddensprim, site_env_fd$FRic,
+     xlab = &quot;Primary Road Density (km.km^-2)&quot;, ylab = &quot;Functional Richness (FRic)&quot;,
+     main = &quot;FRic vs. road density&quot;)</code></pre>
+<p><strong>Questions for you</strong></p>
+<ul>
+<li><strong>Q13</strong>: How would you describe the relationships between functional diversity and forest loss and road density?</li>
+<li><strong>Q14</strong>: Using the plot generated by the code beneath how could you describe the relationships between the three different functional diversity indices we computed?</li>
+</ul>
+<pre class="r"><code>panel.cor = function(x, y, digits = 2, prefix = &quot;&quot;, cex.cor, ...)
+{
+  usr &lt;- par(&quot;usr&quot;); on.exit(par(usr))
+  par(usr = c(0, 1, 0, 1))
+  r &lt;- abs(cor(x, y, use = &quot;complete.obs&quot;))
+  txt &lt;- format(c(r, 0.123456789), digits = digits)[1]
+  txt &lt;- paste0(prefix, txt)
+  if(missing(cex.cor)) cex.cor &lt;- 0.8/strwidth(txt)
+  text(0.5, 0.5, txt, cex = cex.cor * r)
+}
+
+pairs(~FEve + Q + FRic, data = site_env_fd, lower.panel = panel.smooth,
+      upper.panel = panel.cor, gap = 0, row1attop = FALSE)</code></pre>
+<p>One issue we’re having with our functional diversity indices is also that some of them correlate with species richness:</p>
+<pre class="r"><code>site_rich_fd = merge(
+  site_fd,
+  plot_data[, c(&quot;plot.code&quot;, &quot;ntaxa&quot;)],
+  by = &quot;plot.code&quot;
+)
+
+pairs(ntaxa ~ FRic + FEve + Q, data = site_rich_fd, upper.panel = panel.cor)</code></pre>
+<p>Because we are using indices computed with biomass values the indices should be more related to the total biomass values than species richness. Let’s get the total biomass values per site and correlate it with functional diversity indices.</p>
+<pre class="r"><code>site_biomass = rowSums(sp_com)
+site_biomass = stack(site_biomass)
+
+site_biomass$plot.code = site_biomass$ind
+site_biomass$tot_biomass   = site_biomass$values
+
+site_biomass = site_biomass[, c(&quot;plot.code&quot;, &quot;tot_biomass&quot;)]
+
+site_rich_fd = merge(
+  site_rich_fd,
+  site_biomass,
+  by = &quot;plot.code&quot;
+)
+
+pairs(tot_biomass ~ FRic + FEve + Q, data = site_rich_fd,
+      upper.panel = panel.cor)</code></pre>
+<p><strong>Questions for you</strong></p>
+<ul>
+<li><strong>Q15</strong>: How does the relationship between indices with species richness compare with the one observed with total biomass values? (You can use the function <code>cor.test()</code> if you want to test the association)</li>
+</ul>
+</div>
+<div id="null-modeling" class="section level2">
+<h2>Null modeling</h2>
+<p>The principle of null modelling is to create random communities following certain rules to get an expected distribution of diversity metrics while keeping some properties of the data constant. In our case, we know that functional diversity is directly linked to the number of species, so we want to keep the species richness constant while changing the distribution of functional diversity.</p>
+<p>Because the site-species matrix contains biomass values which are not discrete, the classical swapping algorithms will not work to maintain total biomass per site and species overall biomass. The solution is then to perform a null model based on trait values only. In this way it will give us a null distribution of trait values while maintaining the same richness per plot and the same relative biomass distribution.</p>
+<p>To do so we’ll shuffle the trait table along species. <strong>Caution</strong>: in our case we do not want to break the links that exist between trait values, so we will be shuffling entire rows of traits and not trait individually. This would result in a different null model otherwise.</p>
+<p>Because we were using the PCoA axes as our “synthetic traits” above we’ll perform the shuffling between species names on these PCoA axes.</p>
+<pre class="r"><code># Set random seed so that everybody gets the same null traits
+set.seed(20210705)
+
+# Number of null simulations
+# CAUTION: increasing this number may increase future computation time by a lot
+n_null = 99
+
+# Repeat the operation as many times as set aboev
+null_traits = lapply(seq.int(n_null), function(x) {
+  null_trait = trait_pcoa$li
+  
+  # Shuffle species names
+  null_species = sample(rownames(trait_pcoa$li), nrow(trait_pcoa$li))
+  
+  # Replace species name in table
+  rownames(null_trait) = null_species
+  
+  # Do not forget to return the modified table!
+  return(null_trait)
+})
+
+str(null_traits, max.l = 0)
+head(null_traits[[1]])</code></pre>
+<p>We now obtain a distribution of null traits on which we still need to compute functional diversity indices. We’ll apply similar steps as above to perform the functional diversity computation. But in this case we’ll have to apply the step for each distribution of null trait.</p>
+<pre class="r"><code># Beware this make take a long time
+null_fd = lapply(seq(length(null_traits)), function(y) {
+  
+  x = null_traits[[y]]
+  
+  null_fric = fundiversity::fd_fric(x, sp_com, stand = FALSE)
+  null_raoq = fundiversity::fd_raoq(x, sp_com)
+  null_feve = fundiversity::fd_feve(x, sp_com)
+  
+  # Combine all null functional diversity values
+  null_all = merge(
+    merge(null_fric, null_raoq, by = &quot;site&quot;), null_feve, by = &quot;site&quot;
+  )
+  
+  # Null Index to separate between all null simulations
+  null_all$null_id = y
+  
+  return(null_all)
+})
+
+null_fd_all = do.call(rbind.data.frame, null_fd)
+head(null_fd_all)</code></pre>
+<p>We now observe a list of null functional diversity metrics for each site. Because computing functional diversity on null traits is computationally intensive, running more simulations can take a long time. We’ve included a version of the null functional diversity values with 999 simulations in the <code>data/</code> folder. We’re now going to use this precomputed version to get a better approximation of the expected distribution under the null hypothesis.</p>
+<pre class="r"><code>null_fd_999 = readRDS(&quot;data/null_fd_999.Rds&quot;)
+
+head(null_fd_999)</code></pre>
+<p>With this null distribution we can now compare the observed values of functional diversity with the null ones. Let’s for example focus on the site <code>"a100f177r"</code>:</p>
+<pre class="r"><code># The observed value of FRic for the site
+subset(site_fd, plot.code == &quot;a100f177r&quot;)$FRic
+
+# The null distribution of FRic for the same site
+summary(subset(null_fd_999, site == &quot;a100f177r&quot;)$FRic)</code></pre>
+<p>We can visualize this comparison with an histogram:</p>
+<pre class="r"><code>par(mfrow = c(1, 1))
+# Visualize histogram of null values
+hist(subset(null_fd_999, site == &quot;a100f177r&quot;)$FRic,
+     breaks = 20,
+     xlab = &quot;null Functional Richness&quot;,
+     ylab = &quot;Frequency&quot;,
+     main = &quot;FRic comparison for site &#39;a100f177r&#39;&quot;)
+abline(v = subset(site_fd, plot.code == &quot;a100f177r&quot;)$FRic,
+       col = &quot;darkred&quot;, lwd = 2)</code></pre>
+<p><strong>Question for you</strong></p>
+<ul>
+<li><strong>Q16</strong>: How would describe verbally the position of the observed value of FRic for site “a100f177r” compared to the null distribution?</li>
+</ul>
+<p>To get a proper estimate of the relartive position of the observed value compared to the null distribution we have to build the Empirical Cumulative Distribution Function (ECDF) that will give us the exact quantile of the observed value. We will do so with the <code>ecdf()</code> function:</p>
+<pre class="r"><code># Build the ECDF
+one_null_fric_ecdf = ecdf(subset(null_fd_999, site == &quot;a100f177r&quot;)$FRic)
+
+# Then actually use it
+obs_fric = subset(site_fd, plot.code == &quot;a100f177r&quot;)$FRic
+
+one_null_fric_ecdf(obs_fric)</code></pre>
+<p><strong>Question for you</strong></p>
+<ul>
+<li><strong>Q17</strong>: What the quantile of the observed FRic value in the end?</li>
+</ul>
+<p>This gives us an empirical comparison of the observed value with the null distribution. However, in macro-ecology we prefer to even standardize further through the use of Standardized Effect Sizes (SES). As it is done in the article we are using for our analyses. These are simpler to compute than ECDF and simplify the interpretation. SESs are computed in the following way:</p>
+<p><span class="math display">\[
+SES_i = \frac{\overline{y_{\text{null}, i}} - y_{\text{obs}, i}}{\text{SD}_{\text{null}, i}}
+\]</span> with <span class="math inline">\(SES_i\)</span> the standardized effect size of the index at site <span class="math inline">\(i\)</span>, <span class="math inline">\(\overline{y_{\text{null}, i}\)</span> the average observed value along the null distribution of the index at site <span class="math inline">\(i\)</span>, <span class="math inline">\(y_{\text{obs}, i}\)</span>, and <span class="math inline">\(\text{SD}_{\text{null}, i}\)</span> the standard deviation of the null distribution of the index at site <span class="math inline">\(i\)</span>. This index is negative when the observation is smaller than the average of the null distribution, and positive otherwise. In the literature an SES value under -2 or above 2 is generally considered as significant.</p>
+<p><strong>However</strong>, note that there are controversies in the literature about the use of SESs compared to the use of the ECDF because we’re only leveraging on the use of the mean and standard deviation of the null distribution instead of using the entirety of the distribution.</p>
+<p>Now we need to compute the average and standard deviation of the null distribution for each index and each site. We will do so using the <code>aggregate()</code> function.</p>
+<pre class="r"><code># Compute average and standard deviation of null distribution
+mean_null_fd = aggregate(
+  cbind(mean_FRic = FRic, mean_Q = Q, mean_FEve = FEve) ~ site,
+  data = null_fd_999, FUN = mean, na.rm = TRUE
+)
+sd_null_fd   = aggregate(
+  cbind(sd_FRic = FRic, sd_Q = Q, sd_FEve = FEve) ~ site, data = null_fd_999,
+  FUN = sd, na.rm = TRUE
+)
+
+# Merge null mean &amp; sd with observed values
+obs_null_fd = merge(
+  site_fd,
+  merge(mean_null_fd, sd_null_fd, by = &quot;site&quot;),
+  by.x = &quot;plot.code&quot;, by.y = &quot;site&quot;
+)
+
+# Compute SES
+obs_null_fd$ses_FRic = (obs_null_fd$mean_FRic - obs_null_fd$FRic)/obs_null_fd$sd_FRic
+obs_null_fd$ses_Q = (obs_null_fd$mean_Q - obs_null_fd$Q)/obs_null_fd$sd_Q
+obs_null_fd$ses_FEve = (obs_null_fd$mean_FEve - obs_null_fd$FEve)/obs_null_fd$sd_FEve
+
+# Cleaner table
+ses_fd = obs_null_fd[, c(&quot;plot.code&quot;, &quot;FRic&quot;, &quot;Q&quot;, &quot;FEve&quot;, &quot;ses_FRic&quot;, &quot;ses_Q&quot;,
+                         &quot;ses_FEve&quot;)]</code></pre>
+<p><strong>Question for you</strong></p>
+<ul>
+<li><strong>Q18</strong>: Using the <code>subset()</code> function with the greater (or equal) than <code>&gt;=</code> and the lower (or equal) than <code>&lt;=</code>, can you determine how many sites show a significant deviation from the null observation? (absolute SES &gt;= 2)</li>
+<li><strong>Q19</strong>: Using similar code as used for observed values, what are the relationships between SES values and forest loss?</li>
+</ul>
+</div>
+<div id="mapping-functional-diversity" class="section level2">
+<h2>Mapping functional diversity</h2>
+<p>One of the joy of doing macro-ecology is to work with spatial data. Spatial data means that we have to draw maps and this can help uncover structures in our data. In this section of the tutorial we’re going to use both the observed and SES functional diversity indices to draw maps and compare them to maps of species richness to visualize the geographical structure of the dataset. We we’ll be using the packages <code>sf</code> for creating and manipulating spatial data, <code>rnaturalearth</code> to get background maps, and <code>ggplot2</code> to show them. <strong>Nota Bene</strong>: The goal of this particular section is to make nice visualizations of our data and see potential structure, it is not to teach the particular concept around spatial data and spatial visualization that have their own challenges. If you had trouble installing the <code>sf</code> package which may be quite capricious or if you feel lost in the meaning of the code of this section, it’s fine, you can skip it.</p>
+<p>Looking back at the plot level data we have the coordinates of the plot in UTM coordinates:</p>
+<pre class="r"><code>head(plot_data[, c(1, 4, 5)])
+
+plot_sf = sf::st_as_sf(
+  plot_data[, c(1:7)],
+  coords = c(&quot;north&quot;, &quot;east&quot;),
+  crs = sf::st_crs(&quot;+proj=utm +zone=50 +datum=WGS84 +units=m +no_defs&quot;)
+)</code></pre>
+<p>We can represent a basic map to see the location of the plot at world scale:</p>
+<pre class="r"><code>library(&quot;ggplot2&quot;)
+
+ggplot() +
+  geom_sf(data = rnaturalearth::ne_countries(returnclass = &quot;sf&quot;)) +
+  geom_sf(data = plot_sf, aes(color = forestloss17)) +
+  scale_color_viridis_c() +
+  coord_sf(crs = sf::st_crs(&quot;+proj=eck4&quot;)) +  # Set projection
+  labs(title = &quot;Map of the concerned plots at world scale&quot;) +
+  theme_bw()</code></pre>
+<p>We see that all of our plots are indeed in Malaysia so we can focus there:</p>
+<pre class="r"><code>ggplot() +
+  geom_sf(data = rnaturalearth::ne_countries(continent = &quot;Asia&quot;,
+                                             returnclass = &quot;sf&quot;)) +
+  geom_sf(data = plot_sf, aes(color = forestloss17)) +
+  scale_color_viridis_c() +
+  coord_sf(crs = sf::st_crs(3376), xlim = c(-1072025.83, 1053446.00),
+           ylim = c(85496.43, 767752.41)) +
+  labs(title = &quot;Map of plots focused on Malaysia&quot;)
+ggspatial::annotation_scale() +
+  theme_bw()</code></pre>
+<p>We can even zoom even more onto the plots to see them better:</p>
+<pre class="r"><code>ggplot() +
+  geom_sf(data = rnaturalearth::ne_countries(country = &quot;Malaysia&quot;,
+                                             returnclass = &quot;sf&quot;)) +
+  geom_sf(data = plot_sf, aes(color = forestloss17)) +
+  scale_color_viridis_c() +
+  coord_sf(crs = sf::st_crs(3376), xlim = c(800000, 890000),
+           ylim = c(500000, 550000)) +
+  labs(title = &quot;Map of plots zoomed-in on Sabah region&quot;) +
+  ggspatial::annotation_scale() +
+  ggspatial::annotation_north_arrow(location = &quot;br&quot;) +
+  theme_bw()</code></pre>
+<p>We can even add background information to better distinguish the plots in context (beware this will download map tiles from the internet):</p>
+<pre class="r"><code>ggplot() +
+  ggspatial::annotation_map_tile(zoomin = -1) +
+  geom_sf(data = plot_sf, aes(color = forestloss17)) +
+  scale_color_viridis_c() +
+  coord_sf(crs = sf::st_crs(3376), xlim = c(800000, 890000),
+           ylim = c(500000, 550000)) +
+  labs(title = &quot;Map of plots zoomed-in on Sabah region&quot;) +
+  ggspatial::annotation_scale() +
+  ggspatial::annotation_north_arrow(location = &quot;br&quot;) +
+  theme_bw()</code></pre>
+<p>Because of the group of plots on the West we can’t clearly see the distinction between plots let’s focus on the ones that show a gradient in forest loss:</p>
+<pre class="r"><code>ggplot() +
+  ggspatial::annotation_map_tile(zoomin = -1) +
+  geom_sf(data = subset(plot_sf, block != &quot;og&quot;),
+          aes(color = forestloss17)) +
+  scale_color_viridis_c() +
+  coord_sf(crs = sf::st_crs(3376), xlim = c(875000, 890000),
+           ylim = c(518500, 531000)) +
+  labs(title = &quot;Map of all plots but block &#39;og&#39;&quot;) +
+  ggspatial::annotation_scale() +
+  ggspatial::annotation_north_arrow(location = &quot;br&quot;) +
+  theme_bw()</code></pre>
+<p>And we can now visualize the map of the SES of functional diversity indices</p>
+<pre class="r"><code>ggplot() +
+  geom_sf(
+    data = merge(subset(plot_sf, block != &quot;og&quot;), ses_fd, by = &quot;plot.code&quot;),
+    aes(color = ses_Q)
+  ) +
+  scale_color_brewer(type = &quot;div&quot;, palette = &quot;RdYlBu&quot;,
+                     name =  &quot;SES of Rao&#39;s Quadratic Entropy&quot;) +
+  coord_sf(crs = sf::st_crs(3376), xlim = c(875000, 890000),
+           ylim = c(518500, 531000)) +
+  labs(title = &quot;Map of all plots but block &#39;og&#39;&quot;) +
+  ggspatial::annotation_scale() +
+  ggspatial::annotation_north_arrow(location = &quot;br&quot;) +
+  theme_gray()</code></pre>
+<p>Even with all this effort it is not clear how the SES varies between sites. But at least you’re more informed about where the data we’re studying comes from.</p>
+</div>
+</div>
+<div id="phylogenetic-diversity" class="section level1">
+<h1>Phylogenetic diversity</h1>
+<p>Now that we computed functional diversity, its SES, and put it on the map. We can proceed similarly with phylogenetic diversity. For this whole section we will use the <code>ape</code> package to manipulate phylogenetic trees and the <code>picante</code> package to compute phylogenetic diversity indices.</p>
+<div id="getting-the-phylogenetic-tree" class="section level2">
+<h2>Getting the phylogenetic tree</h2>
+<p>We included a copy of the phylogenetic tree used in the article (it is given in the Supplementary Information). It is named <code>phylo_tree.nwk</code> in the <code>data/</code> folder.</p>
+<p>We can read it with the <code>read.tree()</code> function in the <code>ape</code> package:</p>
+<pre class="r"><code>phylo_tree = ape::read.tree(&quot;data/doi_10.5061_dryad.f77p7__v1/phylo_tree.nwk&quot;)
+
+phylo_tree</code></pre>
+<p><strong>Questions from you</strong></p>
+<ul>
+<li><strong>Q20</strong>: How many taxa are in the phylogenetic tree?</li>
+<li><strong>Q21</strong>: How does this number compare to the number of taxa found in the dataset?</li>
+</ul>
+</div>
+<div id="computing-phylogenetic-diversity-indices" class="section level2">
+<h2>Computing phylogenetic diversity indices</h2>
+</div>
+<div id="mapping-phylogenetic-diversity" class="section level2">
+<h2>Mapping phylogenetic diversity</h2>
+</div>
+</div>
+<div id="comparing-facets" class="section level1">
+<h1>Comparing facets</h1>
+</div>
+<div id="modelling-the-effect-of-logging-and-other-variables" class="section level1">
+<h1>Modelling the effect of logging and other variables</h1>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

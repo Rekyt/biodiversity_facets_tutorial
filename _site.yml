@@ -1,0 +1,18 @@
+name: biodiversity_facets_practical
+output_dir: docs
+navbar:
+  title: Biodiversity Facets Tutorial
+  type: inverse
+  left:
+  - text: Home
+    icon: fa-home 
+    href: README.html
+  - text: Tutorial
+    href: diversity_facets_tutorial.html
+
+output:
+  html_document:
+    toc: true
+    highlight: textmate
+    lib_dir: site_libs
+    self_contained: true
