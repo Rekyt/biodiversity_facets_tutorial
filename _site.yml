@@ -6,13 +6,12 @@ navbar:
   left:
   - text: Home
     icon: fa-home 
-    href: README.html
+    href: index.html
   - text: Tutorial
     href: diversity_facets_tutorial.html
 
 output:
   html_document:
-    toc: true
     theme: united
     highlight: textmate
     lib_dir: site_libs
