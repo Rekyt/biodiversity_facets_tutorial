@@ -559,6 +559,8 @@ plot_sf = sf::st_as_sf(
 We can represent a basic map to see the location of the plot at world scale:
 
 ```{r world-map}
+library("ggplot2")
+
 ggplot() +
   geom_sf(data = rnaturalearth::ne_countries(returnclass = "sf")) +
   geom_sf(data = plot_sf, aes(color = forestloss17)) +
@@ -616,7 +618,7 @@ ggplot() +
 
 Because of the group of plots on the West we can't clearly see the distinction between plots let's focus on the ones that show a gradient in forest loss:
 
-```{r context-map}
+```{r context-map-2}
 ggplot() +
   ggspatial::annotation_map_tile(zoomin = -1) +
   geom_sf(data = subset(plot_sf, block != "og"),
@@ -653,7 +655,24 @@ Even with all this effort it is not clear how the SES varies between sites. But 
 
 # Phylogenetic diversity
 
+Now that we computed functional diversity, its SES, and put it on the map. We can proceed similarly with phylogenetic diversity. For this whole section we will use the `ape` package to manipulate phylogenetic trees and the `picante` package to compute phylogenetic diversity indices.
+
 ## Getting the phylogenetic tree
+
+We included a copy of the phylogenetic tree used in the article (it is given in the Supplementary Information). It is named `phylo_tree.nwk` in the `data/` folder.
+
+We can read it with the `read.tree()` function in the `ape` package:
+
+```{r load-tree}
+phylo_tree = ape::read.tree("data/doi_10.5061_dryad.f77p7__v1/phylo_tree.nwk")
+
+phylo_tree
+```
+
+**Questions from you**
+
+* **Q20**: How many taxa are in the phylogenetic tree?
+* **Q21**: How does this number compare to the number of taxa found in the dataset?
 
 ## Computing phylogenetic diversity indices
 
