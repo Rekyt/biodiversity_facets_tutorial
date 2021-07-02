@@ -33,7 +33,10 @@ We will use some specific packages in the rest of the tutorial. To make sure you
 install.packages(
   c("fundiversity",
     "ade4",
-    "FD")
+    "FD",
+    "ape",
+    
+    "picante")
 )
 ```
 

@@ -181,7 +181,14 @@ pre code {
 <div id="installing-needed-packages" class="section level2">
 <h2>Installing needed packages</h2>
 <p>We will use some specific packages in the rest of the tutorial. To make sure you have them please run the following command:</p>
-<pre class="r"><code># install.packages(&quot;&quot;)</code></pre>
+<pre class="r"><code>install.packages(
+  c(&quot;fundiversity&quot;,
+    &quot;ade4&quot;,
+    &quot;FD&quot;,
+    &quot;ape&quot;,
+    
+    &quot;picante&quot;)
+)</code></pre>
 </div>
 </div>
 <div id="context-of-the-study" class="section level1">
@@ -207,26 +214,28 @@ pre code {
 </div>
 <div id="summarizing-the-data" class="section level2">
 <h2>Summarizing the data</h2>
-<p>The zip file contains 4 files (also available in the <code>data/</code> folder):</p>
+<p>The zip file contains 5 files (also available in the <code>data/</code> folder):</p>
 <ul>
 <li><code>README.txt</code> which is a text file that describes the content of the other files with great precision. It details all the columns available in the other files.</li>
 <li><code>PlotData.csv</code> is a comma-separated file that describes characteristics for each of the sampled vegetation plots including logging metrics, environmental variables as well as taxonomic, functional and phylogenetic diversity indices (to which we’ll compare the indices we compute ourselves).</li>
 <li><code>PlotSpeciesData.csv</code> is a comma-separated file that contains a matrix of biomass values for the plant taxa sampled across the sampled vegetation plots.</li>
+<li><code>phylo_tree.nwk</code> the phylogenetic tree describing the relationships between species.</li>
 <li><code>SpeciesTraitData.csv</code> contains the complete list of species sampled across all vegetation plots, with their associated traits both continuous and discrete.</li>
 </ul>
-<p>We will load each of the file in your workspace now with the <code>read.csv()</code> function:</p>
+<p>We will load each of the file (apart from the phylogenetic tree) in your workspace now with the <code>read.csv()</code> function:</p>
 <pre class="r"><code>plot_data         = read.csv(&quot;data/doi_10.5061_dryad.f77p7__v1/PlotData.csv&quot;,
                              na.strings = c(&quot;NA&quot;, &quot;na&quot;),
                              stringsAsFactors = TRUE)
 plot_species_data = read.csv(&quot;data/doi_10.5061_dryad.f77p7__v1/PlotSpeciesData.csv&quot;)
 species_traits    = read.csv(&quot;data/doi_10.5061_dryad.f77p7__v1/SpeciesTraitData.csv&quot;,
                              na.strings = c(&quot;NA&quot;, &quot;na&quot;), stringsAsFactors = TRUE)</code></pre>
-<p>To describe the data we will use the <code>str()</code> and <code>summary()</code> functions.</p>
+<p>To describe the data we will use the <code>str()</code>, <code>summary()</code>, and <code>dim()</code> functions.</p>
 <pre class="r"><code>str(plot_data)
 summary(plot_data)
 
-str(plot_species_data)
-summary(plot_species_data)
+str(plot_species_data[, 1:5])
+summary(head(plot_species_data)[,1:5])
+dim(plot_species_data)
 
 # Transform one column for further analyzed
 species_traits$seed = ordered(species_traits$seed)
@@ -327,7 +336,8 @@ plot(non_quanti_cwm$forestloss17, non_quanti_cwm$woody_no,
 <p>To compute the PCoA we first need to compute a distance matrix that expresses the difference between each pair of species. Because we have a mixture of continuous and categorical traits, we cannot use the Euclidean distance and have to resort to use the Gower’s dissimilarity metric through the <code>daisy()</code> function with the package <code>cluster</code>.</p>
 <pre class="r"><code>gower_dissim = cluster::daisy(traits)</code></pre>
 <p>To perform the PCoA we will be using the <code>ade4</code> package with the function <code>dudi.pco()</code>:</p>
-<pre class="r"><code>trait_pcoa = ade4::dudi.pco(gower_dissim, nf = 5, scannf = FALSE)
+<pre class="r"><code>trait_pcoa = ade4::dudi.pco(ade4::quasieuclid(gower_dissim), nf = 5,
+                            scannf = FALSE)
 trait_pcoa</code></pre>
 <p>The <code>trait_pcoa</code> object contains the coordinates of each species along the different PCoA axes (we chose 5 to have a limit). We can visualize the results with the following command:</p>
 <pre class="r"><code>ade4::scatter(trait_pcoa, clab.row = 0)</code></pre>
@@ -343,9 +353,135 @@ trait_pcoa</code></pre>
 <h2>Computing functional diversity indices</h2>
 <p>Now that we have species positioned in a multidimensional space we can actually compute distinct functional diversity indices. For that we’ll be using the <code>fundiversity</code> package that offers both flexibility and consistency to compute the indices.</p>
 <p>We will first compute Functional Richness (FRic) with the <code>fd_fric()</code> function:</p>
-<pre class="r"><code>site_fric = fundiversity::fd_fric(trait_pcoa$li, sp_com, stand = TRUE)</code></pre>
-<p>We used the <code>stand = TRUE</code> argument to standardize the value of FRic between 0 and 1 compared to the maximum achievable FRic given all the species together.</p>
-<p>Then we will also compute Rao’s Quadratic Entropy and Functional Evenness:</p>
+<pre class="r"><code>site_fric = fundiversity::fd_fric(trait_pcoa$li, sp_com, stand = FALSE)</code></pre>
+<p>Then we will also compute Rao’s Quadratic Entropy (Rao’s Q) and Functional Evenness (FEve):</p>
+<pre class="r"><code>site_raoq = fundiversity::fd_raoq(trait_pcoa$li, sp_com)
+site_feve = fundiversity::fd_feve(trait_pcoa$li, sp_com)
+
+site_fd = merge(
+  merge(site_fric, site_raoq, by = &quot;site&quot;),
+  site_feve,
+  by = &quot;site&quot;
+)
+site_fd$plot.code = site_fd$site
+site_fd = site_fd[, -1]</code></pre>
+<p>We can now compare the observed relationship with forest loss:</p>
+<pre class="r"><code>site_env_fd = merge(site_fd,
+                    plot_data[, c(&quot;plot.code&quot;, &quot;forestloss17&quot;, &quot;roaddensprim&quot;)],
+                    by = &quot;plot.code&quot;)
+
+par(mfrow = c(2, 2))
+plot(site_env_fd$forestloss17, site_env_fd$FRic,
+     xlab = &quot;Forest loss (%)&quot;, ylab = &quot;Functional Richness (FRic)&quot;,
+     main = &quot;Functional Richness in function of forest loss&quot;)
+plot(site_env_fd$forestloss17, site_env_fd$Q,
+     xlab = &quot;Forest loss (%)&quot;, ylab = &quot;Rao&#39;s Quadratic Entropy&quot;,
+     main = &quot;site Q in function of forest loss&quot;)
+plot(site_env_fd$forestloss17, site_env_fd$FEve,
+     xlab = &quot;Forest loss (%)&quot;, ylab = &quot;Functional Evenness (FEve)&quot;,
+     main = &quot;FEve in function of forest loss&quot;)
+plot(site_env_fd$roaddensprim, site_env_fd$FRic,
+     xlab = &quot;Primary Road Density&quot;, ylab = &quot;Functional Richness (FRic)&quot;,
+     main = &quot;FRic in function of road density&quot;)</code></pre>
+<p><strong>Questions for you</strong></p>
+<ul>
+<li><strong>Q13</strong>: How would you describe the relationships between functional diversity and forest loss and road density?</li>
+<li><strong>Q14</strong>: Using the plot generated by the code beneath how could you describe the relationships between the three different functional diversity indices we computed?</li>
+</ul>
+<pre class="r"><code>panel.cor = function(x, y, digits = 2, prefix = &quot;&quot;, cex.cor, ...)
+{
+    usr &lt;- par(&quot;usr&quot;); on.exit(par(usr))
+    par(usr = c(0, 1, 0, 1))
+    r &lt;- abs(cor(x, y, use = &quot;complete.obs&quot;))
+    txt &lt;- format(c(r, 0.123456789), digits = digits)[1]
+    txt &lt;- paste0(prefix, txt)
+    if(missing(cex.cor)) cex.cor &lt;- 0.8/strwidth(txt)
+    text(0.5, 0.5, txt, cex = cex.cor * r)
+}
+
+pairs(~FEve + Q + FRic, data = site_env_fd, lower.panel = panel.smooth,
+      upper.panel = panel.cor, gap = 0, row1attop = FALSE)</code></pre>
+<p>One issue we’re having with our functional diversity indices is also that some of them correlate with species richness:</p>
+<pre class="r"><code>site_rich_fd = merge(
+  site_fd,
+  plot_data[, c(&quot;plot.code&quot;, &quot;ntaxa&quot;)],
+  by = &quot;plot.code&quot;
+)
+
+pairs(ntaxa ~ FRic + FEve + Q, data = site_rich_fd, upper.panel = panel.cor)</code></pre>
+<p>Because we are using indices computed with biomass values the indices should be more related to the total biomass values than species richness. Let’s get the total biomass values per site and correlate it with functional diversity indices.</p>
+<pre class="r"><code>site_biomass = rowSums(sp_com)
+site_biomass = stack(site_biomass)
+
+site_biomass$plot.code = site_biomass$ind
+site_biomass$tot_biomass   = site_biomass$values
+
+site_biomass = site_biomass[, c(&quot;plot.code&quot;, &quot;tot_biomass&quot;)]
+
+site_rich_fd = merge(
+  site_rich_fd,
+  site_biomass,
+  by = &quot;plot.code&quot;
+)
+
+pairs(tot_biomass ~ FRic + FEve + Q, data = site_rich_fd,
+      upper.panel = panel.cor)</code></pre>
+<p><strong>Questions for you</strong></p>
+<ul>
+<li><strong>Q15</strong>: How does the relationship between indices with species richness compare with total biomass values? (You can use the function <code>cor.test()</code> if you want to test the association)</li>
+</ul>
+</div>
+<div id="null-modeling" class="section level2">
+<h2>Null modeling</h2>
+<p>The principle of null modelling is to create random communities following certain rules to get an expected distribution of diversity metrics while keeping some properties of the data constant. In our case, we know that functional diversity is directly linked to the number of species, so we want to keep the species richness constant while changing the distribution of functional diversity.</p>
+<p>Because the site-species matrix contains biomass values which are not discrete, the classical swapping algorithms will not work to maintain total biomass per site and species overall biomass. The solution is then to perform a null model based on trait values only. In this way it will give us a null distribution of trait values while maintaining the same richness per plot and the same relative biomass distribution.</p>
+<p>To do so we’ll shuffle the trait table along species. <strong>Caution</strong>: in our case we do not want to break the links that exist between trait values, so we will be shuffling entire rows of traits and not trait individually. This would result in a different null model otherwise.</p>
+<p>Because we were using the PCoA axes as our “synthetic traits” above we’ll perform the shuffling between species names on these PCoA axes.</p>
+<pre class="r"><code># Number of null simulations
+n_null = 99
+
+# Repeat the operation as many times as set aboev
+null_traits = lapply(seq.int(n_null), function(x) {
+  null_trait = trait_pcoa$li
+  
+  # Shuffle species names
+  null_species = sample(rownames(trait_pcoa$li), nrow(trait_pcoa$li))
+  
+  # Replace species name in table
+  rownames(null_trait) = null_species
+  
+  # Do not forget to return the modified table!
+  return(null_trait)
+})
+
+str(null_traits, max.l = 0)
+head(null_traits[[1]])</code></pre>
+<p>We now obtain a distribution of null traits on which we still need to compute functional diversity indices. We’ll apply similar steps as above to perform the functional diversity computation. But in this case we’ll have to apply the step for each distribution of null trait.</p>
+<pre class="r"><code># Beware this make take a long time
+null_fd = lapply(null_traits, function(x) {
+  
+  # Specific code to avoid edge cases when computing null FRic
+  null_fric = lapply(rownames(sp_com), function(y) {
+    
+    tryCatch({
+      fundiversity::fd_fric(x, sp_com[y,, drop = FALSE], stand = FALSE)
+    },
+    error = function(error) {
+      data.frame(site = y, FRic = NA)
+    })
+    
+  })
+  # Combine all null FRic values
+  null_fric_df = do.call(rbind.data.frame, null_fric)
+  
+  null_raoq = fundiversity::fd_raoq(x, sp_com)
+  null_feve = fundiversity::fd_feve(x, sp_com)
+  
+  # Combine all null functional diversity values
+  null_all = merge(
+    merge(null_fric, null_raoq, by = &quot;site&quot;), null_feve, by = &quot;site&quot;
+  )
+})</code></pre>
 </div>
 <div id="mapping-functional-diversity" class="section level2">
 <h2>Mapping functional diversity</h2>
@@ -366,8 +502,8 @@ trait_pcoa</code></pre>
 <div id="comparing-facets" class="section level1">
 <h1>Comparing facets</h1>
 </div>
-<div id="looking-at-the-effect-of-logging" class="section level1">
-<h1>Looking at the effect of logging</h1>
+<div id="modelling-the-effect-of-logging-and-other-variables" class="section level1">
+<h1>Modelling the effect of logging and other variables</h1>
 </div>
 
 
