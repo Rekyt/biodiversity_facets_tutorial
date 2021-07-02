@@ -56,4 +56,4 @@ Other courses on biodiversity facets and potential interesting papers & tools:
 
 ## License
 
-CC-BY
+[CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/)
