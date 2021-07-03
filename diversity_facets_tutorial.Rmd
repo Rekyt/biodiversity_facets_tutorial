@@ -1,7 +1,8 @@
 ---
 title: "Biodiversity Facets tutorial"
 author: "Matthias Grenié & Marten Winter"
-date: "30/06/2021"
+date: "Monday July 5th 2021"
+bibliography: bibliography.bib
 output:
   html_document:
     toc: true
@@ -717,9 +718,48 @@ length(intersect(phylo_tree$tip.label, code_species$species))
 
 Now that we have a clear correspondance between species code and phylogenetic name we can proceed to the computation of phylogenetic diversity indices. This won't let use reproduce exactly the same analyses as in the paper but this is the best we can do, given the data at our disposal. If all the species were determined another possibility could have to re-create a phylogenetic tree from genetic sequences available from genetic databases. This approach however needs specific skills and is a story for another time!
 
+## Visualizing the phylogenetic tree
+
+We can visualize the phylogenetic tree to better understand the relationship between species. With more than 600 taxa, the visualization can be quite challenging and some ajustements should be made to ease the vizualition.
+
+The easiest way to show the phylogenetic tree is to use the `plot.tree()` function available through the `ape` package.
+
+```{r plot-tree}
+ape::plot.phylo(phylo_tree)
+```
+
+By default the function shows the phylogram type of phylogenetic tree and plot all the labels for all species. Let's make it easier to read:
+
+```{r better-plot-tree}
+ape::plot.phylo(phylo_tree, type = "fan", show.node.label = TRUE,
+                show.tip.label = FALSE, cex = 0.6)
+```
+
+It is still difficult too read but we can already look at how botanical are related to one another.
+
+
 ## Computing phylogenetic diversity indices
 
-To compute phylogenetic diversity analyses we need to make the phylogenetic tree correspond to the site-species matrix.
+To compute phylogenetic diversity analyses we need to combine the phylogenetic tree with the site-species matrix. We need to subset the communities by selecting only species with a defined code from the previous section.
+
+```{r sub-phylo-com}
+# Initial site-species matrix
+head(sp_com[, 1:5])
+dim(sp_com)
+
+# Subset of site-species matrix compatible with phylogenetic tree
+sub_phylo_com = sp_com[, as.character(code_species$species.code)]
+dim(sub_phylo_com)
+```
+
+To measure phylogenetic diversity we will compute the Mean Pairwise Distance (MPD, @Webb_Exploring_2000) using the `picante` package. The MPD is an index that represents the average distance between all pairs of species occurring in the community. It can also be weighted by the abundance or the biomass of considered species so that more weight is given to species that show the greatest abundance.
+
+The first data needed to compute the MPD is the phylogenetic distance between pair of species. We'll use the cophenetic distance which represent the same relationships as a phylogenetic tree but through a distance matrix. We can use the function `cophenetic.phylo()` in the `ape` package to obtain cophenetic distances.
+
+```{r cophenetic-dist}
+cophen_dist = ape::cophenetic.phylo(phylo_tree)
+```
+
 
 ## Mapping phylogenetic diversity
 
@@ -730,3 +770,4 @@ To compute phylogenetic diversity analyses we need to make the phylogenetic tree
 # Modelling the effect of logging and other variables
 
 
+# References
