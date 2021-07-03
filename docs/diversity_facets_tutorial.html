@@ -59,6 +59,28 @@ if (window.hljs) {
 
 
 
+<style type="text/css">
+/* for pandoc --citeproc since 2.11 */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
 
 
 
@@ -268,7 +290,7 @@ $(document).ready(function () {
 
 <h1 class="title toc-ignore">Biodiversity Facets tutorial</h1>
 <h4 class="author">Matthias Grenié &amp; Marten Winter</h4>
-<h4 class="date">30/06/2021</h4>
+<h4 class="date">Monday July 5th 2021</h4>
 
 </div>
 
@@ -297,11 +319,13 @@ $(document).ready(function () {
 <li><a href="#phylogenetic-diversity">Phylogenetic diversity</a>
 <ul>
 <li><a href="#getting-the-phylogenetic-tree">Getting the phylogenetic tree</a></li>
+<li><a href="#visualizing-the-phylogenetic-tree">Visualizing the phylogenetic tree</a></li>
 <li><a href="#computing-phylogenetic-diversity-indices">Computing phylogenetic diversity indices</a></li>
 <li><a href="#mapping-phylogenetic-diversity">Mapping phylogenetic diversity</a></li>
 </ul></li>
 <li><a href="#comparing-facets">Comparing facets</a></li>
 <li><a href="#modelling-the-effect-of-logging-and-other-variables">Modelling the effect of logging and other variables</a></li>
+<li><a href="#references">References</a></li>
 </ul>
 </div>
 
@@ -826,9 +850,29 @@ dim(code_species)</code></pre>
 <pre class="r"><code>length(intersect(phylo_tree$tip.label, code_species$species))</code></pre>
 <p>Now that we have a clear correspondance between species code and phylogenetic name we can proceed to the computation of phylogenetic diversity indices. This won’t let use reproduce exactly the same analyses as in the paper but this is the best we can do, given the data at our disposal. If all the species were determined another possibility could have to re-create a phylogenetic tree from genetic sequences available from genetic databases. This approach however needs specific skills and is a story for another time!</p>
 </div>
+<div id="visualizing-the-phylogenetic-tree" class="section level2">
+<h2>Visualizing the phylogenetic tree</h2>
+<p>We can visualize the phylogenetic tree to better understand the relationship between species. With more than 600 taxa, the visualization can be quite challenging and some ajustements should be made to ease the vizualition.</p>
+<p>The easiest way to show the phylogenetic tree is to use the <code>plot.tree()</code> function available through the <code>ape</code> package.</p>
+<pre class="r"><code>ape::plot.phylo(phylo_tree)</code></pre>
+<p>By default the function shows the phylogram type of phylogenetic tree and plot all the labels for all species. Let’s make it easier to read:</p>
+<pre class="r"><code>ape::plot.phylo(phylo_tree, type = &quot;fan&quot;, show.node.label = TRUE,
+                show.tip.label = FALSE, cex = 0.6)</code></pre>
+<p>It is still difficult too read but we can already look at how botanical are related to one another.</p>
+</div>
 <div id="computing-phylogenetic-diversity-indices" class="section level2">
 <h2>Computing phylogenetic diversity indices</h2>
-<p>To compute phylogenetic diversity analyses we need to make the phylogenetic tree correspond to the site-species matrix.</p>
+<p>To compute phylogenetic diversity analyses we need to combine the phylogenetic tree with the site-species matrix. We need to subset the communities by selecting only species with a defined code from the previous section.</p>
+<pre class="r"><code># Initial site-species matrix
+head(sp_com[, 1:5])
+dim(sp_com)
+
+# Subset of site-species matrix compatible with phylogenetic tree
+sub_phylo_com = sp_com[, as.character(code_species$species.code)]
+dim(sub_phylo_com)</code></pre>
+<p>To measure phylogenetic diversity we will compute the Mean Pairwise Distance (MPD, <span class="citation">Webb (2000)</span>) using the <code>picante</code> package. The MPD is an index that represents the average distance between all pairs of species occurring in the community. It can also be weighted by the abundance or the biomass of considered species so that more weight is given to species that show the greatest abundance.</p>
+<p>The first data needed to compute the MPD is the phylogenetic distance between pair of species. We’ll use the cophenetic distance which represent the same relationships as a phylogenetic tree but through a distance matrix. We can use the function <code>cophenetic.phylo()</code> in the <code>ape</code> package to obtain cophenetic distances.</p>
+<pre class="r"><code>cophen_dist = ape::cophenetic.phylo(phylo_tree)</code></pre>
 </div>
 <div id="mapping-phylogenetic-diversity" class="section level2">
 <h2>Mapping phylogenetic diversity</h2>
@@ -839,6 +883,14 @@ dim(code_species)</code></pre>
 </div>
 <div id="modelling-the-effect-of-logging-and-other-variables" class="section level1">
 <h1>Modelling the effect of logging and other variables</h1>
+</div>
+<div id="references" class="section level1 unnumbered">
+<h1 class="unnumbered">References</h1>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-Webb_Exploring_2000" class="csl-entry">
+Webb, null. 2000. <span>“Exploring the <span>Phylogenetic Structure</span> of <span>Ecological Communities</span>: <span>An Example</span> for <span>Rain Forest Trees</span>.”</span> <em>The American Naturalist</em> 156 (2): 145–55. <a href="https://doi.org/10.1086/303378">https://doi.org/10.1086/303378</a>.
+</div>
+</div>
 </div>
 
 
