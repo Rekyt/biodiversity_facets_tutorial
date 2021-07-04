@@ -17,16 +17,19 @@ Contact us via Slack or email for any further questions.
 
 ## Goals
 
--   Manipulate research open data
--   Learning how to compute functional diversity indices with
-    `fundiversity`
--   Learning how to compute phylogenetic diversity indices with `ape`
-    and `picante`
+-   Manipulate research open data;
+-   Learn how to compute functional diversity indices with
+    `fundiversity` (load trait data, build a functional space, compute
+    indices);
+-   Learn how to compute phylogenetic diversity indices with `ape` and
+    `picante` (load phylogenetic tree, visualize phylogenetic tree,
+    compute indices);
+-   Familiarize with null models;
 -   Know the difference between facets of functional and phylogenetic
-    diversity indices
--   Visualize biodiversity facets on the map
+    diversity indices;
+-   Visualize biodiversity facets on the map;
 -   Show the effect of logging in a tropical forest context on some
-    biodiversity facets
+    biodiversity facets.
 
 ## How to use it?
 
@@ -62,6 +65,13 @@ tools:
 
 -   The [`FD`](https://cran.r-project.org/package=FD) package is the
     reference package to compute functional diversity indices.
+-   The [Modern concepts and methods in Macroecology and
+    Biogeography](https://github.com/patrickweigelt/MCMMB/) course
+    accessible with this link:
+    <http://htmlpreview.github.io/?https://github.com/patrickweigelt/MCMMB/blob/master/index.html>.
+-   The following [Legras et al. 2018
+    paper](https://doi.org/10.1016/j.actao.2018.02.007) on functional
+    diversity concepts.
 
 ## License
 
