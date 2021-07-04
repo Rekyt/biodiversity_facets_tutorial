@@ -874,7 +874,7 @@ pairs(all_diversity[, c("ntaxa", "ses_FRic", "ses_Q", "ses_FEve", "mpd.obs.z")],
 * **Q28**: How are related are observed values of functional diversity and phylogenetic diversity? What about the SESs?
 
 
-# Modelling the effect of logging and other variables
+# Modelling the effect of logging
 
 We now have all values to properly build a statistical model of the relationship between diversity facets and the different co-variables.
 
