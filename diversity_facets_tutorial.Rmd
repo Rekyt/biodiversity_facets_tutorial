@@ -2,11 +2,13 @@
 title: "Biodiversity Facets tutorial"
 author: "Matthias Grenié & Marten Winter"
 date: "Monday July 5th 2021"
-bibliography: bibliography.bib
 output:
+  pdf_document:
+    toc: yes
   html_document:
-    toc: true
-editor_options: 
+    toc: yes
+bibliography: bibliography.bib
+editor_options:
   chunk_output_type: console
 ---
 
@@ -499,7 +501,7 @@ This gives us an empirical comparison of the observed value with the null distri
 $$
 SES_i = \frac{\overline{y_{\text{null}, i}} - y_{\text{obs}, i}}{\text{SD}_{\text{null}, i}}
 $$
-with $SES_i$ the standardized effect size of the index at site $i$, $\overline{y_{\text{null}, i}$ the average observed value along the null distribution of the index at site $i$, $y_{\text{obs}, i}$, and $\text{SD}_{\text{null}, i}$ the standard deviation of the null distribution of the index at site $i$. This index is negative when the observation is smaller than the average of the null distribution, and positive otherwise. In the literature an SES value under -2 or above 2 is generally considered as significant.
+with $SES_i$ the standardized effect size of the index at site $i$, $\overline{y_{\text{null}, i}}$ the average observed value along the null distribution of the index at site $i$, $y_{\text{obs}, i}$, and $\text{SD}_{\text{null}, i}$ the standard deviation of the null distribution of the index at site $i$. This index is negative when the observation is smaller than the average of the null distribution, and positive otherwise. In the literature an SES value under -2 or above 2 is generally considered as significant.
 
 **However**, note that there are controversies in the literature about the use of SESs compared to the use of the ECDF because we're only leveraging on the use of the mean and standard deviation of the null distribution instead of using the entirety of the distribution.
 
