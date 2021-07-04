@@ -680,7 +680,7 @@ You can visualize the taxa in the phylogenetic tree in the `tip.label` slot of t
 phylo_tree$tip.label
 ```
 
-* **Q22*: What do you notice with the species names? Especially compared to the ones available in `species_traits`.
+* **Q22**: What do you notice with the species names? Especially compared to the ones available in `species_traits`.
 
 To solve the naming issue we'll have to match the names used in the phylogenetic tree to the species code used in the site-species matrix. For that we'll match the epitheton to the first code available. You do not need to understand this code and can just copy-paste it to execute it because we're going to use it further down.
 
@@ -757,8 +757,51 @@ To measure phylogenetic diversity we will compute the Mean Pairwise Distance (MP
 The first data needed to compute the MPD is the phylogenetic distance between pair of species. We'll use the cophenetic distance which represent the same relationships as a phylogenetic tree but through a distance matrix. We can use the function `cophenetic.phylo()` in the `ape` package to obtain cophenetic distances.
 
 ```{r cophenetic-dist}
+# Compute cophenetic distances from the phylogenetic tree
 cophen_dist = ape::cophenetic.phylo(phylo_tree)
+
+str(cophen_dist)
+
+# We need to change the names to species codes
+corres_codes = data.frame(
+  species = rownames(cophen_dist)
+)
+corres_codes = merge(corres_codes, code_species, by = "species")
+rownames(cophen_dist) = corres_codes$species.code
+colnames(cophen_dist) = corres_codes$species.code
 ```
+
+Then to compute MPD we use the `mpd()` function in the `picante` package.
+
+```{r mpd}
+# Observed Mean Pairwise Distance
+# Unweighted
+mpd_val_uw = picante::mpd(sub_phylo_com, cophen_dist, abundance.weighted = FALSE)
+# Weighted
+mpd_val_w = picante::mpd(sub_phylo_com, cophen_dist, abundance.weighted = TRUE)
+
+# Make a nice data.frame with observed MPD values
+obs_mpd = data.frame(
+  plot.code = rownames(sub_phylo_com),
+  mpd_unweighted = mpd_val_uw,
+  mpd_weighted = mpd_val_w
+)
+
+# Add forest loss proportion and richness for each site
+obs_mpd = merge(obs_mpd, plot_data[, c("plot.code", "forestloss17", "ntaxa")])
+```
+
+**Questions for you**
+
+* **Q23**: What are the relationships between weighted and unweighted version of the MPD?
+* **Q24**: What are the relationships between MPD and taxa richness? And with forest loss? Plot these relationships to visualize them and use the `cor.test()` function to validate your observations.
+
+
+## Null Modeling 
+
+Because of the expected relationship between MPD and species richness, we have to perform null models in a similar fashion to what we've done for functional diversity indices. Because, as with functional diversity, we want to keep null sites with same total biomass and same total biomass per species as observed sites, we can perform a "swap" null model. We will use a null model that shuffle the names of the species at the tip of the phylogenetic tree.
+
+Fortunately, compared to functional diversity, the null models are all integrated in the `ses.mpd()` function in the `picante` package. The null model we'll use is the `"taxa.labels"` one. **Caution**: null models can be computationally challenging; for the sake of the example we'll do only 99 iterations but as for functional diversity a version of the null models with 999 
 
 
 ## Mapping phylogenetic diversity
