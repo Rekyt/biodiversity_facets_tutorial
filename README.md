@@ -6,8 +6,8 @@ Matthias Grenié & Marten Winter
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
 This the first practical session in the course “Macroecology and
-Macroevolution under Global Change”. This practical session is going to
-be linked to lectures 2 and 3 on biodiversity facets.
+Macroevolution under Global Change”. This it the practical session
+companion to the lectures on biodiversity facets L2 and L3.
 
 **Year**: 2021
 
@@ -33,11 +33,16 @@ Contact us via Slack or email for any further questions.
 
 ## How to use it?
 
-You can view the tutorial through the associated website:
-<https://rekyt.github.io/biodiversity_facets_tutorial/>
-
-In case there is a problem you can access a similar version on
-<https://htmlpreview.github.io/?https://github.com/Rekyt/biodiversity_facets_tutorial/blob/main/docs/index.html>
+1.  **Online** It is accessible online at
+    <https://rekyt.github.io/biodiversity_facets_tutorial/> click on
+    `Tutorial` in the navigation bar to access the tutorial.
+2.  **Online** if the website have issue you can access a similar
+    version with the following command:
+    <https://htmlpreview.github.io/?https://github.com/Rekyt/biodiversity_facets_tutorial/blob/main/docs/index.html>
+3.  **Offline** You can access open the `diversity_facets_tutorial.Rmd`
+    file in RStudio to follow along.
+4.  **Offline** You can also open the `diversity_facets_tutorial.R` file
+    in RStudio to get only the code to execute exactly the codes here.
 
 ## Data provenance
 
