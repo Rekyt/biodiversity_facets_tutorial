@@ -357,7 +357,7 @@ $(document).ready(function () {
   c(&quot;ade4&quot;,
     &quot;ape&quot;,
     &quot;FD&quot;,
-    &quot;fundiversity&quot;
+    &quot;fundiversity&quot;,
     &quot;ggplot2&quot;,
     &quot;ggspatial&quot;,
     &quot;performance&quot;,
@@ -970,7 +970,7 @@ ggplot() +
 <h1>Comparing facets</h1>
 <p>One burning question in the scientific literature and that is quite debated still is the relationship between taxonomic, functional, and phylogenetic diversity <span class="citation">(Pavoine et al. 2013)</span>.</p>
 <p>We can leverage on the computation we have to test the relationships between all facets of diversity. <strong>/!\ NOTE</strong>: Because we had trouble with the phylogenetic tree, we’re not strictly comparing the same subset of data, we’re going to compare them anyway for the sake of the example. The proper way would be to subset the similar sets of species and recompute functional diversity.</p>
-<pre class="r"><code># Combine taxonomic, functiona
+<pre class="r"><code># Combine taxonomic, functional, and phylogenetic diversity
 all_diversity = merge(
   plot_data[, c(&quot;plot.code&quot;, &quot;ntaxa&quot;)],
   merge(
