@@ -321,7 +321,7 @@ $(document).ready(function () {
 <li><a href="#getting-the-phylogenetic-tree">Getting the phylogenetic tree</a></li>
 <li><a href="#visualizing-the-phylogenetic-tree">Visualizing the phylogenetic tree</a></li>
 <li><a href="#computing-phylogenetic-diversity-indices">Computing phylogenetic diversity indices</a></li>
-<li><a href="#null-modeling-1">Null Modeling</a></li>
+<li><a href="#null-modeling-1">Null modeling</a></li>
 <li><a href="#mapping-phylogenetic-diversity">Mapping phylogenetic diversity</a></li>
 </ul></li>
 <li><a href="#comparing-facets">Comparing facets</a></li>
@@ -334,8 +334,7 @@ $(document).ready(function () {
 <h1>Setup</h1>
 <div id="rstudio" class="section level2">
 <h2>RStudio</h2>
-<p>To make sure you follow along the whole tutorial you can create a new RStudio project to put all related code and data in. Click on <code>File</code> &gt; <code>New Project...</code> &gt; <code>New Directory</code> &gt; <code>New Project</code> &gt; Give it a name like <code>diversity_facets_tutorial</code> and place it in your computer.</p>
-<p>This will create a new folder with an <code>.Rproj</code> file. This will let you easily return to the project without having to manually change your working directory with <code>setwd()</code> and <code>getwd()</code>.</p>
+<p>Double-click on the <code>.Rproj</code> file which is as the root of the folder you downloaded. This should open a new session in RStudio that will start at the root of the project folder.</p>
 </div>
 <div id="installing-needed-packages" class="section level2">
 <h2>Installing needed packages</h2>
@@ -355,7 +354,7 @@ $(document).ready(function () {
 </div>
 <div id="context-of-the-study" class="section level1">
 <h1>Context of the study</h1>
-<p>We will be using the data from the following study:</p>
+<p>We will be using the data from the following study <span class="citation">(Döbert et al. 2017)</span>:</p>
 <blockquote>
 <p>Döbert, T.F., Webber, B.L., Sugau, J.B., Dickinson, K.J.M. and Didham, R.K. (2017), Logging increases the functional and phylogenetic dispersion of understorey plant communities in tropical lowland rain forest. J Ecol, 105: 1235-1245. <a href="https://doi.org/10.1111/1365-2745.12794" class="uri">https://doi.org/10.1111/1365-2745.12794</a></p>
 </blockquote>
@@ -365,18 +364,19 @@ $(document).ready(function () {
 </div>
 <div id="loading-the-data" class="section level1">
 <h1>Loading the data</h1>
-<p>Fortunately for us, the authors of the study have shared openly the data they used in their article. They are available through the Dryad platform at the following link: <a href="https://doi.org/10.5061/dryad.f77p7" class="uri">https://doi.org/10.5061/dryad.f77p7</a></p>
+<p>Fortunately for us, the authors of the study have shared openly the data they used in their article <span class="citation">(Döbert et al. 2018)</span>. They are available through the Dryad platform at the following link: <a href="https://doi.org/10.5061/dryad.f77p7" class="uri">https://doi.org/10.5061/dryad.f77p7</a></p>
 <blockquote>
 <p>Döbert, Timm F. et al. (2018), Data from: Logging increases the functional and phylogenetic dispersion of understorey plant communities in tropical lowland rainforest, Dryad, Dataset, <a href="https://doi.org/10.5061/dryad.f77p7" class="uri">https://doi.org/10.5061/dryad.f77p7</a></p>
 </blockquote>
 <p>The fact that these data researchers provided the full dataset including all data and meta-data will help us reproduce the exact same analyses as well as additional analyses not in their paper.</p>
 <div id="getting-the-data" class="section level2">
 <h2>Getting the data</h2>
-<p>To get the data you can follow the above-mentioned link <a href="https://doi.org/10.5061/dryad.f77p7" class="uri">https://doi.org/10.5061/dryad.f77p7</a> and click on the “Download Dataset” button available on the top right of the webpage. It will download a .zip file that you can unzip in the folder you created for the project. This will create a folder named <code>doi_10.5061_dryad.f77p7__v1</code> that contains all needed data files. We’ve also included a copy of the unzipped file in the <code>data</code> folder of the practical project.</p>
+<p>To get the data you can follow the above-mentioned link <a href="https://doi.org/10.5061/dryad.f77p7" class="uri">https://doi.org/10.5061/dryad.f77p7</a> and click on the “Download Dataset” button available on the top right of the webpage. It will download a .zip file that you can unzip in the folder you created for the project. This will create a folder named <code>doi_10.5061_dryad.f77p7__v1</code> that contains all needed data files.</p>
+<p><strong>NOTE</strong>: We’ve also included a copy of the unzipped file in the <code>data</code> folder of the practical project.</p>
 </div>
 <div id="summarizing-the-data" class="section level2">
 <h2>Summarizing the data</h2>
-<p>The zip file contains 5 files (also available in the <code>data/</code> folder):</p>
+<p>The zip file contains 5 files (also available in the <code>data/doi_10.5061_dryad.f77p7__v1/</code> folder):</p>
 <ul>
 <li><code>README.txt</code> which is a text file that describes the content of the other files with great precision. It details all the columns available in the other files.</li>
 <li><code>PlotData.csv</code> is a comma-separated file that describes characteristics for each of the sampled vegetation plots including logging metrics, environmental variables as well as taxonomic, functional and phylogenetic diversity indices (to which we’ll compare the indices we compute ourselves).</li>
@@ -426,12 +426,12 @@ summary(species_traits)</code></pre>
 <p>Now that we loaded all the datasets we can proceed to compute functional diversity per plots.</p>
 <div id="computing-biomass-weighted-mean-traits-per-plot" class="section level2">
 <h2>Computing Biomass-weighted mean traits per plot</h2>
-<p>One first way to compute functional diversity is to compute mono-dimensional trait dimension. We can compute the average trait observed at each plot to described the effect of logging on the understorey vegetation. Because we’re interested in the average trait possessed by the community we can compute the community-weighted mean trait <span class="math inline">\(CWM_i\)</span> as follow:</p>
+<p>One first way to compute functional diversity is to compute mono-dimensional trait diversity <span class="citation">(Lavorel and Garnier 2002)</span>. We can compute the average trait observed at each plot to described the effect of logging on the understorey vegetation. Because we’re interested in the average trait possessed by the community we can compute the community-weighted mean trait <span class="math inline">\(CWM_i\)</span> as follow:</p>
 <p><span class="math display">\[\begin{equation}
 CWM_i = \sum_{j = 1}^{S} b_{ij} \times t_j
 \end{equation}\]</span></p>
 <p><span class="math inline">\(CWM_i\)</span> is the community-weighted mean trait in plot <span class="math inline">\(i\)</span>, <span class="math inline">\(S\)</span> is the total number of species, <span class="math inline">\(b_{ij}\)</span> is the biomass of species <span class="math inline">\(j\)</span> in plot <span class="math inline">\(i\)</span>, and <span class="math inline">\(t_j\)</span> is the trait of species <span class="math inline">\(j\)</span>.</p>
-<p>To do so we will use the function <code>functcomp()</code> in the <code>FD</code> package. But we first need to organize our data.</p>
+<p>To do so we will use the function <code>functcomp()</code> in the <code>FD</code> package <span class="citation">(Laliberté and Legendre 2010)</span>. But we first need to organize our data.</p>
 <pre class="r"><code># Make site-species data.frame
 sp_com           = plot_species_data[, -1]
 rownames(sp_com) = plot_species_data$X
@@ -908,7 +908,7 @@ obs_mpd = merge(obs_mpd, plot_data[, c(&quot;plot.code&quot;, &quot;forestloss17
 </ul>
 </div>
 <div id="null-modeling-1" class="section level2">
-<h2>Null Modeling</h2>
+<h2>Null modeling</h2>
 <p>Because of the expected relationship between MPD and species richness, we have to perform null models in a similar fashion to what we’ve done for functional diversity indices. Because, as with functional diversity, we want to keep null sites with same total biomass and same total biomass per species as observed sites, we can perform a “swap” null model. We will use a null model that shuffle the names of the species at the tip of the phylogenetic tree.</p>
 <p>Fortunately, compared to functional diversity, the null models are all integrated in the <code>ses.mpd()</code> function in the <code>picante</code> package. The null model we’ll use is the <code>"taxa.labels"</code> one. <strong>Caution</strong>: null models can be computationally challenging; for the sake of the example we’ll do only 99 iterations but as for functional diversity a version of the null models with 999 iterations is saved in the data folder.</p>
 <pre class="r"><code># Set random seed for repeatability of analysis
@@ -923,7 +923,7 @@ head(ses_mpd)</code></pre>
 <p>The function <code>ses.mpd()</code> computes many values. You can get the detail by looking at the help of the functions with <code>?picante::ses.mpd</code> in the <code>Value</code> section.</p>
 <p>We’ll now load the version with 999 iterations.</p>
 <pre class="r"><code>ses_mpd_999 = readRDS(&quot;data/null_mpd_999.Rds&quot;)</code></pre>
-<p><strong>Question for you</strong></p>
+<p><strong>Questions for you</strong></p>
 <ul>
 <li><strong>Q25</strong>: Explain what does the column <code>mpd.obs.z</code> means? How does this compare with the SES values we computed for functional diversity indices?</li>
 <li><strong>Q26</strong>: How does the standardized value relates with taxa richness?</li>
@@ -953,8 +953,8 @@ ggplot() +
 </div>
 <div id="comparing-facets" class="section level1">
 <h1>Comparing facets</h1>
-<p>One burning question in the scientific literature and that is quite debated still is the relationship between taxonomic, functional, and phylogenetic diversity <span class="citation">(<strong>Pavoine_Correlations_2013?</strong>)</span>.</p>
-<p>We can leverage on the computation we have to test the relationships between all facets of diversity. <strong>/! NOTE</strong>: Because we had trouble with the phylogenetic tree, we’re not strictly comparing the same subset of data, we’re going to compare them anyway for the sake of the example. The proper way would be to subset the similar sets of species and recompute functional diversity.</p>
+<p>One burning question in the scientific literature and that is quite debated still is the relationship between taxonomic, functional, and phylogenetic diversity <span class="citation">(Pavoine et al. 2013)</span>.</p>
+<p>We can leverage on the computation we have to test the relationships between all facets of diversity. <strong>/!\ NOTE</strong>: Because we had trouble with the phylogenetic tree, we’re not strictly comparing the same subset of data, we’re going to compare them anyway for the sake of the example. The proper way would be to subset the similar sets of species and recompute functional diversity.</p>
 <pre class="r"><code># Combine taxonomic, functiona
 all_diversity = merge(
   plot_data[, c(&quot;plot.code&quot;, &quot;ntaxa&quot;)],
@@ -982,6 +982,21 @@ pairs(all_diversity[, c(&quot;ntaxa&quot;, &quot;ses_FRic&quot;, &quot;ses_Q&quo
 <div id="references" class="section level1 unnumbered">
 <h1 class="unnumbered">References</h1>
 <div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-Dobert_Logging_2017" class="csl-entry">
+Döbert, Timm F., Bruce L. Webber, John B. Sugau, Katharine J. M. Dickinson, and Raphael K. Didham. 2017. <span>“Logging Increases the Functional and Phylogenetic Dispersion of Understorey Plant Communities in Tropical Lowland Rain Forest.”</span> <em>Journal of Ecology</em> 105 (5): 1235–45. <a href="https://doi.org/10.1111/1365-2745.12794">https://doi.org/10.1111/1365-2745.12794</a>.
+</div>
+<div id="ref-Dobert_Data_2018" class="csl-entry">
+———. 2018. <span>“Data from: <span>Logging</span> Increases the Functional and Phylogenetic Dispersion of Understorey Plant Communities in Tropical Lowland Rainforest.”</span> <span>Dryad</span>. <a href="https://doi.org/10.5061/DRYAD.F77P7">https://doi.org/10.5061/DRYAD.F77P7</a>.
+</div>
+<div id="ref-Laliberte_distancebased_2010" class="csl-entry">
+Laliberté, Etienne, and Pierre Legendre. 2010. <span>“A Distance-Based Framework for Measuring Functional Diversity from Multiple Traits.”</span> <em>Ecology</em> 91 (1): 299–305. <a href="https://doi.org/10.1890/08-2244.1">https://doi.org/10.1890/08-2244.1</a>.
+</div>
+<div id="ref-Lavorel_Predicting_2002" class="csl-entry">
+Lavorel, S., and E. Garnier. 2002. <span>“Predicting Changes in Community Composition and Ecosystem Functioning from Plant Traits: Revisiting the <span>Holy Grail</span>.”</span> <em>Functional Ecology</em> 16 (5): 545–56. <a href="https://doi.org/10.1046/j.1365-2435.2002.00664.x">https://doi.org/10.1046/j.1365-2435.2002.00664.x</a>.
+</div>
+<div id="ref-Pavoine_Correlations_2013" class="csl-entry">
+Pavoine, Sandrine, Amandine Gasc, Michael B. Bonsall, and Norman W. H. Mason. 2013. <span>“Correlations Between Phylogenetic and Functional Diversity: Mathematical Artefacts or True Ecological and Evolutionary Processes?”</span> <em>Journal of Vegetation Science</em> 24 (5): 781–93. <a href="https://doi.org/10.1111/jvs.12051">https://doi.org/10.1111/jvs.12051</a>.
+</div>
 <div id="ref-Webb_Exploring_2000" class="csl-entry">
 Webb, null. 2000. <span>“Exploring the <span>Phylogenetic Structure</span> of <span>Ecological Communities</span>: <span>An Example</span> for <span>Rain Forest Trees</span>.”</span> <em>The American Naturalist</em> 156 (2): 145–55. <a href="https://doi.org/10.1086/303378">https://doi.org/10.1086/303378</a>.
 </div>
