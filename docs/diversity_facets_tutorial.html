@@ -791,8 +791,8 @@ ggspatial::annotation_scale() +
     data = merge(subset(plot_sf, block != &quot;og&quot;), ses_fd, by = &quot;plot.code&quot;),
     aes(color = ses_Q)
   ) +
-  scale_color_brewer(type = &quot;div&quot;, palette = &quot;RdYlBu&quot;,
-                     name =  &quot;SES of Rao&#39;s Quadratic Entropy&quot;) +
+  scale_color_distiller(type = &quot;div&quot;, palette = &quot;RdYlBu&quot;,
+                        name =  &quot;SES of Rao&#39;s Quadratic Entropy&quot;) +
   coord_sf(crs = sf::st_crs(3376), xlim = c(875000, 890000),
            ylim = c(518500, 531000)) +
   labs(title = &quot;Map of all plots but block &#39;og&#39;&quot;) +
@@ -910,17 +910,74 @@ obs_mpd = merge(obs_mpd, plot_data[, c(&quot;plot.code&quot;, &quot;forestloss17
 <div id="null-modeling-1" class="section level2">
 <h2>Null Modeling</h2>
 <p>Because of the expected relationship between MPD and species richness, we have to perform null models in a similar fashion to what we’ve done for functional diversity indices. Because, as with functional diversity, we want to keep null sites with same total biomass and same total biomass per species as observed sites, we can perform a “swap” null model. We will use a null model that shuffle the names of the species at the tip of the phylogenetic tree.</p>
-<p>Fortunately, compared to functional diversity, the null models are all integrated in the <code>ses.mpd()</code> function in the <code>picante</code> package. The null model we’ll use is the <code>"taxa.labels"</code> one. <strong>Caution</strong>: null models can be computationally challenging; for the sake of the example we’ll do only 99 iterations but as for functional diversity a version of the null models with 999</p>
+<p>Fortunately, compared to functional diversity, the null models are all integrated in the <code>ses.mpd()</code> function in the <code>picante</code> package. The null model we’ll use is the <code>"taxa.labels"</code> one. <strong>Caution</strong>: null models can be computationally challenging; for the sake of the example we’ll do only 99 iterations but as for functional diversity a version of the null models with 999 iterations is saved in the data folder.</p>
+<pre class="r"><code># Set random seed for repeatability of analysis
+set.seed(20210705)
+
+# Compute null permutation of MPD
+ses_mpd = picante::ses.mpd(
+  sub_phylo_com, cophen_dist, null.model = &quot;taxa.labels&quot;,
+  abundance.weighted = TRUE, runs = 99
+)
+head(ses_mpd)</code></pre>
+<p>The function <code>ses.mpd()</code> computes many values. You can get the detail by looking at the help of the functions with <code>?picante::ses.mpd</code> in the <code>Value</code> section.</p>
+<p>We’ll now load the version with 999 iterations.</p>
+<pre class="r"><code>ses_mpd_999 = readRDS(&quot;data/null_mpd_999.Rds&quot;)</code></pre>
+<p><strong>Question for you</strong></p>
+<ul>
+<li><strong>Q25</strong>: Explain what does the column <code>mpd.obs.z</code> means? How does this compare with the SES values we computed for functional diversity indices?</li>
+<li><strong>Q26</strong>: How does the standardized value relates with taxa richness?</li>
+<li><strong>Q27</strong>: What are the relationships between MPD values considering null models and forest loss? Visualize the relationships with the <code>plot()</code> function, validate your observations with the <code>cor.test()</code> function.</li>
+</ul>
 </div>
 <div id="mapping-phylogenetic-diversity" class="section level2">
 <h2>Mapping phylogenetic diversity</h2>
+<p>In order to see if there is a geographical pattern in phylogenetic diversity we can plot maps of MPD.</p>
+<pre class="r"><code>ses_mpd_999$plot.code = rownames(ses_mpd_999)
+
+ggplot() +
+  geom_sf(
+    data = merge(subset(plot_sf, block != &quot;og&quot;), ses_mpd_999, by = &quot;plot.code&quot;),
+    aes(color = mpd.obs.z)
+  ) +
+  scale_color_distiller(type = &quot;div&quot;, palette = &quot;RdYlBu&quot;,
+                     name =  &quot;SES of MPD&quot;) +
+  coord_sf(crs = sf::st_crs(3376), xlim = c(875000, 890000),
+           ylim = c(518500, 531000)) +
+  labs(title = &quot;Map of all plots but block &#39;og&#39;&quot;) +
+  ggspatial::annotation_scale() +
+  ggspatial::annotation_north_arrow(location = &quot;br&quot;) +
+  theme_gray()</code></pre>
+<p>By eye at least, the pattern doesn’t seem obvious on the map. And the observed SES values seems to vary widely within each forest block.</p>
 </div>
 </div>
 <div id="comparing-facets" class="section level1">
 <h1>Comparing facets</h1>
+<p>One burning question in the scientific literature and that is quite debated still is the relationship between taxonomic, functional, and phylogenetic diversity <span class="citation">(<strong>Pavoine_Correlations_2013?</strong>)</span>.</p>
+<p>We can leverage on the computation we have to test the relationships between all facets of diversity. <strong>/! NOTE</strong>: Because we had trouble with the phylogenetic tree, we’re not strictly comparing the same subset of data, we’re going to compare them anyway for the sake of the example. The proper way would be to subset the similar sets of species and recompute functional diversity.</p>
+<pre class="r"><code># Combine taxonomic, functiona
+all_diversity = merge(
+  plot_data[, c(&quot;plot.code&quot;, &quot;ntaxa&quot;)],
+  merge(
+    ses_fd, ses_mpd_999[, -1], by = &quot;plot.code&quot;
+  )
+)
+
+# Comparison of observed values
+pairs(all_diversity[, c(&quot;ntaxa&quot;, &quot;FRic&quot;, &quot;Q&quot;, &quot;FEve&quot;, &quot;mpd.obs&quot;)],
+      upper.panel = panel.cor)
+
+# Comparison of SESs
+pairs(all_diversity[, c(&quot;ntaxa&quot;, &quot;ses_FRic&quot;, &quot;ses_Q&quot;, &quot;ses_FEve&quot;, &quot;mpd.obs.z&quot;)],
+      upper.panel = panel.cor)</code></pre>
+<p><strong>Question for you</strong></p>
+<ul>
+<li><strong>Q28</strong>: How are related are observed values of functional diversity and phylogenetic diversity? What about the SESs?</li>
+</ul>
 </div>
 <div id="modelling-the-effect-of-logging-and-other-variables" class="section level1">
 <h1>Modelling the effect of logging and other variables</h1>
+<p>We now have all values to properly build a statistical model of the relationship between diversity facets and the different co-variables.</p>
 </div>
 <div id="references" class="section level1 unnumbered">
 <h1 class="unnumbered">References</h1>
