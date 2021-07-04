@@ -321,6 +321,7 @@ $(document).ready(function () {
 <li><a href="#getting-the-phylogenetic-tree">Getting the phylogenetic tree</a></li>
 <li><a href="#visualizing-the-phylogenetic-tree">Visualizing the phylogenetic tree</a></li>
 <li><a href="#computing-phylogenetic-diversity-indices">Computing phylogenetic diversity indices</a></li>
+<li><a href="#null-modeling-1">Null Modeling</a></li>
 <li><a href="#mapping-phylogenetic-diversity">Mapping phylogenetic diversity</a></li>
 </ul></li>
 <li><a href="#comparing-facets">Comparing facets</a></li>
@@ -820,7 +821,7 @@ str(phylo_tree)</code></pre>
 <p>You can visualize the taxa in the phylogenetic tree in the <code>tip.label</code> slot of the phylogenetic tree:</p>
 <pre class="r"><code>phylo_tree$tip.label</code></pre>
 <ul>
-<li>**Q22*: What do you notice with the species names? Especially compared to the ones available in <code>species_traits</code>.</li>
+<li><strong>Q22</strong>: What do you notice with the species names? Especially compared to the ones available in <code>species_traits</code>.</li>
 </ul>
 <p>To solve the naming issue we’ll have to match the names used in the phylogenetic tree to the species code used in the site-species matrix. For that we’ll match the epitheton to the first code available. You do not need to understand this code and can just copy-paste it to execute it because we’re going to use it further down.</p>
 <pre class="r"><code># Create an indexed list of names
@@ -872,7 +873,44 @@ sub_phylo_com = sp_com[, as.character(code_species$species.code)]
 dim(sub_phylo_com)</code></pre>
 <p>To measure phylogenetic diversity we will compute the Mean Pairwise Distance (MPD, <span class="citation">Webb (2000)</span>) using the <code>picante</code> package. The MPD is an index that represents the average distance between all pairs of species occurring in the community. It can also be weighted by the abundance or the biomass of considered species so that more weight is given to species that show the greatest abundance.</p>
 <p>The first data needed to compute the MPD is the phylogenetic distance between pair of species. We’ll use the cophenetic distance which represent the same relationships as a phylogenetic tree but through a distance matrix. We can use the function <code>cophenetic.phylo()</code> in the <code>ape</code> package to obtain cophenetic distances.</p>
-<pre class="r"><code>cophen_dist = ape::cophenetic.phylo(phylo_tree)</code></pre>
+<pre class="r"><code># Compute cophenetic distances from the phylogenetic tree
+cophen_dist = ape::cophenetic.phylo(phylo_tree)
+
+str(cophen_dist)
+
+# We need to change the names to species codes
+corres_codes = data.frame(
+  species = rownames(cophen_dist)
+)
+corres_codes = merge(corres_codes, code_species, by = &quot;species&quot;)
+rownames(cophen_dist) = corres_codes$species.code
+colnames(cophen_dist) = corres_codes$species.code</code></pre>
+<p>Then to compute MPD we use the <code>mpd()</code> function in the <code>picante</code> package.</p>
+<pre class="r"><code># Observed Mean Pairwise Distance
+# Unweighted
+mpd_val_uw = picante::mpd(sub_phylo_com, cophen_dist, abundance.weighted = FALSE)
+# Weighted
+mpd_val_w = picante::mpd(sub_phylo_com, cophen_dist, abundance.weighted = TRUE)
+
+# Make a nice data.frame with observed MPD values
+obs_mpd = data.frame(
+  plot.code = rownames(sub_phylo_com),
+  mpd_unweighted = mpd_val_uw,
+  mpd_weighted = mpd_val_w
+)
+
+# Add forest loss proportion and richness for each site
+obs_mpd = merge(obs_mpd, plot_data[, c(&quot;plot.code&quot;, &quot;forestloss17&quot;, &quot;ntaxa&quot;)])</code></pre>
+<p><strong>Questions for you</strong></p>
+<ul>
+<li><strong>Q23</strong>: What are the relationships between weighted and unweighted version of the MPD?</li>
+<li><strong>Q24</strong>: What are the relationships between MPD and taxa richness? And with forest loss? Plot these relationships to visualize them and use the <code>cor.test()</code> function to validate your observations.</li>
+</ul>
+</div>
+<div id="null-modeling-1" class="section level2">
+<h2>Null Modeling</h2>
+<p>Because of the expected relationship between MPD and species richness, we have to perform null models in a similar fashion to what we’ve done for functional diversity indices. Because, as with functional diversity, we want to keep null sites with same total biomass and same total biomass per species as observed sites, we can perform a “swap” null model. We will use a null model that shuffle the names of the species at the tip of the phylogenetic tree.</p>
+<p>Fortunately, compared to functional diversity, the null models are all integrated in the <code>ses.mpd()</code> function in the <code>picante</code> package. The null model we’ll use is the <code>"taxa.labels"</code> one. <strong>Caution</strong>: null models can be computationally challenging; for the sake of the example we’ll do only 99 iterations but as for functional diversity a version of the null models with 999</p>
 </div>
 <div id="mapping-phylogenetic-diversity" class="section level2">
 <h2>Mapping phylogenetic diversity</h2>
