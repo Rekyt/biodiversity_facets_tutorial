@@ -5,8 +5,6 @@ Matthias Grenié & Marten Winter
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# Macroecology and Macroevolution under Global Changes - Practical session 01 - “Biodiversity facets in macro-space”
-
 This the first practical session in the course “Macroecology and
 Macroevolution under Global Change”. This practical session is going to
 be linked to lectures 2 and 3 on biodiversity facets.
@@ -23,6 +21,7 @@ Contact us via Slack or email for any further questions.
 -   Learning how to compute functional diversity indices with
     `fundiversity`
 -   Learning how to compute phylogenetic diversity indices with `ape`
+    and `picante`
 -   Know the difference between facets of functional and phylogenetic
     diversity indices
 -   Visualize biodiversity facets on the map
