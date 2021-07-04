@@ -326,7 +326,11 @@ $(document).ready(function () {
 <li><a href="#mapping-phylogenetic-diversity">Mapping phylogenetic diversity</a></li>
 </ul></li>
 <li><a href="#comparing-facets">Comparing facets</a></li>
-<li><a href="#modelling-the-effect-of-logging">Modelling the effect of logging</a></li>
+<li><a href="#modelling-the-effect-of-logging">Modelling the effect of logging</a>
+<ul>
+<li><a href="#single-predictor-models">Single-predictor models</a></li>
+<li><a href="#multi-predictors-models">Multi-predictors models</a></li>
+</ul></li>
 <li><a href="#references">References</a></li>
 </ul>
 </div>
@@ -356,6 +360,7 @@ $(document).ready(function () {
     &quot;fundiversity&quot;
     &quot;ggplot2&quot;,
     &quot;ggspatial&quot;,
+    &quot;performance&quot;,
     &quot;picante&quot;,
     &quot;rnaturalearth&quot;,
     &quot;sf&quot;)
@@ -951,7 +956,7 @@ ggplot() +
     aes(color = mpd.obs.z)
   ) +
   scale_color_distiller(type = &quot;div&quot;, palette = &quot;RdYlBu&quot;,
-                     name =  &quot;SES of MPD&quot;) +
+                        name =  &quot;SES of MPD&quot;) +
   coord_sf(crs = sf::st_crs(3376), xlim = c(875000, 890000),
            ylim = c(518500, 531000)) +
   labs(title = &quot;Map of all plots but block &#39;og&#39;&quot;) +
@@ -987,7 +992,74 @@ pairs(all_diversity[, c(&quot;ntaxa&quot;, &quot;ses_FRic&quot;, &quot;ses_Q&quo
 </div>
 <div id="modelling-the-effect-of-logging" class="section level1">
 <h1>Modelling the effect of logging</h1>
-<p>Finally! We now have all we need to properly build a statistical model of the relationship between diversity facets and the different co-variables. We’ll be building linear models with <code>lm()</code> with</p>
+<p>Finally! We now have all we need to properly build a statistical model of the relationship between diversity facets and the different co-variables. We’ll be building linear models with <code>lm()</code> with environmental variables and possible co-variables that may confound the effect of logging.</p>
+<p>We first combine the diversity metrics to the environmental co-variables:</p>
+<pre class="r"><code>plot_div_env = merge(
+  all_diversity,
+  plot_data[, c(1, 6:21)],
+  by = &quot;plot.code&quot;
+)
+
+dim(plot_div_env)
+head(plot_div_env)</code></pre>
+<div id="single-predictor-models" class="section level2">
+<h2>Single-predictor models</h2>
+<p>Then we can build models of disturbance variables on diversity metrics. Let’s build individual models with the main disturbance variables: local forest loss <code>forestloss17</code>, primary road density <code>roaddensprim</code>, and distance to primary roads <code>roaddistprim</code>.</p>
+<p>First a model on taxa richness:</p>
+<pre class="r"><code>mod_taxa_loss = lm(ntaxa ~ forestloss17, data = plot_div_env)
+
+mod_taxa_loss
+summary(mod_taxa_loss)</code></pre>
+<p>We can plot the regression line from the model with the data with the following:</p>
+<pre class="r"><code>par(mfrow = c(1, 1))
+plot(mod_taxa_loss$model$forestloss17, mod_taxa_loss$model$ntaxa,
+     xlab = &quot;Forest Loss (%)&quot;, ylab = &quot;Taxa Richness&quot;)
+abline(coef = coef(mod_taxa_loss), col = &quot;darkred&quot;, lwd = 1)</code></pre>
+<p><strong>Questions for you</strong></p>
+<ul>
+<li><strong>Q29</strong>: How would you qualify the effect of forest loss on the taxa richness?</li>
+<li><strong>Q30</strong>: With the same formula build similar models with the other predictors <code>roaddensprim</code> and <code>roaddistprim</code>. How do they compare with forest loss?</li>
+</ul>
+<p>We can now build similar models for both functional and phylogenetic diversity. Because we do not want to consider the potential confounding factor of taxa richness we can consider directly the SES values we carefully built with our null models.</p>
+<pre class="r"><code>mod_fd_loss = lm(ses_Q ~ forestloss17, data = plot_div_env)
+mod_pd_loss = lm(mpd.obs.z ~ forestloss17, data = plot_div_env)</code></pre>
+</div>
+<div id="multi-predictors-models" class="section level2">
+<h2>Multi-predictors models</h2>
+<p>Because of the many possible confounding variables (different local environmental conditions, difference in vegetation types) we should build a model with many more predictors.</p>
+<p>Let’s build a complete model with all environmental predictors:</p>
+<pre class="r"><code>mod_taxa_all = lm(
+  ntaxa ~ elevation + forestloss17 + forestloss562 + roaddenssec +
+    roaddistprim + soilPC1 + soilPC2,
+  data = plot_div_env
+)
+mod_fd_all = lm(
+  ses_Q ~ elevation + forestloss17 + forestloss562 + roaddenssec +
+    roaddistprim + soilPC1 + soilPC2,
+  data = plot_div_env
+)
+mod_pd_all = lm(
+  mpd.obs.z ~ elevation + forestloss17 + forestloss562 + roaddenssec +
+    roaddistprim + soilPC1 + soilPC2,
+  data = plot_div_env
+)</code></pre>
+<p><strong>Question for you</strong></p>
+<ul>
+<li><strong>Q31</strong>: What can you say about the effect of the disturbances on the different diversity metrics? What are the explanatory power of our models?</li>
+</ul>
+<p>To explain the issues we have with the models we can look at the model diagnostics:</p>
+<pre class="r"><code>par(mfrow = c(2, 2))
+plot(mod_taxa_all)
+# Or even better
+performance::check_model(mod_taxa_all)</code></pre>
+<p>To go further (but it’s beyond the scope of this tutorial) we could follow the tracks of the paper:</p>
+<ol style="list-style-type: decimal">
+<li>Build a generalized linear model (GLM) when working with taxa richness as it is a count data.</li>
+<li>Leverage the fact that we have a block design in our sampling data and use mixed-models to account for that (the observations are not fully independent of one another and are structured in groups).</li>
+<li>Account for some non-linear effects of some predictors (forest loss have a strong quadratic component).</li>
+<li>Perform model averaging or model selection to prune the model to the most important predictors.</li>
+</ol>
+</div>
 </div>
 <div id="references" class="section level1 unnumbered">
 <h1 class="unnumbered">References</h1>
