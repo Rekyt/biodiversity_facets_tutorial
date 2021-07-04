@@ -74,9 +74,12 @@ tools:
     Biogeography](https://github.com/patrickweigelt/MCMMB/) course
     accessible with this link:
     <http://htmlpreview.github.io/?https://github.com/patrickweigelt/MCMMB/blob/master/index.html>.
--   The following [Legras et al. 2018
+-   The [Legras et al. 2018
     paper](https://doi.org/10.1016/j.actao.2018.02.007) on functional
     diversity concepts.
+-   The [Community Phylogenetics in R
+    Workshop](https://pedrohbraga.github.io/CommunityPhylogenetics-Workshop/CommunityPhylogenetics-Workshop.html)
+    by Pedro Henrique P. Braga and Katherine Hébert.
 
 ## License
 
