@@ -299,6 +299,7 @@ $(document).ready(function () {
 <li><a href="#setup">Setup</a>
 <ul>
 <li><a href="#rstudio">RStudio</a></li>
+<li><a href="#following-the-tutorial">Following the tutorial</a></li>
 <li><a href="#installing-needed-packages">Installing needed packages</a></li>
 </ul></li>
 <li><a href="#context-of-the-study">Context of the study</a></li>
@@ -335,6 +336,15 @@ $(document).ready(function () {
 <div id="rstudio" class="section level2">
 <h2>RStudio</h2>
 <p>Double-click on the <code>.Rproj</code> file which is as the root of the folder you downloaded. This should open a new session in RStudio that will start at the root of the project folder.</p>
+</div>
+<div id="following-the-tutorial" class="section level2">
+<h2>Following the tutorial</h2>
+<p>To follow the tutorial you have plenty of options:</p>
+<ol style="list-style-type: decimal">
+<li>It is accessible online at <a href="https://rekyt.github.io/biodiversity_facets_tutorial/" class="uri">https://rekyt.github.io/biodiversity_facets_tutorial/</a> click on <code>Tutorial</code> in the navigation bar to access the tutorial.</li>
+<li>You can access open the <code>diversity_facets_tutorial.Rmd</code> in RStudio to follow along.</li>
+<li>You can also open the <code>diversity_facets_tutorial.R</code> in RStudio to get only the code to execute exactly the codes here.</li>
+</ol>
 </div>
 <div id="installing-needed-packages" class="section level2">
 <h2>Installing needed packages</h2>
@@ -977,7 +987,7 @@ pairs(all_diversity[, c(&quot;ntaxa&quot;, &quot;ses_FRic&quot;, &quot;ses_Q&quo
 </div>
 <div id="modelling-the-effect-of-logging" class="section level1">
 <h1>Modelling the effect of logging</h1>
-<p>We now have all values to properly build a statistical model of the relationship between diversity facets and the different co-variables.</p>
+<p>Finally! We now have all we need to properly build a statistical model of the relationship between diversity facets and the different co-variables. We’ll be building linear models with <code>lm()</code> with</p>
 </div>
 <div id="references" class="section level1 unnumbered">
 <h1 class="unnumbered">References</h1>
