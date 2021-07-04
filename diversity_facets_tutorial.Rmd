@@ -639,8 +639,8 @@ ggplot() +
     data = merge(subset(plot_sf, block != "og"), ses_fd, by = "plot.code"),
     aes(color = ses_Q)
   ) +
-  scale_color_brewer(type = "div", palette = "RdYlBu",
-                     name =  "SES of Rao's Quadratic Entropy") +
+  scale_color_distiller(type = "div", palette = "RdYlBu",
+                        name =  "SES of Rao's Quadratic Entropy") +
   coord_sf(crs = sf::st_crs(3376), xlim = c(875000, 890000),
            ylim = c(518500, 531000)) +
   labs(title = "Map of all plots but block 'og'") +
@@ -801,16 +801,91 @@ obs_mpd = merge(obs_mpd, plot_data[, c("plot.code", "forestloss17", "ntaxa")])
 
 Because of the expected relationship between MPD and species richness, we have to perform null models in a similar fashion to what we've done for functional diversity indices. Because, as with functional diversity, we want to keep null sites with same total biomass and same total biomass per species as observed sites, we can perform a "swap" null model. We will use a null model that shuffle the names of the species at the tip of the phylogenetic tree.
 
-Fortunately, compared to functional diversity, the null models are all integrated in the `ses.mpd()` function in the `picante` package. The null model we'll use is the `"taxa.labels"` one. **Caution**: null models can be computationally challenging; for the sake of the example we'll do only 99 iterations but as for functional diversity a version of the null models with 999 
+Fortunately, compared to functional diversity, the null models are all integrated in the `ses.mpd()` function in the `picante` package. The null model we'll use is the `"taxa.labels"` one. **Caution**: null models can be computationally challenging; for the sake of the example we'll do only 99 iterations but as for functional diversity a version of the null models with 999 iterations is saved in the data folder.
+
+```{r ses-mpd}
+# Set random seed for repeatability of analysis
+set.seed(20210705)
+
+# Compute null permutation of MPD
+ses_mpd = picante::ses.mpd(
+  sub_phylo_com, cophen_dist, null.model = "taxa.labels",
+  abundance.weighted = TRUE, runs = 99
+)
+head(ses_mpd)
+```
+
+The function `ses.mpd()` computes many values. You can get the detail by looking at the help of the functions with `?picante::ses.mpd` in the `Value` section.
+
+We'll now load the version with 999 iterations.
+
+```{r ses-mpd-999}
+ses_mpd_999 = readRDS("data/null_mpd_999.Rds")
+```
+
+**Question for you**
+
+* **Q25**: Explain what does the column `mpd.obs.z` means? How does this compare with the SES values we computed for functional diversity indices?
+* **Q26**: How does the standardized value relates with taxa richness?
+* **Q27**: What are the relationships between MPD values considering null models and forest loss? Visualize the relationships with the `plot()` function, validate your observations with the `cor.test()` function.
 
 
 ## Mapping phylogenetic diversity
 
+In order to see if there is a geographical pattern in phylogenetic diversity we can plot maps of MPD.
+
+```{r map-ses-mpd}
+ses_mpd_999$plot.code = rownames(ses_mpd_999)
+
+ggplot() +
+  geom_sf(
+    data = merge(subset(plot_sf, block != "og"), ses_mpd_999, by = "plot.code"),
+    aes(color = mpd.obs.z)
+  ) +
+  scale_color_distiller(type = "div", palette = "RdYlBu",
+                     name =  "SES of MPD") +
+  coord_sf(crs = sf::st_crs(3376), xlim = c(875000, 890000),
+           ylim = c(518500, 531000)) +
+  labs(title = "Map of all plots but block 'og'") +
+  ggspatial::annotation_scale() +
+  ggspatial::annotation_north_arrow(location = "br") +
+  theme_gray()
+```
+
+By eye at least, the pattern doesn't seem obvious on the map. And the observed SES values seems to vary widely within each forest block.
 
 # Comparing facets
 
+One burning question in the scientific literature and that is quite debated still is the relationship between taxonomic, functional, and phylogenetic diversity [@Pavoine_Correlations_2013].
+
+We can leverage on the computation we have to test the relationships between all facets of diversity. **/!\ NOTE**: Because we had trouble with the phylogenetic tree, we're not strictly comparing the same subset of data, we're going to compare them anyway for the sake of the example. The proper way would be to subset the similar sets of species and recompute functional diversity.
+
+```{r all-diversity-facets}
+# Combine taxonomic, functiona
+all_diversity = merge(
+  plot_data[, c("plot.code", "ntaxa")],
+  merge(
+    ses_fd, ses_mpd_999[, -1], by = "plot.code"
+  )
+)
+
+# Comparison of observed values
+pairs(all_diversity[, c("ntaxa", "FRic", "Q", "FEve", "mpd.obs")],
+      upper.panel = panel.cor)
+
+# Comparison of SESs
+pairs(all_diversity[, c("ntaxa", "ses_FRic", "ses_Q", "ses_FEve", "mpd.obs.z")],
+      upper.panel = panel.cor)
+```
+
+**Question for you**
+
+* **Q28**: How are related are observed values of functional diversity and phylogenetic diversity? What about the SESs?
+
 
 # Modelling the effect of logging and other variables
+
+We now have all values to properly build a statistical model of the relationship between diversity facets and the different co-variables.
 
 
 # References
