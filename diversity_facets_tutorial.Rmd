@@ -3,8 +3,6 @@ title: "Biodiversity Facets tutorial"
 author: "Matthias Grenié & Marten Winter"
 date: "Monday July 5th 2021"
 output:
-  pdf_document:
-    toc: yes
   html_document:
     toc: yes
 bibliography: bibliography.bib
