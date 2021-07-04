@@ -18,17 +18,7 @@ knitr::opts_chunk$set(echo = TRUE, eval = FALSE)
 
 ## RStudio
 
-To make sure you follow along the whole tutorial you can create a new RStudio project to put all related code and data in.
-Click on `File` > `New Project...` > `New Directory` > `New Project` > Give it a name like `diversity_facets_tutorial` and place it in your computer.
-
-This will create a new folder with an `.Rproj` file. This will let you easily return to the project without having to manually change your working directory with `setwd()` and `getwd()`.
-
-```{r create-project, eval = FALSE, include=FALSE}
-ifelse(require("rstudioapi"), NULL,install.packages("rstudioapi"))
-
-# Create and open the new project directly
-rstudioapi::openProject("diversity_facets_tutorial", newSession = TRUE)
-```
+Double-click on the `.Rproj` file which is as the root of the folder you downloaded. This should open a new session in RStudio that will start at the root of the project folder.
 
 ## Installing needed packages
 
@@ -52,7 +42,7 @@ install.packages(
 
 # Context of the study
 
-We will be using the data from the following study:
+We will be using the data from the following study [@Dobert_Logging_2017]:
 
 > Döbert, T.F., Webber, B.L., Sugau, J.B., Dickinson, K.J.M. and Didham, R.K. (2017), Logging increases the functional and phylogenetic dispersion of understorey plant communities in tropical lowland rain forest. J Ecol, 105: 1235-1245. https://doi.org/10.1111/1365-2745.12794
 
@@ -65,7 +55,7 @@ Our goal with this tutorial is to reproduce the analyses from the paper and anal
 
 # Loading the data
 
-Fortunately for us, the authors of the study have shared openly the data they used in their article. They are available through the Dryad platform at the following link: https://doi.org/10.5061/dryad.f77p7
+Fortunately for us, the authors of the study have shared openly the data they used in their article [@Dobert_Data_2018]. They are available through the Dryad platform at the following link: https://doi.org/10.5061/dryad.f77p7
 
 > Döbert, Timm F. et al. (2018), Data from: Logging increases the functional and phylogenetic dispersion of understorey plant communities in tropical lowland rainforest, Dryad, Dataset, https://doi.org/10.5061/dryad.f77p7
 
@@ -73,11 +63,13 @@ The fact that these data researchers provided the full dataset including all dat
 
 ## Getting the data
 
-To get the data you can follow the above-mentioned link https://doi.org/10.5061/dryad.f77p7 and click on the "Download Dataset" button available on the top right of the webpage. It will download a .zip file that you can unzip in the folder you created for the project. This will create a folder named `doi_10.5061_dryad.f77p7__v1` that contains all needed data files. We've also included a copy of the unzipped file in the `data` folder of the practical project.
+To get the data you can follow the above-mentioned link https://doi.org/10.5061/dryad.f77p7 and click on the "Download Dataset" button available on the top right of the webpage. It will download a .zip file that you can unzip in the folder you created for the project. This will create a folder named `doi_10.5061_dryad.f77p7__v1` that contains all needed data files.
+
+**NOTE**: We've also included a copy of the unzipped file in the `data` folder of the practical project.
 
 ## Summarizing the data
 
-The zip file contains 5 files (also available in the `data/` folder):
+The zip file contains 5 files (also available in the `data/doi_10.5061_dryad.f77p7__v1/` folder):
 
 * `README.txt` which is a text file that describes the content of the other files with great precision. It details all the columns available in the other files.
 * `PlotData.csv` is a comma-separated file that describes characteristics for each of the sampled vegetation plots including logging metrics, environmental variables as well as taxonomic, functional and phylogenetic diversity indices (to which we'll compare the indices we compute ourselves).
@@ -139,8 +131,7 @@ Now that we loaded all the datasets we can proceed to compute functional diversi
 
 ## Computing Biomass-weighted mean traits per plot
 
-One first way to compute functional diversity is to compute mono-dimensional trait dimension.
-We can compute the average trait observed at each plot to described the effect of logging on the understorey vegetation. Because we're interested in the average trait possessed by the community we can compute the community-weighted mean trait $CWM_i$ as follow:
+One first way to compute functional diversity is to compute mono-dimensional trait diversity [@Lavorel_Predicting_2002]. We can compute the average trait observed at each plot to described the effect of logging on the understorey vegetation. Because we're interested in the average trait possessed by the community we can compute the community-weighted mean trait $CWM_i$ as follow:
 
 \begin{equation}
 CWM_i = \sum_{j = 1}^{S} b_{ij} \times t_j
@@ -148,7 +139,7 @@ CWM_i = \sum_{j = 1}^{S} b_{ij} \times t_j
 
 $CWM_i$ is the community-weighted mean trait in plot $i$, $S$ is the total number of species, $b_{ij}$ is the biomass of species $j$ in plot $i$, and $t_j$ is the trait of species $j$.
 
-To do so we will use the function `functcomp()` in the `FD` package. But we first need to organize our data.
+To do so we will use the function `functcomp()` in the `FD` package [@Laliberte_distancebased_2010]. But we first need to organize our data.
 
 ```{r data-wrangle}
 # Make site-species data.frame
