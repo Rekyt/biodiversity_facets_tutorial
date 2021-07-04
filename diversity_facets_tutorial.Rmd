@@ -37,7 +37,7 @@ install.packages(
   c("ade4",
     "ape",
     "FD",
-    "fundiversity"
+    "fundiversity",
     "ggplot2",
     "ggspatial",
     "performance",
@@ -861,7 +861,7 @@ One burning question in the scientific literature and that is quite debated stil
 We can leverage on the computation we have to test the relationships between all facets of diversity. **/!\\ NOTE**: Because we had trouble with the phylogenetic tree, we're not strictly comparing the same subset of data, we're going to compare them anyway for the sake of the example. The proper way would be to subset the similar sets of species and recompute functional diversity.
 
 ```{r all-diversity-facets}
-# Combine taxonomic, functiona
+# Combine taxonomic, functional, and phylogenetic diversity
 all_diversity = merge(
   plot_data[, c("plot.code", "ntaxa")],
   merge(
