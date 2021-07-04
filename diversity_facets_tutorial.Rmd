@@ -788,7 +788,7 @@ obs_mpd = merge(obs_mpd, plot_data[, c("plot.code", "forestloss17", "ntaxa")])
 * **Q24**: What are the relationships between MPD and taxa richness? And with forest loss? Plot these relationships to visualize them and use the `cor.test()` function to validate your observations.
 
 
-## Null Modeling 
+## Null modeling 
 
 Because of the expected relationship between MPD and species richness, we have to perform null models in a similar fashion to what we've done for functional diversity indices. Because, as with functional diversity, we want to keep null sites with same total biomass and same total biomass per species as observed sites, we can perform a "swap" null model. We will use a null model that shuffle the names of the species at the tip of the phylogenetic tree.
 
@@ -814,7 +814,7 @@ We'll now load the version with 999 iterations.
 ses_mpd_999 = readRDS("data/null_mpd_999.Rds")
 ```
 
-**Question for you**
+**Questions for you**
 
 * **Q25**: Explain what does the column `mpd.obs.z` means? How does this compare with the SES values we computed for functional diversity indices?
 * **Q26**: How does the standardized value relates with taxa richness?
@@ -849,7 +849,7 @@ By eye at least, the pattern doesn't seem obvious on the map. And the observed S
 
 One burning question in the scientific literature and that is quite debated still is the relationship between taxonomic, functional, and phylogenetic diversity [@Pavoine_Correlations_2013].
 
-We can leverage on the computation we have to test the relationships between all facets of diversity. **/!\ NOTE**: Because we had trouble with the phylogenetic tree, we're not strictly comparing the same subset of data, we're going to compare them anyway for the sake of the example. The proper way would be to subset the similar sets of species and recompute functional diversity.
+We can leverage on the computation we have to test the relationships between all facets of diversity. **/!\\ NOTE**: Because we had trouble with the phylogenetic tree, we're not strictly comparing the same subset of data, we're going to compare them anyway for the sake of the example. The proper way would be to subset the similar sets of species and recompute functional diversity.
 
 ```{r all-diversity-facets}
 # Combine taxonomic, functiona
