@@ -579,7 +579,7 @@ ggplot() +
   scale_color_viridis_c() +
   coord_sf(crs = sf::st_crs(3376), xlim = c(-1072025.83, 1053446.00),
            ylim = c(85496.43, 767752.41)) +
-  labs(title = "Map of plots focused on Malaysia")
+  labs(title = "Map of plots focused on Malaysia") +
 ggspatial::annotation_scale() +
   theme_bw()
 ```
@@ -647,6 +647,7 @@ ggplot() +
   ggspatial::annotation_scale() +
   ggspatial::annotation_north_arrow(location = "br") +
   theme_gray()
+
 ```
 
 Even with all this effort it is not clear how the SES varies between sites. But at least you're more informed about where the data we're studying comes from.
