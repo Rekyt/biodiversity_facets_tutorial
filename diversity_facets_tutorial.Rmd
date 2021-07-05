@@ -198,6 +198,7 @@ plot(cwm_env$roaddensprim, cwm_env$height,
      xlab = "Road density (km.km^-2)", ylab = "Biomass-weighted height",
      main = "CWM Height vs. road density")
 ```
+
 **Questions for you:**
 
 * **Q7**: How would you describe the relationship between the different CWMs and forest loss?
@@ -234,7 +235,7 @@ plot(non_quanti_cwm$forestloss17, non_quanti_cwm$woody_no,
      main = "Biomass of non-woody species vs. forest loss")
 ```
 
-**Questions for you**
+**Question for you**
 
 * **Q10**: How does this observation compare to above description of the change of understorey vegetation along the forest loss gradient?
 
@@ -322,6 +323,7 @@ plot(site_env_fd$roaddensprim, site_env_fd$FRic,
      xlab = "Primary Road Density (km.km^-2)", ylab = "Functional Richness (FRic)",
      main = "FRic vs. road density")
 ```
+
 **Questions for you**
 
 * **Q13**: How would you describe the relationships between functional diversity and forest loss and road density?
@@ -680,6 +682,8 @@ You can visualize the taxa in the phylogenetic tree in the `tip.label` slot of t
 ```{r phylo-species}
 phylo_tree$tip.label
 ```
+
+**Question for you**
 
 * **Q22**: What do you notice with the species names? Especially compared to the ones available in `species_traits`.
 
