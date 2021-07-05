@@ -723,7 +723,7 @@ Now that we have a clear correspondance between species code and phylogenetic na
 
 We can visualize the phylogenetic tree to better understand the relationship between species. With more than 600 taxa, the visualization can be quite challenging and some ajustements should be made to ease the vizualition.
 
-The easiest way to show the phylogenetic tree is to use the `plot.tree()` function available through the `ape` package.
+The easiest way to show the phylogenetic tree is to use the `plot.phylo()` function available through the `ape` package.
 
 ```{r plot-tree}
 ape::plot.phylo(phylo_tree)
