@@ -77,11 +77,11 @@ Here are answers regarding all the questions asked in the tutorial.
 
 # Modelling the effect of logging (**Q29**-**Q31**)
 
-## Single-predictor models
+## Single-predictor models (**Q29**-**Q30**)
 
 * **Q29**: How would you qualify the effect of forest loss on the taxa richness?
 * **Q30**: With the same formula build similar models with the other predictors `roaddensprim` and `roaddistprim`. How do they compare with forest loss?
 
-## Multi-predictors models
+## Multi-predictors models (**Q31**)
 
 * **Q31**: What can you say about the effect of the disturbances on the different diversity metrics? What are the explanatory power of our models?
