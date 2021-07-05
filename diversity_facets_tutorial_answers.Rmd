@@ -5,7 +5,6 @@ date: "Monday July 5th 2021"
 output:
   html_document:
     toc: yes
-bibliography: bibliography.bib
 editor_options:
   chunk_output_type: console
 ---
