@@ -1,5 +1,7 @@
 name: biodiversity_facets_practical
 output_dir: docs
+exclude: ["data/", "other_docs/", "paper/", "rosm.cache/", "bibliography.bib",
+          "*.odp"]
 navbar:
   title: Biodiversity Facets Tutorial
   type: inverse
