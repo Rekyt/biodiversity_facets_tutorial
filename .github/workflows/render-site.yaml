@@ -1,8 +1,7 @@
 on:
   push:
     paths:
-      - 'README.Rmd'
-      - 'diversity_facets_tutorial.Rmd'
+      - "*.Rmd"
 
 name: Render site
 
