@@ -276,6 +276,9 @@ $(document).ready(function () {
 <li>
   <a href="diversity_facets_tutorial.html">Tutorial</a>
 </li>
+<li>
+  <a href="diversity_facets_tutorial_answers.html">Answers</a>
+</li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         
@@ -502,7 +505,7 @@ non_quanti_cwm = merge(
 plot(non_quanti_cwm$forestloss17, non_quanti_cwm$woody_no,
      xlab = &quot;Forest loss (%)&quot;, ylab = &quot;Sum of biomass of non-woody species&quot;,
      main = &quot;Biomass of non-woody species vs. forest loss&quot;)</code></pre>
-<p><strong>Questions for you</strong></p>
+<p><strong>Question for you</strong></p>
 <ul>
 <li><strong>Q10</strong>: How does this observation compare to above description of the change of understorey vegetation along the forest loss gradient?</li>
 </ul>
@@ -762,7 +765,7 @@ ggplot() +
   scale_color_viridis_c() +
   coord_sf(crs = sf::st_crs(3376), xlim = c(-1072025.83, 1053446.00),
            ylim = c(85496.43, 767752.41)) +
-  labs(title = &quot;Map of plots focused on Malaysia&quot;)
+  labs(title = &quot;Map of plots focused on Malaysia&quot;) +
 ggspatial::annotation_scale() +
   theme_bw()</code></pre>
 <p>We can even zoom even more onto the plots to see them better:</p>
@@ -835,6 +838,7 @@ str(phylo_tree)</code></pre>
 </ul>
 <p>You can visualize the taxa in the phylogenetic tree in the <code>tip.label</code> slot of the phylogenetic tree:</p>
 <pre class="r"><code>phylo_tree$tip.label</code></pre>
+<p><strong>Question for you</strong></p>
 <ul>
 <li><strong>Q22</strong>: What do you notice with the species names? Especially compared to the ones available in <code>species_traits</code>.</li>
 </ul>
@@ -869,7 +873,7 @@ dim(code_species)</code></pre>
 <div id="visualizing-the-phylogenetic-tree" class="section level2">
 <h2>Visualizing the phylogenetic tree</h2>
 <p>We can visualize the phylogenetic tree to better understand the relationship between species. With more than 600 taxa, the visualization can be quite challenging and some ajustements should be made to ease the vizualition.</p>
-<p>The easiest way to show the phylogenetic tree is to use the <code>plot.tree()</code> function available through the <code>ape</code> package.</p>
+<p>The easiest way to show the phylogenetic tree is to use the <code>plot.phylo()</code> function available through the <code>ape</code> package.</p>
 <pre class="r"><code>ape::plot.phylo(phylo_tree)</code></pre>
 <p>By default the function shows the phylogram type of phylogenetic tree and plot all the labels for all species. Let’s make it easier to read:</p>
 <pre class="r"><code>ape::plot.phylo(phylo_tree, type = &quot;fan&quot;, show.node.label = TRUE,
