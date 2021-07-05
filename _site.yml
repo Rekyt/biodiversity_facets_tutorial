@@ -9,6 +9,8 @@ navbar:
     href: index.html
   - text: Tutorial
     href: diversity_facets_tutorial.html
+  - text: Answers
+    href: diversity_facets_tutorial_answers.html
 
 output:
   html_document:
