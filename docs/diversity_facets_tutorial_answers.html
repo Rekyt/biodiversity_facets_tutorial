@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+<meta name="author" content="Matthias Grenié &amp; Marten Winter" />
+
+
+<title>Answers to questions Biodiversity Facets tutorial</title>
+
+<script src="site_libs/header-attrs-2.9/header-attrs.js"></script>
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/united.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.tab('show');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+
+
+<div class="navbar navbar-inverse  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Biodiversity Facets Tutorial</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">
+    <span class="fa fa-home"></span>
+     
+    Home
+  </a>
+</li>
+<li>
+  <a href="diversity_facets_tutorial.html">Tutorial</a>
+</li>
+<li>
+  <a href="diversity_facets_tutorial_answers.html">Answers</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">Answers to questions Biodiversity Facets tutorial</h1>
+<h4 class="author">Matthias Grenié &amp; Marten Winter</h4>
+<h4 class="date">Monday July 5th 2021</h4>
+
+</div>
+
+<div id="TOC">
+<ul>
+<li><a href="#loading-the-data-q1-q6">Loading the data (<strong>Q1</strong>-<strong>Q6</strong>)</a>
+<ul>
+<li><a href="#summarizing-the-data">Summarizing the data</a></li>
+</ul></li>
+<li><a href="#functional-diversity-q7-q19">Functional diversity (<strong>Q7</strong>-<strong>Q19</strong>)</a>
+<ul>
+<li><a href="#computing-biomass-weighted-mean-traits-per-plot-q7-q9">Computing Biomass-weighted mean traits per plot (<strong>Q7</strong>-<strong>Q9</strong>)</a></li>
+<li><a href="#building-the-functional-space-q10-q12">Building the functional space (<strong>Q10</strong>-<strong>Q12</strong>)</a></li>
+<li><a href="#computing-functional-diversity-indices-q13-q15">Computing functional diversity indices (<strong>Q13</strong>-<strong>Q15</strong>)</a></li>
+<li><a href="#null-modeling-q16-q19">Null modeling (<strong>Q16</strong>-<strong>Q19</strong>)</a></li>
+</ul></li>
+<li><a href="#phylogenetic-diversity-q20-q27">Phylogenetic diversity (<strong>Q20</strong>-<strong>Q27</strong>)</a>
+<ul>
+<li><a href="#getting-the-phylogenetic-tree-q20-q21">Getting the phylogenetic tree (<strong>Q20</strong>-<strong>Q21</strong>)</a></li>
+<li><a href="#computing-phylogenetic-diversity-indices-q22-q24">Computing phylogenetic diversity indices (<strong>Q22</strong>-<strong>Q24</strong>)</a></li>
+<li><a href="#null-modeling-q25-q27">Null modeling (<strong>Q25</strong>-<strong>Q27</strong>)</a></li>
+</ul></li>
+<li><a href="#comparing-facets-q28">Comparing facets (<strong>Q28</strong>)</a></li>
+<li><a href="#modelling-the-effect-of-logging-q29-q31">Modelling the effect of logging (<strong>Q29</strong>-<strong>Q31</strong>)</a>
+<ul>
+<li><a href="#single-predictor-models-q29-q30">Single-predictor models (<strong>Q29</strong>-<strong>Q30</strong>)</a></li>
+<li><a href="#multi-predictors-models-q31">Multi-predictors models (<strong>Q31</strong>)</a></li>
+</ul></li>
+</ul>
+</div>
+
+<p>Here are answers regarding all the questions asked in the tutorial.</p>
+<div id="loading-the-data-q1-q6" class="section level1">
+<h1>Loading the data (<strong>Q1</strong>-<strong>Q6</strong>)</h1>
+<div id="summarizing-the-data" class="section level2">
+<h2>Summarizing the data</h2>
+<ul>
+<li><strong>Q1</strong>: How many plots were sampled?</li>
+<li><strong>Q2</strong>: How many species are there in the dataset?</li>
+<li><strong>Q3</strong>: How many traits are available?</li>
+<li><strong>Q4</strong>: How many of them are continuous? How many of them are discrete?</li>
+<li><strong>Q5</strong>: What is the most numerous family among all observed species?</li>
+<li><strong>Q6</strong>: What is the most numerous genus?</li>
+</ul>
+</div>
+</div>
+<div id="functional-diversity-q7-q19" class="section level1">
+<h1>Functional diversity (<strong>Q7</strong>-<strong>Q19</strong>)</h1>
+<div id="computing-biomass-weighted-mean-traits-per-plot-q7-q9" class="section level2">
+<h2>Computing Biomass-weighted mean traits per plot (<strong>Q7</strong>-<strong>Q9</strong>)</h2>
+<ul>
+<li><strong>Q7</strong>: How would you describe the relationship between the different CWMs and forest loss?</li>
+<li><strong>Q8</strong>: Can you test the correlation using the function <code>cor.test()</code> and does it support your previous statements?</li>
+<li><strong>Q9</strong>: How would you describe the understorey vegetation changes with increasing forest loss?</li>
+</ul>
+</div>
+<div id="building-the-functional-space-q10-q12" class="section level2">
+<h2>Building the functional space (<strong>Q10</strong>-<strong>Q12</strong>)</h2>
+<ul>
+<li><strong>Q10</strong>: How does this observation compare to above description of the change of understorey vegetation along the forest loss gradient?</li>
+<li><strong>Q11</strong>: Using the metadata available in the <code>README.txt</code> file, what is the meaning <code>pgf</code> column means?</li>
+<li><strong>Q12</strong>: How do you interpret the PCoA results given your answer to the previous question?</li>
+</ul>
+</div>
+<div id="computing-functional-diversity-indices-q13-q15" class="section level2">
+<h2>Computing functional diversity indices (<strong>Q13</strong>-<strong>Q15</strong>)</h2>
+<ul>
+<li><strong>Q13</strong>: How would you describe the relationships between functional diversity and forest loss and road density?</li>
+<li><strong>Q14</strong>: Using the plot generated by the code beneath how could you describe the relationships between the three different functional diversity indices we computed?</li>
+<li><strong>Q15</strong>: How does the relationship between indices with species richness compare with the one observed with total biomass values? (You can use the function <code>cor.test()</code> if you want to test the association)</li>
+</ul>
+</div>
+<div id="null-modeling-q16-q19" class="section level2">
+<h2>Null modeling (<strong>Q16</strong>-<strong>Q19</strong>)</h2>
+<ul>
+<li><strong>Q16</strong>: How would describe verbally the position of the observed value of FRic for site “a100f177r” compared to the null distribution?</li>
+<li><strong>Q17</strong>: What the quantile of the observed FRic value in the end?</li>
+<li><strong>Q18</strong>: Using the <code>subset()</code> function with the greater (or equal) than <code>&gt;=</code> and the lower (or equal) than <code>&lt;=</code>, can you determine how many sites show a significant deviation from the null observation? (absolute SES &gt;= 2)</li>
+<li><strong>Q19</strong>: Using similar code as used for observed values, what are the relationships between SES values and forest loss?</li>
+</ul>
+</div>
+</div>
+<div id="phylogenetic-diversity-q20-q27" class="section level1">
+<h1>Phylogenetic diversity (<strong>Q20</strong>-<strong>Q27</strong>)</h1>
+<div id="getting-the-phylogenetic-tree-q20-q21" class="section level2">
+<h2>Getting the phylogenetic tree (<strong>Q20</strong>-<strong>Q21</strong>)</h2>
+<ul>
+<li><strong>Q20</strong>: How many taxa are in the phylogenetic tree?</li>
+<li><strong>Q21</strong>: How does this number compare to the number of taxa found in the dataset?</li>
+</ul>
+</div>
+<div id="computing-phylogenetic-diversity-indices-q22-q24" class="section level2">
+<h2>Computing phylogenetic diversity indices (<strong>Q22</strong>-<strong>Q24</strong>)</h2>
+<ul>
+<li><strong>Q22</strong>: What do you notice with the species names? Especially compared to the ones available in <code>species_traits</code>.</li>
+<li><strong>Q23</strong>: What are the relationships between weighted and unweighted version of the MPD?</li>
+<li><strong>Q24</strong>: What are the relationships between MPD and taxa richness? And with forest loss? Plot these relationships to visualize them and use the <code>cor.test()</code> function to validate your observations.</li>
+</ul>
+</div>
+<div id="null-modeling-q25-q27" class="section level2">
+<h2>Null modeling (<strong>Q25</strong>-<strong>Q27</strong>)</h2>
+<ul>
+<li><strong>Q25</strong>: Explain what does the column <code>mpd.obs.z</code> means? How does this compare with the SES values we computed for functional diversity indices?</li>
+<li><strong>Q26</strong>: How does the standardized value relates with taxa richness?</li>
+<li><strong>Q27</strong>: What are the relationships between MPD values considering null models and forest loss? Visualize the relationships with the <code>plot()</code> function, validate your observations with the <code>cor.test()</code> function.</li>
+</ul>
+</div>
+</div>
+<div id="comparing-facets-q28" class="section level1">
+<h1>Comparing facets (<strong>Q28</strong>)</h1>
+<ul>
+<li><strong>Q28</strong>: How are related are observed values of functional diversity and phylogenetic diversity? What about the SESs?</li>
+</ul>
+</div>
+<div id="modelling-the-effect-of-logging-q29-q31" class="section level1">
+<h1>Modelling the effect of logging (<strong>Q29</strong>-<strong>Q31</strong>)</h1>
+<div id="single-predictor-models-q29-q30" class="section level2">
+<h2>Single-predictor models (<strong>Q29</strong>-<strong>Q30</strong>)</h2>
+<ul>
+<li><strong>Q29</strong>: How would you qualify the effect of forest loss on the taxa richness?</li>
+<li><strong>Q30</strong>: With the same formula build similar models with the other predictors <code>roaddensprim</code> and <code>roaddistprim</code>. How do they compare with forest loss?</li>
+</ul>
+</div>
+<div id="multi-predictors-models-q31" class="section level2">
+<h2>Multi-predictors models (<strong>Q31</strong>)</h2>
+<ul>
+<li><strong>Q31</strong>: What can you say about the effect of the disturbances on the different diversity metrics? What are the explanatory power of our models?</li>
+</ul>
+</div>
+</div>
+
+
+
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>
