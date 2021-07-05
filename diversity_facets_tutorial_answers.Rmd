@@ -1,10 +1,10 @@
 ---
-  title: "Answers to questions Biodiversity Facets tutorial"
+title: "Answers to questions Biodiversity Facets tutorial"
 author: "Matthias Grenié & Marten Winter"
 date: "Monday July 5th 2021"
 output:
   html_document:
-  toc: yes
+    toc: yes
 bibliography: bibliography.bib
 editor_options:
   chunk_output_type: console
