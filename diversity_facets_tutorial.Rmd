@@ -494,7 +494,7 @@ one_null_fric_ecdf(obs_fric)
 
 **Question for you**
 
-* **Q17**: What the quantile of the observed FRic value in the end?
+* **Q17**: What's the quantile of the observed FRic value in the end?
 
 This gives us an empirical comparison of the observed value with the null distribution. However, in macro-ecology we prefer to even standardize further through the use of Standardized Effect Sizes (SES). As it is done in the article we are using for our analyses. These are simpler to compute than ECDF and simplify the interpretation. SESs are computed in the following way:
 
@@ -798,7 +798,7 @@ obs_mpd = merge(obs_mpd, plot_data[, c("plot.code", "forestloss17", "ntaxa")])
 
 **Questions for you**
 
-* **Q23**: What are the relationships between weighted and unweighted version of the MPD?
+* **Q23**: What is the relationship between the weighted and the unweighted version of the MPD?
 * **Q24**: What are the relationships between MPD and taxa richness? And with forest loss? Plot these relationships to visualize them and use the `cor.test()` function to validate your observations.
 
 
