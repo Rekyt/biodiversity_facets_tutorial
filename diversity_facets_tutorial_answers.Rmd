@@ -1,5 +1,5 @@
 ---
-title: "Answers to questions Biodiversity Facets tutorial"
+title: "Answers to questions asked in the tutorial"
 author: "Matthias Grenié & Marten Winter"
 date: "Monday July 5th 2021"
 output:
@@ -11,32 +11,109 @@ editor_options:
 
 Here are answers regarding all the questions asked in the tutorial.
 
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, eval = FALSE)
+```
 
 # Loading the data (**Q1**-**Q6**)
 
 ## Summarizing the data
 
 * **Q1**: How many plots were sampled?
+
+```{r q1}
+nrow(plot_data)
+```
+
+**Answer**: There are 180 sampled plots. 
+
+
 * **Q2**: How many species are there in the dataset?
+
+```{r q2}
+nrow(species_traits)
+```
+
+**Answer**: There are 691 species in the dataset.
+
+
 * **Q3**: How many traits are available?
+
+```{r q3}
+head(species_traits, 2)
+```
+
+**Answer**: There are 13 traits in the dataset.
+
+
 * **Q4**: How many of them are continuous? How many of them are discrete?
+
+**Answer**: Looking at the trait table there 3 continuous traits (`height`, `sla`, and `wood.dens`) and 10 that are discrete. (Referring to the README file we see that the `seed` column contains indeed a categorical trait). 
+
 * **Q5**: What is the most numerous family among all observed species?
+
+```{r q5}
+summary(species_traits)
+```
+
+**Answer**: The `summary()` function displays the number of observations in each categories ordered by the most abundant category. The `family` column shows that the "Leguminosae" (a.k.a, Fabaceae) is the most numerous in the dataset.
+
 * **Q6**: What is the most numerous genus?
 
+**Answer**: Similarly the most numerous genus is "Unknown", which corresponds to individual that weren't identified at the genus level.
 
 # Functional diversity (**Q7**-**Q19**)
 
-## Computing Biomass-weighted mean traits per plot (**Q7**-**Q9**)
+## Computing Biomass-weighted mean traits per plot (**Q7**-**Q10**)
 
 * **Q7**: How would you describe the relationship between the different CWMs and forest loss?
+
+**Answer**: We're eye-balling the relationships but it seems that:
+
+* The CWM-Height seems to decrease with forest loss.
+* The CWM-SLA seems to increase with forest loss.
+* There seem to be no relationship between the CWM-wood density and forest loss. 
+
 * **Q8**: Can you test the correlation using the function `cor.test()` and does it support your previous statements?
+
+```{r q8}
+cor.test(cwm_env$forestloss17, cwm_env$height)
+cor.test(cwm_env$forestloss17, cwm_env$sla)
+cor.test(cwm_env$forestloss17, cwm_env$wood.dens)
+```
+
+**Answer**:
+
+* We observe a negative correlation (-0.48) between CWM-Height and forest loss.
+* We observe a positive correlation (0.48) between CWM-SLA and forest loss.
+* We observe a slight negative correlation (-0.24) between CWM-wood density and forest loss. 
+
 * **Q9**: How would you describe the understorey vegetation changes with increasing forest loss?
 
-## Building the functional space (**Q10**-**Q12**)
+**Answer**: The CWM values reflect the dominant trait of the community. This means that with forest loss we observe smaller species, species with higher SLA, and species with lower wood density. Linking back to ecology, this is probably due to a change in understorey vegetation type from woody species in unlogged area to more herbaceous species in heavily logged area.
 
 * **Q10**: How does this observation compare to above description of the change of understorey vegetation along the forest loss gradient?
-* **Q11**: Using the metadata available in the `README.txt` file, what is the meaning `pgf` column means?
+
+```{r q10}
+cor.test(non_quanti_cwm$forestloss17, non_quanti_cwm$woody_no)
+```
+
+**Answer**: The `woody_no` CWM represents the proportion of non-woody species in the community. We observe a positive medium correlation between this CWM and forest loss which tells us that non-woody species are more frequent in understorey vegetation with increasing forest loss.
+
+## Building the functional space (**Q11**-**Q12**)
+
+* **Q11**: Using the metadata available in the `README.txt` file, what is the meaning of the `pgf` column?
+
+**Answer**: The `README.txt` file (in the `data/doi_10.5061_dryad.f77p7__v1/` folders) describes the full dataset with the meaning of all columns. It says:
+
+> pgf: Plant growth form: A = fern, B = graminoid, C = forb, D = herbaceous climber, E = herbaceous shrub, F = tree sapling, G = woody climber, H = woody shrub, na = indeterminate
+
+So the `pgf` column describes the plant growth form.
+
 * **Q12**: How do you interpret the PCoA results given your answer to the previous question?
+
+**Answer**: The PCoA shows groups of species according to their plant growth form. Especially the category "F" (tree saplings) seem to differentiate from all other growth forms. This means that tree saplings have distinct traits from all other growth form groups.
+
 
 ## Computing functional diversity indices (**Q13**-**Q15**)
 
