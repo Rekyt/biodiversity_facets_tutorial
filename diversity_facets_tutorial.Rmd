@@ -273,7 +273,7 @@ ade4::s.class(trait_pcoa$li[,1:2], fac = traits$pgf)
 
 **Questions for you**
 
-* **Q11**: Using the metadata available in the `README.txt` file, what is the meaning `pgf` column means?
+* **Q11**: Using the metadata available in the `README.txt` file, what is the meaning of the `pgf` column?
 * **Q12**: How do you interpret the PCoA results given your answer to the previous question?
 
 
