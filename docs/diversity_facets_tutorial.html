@@ -525,7 +525,7 @@ trait_pcoa</code></pre>
 <pre class="r"><code>ade4::s.class(trait_pcoa$li[,1:2], fac = traits$pgf)</code></pre>
 <p><strong>Questions for you</strong></p>
 <ul>
-<li><strong>Q11</strong>: Using the metadata available in the <code>README.txt</code> file, what is the meaning <code>pgf</code> column means?</li>
+<li><strong>Q11</strong>: Using the metadata available in the <code>README.txt</code> file, what is the meaning of the <code>pgf</code> column?</li>
 <li><strong>Q12</strong>: How do you interpret the PCoA results given your answer to the previous question?</li>
 </ul>
 </div>
@@ -697,7 +697,7 @@ obs_fric = subset(site_fd, plot.code == &quot;a100f177r&quot;)$FRic
 one_null_fric_ecdf(obs_fric)</code></pre>
 <p><strong>Question for you</strong></p>
 <ul>
-<li><strong>Q17</strong>: What the quantile of the observed FRic value in the end?</li>
+<li><strong>Q17</strong>: What’s the quantile of the observed FRic value in the end?</li>
 </ul>
 <p>This gives us an empirical comparison of the observed value with the null distribution. However, in macro-ecology we prefer to even standardize further through the use of Standardized Effect Sizes (SES). As it is done in the article we are using for our analyses. These are simpler to compute than ECDF and simplify the interpretation. SESs are computed in the following way:</p>
 <p><span class="math display">\[
@@ -922,7 +922,7 @@ obs_mpd = data.frame(
 obs_mpd = merge(obs_mpd, plot_data[, c(&quot;plot.code&quot;, &quot;forestloss17&quot;, &quot;ntaxa&quot;)])</code></pre>
 <p><strong>Questions for you</strong></p>
 <ul>
-<li><strong>Q23</strong>: What are the relationships between weighted and unweighted version of the MPD?</li>
+<li><strong>Q23</strong>: What is the relationship between the weighted and the unweighted version of the MPD?</li>
 <li><strong>Q24</strong>: What are the relationships between MPD and taxa richness? And with forest loss? Plot these relationships to visualize them and use the <code>cor.test()</code> function to validate your observations.</li>
 </ul>
 </div>
