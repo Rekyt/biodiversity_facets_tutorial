@@ -77,12 +77,16 @@ summary(species_traits)
 
 **Questions for you:**
 
+::: {.questions}
+
 * **Q1**: How many plots were sampled?
 * **Q2**: How many species are there in the dataset?
 * **Q3**: How many traits are available?
 * **Q4**: How many of them are continuous? How many of them are discrete?
 * **Q5**: What is the most numerous family among all observed species?
 * **Q6**: What is the most numerous genus?
+
+:::
 
 ### Environment variables
 

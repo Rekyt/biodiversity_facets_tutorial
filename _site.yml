@@ -36,3 +36,4 @@ output:
     code_download: true
     include:
       after_body: _footer.html
+    css: styles.css
