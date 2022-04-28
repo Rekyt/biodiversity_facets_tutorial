@@ -1,10 +1,8 @@
 ---
 title: "01 - Context and Data Description"
 author: "Matthias Grenié & Marten Winter"
-date: "Monday April 29th 2022"
-output:
-  html_document:
-    toc: yes
+date: "`r format(Sys.time(), '%B %d %Y')`"
+output: html_document
 bibliography: bibliography.bib
 editor_options:
   chunk_output_type: console
