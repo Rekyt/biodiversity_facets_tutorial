@@ -19,7 +19,7 @@ navbar:
     icon: fas fa-tree
     href: 02-functional-diversity.html
   - text: Phylogenetic Diversity
-    icon: fas fa-tree-alt
+    icon: fas fa-frog
     href: 03-phylogenetic-diversity.html
   - text: Modelling
     icon: fas fa-chart-bar

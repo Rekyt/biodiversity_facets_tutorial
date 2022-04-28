@@ -8,4 +8,11 @@
 }
 .questions h4 {
   font-weight: bold;
+  margin-top: 0px;
+  padding-top: 0px;
+}
+
+.section h4 {
+  margin-top: 0px;
+  padding-top: 0px;
 }
