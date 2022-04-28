@@ -3,6 +3,7 @@ on:
     paths:
       - "**.Rmd"
       - "_site.yml"
+      - "styles.css"
 
 name: Render site
 
