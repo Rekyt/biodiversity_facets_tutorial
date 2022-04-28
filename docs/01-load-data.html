@@ -12,7 +12,7 @@
 <meta name="author" content="Matthias Grenié &amp; Marten Winter" />
 
 
-<title>Biodiversity Facets tutorial</title>
+<title>01 - Context and Data Description</title>
 
 <script src="site_libs/header-attrs-2.14/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -63,6 +63,28 @@ if (window.hljs) {
 
 
 
+<style type="text/css">
+/* for pandoc --citeproc since 2.11 */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
 
 
 
@@ -362,15 +384,164 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">Biodiversity Facets tutorial</h1>
+<h1 class="title toc-ignore">01 - Context and Data Description</h1>
 <h4 class="author">Matthias Grenié &amp; Marten Winter</h4>
-<h4 class="date">Monday July 5th 2021</h4>
+<h4 class="date">Monday April 29th 2022</h4>
 
 </div>
 
 
-<div id="references" class="section level1">
-<h1>References</h1>
+<div id="context-of-the-study" class="section level1">
+<h1>Context of the study</h1>
+<p>We will be using the data from the following study <span
+class="citation">(Döbert et al. 2017)</span>:</p>
+<blockquote>
+<p>Döbert, T.F., Webber, B.L., Sugau, J.B., Dickinson, K.J.M. and
+Didham, R.K. (2017), Logging increases the functional and phylogenetic
+dispersion of understorey plant communities in tropical lowland rain
+forest. J Ecol, 105: 1235-1245. <a
+href="https://doi.org/10.1111/1365-2745.12794"
+class="uri">https://doi.org/10.1111/1365-2745.12794</a></p>
+</blockquote>
+<p>Logging is the major cause of forest degradation in the Tropics. The
+effect of logging on taxonomic diversity is well known but more rarely
+studied on other facets of biodiversity such as functional diversity and
+phylogenetic diversity. Functional diversity and phylogenetic diversity
+should better reflect the impact of logging on ecosystem. For example
+logging can decrease the functional “redundancy” observed in ecosystems,
+meaning that some functional traits could be lost.</p>
+<p>The tropical lowland rain forests on the island of Borneo are
+floristically among the most diverse systems on the planet, yet
+large-scale timber extraction and conversion to commercial tree
+plantations continue to drive their rapid degradation and loss. As is
+the case for the majority of tropical forests, the effects of logging on
+habitat quality in these forests have rarely been assessed, despite the
+critical implications for biodiversity conservation. Moreover, studies
+investigating the effects of logging on plant community dynamics across
+both tropical and temperate forest ecosystems have rarely focused on the
+understorey, despite its crucial relevance for successional
+trajectories.</p>
+<p>Our goal with this tutorial is to reproduce the analyses from the
+paper and analyze how logging impacts the different facets of the
+diversity of the understorey vegetation, and to reveal to what extent
+similar facets give similar answers. The general goal is to familiarize
+yourself with the data and functions needed to compute diversity
+indices. As well the general principles behind them.</p>
+</div>
+<div id="loading-the-data" class="section level1">
+<h1>Loading the data</h1>
+<p>Fortunately for us, the authors of the study have shared openly the
+data they used in their article <span class="citation">(Döbert et al.
+2018)</span>. They are available through the Dryad platform at the
+following link: <a href="https://doi.org/10.5061/dryad.f77p7"
+class="uri">https://doi.org/10.5061/dryad.f77p7</a></p>
+<blockquote>
+<p>Döbert, Timm F. et al. (2018), Data from: Logging increases the
+functional and phylogenetic dispersion of understorey plant communities
+in tropical lowland rainforest, Dryad, Dataset, <a
+href="https://doi.org/10.5061/dryad.f77p7"
+class="uri">https://doi.org/10.5061/dryad.f77p7</a></p>
+</blockquote>
+<p>The fact that these data researchers provided the full dataset
+including all data and meta-data will help us reproduce the exact same
+analyses as well as additional analyses not in their paper.</p>
+<div id="getting-the-data" class="section level2">
+<h2>Getting the data</h2>
+<p>To get the data you can follow the above-mentioned link <a
+href="https://doi.org/10.5061/dryad.f77p7"
+class="uri">https://doi.org/10.5061/dryad.f77p7</a> and click on the
+“Download Dataset” button available on the top right of the webpage. It
+will download a .zip file that you can unzip in the folder you created
+for the project. This will create a folder named
+<code>doi_10.5061_dryad.f77p7__v1</code> that contains all needed data
+files.</p>
+<p><strong>NOTE</strong>: We’ve also included a copy of the unzipped
+file in the <code>data</code> folder of the practical project.</p>
+</div>
+<div id="summarizing-the-data" class="section level2">
+<h2>Summarizing the data</h2>
+<p>The zip file contains 5 files (also available in the
+<code>data/doi_10.5061_dryad.f77p7__v1/</code> folder):</p>
+<ul>
+<li><code>README.txt</code> which is a text file that describes the
+content of the other files with great precision. It details all the
+columns available in the other files.</li>
+<li><code>PlotData.csv</code> is a comma-separated file that describes
+characteristics for each of the sampled vegetation plots including
+logging metrics, environmental variables as well as taxonomic,
+functional and phylogenetic diversity indices (to which we’ll compare
+the indices we compute ourselves).</li>
+<li><code>PlotSpeciesData.csv</code> is a comma-separated file that
+contains a matrix of biomass values for the plant taxa sampled across
+the sampled vegetation plots.</li>
+<li><code>phylo_tree.nwk</code> the phylogenetic tree describing the
+relationships between species.</li>
+<li><code>SpeciesTraitData.csv</code> contains the complete list of
+species sampled across all vegetation plots, with their associated
+traits both continuous and discrete.</li>
+</ul>
+<p>We will load each of the file (apart from the phylogenetic tree) in
+your workspace now with the <code>read.csv()</code> function:</p>
+<pre class="r"><code>plot_data         = read.csv(&quot;data/doi_10.5061_dryad.f77p7__v1/PlotData.csv&quot;,
+                             na.strings = c(&quot;NA&quot;, &quot;na&quot;),
+                             stringsAsFactors = TRUE)
+plot_species_data = read.csv(&quot;data/doi_10.5061_dryad.f77p7__v1/PlotSpeciesData.csv&quot;)
+species_traits    = read.csv(&quot;data/doi_10.5061_dryad.f77p7__v1/SpeciesTraitData.csv&quot;,
+                             na.strings = c(&quot;NA&quot;, &quot;na&quot;), stringsAsFactors = TRUE)</code></pre>
+<p>To describe the data we will use the <code>str()</code>,
+<code>summary()</code>, and <code>dim()</code> functions.</p>
+<pre class="r"><code>str(plot_data)
+summary(plot_data)
+
+str(plot_species_data[, 1:5])
+summary(head(plot_species_data)[,1:5])
+dim(plot_species_data)
+
+# Transform one column for further analyzed
+species_traits$seed = ordered(species_traits$seed)
+str(species_traits)
+summary(species_traits)</code></pre>
+<p><strong>Questions for you:</strong></p>
+<ul>
+<li><strong>Q1</strong>: How many plots were sampled?</li>
+<li><strong>Q2</strong>: How many species are there in the dataset?</li>
+<li><strong>Q3</strong>: How many traits are available?</li>
+<li><strong>Q4</strong>: How many of them are continuous? How many of
+them are discrete?</li>
+<li><strong>Q5</strong>: What is the most numerous family among all
+observed species?</li>
+<li><strong>Q6</strong>: What is the most numerous genus?</li>
+</ul>
+</div>
+<div id="description-of-the-environment-variables"
+class="section level2">
+<h2>Description of the environment variables</h2>
+<p>Forest loss proportion is one of the main driver variable. The data
+has been acquired across different block with different proportion of
+logging and compared to unlogged forest.</p>
+<pre class="r"><code>boxplot(forestloss17 ~ block, data = plot_data,
+        xlab = &quot;Block of plot&quot;, ylab = &quot;Forest loss (%)&quot;,
+        main = &quot;Forest loss in funciton of block of data&quot;)</code></pre>
+</div>
+</div>
+<div id="references" class="section level1 unnumbered">
+<h1 class="unnumbered">References</h1>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-Dobert_Logging_2017" class="csl-entry">
+Döbert, Timm F., Bruce L. Webber, John B. Sugau, Katharine J. M.
+Dickinson, and Raphael K. Didham. 2017. <span>“Logging Increases the
+Functional and Phylogenetic Dispersion of Understorey Plant Communities
+in Tropical Lowland Rain Forest.”</span> <em>Journal of Ecology</em> 105
+(5): 1235–45. <a
+href="https://doi.org/10.1111/1365-2745.12794">https://doi.org/10.1111/1365-2745.12794</a>.
+</div>
+<div id="ref-Dobert_Data_2018" class="csl-entry">
+———. 2018. <span>“Data from: <span>Logging</span> Increases the
+Functional and Phylogenetic Dispersion of Understorey Plant Communities
+in Tropical Lowland Rainforest.”</span> <span>Dryad</span>. <a
+href="https://doi.org/10.5061/DRYAD.F77P7">https://doi.org/10.5061/DRYAD.F77P7</a>.
+</div>
+</div>
 </div>
 
 

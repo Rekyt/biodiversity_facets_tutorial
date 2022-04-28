@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+<meta charset="utf-8" />
+<meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+
+
+<meta name="author" content="Matthias Grenié &amp; Marten Winter" />
+
+
+<title>02 - Computing Phylogenetic Diversity Indices</title>
+
+<script src="site_libs/header-attrs-2.14/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/united.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
+<script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
+
+<style type="text/css">code{white-space: pre;}</style>
+<script type="text/javascript">
+if (window.hljs) {
+  hljs.configure({languages: []});
+  hljs.initHighlightingOnLoad();
+  if (document.readyState && document.readyState === "complete") {
+    window.setTimeout(function() { hljs.initHighlighting(); }, 0);
+  }
+}
+</script>
+
+
+
+
+
+<style type="text/css">
+/* for pandoc --citeproc since 2.11 */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+img {
+  max-width:100%;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
+</style>
+
+
+<style type="text/css">
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #adb5bd;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script type="text/javascript">
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.tab('show');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<!-- code folding -->
+
+
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-inverse  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">Biodiversity Facets Tutorial</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">
+    <span class="fa fa-home"></span>
+     
+    Home
+  </a>
+</li>
+<li>
+  <a href="00-setup.html">
+    <span class="fa fa-circle-info"></span>
+     
+    00-Setup
+  </a>
+</li>
+<li>
+  <a href="01-load-data.html">1 - Loading Data</a>
+</li>
+<li>
+  <a href="02-functional-diversity.html">2 - Functional Diversity</a>
+</li>
+<li>
+  <a href="03-phylogenetic-diversity.html">3 - Phylogenetic Diversity</a>
+</li>
+<li>
+  <a href="04-stat-modelling.html">4 - Modelling</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div id="header">
+
+
+
+<h1 class="title toc-ignore">02 - Computing Phylogenetic Diversity
+Indices</h1>
+<h4 class="author">Matthias Grenié &amp; Marten Winter</h4>
+<h4 class="date">Monday April 29th 2022</h4>
+
+</div>
+
+
+<div id="phylogenetic-diversity" class="section level1">
+<h1>Phylogenetic diversity</h1>
+<p>Now that we computed functional diversity, its SES, and put it on the
+map. We can proceed similarly with phylogenetic diversity. For this
+whole section we will use the <code>ape</code> package to manipulate
+phylogenetic trees and the <code>picante</code> package to compute
+phylogenetic diversity indices.</p>
+<div id="getting-the-phylogenetic-tree" class="section level2">
+<h2>Getting the phylogenetic tree</h2>
+<p>We included a copy of the phylogenetic tree used in the article (it
+is given in the Supplementary Information). It is named
+<code>phylo_tree.nwk</code> in the <code>data/</code> folder.</p>
+<p>We can read it with the <code>read.tree()</code> function in the
+<code>ape</code> package:</p>
+<pre class="r"><code>phylo_tree = ape::read.tree(&quot;data/doi_10.5061_dryad.f77p7__v1/phylo_tree.nwk&quot;)
+
+phylo_tree
+str(phylo_tree)</code></pre>
+<p><strong>Questions from you</strong></p>
+<ul>
+<li><strong>Q20</strong>: How many taxa are in the phylogenetic
+tree?</li>
+<li><strong>Q21</strong>: How does this number compare to the number of
+taxa found in the dataset?</li>
+</ul>
+<p>You can visualize the taxa in the phylogenetic tree in the
+<code>tip.label</code> slot of the phylogenetic tree:</p>
+<pre class="r"><code>phylo_tree$tip.label</code></pre>
+<p><strong>Question for you</strong></p>
+<ul>
+<li><strong>Q22</strong>: What do you notice with the species names?
+Especially compared to the ones available in
+<code>species_traits</code>.</li>
+</ul>
+<p>To solve the naming issue we’ll have to match the names used in the
+phylogenetic tree to the species code used in the site-species matrix.
+For that we’ll match the epitheton to the first code available. You do
+not need to understand this code and can just copy-paste it to execute
+it because we’re going to use it further down.</p>
+<pre class="r"><code># Create an indexed list of names
+phylo_names = species_traits[, c(&quot;species.code&quot;, &quot;species&quot;)]
+phylo_names$code_id = seq(nrow(phylo_names))
+
+# Get the first species code based on species epithet
+code_id_to_use = aggregate(code_id ~ species, phylo_names,
+                           FUN = function(x) head(x, 1))
+
+# Get back the data.frame of species names with the actual species.code
+code_species = merge(
+  code_id_to_use, phylo_names[, c(&quot;code_id&quot;, &quot;species.code&quot;)], by = &quot;code_id&quot;
+)
+
+# Tidying code for edge cases
+code_species$species = gsub(&quot; &quot;, &quot;&quot;, code_species$species)
+code_species$species = paste0(
+  tolower(substr(code_species$species, 1, 1)),
+  substr(code_species$species, 2, nchar(code_species$species))
+)
+
+code_species = code_species[, c(&quot;species.code&quot;, &quot;species&quot;)]
+
+dim(code_species)</code></pre>
+<p>We can now check that we have all the names of the phylogenetic tree
+available as codes:</p>
+<pre class="r"><code>length(intersect(phylo_tree$tip.label, code_species$species))</code></pre>
+<p>Now that we have a clear correspondance between species code and
+phylogenetic name we can proceed to the computation of phylogenetic
+diversity indices. This won’t let use reproduce exactly the same
+analyses as in the paper but this is the best we can do, given the data
+at our disposal. If all the species were determined another possibility
+could have to re-create a phylogenetic tree from genetic sequences
+available from genetic databases. This approach however needs specific
+skills and is a story for another time!</p>
+</div>
+<div id="visualizing-the-phylogenetic-tree" class="section level2">
+<h2>Visualizing the phylogenetic tree</h2>
+<p>We can visualize the phylogenetic tree to better understand the
+relationship between species. With more than 600 taxa, the visualization
+can be quite challenging and some ajustements should be made to ease the
+vizualition.</p>
+<p>The easiest way to show the phylogenetic tree is to use the
+<code>plot.phylo()</code> function available through the
+<code>ape</code> package.</p>
+<pre class="r"><code>ape::plot.phylo(phylo_tree)</code></pre>
+<p>By default the function shows the phylogram type of phylogenetic tree
+and plot all the labels for all species. Let’s make it easier to
+read:</p>
+<pre class="r"><code>ape::plot.phylo(phylo_tree, type = &quot;fan&quot;, show.node.label = TRUE,
+                show.tip.label = FALSE, cex = 0.6)</code></pre>
+<p>It is still difficult too read but we can already look at how
+botanical are related to one another.</p>
+</div>
+<div id="computing-phylogenetic-diversity-indices"
+class="section level2">
+<h2>Computing phylogenetic diversity indices</h2>
+<p>To compute phylogenetic diversity analyses we need to combine the
+phylogenetic tree with the site-species matrix. We need to subset the
+communities by selecting only species with a defined code from the
+previous section.</p>
+<pre class="r"><code># Initial site-species matrix
+head(sp_com[, 1:5])
+dim(sp_com)
+
+# Subset of site-species matrix compatible with phylogenetic tree
+sub_phylo_com = sp_com[, as.character(code_species$species.code)]
+dim(sub_phylo_com)</code></pre>
+<p>To measure phylogenetic diversity we will compute the Mean Pairwise
+Distance (MPD, <span class="citation">Webb (2000)</span>) using the
+<code>picante</code> package. The MPD is an index that represents the
+average distance between all pairs of species occurring in the
+community. It can also be weighted by the abundance or the biomass of
+considered species so that more weight is given to species that show the
+greatest abundance.</p>
+<p>The first data needed to compute the MPD is the phylogenetic distance
+between pair of species. We’ll use the cophenetic distance which
+represent the same relationships as a phylogenetic tree but through a
+distance matrix. We can use the function <code>cophenetic.phylo()</code>
+in the <code>ape</code> package to obtain cophenetic distances.</p>
+<pre class="r"><code># Compute cophenetic distances from the phylogenetic tree
+cophen_dist = ape::cophenetic.phylo(phylo_tree)
+
+str(cophen_dist)
+
+# We need to change the names to species codes
+corres_codes = data.frame(
+  species = rownames(cophen_dist)
+)
+corres_codes = merge(corres_codes, code_species, by = &quot;species&quot;)
+rownames(cophen_dist) = corres_codes$species.code
+colnames(cophen_dist) = corres_codes$species.code</code></pre>
+<p>Then to compute MPD we use the <code>mpd()</code> function in the
+<code>picante</code> package.</p>
+<pre class="r"><code># Observed Mean Pairwise Distance
+# Unweighted
+mpd_val_uw = picante::mpd(sub_phylo_com, cophen_dist, abundance.weighted = FALSE)
+# Weighted
+mpd_val_w = picante::mpd(sub_phylo_com, cophen_dist, abundance.weighted = TRUE)
+
+# Make a nice data.frame with observed MPD values
+obs_mpd = data.frame(
+  plot.code = rownames(sub_phylo_com),
+  mpd_unweighted = mpd_val_uw,
+  mpd_weighted = mpd_val_w
+)
+
+# Add forest loss proportion and richness for each site
+obs_mpd = merge(obs_mpd, plot_data[, c(&quot;plot.code&quot;, &quot;forestloss17&quot;, &quot;ntaxa&quot;)])</code></pre>
+<p><strong>Questions for you</strong></p>
+<ul>
+<li><strong>Q23</strong>: What is the relationship between the weighted
+and the unweighted version of the MPD?</li>
+<li><strong>Q24</strong>: What are the relationships between MPD and
+taxa richness? And with forest loss? Plot these relationships to
+visualize them and use the <code>cor.test()</code> function to validate
+your observations.</li>
+</ul>
+</div>
+<div id="null-modeling" class="section level2">
+<h2>Null modeling</h2>
+<p>Because of the expected relationship between MPD and species
+richness, we have to perform null models in a similar fashion to what
+we’ve done for functional diversity indices. Because, as with functional
+diversity, we want to keep null sites with same total biomass and same
+total biomass per species as observed sites, we can perform a “swap”
+null model. We will use a null model that shuffle the names of the
+species at the tip of the phylogenetic tree.</p>
+<p>Fortunately, compared to functional diversity, the null models are
+all integrated in the <code>ses.mpd()</code> function in the
+<code>picante</code> package. The null model we’ll use is the
+<code>"taxa.labels"</code> one. <strong>Caution</strong>: null models
+can be computationally challenging; for the sake of the example we’ll do
+only 99 iterations but as for functional diversity a version of the null
+models with 999 iterations is saved in the data folder.</p>
+<pre class="r"><code># Set random seed for repeatability of analysis
+set.seed(20210705)
+
+# Compute null permutation of MPD
+ses_mpd = picante::ses.mpd(
+  sub_phylo_com, cophen_dist, null.model = &quot;taxa.labels&quot;,
+  abundance.weighted = TRUE, runs = 99
+)
+head(ses_mpd)</code></pre>
+<p>The function <code>ses.mpd()</code> computes many values. You can get
+the detail by looking at the help of the functions with
+<code>?picante::ses.mpd</code> in the <code>Value</code> section.</p>
+<p>We’ll now load the version with 999 iterations.</p>
+<pre class="r"><code>ses_mpd_999 = readRDS(&quot;data/null_mpd_999.Rds&quot;)</code></pre>
+<p><strong>Questions for you</strong></p>
+<ul>
+<li><strong>Q25</strong>: Explain what does the column
+<code>mpd.obs.z</code> means? How does this compare with the SES values
+we computed for functional diversity indices?</li>
+<li><strong>Q26</strong>: How does the standardized value relates with
+taxa richness?</li>
+<li><strong>Q27</strong>: What are the relationships between MPD values
+considering null models and forest loss? Visualize the relationships
+with the <code>plot()</code> function, validate your observations with
+the <code>cor.test()</code> function.</li>
+</ul>
+</div>
+<div id="mapping-phylogenetic-diversity" class="section level2">
+<h2>Mapping phylogenetic diversity</h2>
+<p>In order to see if there is a geographical pattern in phylogenetic
+diversity we can plot maps of MPD.</p>
+<pre class="r"><code>ses_mpd_999$plot.code = rownames(ses_mpd_999)
+
+ggplot() +
+  geom_sf(
+    data = merge(subset(plot_sf, block != &quot;og&quot;), ses_mpd_999, by = &quot;plot.code&quot;),
+    aes(color = mpd.obs.z)
+  ) +
+  scale_color_distiller(type = &quot;div&quot;, palette = &quot;RdYlBu&quot;,
+                        name =  &quot;SES of MPD&quot;) +
+  coord_sf(crs = sf::st_crs(3376), xlim = c(875000, 890000),
+           ylim = c(518500, 531000)) +
+  labs(title = &quot;Map of all plots but block &#39;og&#39;&quot;) +
+  ggspatial::annotation_scale() +
+  ggspatial::annotation_north_arrow(location = &quot;br&quot;) +
+  theme_gray()</code></pre>
+<p>By eye at least, the pattern doesn’t seem obvious on the map. And the
+observed SES values seems to vary widely within each forest block.</p>
+</div>
+</div>
+<div id="comparing-facets" class="section level1">
+<h1>Comparing facets</h1>
+<p>One burning question in the scientific literature and that is quite
+debated still is the relationship between taxonomic, functional, and
+phylogenetic diversity <span class="citation">(Pavoine et al.
+2013)</span>.</p>
+<p>We can leverage on the computation we have to test the relationships
+between all facets of diversity. <strong>/!\ NOTE</strong>: Because we
+had trouble with the phylogenetic tree, we’re not strictly comparing the
+same subset of data, we’re going to compare them anyway for the sake of
+the example. The proper way would be to subset the similar sets of
+species and recompute functional diversity.</p>
+<pre class="r"><code># Combine taxonomic, functional, and phylogenetic diversity
+all_diversity = merge(
+  plot_data[, c(&quot;plot.code&quot;, &quot;ntaxa&quot;)],
+  merge(
+    ses_fd, ses_mpd_999[, -1], by = &quot;plot.code&quot;
+  )
+)
+
+# Comparison of observed values
+pairs(all_diversity[, c(&quot;ntaxa&quot;, &quot;FRic&quot;, &quot;Q&quot;, &quot;FEve&quot;, &quot;mpd.obs&quot;)],
+      upper.panel = panel.cor)
+
+# Comparison of SESs
+pairs(all_diversity[, c(&quot;ntaxa&quot;, &quot;ses_FRic&quot;, &quot;ses_Q&quot;, &quot;ses_FEve&quot;, &quot;mpd.obs.z&quot;)],
+      upper.panel = panel.cor)</code></pre>
+<p><strong>Question for you</strong></p>
+<ul>
+<li><strong>Q28</strong>: How are related are observed values of
+functional diversity and phylogenetic diversity? What about the
+SESs?</li>
+</ul>
+</div>
+<div id="references" class="section level1 unnumbered">
+<h1 class="unnumbered">References</h1>
+<div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-Pavoine_Correlations_2013" class="csl-entry">
+Pavoine, Sandrine, Amandine Gasc, Michael B. Bonsall, and Norman W. H.
+Mason. 2013. <span>“Correlations Between Phylogenetic and Functional
+Diversity: Mathematical Artefacts or True Ecological and Evolutionary
+Processes?”</span> <em>Journal of Vegetation Science</em> 24 (5):
+781–93. <a
+href="https://doi.org/10.1111/jvs.12051">https://doi.org/10.1111/jvs.12051</a>.
+</div>
+<div id="ref-Webb_Exploring_2000" class="csl-entry">
+Webb, null. 2000. <span>“Exploring the <span>Phylogenetic
+Structure</span> of <span>Ecological Communities</span>: <span>An
+Example</span> for <span>Rain Forest Trees</span>.”</span> <em>The
+American Naturalist</em> 156 (2): 145–55. <a
+href="https://doi.org/10.1086/303378">https://doi.org/10.1086/303378</a>.
+</div>
+</div>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

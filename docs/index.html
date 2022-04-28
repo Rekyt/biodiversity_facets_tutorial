@@ -14,8 +14,8 @@
 
 <title>Macroecology and Macroevolution under Global Changes - “Biodiversity facets in macro-space”</title>
 
-<script src="site_libs/header-attrs-2.9/header-attrs.js"></script>
-<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="site_libs/header-attrs-2.14/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/united.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
@@ -30,6 +30,9 @@
        h6 {font-size: 12px;}
        code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
        pre:not([class]) { background-color: white }</style>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
@@ -63,6 +66,7 @@ if (window.hljs) {
 
 
 
+
 <style type = "text/css">
 .main-container {
   max-width: 940px;
@@ -83,6 +87,9 @@ button.code-folding-btn:focus {
 }
 summary {
   display: list-item;
+}
+details > summary > p:only-child {
+  display: inline;
 }
 pre code {
   padding: 0;
@@ -221,6 +228,69 @@ $(document).ready(function () {
 
 
 
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
 
 </head>
 
@@ -230,12 +300,22 @@ $(document).ready(function () {
 <div class="container-fluid main-container">
 
 
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
 
 
 <div class="navbar navbar-inverse  navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
@@ -252,10 +332,23 @@ $(document).ready(function () {
   </a>
 </li>
 <li>
-  <a href="diversity_facets_tutorial.html">Tutorial</a>
+  <a href="00-setup.html">
+    <span class="fa fa-circle-info"></span>
+     
+    00-Setup
+  </a>
 </li>
 <li>
-  <a href="diversity_facets_tutorial_answers.html">Answers</a>
+  <a href="01-load-data.html">1 - Loading Data</a>
+</li>
+<li>
+  <a href="02-functional-diversity.html">2 - Functional Diversity</a>
+</li>
+<li>
+  <a href="03-phylogenetic-diversity.html">3 - Phylogenetic Diversity</a>
+</li>
+<li>
+  <a href="04-stat-modelling.html">4 - Modelling</a>
 </li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
@@ -269,14 +362,17 @@ $(document).ready(function () {
 
 
 
-<h1 class="title toc-ignore">Macroecology and Macroevolution under Global Changes - “Biodiversity facets in macro-space”</h1>
+<h1 class="title toc-ignore">Macroecology and Macroevolution under
+Global Changes - “Biodiversity facets in macro-space”</h1>
 <h4 class="author">Matthias Grenié &amp; Marten Winter</h4>
 
 </div>
 
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
-<p>This the first practical session in the course “Macroecology and Macroevolution under Global Change”. This it the practical session companion to the lectures on biodiversity facets L2 and L3.</p>
+<p>This the first practical session in the course “Macroecology and
+Macroevolution under Global Change”. This it the practical session
+companion to the lectures on biodiversity facets L2 and L3.</p>
 <p><strong>Year</strong>: 2021</p>
 <p><strong>Instructors</strong>: Matthias Grenié &amp; Marten Winter</p>
 <p>Contact us via Slack or email for any further questions.</p>
@@ -284,51 +380,93 @@ $(document).ready(function () {
 <h2>Goals</h2>
 <ul>
 <li>Manipulate research open data;</li>
-<li>Learn how to compute functional diversity indices with <code>fundiversity</code> (load trait data, build a functional space, compute indices);</li>
-<li>Learn how to compute phylogenetic diversity indices with <code>ape</code> and <code>picante</code> (load phylogenetic tree, visualize phylogenetic tree, compute indices);</li>
+<li>Learn how to compute functional diversity indices with
+<code>fundiversity</code> (load trait data, build a functional space,
+compute indices);</li>
+<li>Learn how to compute phylogenetic diversity indices with
+<code>ape</code> and <code>picante</code> (load phylogenetic tree,
+visualize phylogenetic tree, compute indices);</li>
 <li>Familiarize with null models;</li>
-<li>Know the difference between facets of functional and phylogenetic diversity indices;</li>
+<li>Know the difference between facets of functional and phylogenetic
+diversity indices;</li>
 <li>Visualize biodiversity facets on the map;</li>
-<li>Show the effect of logging in a tropical forest context on some biodiversity facets.</li>
+<li>Show the effect of logging in a tropical forest context on some
+biodiversity facets.</li>
 </ul>
 </div>
 <div id="how-to-use-it" class="section level2">
 <h2>How to use it?</h2>
 <ol style="list-style-type: decimal">
-<li><strong>Online</strong> It is accessible online at <a href="https://rekyt.github.io/biodiversity_facets_tutorial/" class="uri">https://rekyt.github.io/biodiversity_facets_tutorial/</a> click on <code>Tutorial</code> in the navigation bar to access the tutorial.</li>
-<li><strong>Online</strong> if the website have issue you can access a similar version with the following command: <a href="https://htmlpreview.github.io/?https://github.com/Rekyt/biodiversity_facets_tutorial/blob/main/docs/index.html" class="uri">https://htmlpreview.github.io/?https://github.com/Rekyt/biodiversity_facets_tutorial/blob/main/docs/index.html</a></li>
-<li><strong>Offline</strong> You can access open the <code>diversity_facets_tutorial.Rmd</code> file in RStudio to follow along.</li>
-<li><strong>Offline</strong> You can also open the <code>diversity_facets_tutorial.R</code> file in RStudio to get only the code to execute exactly the codes here.</li>
+<li><strong>Online</strong> It is accessible online at <a
+href="https://rekyt.github.io/biodiversity_facets_tutorial/"
+class="uri">https://rekyt.github.io/biodiversity_facets_tutorial/</a>
+click on <code>Tutorial</code> in the navigation bar to access the
+tutorial.</li>
+<li><strong>Online</strong> if the website have issue you can access a
+similar version with the following command: <a
+href="https://htmlpreview.github.io/?https://github.com/Rekyt/biodiversity_facets_tutorial/blob/main/docs/index.html"
+class="uri">https://htmlpreview.github.io/?https://github.com/Rekyt/biodiversity_facets_tutorial/blob/main/docs/index.html</a></li>
+<li><strong>Offline</strong> You can access open the
+<code>diversity_facets_tutorial.Rmd</code> file in RStudio to follow
+along.</li>
+<li><strong>Offline</strong> You can also open the
+<code>diversity_facets_tutorial.R</code> file in RStudio to get only the
+code to execute exactly the codes here.</li>
 </ol>
 </div>
 <div id="data-provenance" class="section level2">
 <h2>Data provenance</h2>
-<p>The data we’ll be using throughout the tutorial comes from the following article:</p>
+<p>The data we’ll be using throughout the tutorial comes from the
+following article:</p>
 <blockquote>
-<p>Döbert, T.F., Webber, B.L., Sugau, J.B., Dickinson, K.J.M. and Didham, R.K. (2017), Logging increases the functional and phylogenetic dispersion of understorey plant communities in tropical lowland rain forest. J Ecol, 105: 1235-1245. <a href="https://doi.org/10.1111/1365-2745.12794" class="uri">https://doi.org/10.1111/1365-2745.12794</a></p>
+<p>Döbert, T.F., Webber, B.L., Sugau, J.B., Dickinson, K.J.M. and
+Didham, R.K. (2017), Logging increases the functional and phylogenetic
+dispersion of understorey plant communities in tropical lowland rain
+forest. J Ecol, 105: 1235-1245. <a
+href="https://doi.org/10.1111/1365-2745.12794"
+class="uri">https://doi.org/10.1111/1365-2745.12794</a></p>
 </blockquote>
-<p>The data has been deposited on a open data repository called dryad with the following reference:</p>
+<p>The data has been deposited on a open data repository called dryad
+with the following reference:</p>
 <blockquote>
-<p>Döbert, Timm F. et al. (2018), Data from: Logging increases the functional and phylogenetic dispersion of understorey plant communities in tropical lowland rainforest, Dryad, Dataset, <a href="https://doi.org/10.5061/dryad.f77p7" class="uri">https://doi.org/10.5061/dryad.f77p7</a></p>
+<p>Döbert, Timm F. et al. (2018), Data from: Logging increases the
+functional and phylogenetic dispersion of understorey plant communities
+in tropical lowland rainforest, Dryad, Dataset, <a
+href="https://doi.org/10.5061/dryad.f77p7"
+class="uri">https://doi.org/10.5061/dryad.f77p7</a></p>
 </blockquote>
 </div>
 <div id="going-further" class="section level2">
 <h2>Going Further</h2>
-<p>Other courses on biodiversity facets and potential interesting papers &amp; tools:</p>
+<p>Other courses on biodiversity facets and potential interesting papers
+&amp; tools:</p>
 <ul>
-<li>The <a href="https://cran.r-project.org/package=FD"><code>FD</code></a> package is the reference package to compute functional diversity indices.</li>
-<li>The <a href="https://github.com/patrickweigelt/MCMMB/">Modern concepts and methods in Macroecology and Biogeography</a> course accessible with this link: <a href="http://htmlpreview.github.io/?https://github.com/patrickweigelt/MCMMB/blob/master/index.html" class="uri">http://htmlpreview.github.io/?https://github.com/patrickweigelt/MCMMB/blob/master/index.html</a>.</li>
-<li>The <a href="https://doi.org/10.1016/j.actao.2018.02.007">Legras et al. 2018 paper</a> on functional diversity concepts.</li>
-<li>The <a href="https://pedrohbraga.github.io/CommunityPhylogenetics-Workshop/CommunityPhylogenetics-Workshop.html">Community Phylogenetics in R Workshop</a> by Pedro Henrique P. Braga and Katherine Hébert.</li>
+<li>The <a
+href="https://cran.r-project.org/package=FD"><code>FD</code></a> package
+is the reference package to compute functional diversity indices.</li>
+<li>The <a href="https://github.com/patrickweigelt/MCMMB/">Modern
+concepts and methods in Macroecology and Biogeography</a> course
+accessible with this link: <a
+href="http://htmlpreview.github.io/?https://github.com/patrickweigelt/MCMMB/blob/master/index.html"
+class="uri">http://htmlpreview.github.io/?https://github.com/patrickweigelt/MCMMB/blob/master/index.html</a>.</li>
+<li>The <a href="https://doi.org/10.1016/j.actao.2018.02.007">Legras et
+al. 2018 paper</a> on functional diversity concepts.</li>
+<li>The <a
+href="https://pedrohbraga.github.io/CommunityPhylogenetics-Workshop/CommunityPhylogenetics-Workshop.html">Community
+Phylogenetics in R Workshop</a> by Pedro Henrique P. Braga and Katherine
+Hébert.</li>
 </ul>
 </div>
 <div id="license" class="section level2">
 <h2>License</h2>
-<p><a href="https://creativecommons.org/licenses/by/4.0/">CC-BY 4.0</a></p>
+<p><a href="https://creativecommons.org/licenses/by/4.0/">CC-BY
+4.0</a></p>
 </div>
 
 
 
+</div>
+</div>
 
 </div>
 
@@ -361,6 +499,35 @@ $(document).ready(function () {
 
 <!-- code folding -->
 
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
 <script>

@@ -12,7 +12,7 @@
 <meta name="author" content="Matthias Grenié &amp; Marten Winter" />
 
 
-<title>Biodiversity Facets tutorial</title>
+<title>00 - Setup - Installing Required Software</title>
 
 <script src="site_libs/header-attrs-2.14/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -362,15 +362,59 @@ div.tocify {
 
 
 
-<h1 class="title toc-ignore">Biodiversity Facets tutorial</h1>
+<h1 class="title toc-ignore">00 - Setup - Installing Required
+Software</h1>
 <h4 class="author">Matthias Grenié &amp; Marten Winter</h4>
-<h4 class="date">Monday July 5th 2021</h4>
+<h4 class="date">Monday April 29th 2022</h4>
 
 </div>
 
 
-<div id="references" class="section level1">
-<h1>References</h1>
+<div id="setup" class="section level1">
+<h1>Setup</h1>
+<div id="rstudio" class="section level2">
+<h2>RStudio</h2>
+<p>Double-click on the <code>.Rproj</code> file which is as the root of
+the folder you downloaded. This should open a new session in RStudio
+that will start at the root of the project folder.</p>
+</div>
+<div id="following-the-tutorial" class="section level2">
+<h2>Following the tutorial</h2>
+<p>To follow the tutorial you have plenty of options:</p>
+<ol style="list-style-type: decimal">
+<li>It is accessible online at <a
+href="https://rekyt.github.io/biodiversity_facets_tutorial/"
+class="uri">https://rekyt.github.io/biodiversity_facets_tutorial/</a>
+click on <code>Tutorial</code> in the navigation bar to access the
+tutorial.</li>
+<li>You can access open the <code>diversity_facets_tutorial.Rmd</code>
+in RStudio to follow along.</li>
+<li>You can also open the <code>diversity_facets_tutorial.R</code> in
+RStudio to get only the code to execute exactly the codes here.</li>
+</ol>
+</div>
+<div id="installing-needed-packages" class="section level2">
+<h2>Installing needed packages</h2>
+<p>We will use some specific packages in the rest of the tutorial. To
+make sure you have them please run the following command:</p>
+<pre class="r"><code>install.packages(
+  c(&quot;ade4&quot;,
+    &quot;ape&quot;,
+    &quot;FD&quot;,
+    &quot;fundiversity&quot;,
+    &quot;ggplot2&quot;,
+    &quot;ggspatial&quot;,
+    &quot;performance&quot;,
+    &quot;picante&quot;,
+    &quot;rnaturalearth&quot;,
+    &quot;sf&quot;)
+)</code></pre>
+<blockquote>
+<p><strong>Note</strong>: If you encounter trouble while installing
+software notify me at the beginning of the practical session and I’ll
+come to you to solve the issue</p>
+</blockquote>
+</div>
 </div>
 
 
