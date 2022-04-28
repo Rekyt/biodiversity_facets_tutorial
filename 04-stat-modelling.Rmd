@@ -10,8 +10,6 @@ editor_options:
 knitr::opts_chunk$set(echo = TRUE, eval = FALSE)
 ```
 
-# Modelling the effect of logging
-
 Finally! We now have all we need to properly build a statistical model of the relationship between diversity facets and the different co-variables. We'll be building linear models with `lm()` with environmental variables and possible co-variables that may confound the effect of logging.
 
 We first combine the diversity metrics to the environmental co-variables:

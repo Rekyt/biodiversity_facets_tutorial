@@ -1,5 +1,5 @@
 ---
-title: "Computing Functional Diversity Indices"
+title: "Functional Diversity"
 output: html_document
 bibliography: bibliography.bib
 editor_options:
@@ -10,11 +10,9 @@ editor_options:
 knitr::opts_chunk$set(echo = TRUE, eval = FALSE)
 ```
 
-# Functional diversity
-
 Now that we loaded all the datasets we can proceed to compute functional diversity per plots.
 
-## Computing Biomass-weighted mean traits per plot
+## Biomass-weighted mean traits per plot
 
 One first way to compute functional diversity is to compute mono-dimensional trait diversity [@Lavorel_Predicting_2002]. We can compute the average trait observed at each plot to described the effect of logging on the understorey vegetation. Because we're interested in the average trait possessed by the community we can compute the community-weighted mean trait $CWM_i$ as follow:
 

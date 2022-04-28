@@ -10,9 +10,6 @@ editor_options:
 knitr::opts_chunk$set(echo = TRUE, eval = FALSE)
 ```
 
-
-# Setup
-
 ## RStudio
 
 Double-click on the `.Rproj` file which is as the root of the folder you downloaded. This should open a new session in RStudio that will start at the root of the project folder.

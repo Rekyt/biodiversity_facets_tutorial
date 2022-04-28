@@ -1,5 +1,5 @@
 ---
-title: "Computing Phylogenetic Diversity Indices"
+title: "Phylogenetic Diversity"
 output: html_document
 bibliography: bibliography.bib
 editor_options:
@@ -9,8 +9,6 @@ editor_options:
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(echo = TRUE, eval = FALSE)
 ```
-
-# Phylogenetic diversity
 
 Now that we computed functional diversity, its SES, and put it on the map. We can proceed similarly with phylogenetic diversity. For this whole section we will use the `ape` package to manipulate phylogenetic trees and the `picante` package to compute phylogenetic diversity indices.
 
@@ -243,4 +241,4 @@ pairs(all_diversity[, c("ntaxa", "ses_FRic", "ses_Q", "ses_FEve", "mpd.obs.z")],
 * **Q28**: How are related are observed values of functional diversity and phylogenetic diversity? What about the SESs?
 
 
-# References
+## References
