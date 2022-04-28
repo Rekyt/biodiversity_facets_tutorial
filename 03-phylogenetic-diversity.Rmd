@@ -1,0 +1,246 @@
+---
+title: "02 - Computing Phylogenetic Diversity Indices"
+author: "Matthias Grenié & Marten Winter"
+date: "Monday April 29th 2022"
+output:
+  html_document:
+    toc: yes
+bibliography: bibliography.bib
+editor_options:
+  chunk_output_type: console
+---
+
+# Phylogenetic diversity
+
+Now that we computed functional diversity, its SES, and put it on the map. We can proceed similarly with phylogenetic diversity. For this whole section we will use the `ape` package to manipulate phylogenetic trees and the `picante` package to compute phylogenetic diversity indices.
+
+## Getting the phylogenetic tree
+
+We included a copy of the phylogenetic tree used in the article (it is given in the Supplementary Information). It is named `phylo_tree.nwk` in the `data/` folder.
+
+We can read it with the `read.tree()` function in the `ape` package:
+
+```{r load-tree}
+phylo_tree = ape::read.tree("data/doi_10.5061_dryad.f77p7__v1/phylo_tree.nwk")
+
+phylo_tree
+str(phylo_tree)
+```
+
+**Questions from you**
+
+* **Q20**: How many taxa are in the phylogenetic tree?
+* **Q21**: How does this number compare to the number of taxa found in the dataset?
+
+You can visualize the taxa in the phylogenetic tree in the `tip.label` slot of the phylogenetic tree:
+
+```{r phylo-species}
+phylo_tree$tip.label
+```
+
+**Question for you**
+
+* **Q22**: What do you notice with the species names? Especially compared to the ones available in `species_traits`.
+
+To solve the naming issue we'll have to match the names used in the phylogenetic tree to the species code used in the site-species matrix. For that we'll match the epitheton to the first code available. You do not need to understand this code and can just copy-paste it to execute it because we're going to use it further down.
+
+```{r phylo-name-corres}
+# Create an indexed list of names
+phylo_names = species_traits[, c("species.code", "species")]
+phylo_names$code_id = seq(nrow(phylo_names))
+
+# Get the first species code based on species epithet
+code_id_to_use = aggregate(code_id ~ species, phylo_names,
+                           FUN = function(x) head(x, 1))
+
+# Get back the data.frame of species names with the actual species.code
+code_species = merge(
+  code_id_to_use, phylo_names[, c("code_id", "species.code")], by = "code_id"
+)
+
+# Tidying code for edge cases
+code_species$species = gsub(" ", "", code_species$species)
+code_species$species = paste0(
+  tolower(substr(code_species$species, 1, 1)),
+  substr(code_species$species, 2, nchar(code_species$species))
+)
+
+code_species = code_species[, c("species.code", "species")]
+
+dim(code_species)
+```
+
+We can now check that we have all the names of the phylogenetic tree available as codes:
+
+```{r phylo-code-intersect}
+length(intersect(phylo_tree$tip.label, code_species$species))
+```
+
+Now that we have a clear correspondance between species code and phylogenetic name we can proceed to the computation of phylogenetic diversity indices. This won't let use reproduce exactly the same analyses as in the paper but this is the best we can do, given the data at our disposal. If all the species were determined another possibility could have to re-create a phylogenetic tree from genetic sequences available from genetic databases. This approach however needs specific skills and is a story for another time!
+
+## Visualizing the phylogenetic tree
+
+We can visualize the phylogenetic tree to better understand the relationship between species. With more than 600 taxa, the visualization can be quite challenging and some ajustements should be made to ease the vizualition.
+
+The easiest way to show the phylogenetic tree is to use the `plot.phylo()` function available through the `ape` package.
+
+```{r plot-tree}
+ape::plot.phylo(phylo_tree)
+```
+
+By default the function shows the phylogram type of phylogenetic tree and plot all the labels for all species. Let's make it easier to read:
+
+```{r better-plot-tree}
+ape::plot.phylo(phylo_tree, type = "fan", show.node.label = TRUE,
+                show.tip.label = FALSE, cex = 0.6)
+```
+
+It is still difficult too read but we can already look at how botanical are related to one another.
+
+
+## Computing phylogenetic diversity indices
+
+To compute phylogenetic diversity analyses we need to combine the phylogenetic tree with the site-species matrix. We need to subset the communities by selecting only species with a defined code from the previous section.
+
+```{r sub-phylo-com}
+# Initial site-species matrix
+head(sp_com[, 1:5])
+dim(sp_com)
+
+# Subset of site-species matrix compatible with phylogenetic tree
+sub_phylo_com = sp_com[, as.character(code_species$species.code)]
+dim(sub_phylo_com)
+```
+
+To measure phylogenetic diversity we will compute the Mean Pairwise Distance (MPD, @Webb_Exploring_2000) using the `picante` package. The MPD is an index that represents the average distance between all pairs of species occurring in the community. It can also be weighted by the abundance or the biomass of considered species so that more weight is given to species that show the greatest abundance.
+
+The first data needed to compute the MPD is the phylogenetic distance between pair of species. We'll use the cophenetic distance which represent the same relationships as a phylogenetic tree but through a distance matrix. We can use the function `cophenetic.phylo()` in the `ape` package to obtain cophenetic distances.
+
+```{r cophenetic-dist}
+# Compute cophenetic distances from the phylogenetic tree
+cophen_dist = ape::cophenetic.phylo(phylo_tree)
+
+str(cophen_dist)
+
+# We need to change the names to species codes
+corres_codes = data.frame(
+  species = rownames(cophen_dist)
+)
+corres_codes = merge(corres_codes, code_species, by = "species")
+rownames(cophen_dist) = corres_codes$species.code
+colnames(cophen_dist) = corres_codes$species.code
+```
+
+Then to compute MPD we use the `mpd()` function in the `picante` package.
+
+```{r mpd}
+# Observed Mean Pairwise Distance
+# Unweighted
+mpd_val_uw = picante::mpd(sub_phylo_com, cophen_dist, abundance.weighted = FALSE)
+# Weighted
+mpd_val_w = picante::mpd(sub_phylo_com, cophen_dist, abundance.weighted = TRUE)
+
+# Make a nice data.frame with observed MPD values
+obs_mpd = data.frame(
+  plot.code = rownames(sub_phylo_com),
+  mpd_unweighted = mpd_val_uw,
+  mpd_weighted = mpd_val_w
+)
+
+# Add forest loss proportion and richness for each site
+obs_mpd = merge(obs_mpd, plot_data[, c("plot.code", "forestloss17", "ntaxa")])
+```
+
+**Questions for you**
+
+* **Q23**: What is the relationship between the weighted and the unweighted version of the MPD?
+* **Q24**: What are the relationships between MPD and taxa richness? And with forest loss? Plot these relationships to visualize them and use the `cor.test()` function to validate your observations.
+
+
+## Null modeling 
+
+Because of the expected relationship between MPD and species richness, we have to perform null models in a similar fashion to what we've done for functional diversity indices. Because, as with functional diversity, we want to keep null sites with same total biomass and same total biomass per species as observed sites, we can perform a "swap" null model. We will use a null model that shuffle the names of the species at the tip of the phylogenetic tree.
+
+Fortunately, compared to functional diversity, the null models are all integrated in the `ses.mpd()` function in the `picante` package. The null model we'll use is the `"taxa.labels"` one. **Caution**: null models can be computationally challenging; for the sake of the example we'll do only 99 iterations but as for functional diversity a version of the null models with 999 iterations is saved in the data folder.
+
+```{r ses-mpd}
+# Set random seed for repeatability of analysis
+set.seed(20210705)
+
+# Compute null permutation of MPD
+ses_mpd = picante::ses.mpd(
+  sub_phylo_com, cophen_dist, null.model = "taxa.labels",
+  abundance.weighted = TRUE, runs = 99
+)
+head(ses_mpd)
+```
+
+The function `ses.mpd()` computes many values. You can get the detail by looking at the help of the functions with `?picante::ses.mpd` in the `Value` section.
+
+We'll now load the version with 999 iterations.
+
+```{r ses-mpd-999}
+ses_mpd_999 = readRDS("data/null_mpd_999.Rds")
+```
+
+**Questions for you**
+
+* **Q25**: Explain what does the column `mpd.obs.z` means? How does this compare with the SES values we computed for functional diversity indices?
+* **Q26**: How does the standardized value relates with taxa richness?
+* **Q27**: What are the relationships between MPD values considering null models and forest loss? Visualize the relationships with the `plot()` function, validate your observations with the `cor.test()` function.
+
+
+## Mapping phylogenetic diversity
+
+In order to see if there is a geographical pattern in phylogenetic diversity we can plot maps of MPD.
+
+```{r map-ses-mpd}
+ses_mpd_999$plot.code = rownames(ses_mpd_999)
+
+ggplot() +
+  geom_sf(
+    data = merge(subset(plot_sf, block != "og"), ses_mpd_999, by = "plot.code"),
+    aes(color = mpd.obs.z)
+  ) +
+  scale_color_distiller(type = "div", palette = "RdYlBu",
+                        name =  "SES of MPD") +
+  coord_sf(crs = sf::st_crs(3376), xlim = c(875000, 890000),
+           ylim = c(518500, 531000)) +
+  labs(title = "Map of all plots but block 'og'") +
+  ggspatial::annotation_scale() +
+  ggspatial::annotation_north_arrow(location = "br") +
+  theme_gray()
+```
+
+By eye at least, the pattern doesn't seem obvious on the map. And the observed SES values seems to vary widely within each forest block.
+
+# Comparing facets
+
+One burning question in the scientific literature and that is quite debated still is the relationship between taxonomic, functional, and phylogenetic diversity [@Pavoine_Correlations_2013].
+
+We can leverage on the computation we have to test the relationships between all facets of diversity. **/!\\ NOTE**: Because we had trouble with the phylogenetic tree, we're not strictly comparing the same subset of data, we're going to compare them anyway for the sake of the example. The proper way would be to subset the similar sets of species and recompute functional diversity.
+
+```{r all-diversity-facets}
+# Combine taxonomic, functional, and phylogenetic diversity
+all_diversity = merge(
+  plot_data[, c("plot.code", "ntaxa")],
+  merge(
+    ses_fd, ses_mpd_999[, -1], by = "plot.code"
+  )
+)
+
+# Comparison of observed values
+pairs(all_diversity[, c("ntaxa", "FRic", "Q", "FEve", "mpd.obs")],
+      upper.panel = panel.cor)
+
+# Comparison of SESs
+pairs(all_diversity[, c("ntaxa", "ses_FRic", "ses_Q", "ses_FEve", "mpd.obs.z")],
+      upper.panel = panel.cor)
+```
+
+**Question for you**
+
+* **Q28**: How are related are observed values of functional diversity and phylogenetic diversity? What about the SESs?
+
+
+# References

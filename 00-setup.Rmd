@@ -1,0 +1,51 @@
+---
+title: "00 - Setup - Installing Required Software"
+author: "Matthias Grenié & Marten Winter"
+date: "Monday April 29th 2022"
+output:
+  html_document:
+    toc: yes
+bibliography: bibliography.bib
+editor_options:
+  chunk_output_type: console
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, eval = FALSE)
+```
+
+
+# Setup
+
+## RStudio
+
+Double-click on the `.Rproj` file which is as the root of the folder you downloaded. This should open a new session in RStudio that will start at the root of the project folder.
+
+## Following the tutorial
+
+To follow the tutorial you have plenty of options:
+
+1. It is accessible online at https://rekyt.github.io/biodiversity_facets_tutorial/ click on `Tutorial` in the navigation bar to access the tutorial.
+1. You can access open the `diversity_facets_tutorial.Rmd` in RStudio to follow along.
+1. You can also open the `diversity_facets_tutorial.R` in RStudio to get only the code to execute exactly the codes here.
+
+## Installing needed packages
+
+We will use some specific packages in the rest of the tutorial. To make sure you have them please run the following command:
+
+```{r install-pkgs, eval = FALSE}
+install.packages(
+  c("ade4",
+    "ape",
+    "FD",
+    "fundiversity",
+    "ggplot2",
+    "ggspatial",
+    "performance",
+    "picante",
+    "rnaturalearth",
+    "sf")
+)
+```
+
+> **Note**: If you encounter trouble while installing software notify me at the beginning of the practical session and I'll come to you to solve the issue

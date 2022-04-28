@@ -9,10 +9,17 @@ navbar:
   - text: Home
     icon: fa-home 
     href: index.html
-  - text: Tutorial
-    href: diversity_facets_tutorial.html
-  - text: Answers
-    href: diversity_facets_tutorial_answers.html
+  - text: 00-Setup
+    icon: fa-circle-info
+    href: 00-setup.html
+  - text: 1 - Loading Data
+    href: 01-load-data.html
+  - text: 2 - Functional Diversity
+    href: 02-functional-diversity.html
+  - text: 3 - Phylogenetic Diversity
+    href: 03-phylogenetic-diversity.html
+  - text: 4 - Modelling
+    href: 04-stat-modelling.html
 
 output:
   html_document:

@@ -1,0 +1,115 @@
+---
+title: "04 - Statistical Modelling"
+author: "Matthias Grenié & Marten Winter"
+date: "Monday April 29th 2022"
+output:
+  html_document:
+    toc: yes
+bibliography: bibliography.bib
+editor_options:
+  chunk_output_type: console
+---
+
+
+# Modelling the effect of logging
+
+Finally! We now have all we need to properly build a statistical model of the relationship between diversity facets and the different co-variables. We'll be building linear models with `lm()` with environmental variables and possible co-variables that may confound the effect of logging.
+
+We first combine the diversity metrics to the environmental co-variables:
+
+```{r merge-div-env}
+plot_div_env = merge(
+  all_diversity,
+  plot_data[, c(1, 6:21)],
+  by = "plot.code"
+)
+
+dim(plot_div_env)
+head(plot_div_env)
+```
+
+
+## Single-predictor models
+
+Then we can build models of disturbance variables on diversity metrics.
+Let's build individual models with the main disturbance variables: local forest loss `forestloss17`, primary road density `roaddensprim`, and distance to primary roads `roaddistprim`.
+
+First a model on taxa richness:
+
+```{r mod-taxa-loss}
+mod_taxa_loss = lm(ntaxa ~ forestloss17, data = plot_div_env)
+
+mod_taxa_loss
+summary(mod_taxa_loss)
+```
+
+We can plot the regression line from the model with the data with the following:
+
+```{r plot-mod-taxa-loss}
+par(mfrow = c(1, 1))
+plot(mod_taxa_loss$model$forestloss17, mod_taxa_loss$model$ntaxa,
+     xlab = "Forest Loss (%)", ylab = "Taxa Richness")
+abline(coef = coef(mod_taxa_loss), col = "darkred", lwd = 1)
+```
+
+**Questions for you**
+
+* **Q29**: How would you qualify the effect of forest loss on the taxa richness?
+* **Q30**: With the same formula build similar models with the other predictors `roaddensprim` and `roaddistprim`. How do they compare with forest loss?
+
+```{r mod-taxa-other-disturbances, include = FALSE}
+mod_taxa_dens = lm(ntaxa ~ roaddensprim, data = plot_div_env)
+mod_taxa_dist = lm(ntaxa ~ roaddistprim, data = plot_div_env)
+```
+
+We can now build similar models for both functional and phylogenetic diversity. Because we do not want to consider the potential confounding factor of taxa richness we can consider directly the SES values we carefully built with our null models.
+
+```{r mod-fd-loss}
+mod_fd_loss = lm(ses_Q ~ forestloss17, data = plot_div_env)
+mod_pd_loss = lm(mpd.obs.z ~ forestloss17, data = plot_div_env)
+```
+
+
+## Multi-predictors models
+
+Because of the many possible confounding variables (different local environmental conditions, difference in vegetation types) we should build a model with many more predictors.
+
+Let's build a complete model with all environmental predictors:
+
+```{r mod-div-all}
+mod_taxa_all = lm(
+  ntaxa ~ elevation + forestloss17 + forestloss562 + roaddenssec +
+    roaddistprim + soilPC1 + soilPC2,
+  data = plot_div_env
+)
+mod_fd_all = lm(
+  ses_Q ~ elevation + forestloss17 + forestloss562 + roaddenssec +
+    roaddistprim + soilPC1 + soilPC2,
+  data = plot_div_env
+)
+mod_pd_all = lm(
+  mpd.obs.z ~ elevation + forestloss17 + forestloss562 + roaddenssec +
+    roaddistprim + soilPC1 + soilPC2,
+  data = plot_div_env
+)
+```
+
+**Question for you**
+
+* **Q31**: What can you say about the effect of the disturbances on the different diversity metrics? What are the explanatory power of our models?
+
+To explain the issues we have with the models we can look at the model diagnostics:
+
+```{r mod-diag}
+par(mfrow = c(2, 2))
+plot(mod_taxa_all)
+# Or even better
+performance::check_model(mod_taxa_all)
+```
+
+To go further (but it's beyond the scope of this tutorial) we could follow the tracks of the paper:
+
+1. Build a generalized linear model (GLM) when working with taxa richness as it is a count data.
+1. Leverage the fact that we have a block design in our sampling data and use mixed-models to account for that (the observations are not fully independent of one another and are structured in groups).
+1. Account for some non-linear effects of some predictors (forest loss have a strong quadratic component).
+1. Perform model averaging or model selection to prune the model to the most important predictors.

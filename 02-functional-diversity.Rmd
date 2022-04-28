@@ -1,0 +1,532 @@
+---
+title: "02 - Computing Functional Diversity Indices"
+author: "Matthias Grenié & Marten Winter"
+date: "Monday April 29th 2022"
+output:
+  html_document:
+    toc: yes
+bibliography: bibliography.bib
+editor_options:
+  chunk_output_type: console
+---
+
+
+# Functional diversity
+
+Now that we loaded all the datasets we can proceed to compute functional diversity per plots.
+
+## Computing Biomass-weighted mean traits per plot
+
+One first way to compute functional diversity is to compute mono-dimensional trait diversity [@Lavorel_Predicting_2002]. We can compute the average trait observed at each plot to described the effect of logging on the understorey vegetation. Because we're interested in the average trait possessed by the community we can compute the community-weighted mean trait $CWM_i$ as follow:
+
+\begin{equation}
+CWM_i = \sum_{j = 1}^{S} b_{ij} \times t_j
+\end{equation}
+
+$CWM_i$ is the community-weighted mean trait in plot $i$, $S$ is the total number of species, $b_{ij}$ is the biomass of species $j$ in plot $i$, and $t_j$ is the trait of species $j$.
+
+To do so we will use the function `functcomp()` in the `FD` package [@Laliberte_distancebased_2010]. But we first need to organize our data.
+
+```{r data-wrangle}
+# Make site-species data.frame
+sp_com           = plot_species_data[, -1]
+rownames(sp_com) = plot_species_data$X
+sp_com = as.matrix(sp_com)
+
+# Make synthesized trait data.frame
+traits = species_traits[, -c(1:5)]
+rownames(traits) = species_traits$species.code
+```
+
+Now that the data is organized we can compute the CWM per site for all traits:
+
+```{r get-cwm}
+# Get only continuous CWM
+quanti_cwm = FD::functcomp(traits[, c("height", "sla", "wood.dens")],
+                           sp_com, CWM.type = "dom")
+quanti_cwm$plot.code = rownames(quanti_cwm)
+```
+
+The function outputs the CWM as expressed above for continuous traits. We will then merge this information with the CWM values.
+
+```{r cwm-env}
+# Merge environmental data with CWM
+cwm_env = merge(
+  quanti_cwm,
+  plot_data[, c("plot.code", "block", "forestloss17", "roaddensprim")],
+  by = "plot.code"
+)
+```
+
+We can now visualize the relationship between the CWM and the environmental gradients.
+
+```{r plot-cwm-env}
+par(mfrow = c(2, 2))
+plot(cwm_env$forestloss17, cwm_env$height,
+     xlab = "Forest loss (%)", ylab = "Biomass-weighted height",
+     main = "CWM Height vs. forest loss")
+plot(cwm_env$forestloss17, cwm_env$sla,
+     xlab = "Forest loss (%)", ylab = "Biomass-weighted SLA",
+     main = "CWM SLA vs. forest loss")
+plot(cwm_env$forestloss17, cwm_env$wood.dens,
+     xlab = "Forest loss (%)", ylab = "Biomass-weighted wood density",
+     main = "CWM Wood density vs. forest loss")
+plot(cwm_env$roaddensprim, cwm_env$height,
+     xlab = "Road density (km.km^-2)", ylab = "Biomass-weighted height",
+     main = "CWM Height vs. road density")
+```
+
+**Questions for you:**
+
+* **Q7**: How would you describe the relationship between the different CWMs and forest loss?
+* **Q8**: Can you test the correlation using the function `cor.test()` and does it support your previous statements?
+* **Q9**: How would you describe the understorey vegetation changes with increasing forest loss?
+
+```{r cor-env-cwm, include = FALSE}
+cor.test(cwm_env$forestloss17, cwm_env$height)
+cor.test(cwm_env$forestloss17, cwm_env$sla)
+cor.test(cwm_env$forestloss17, cwm_env$wood.dens)
+cor.test(cwm_env$roaddensprim, cwm_env$height)
+```
+
+Recompute the CWM by proportion of each category of each trait along the environmental gradient.
+
+```{r get-non-quanti-cwm}
+non_quanti_cwm = FD::functcomp(traits[, -c(5:7)],
+                               sp_com, CWM.type = "all")
+non_quanti_cwm$plot.code = rownames(non_quanti_cwm)
+
+non_quanti_cwm = merge(
+  non_quanti_cwm,
+  plot_data[, c("plot.code", "block", "forestloss17", "roaddensprim")],
+  by = "plot.code"
+)
+```
+
+We used the same function as above `functcomp()` with the option `CWM.type = "all"`. The function computes the sum of biomass of each category for categorical traits.
+
+```{r categorical-cwm}
+par(mfrow = c(1, 1))
+plot(non_quanti_cwm$forestloss17, non_quanti_cwm$woody_no,
+     xlab = "Forest loss (%)", ylab = "Sum of biomass of non-woody species",
+     main = "Biomass of non-woody species vs. forest loss")
+```
+
+**Question for you**
+
+* **Q10**: How does this observation compare to above description of the change of understorey vegetation along the forest loss gradient?
+
+
+## Building the functional space
+
+Before computing the functional diversity indices we need first to place the species on a functional space.
+The way to do is to visualize the species cloud onto the synthetic axes that represent their trait values. Because we cannot visualize that different traits (our vision is still limited to only 3 dimensions!) we need to use dimension reduction techniques such as *Principal Component Analysis* (PCA). Dimension reduction techniques combines the different variables to give synthetic axes accounting for the correlations between the different input variables Because we have a dataset that contain both continuous and categorical trait data, we cannot use PCA and we will have to use a slighly different statistical tool called *Principal Coordinates Analysis* (PCoA, also named Metric Dimensional Scaling) that follow similar principles.
+
+To compute the PCoA we first need to compute a distance matrix that expresses the difference between each pair of species. Because we have a mixture of continuous and categorical traits, we cannot use the Euclidean distance and have to resort to use the Gower's dissimilarity metric through the `daisy()` function with the package `cluster`. 
+
+```{r gower-dissim}
+gower_dissim = cluster::daisy(traits)
+```
+
+To perform the PCoA we will be using the `ade4` package with the function `dudi.pco()`:
+
+```{r ade4-pcoa}
+trait_pcoa = ade4::dudi.pco(ade4::quasieuclid(gower_dissim), nf = 3,
+                            scannf = FALSE)
+trait_pcoa
+```
+
+The `trait_pcoa` object contains the coordinates of each species along the different PCoA axes (we chose 5 to have a limit).
+We can visualize the results with the following command:
+
+```{r visualize-pcoa}
+ade4::scatter(trait_pcoa, clab.row = 0)
+```
+We see two well separated groups indicating strong differences along the two first axes of the PCoA. We can visualize the meaning of the groups. We can try to better understand this group by looking at the distribution of traits along these groups:
+
+```{r woody-pcoa}
+ade4::s.class(trait_pcoa$li[,1:2], fac = traits$pgf)
+```
+
+**Questions for you**
+
+* **Q11**: Using the metadata available in the `README.txt` file, what is the meaning of the `pgf` column?
+* **Q12**: How do you interpret the PCoA results given your answer to the previous question?
+
+
+## Computing functional diversity indices
+
+Now that we have species positioned in a multidimensional space we can actually compute distinct functional diversity indices. For that we'll be using the `fundiversity` package that offers both flexibility and consistency to compute the indices.
+
+We will first compute Functional Richness (FRic) with the `fd_fric()` function:
+
+```{r fric}
+site_fric = fundiversity::fd_fric(trait_pcoa$li, sp_com, stand = FALSE)
+```
+
+Then we will also compute Rao's Quadratic Entropy (Rao's Q) and Functional Evenness (FEve):
+
+```{r feve-raoq, options}
+site_raoq = fundiversity::fd_raoq(trait_pcoa$li, sp_com)
+site_feve = fundiversity::fd_feve(trait_pcoa$li, sp_com)
+
+site_fd = merge(
+  merge(site_fric, site_raoq, by = "site"),
+  site_feve,
+  by = "site"
+)
+site_fd$plot.code = site_fd$site
+site_fd = site_fd[, -1]
+```
+
+We can now compare the observed relationship with forest loss:
+
+```{r fd-forestloss}
+site_env_fd = merge(site_fd,
+                    plot_data[, c("plot.code", "forestloss17", "roaddensprim")],
+                    by = "plot.code")
+
+par(mfrow = c(2, 2))
+plot(site_env_fd$forestloss17, site_env_fd$FRic,
+     xlab = "Forest loss (%)", ylab = "Functional Richness (FRic)",
+     main = "Functional Richness vs. forest loss")
+plot(site_env_fd$forestloss17, site_env_fd$Q,
+     xlab = "Forest loss (%)", ylab = "Rao's Quadratic Entropy",
+     main = "Q vs. forest loss")
+plot(site_env_fd$forestloss17, site_env_fd$FEve,
+     xlab = "Forest loss (%)", ylab = "Functional Evenness (FEve)",
+     main = "FEve vs. forest loss")
+plot(site_env_fd$roaddensprim, site_env_fd$FRic,
+     xlab = "Primary Road Density (km.km^-2)", ylab = "Functional Richness (FRic)",
+     main = "FRic vs. road density")
+```
+
+**Questions for you**
+
+* **Q13**: How would you describe the relationships between functional diversity and forest loss and road density?
+* **Q14**: Using the plot generated by the code beneath how could you describe the relationships between the three different functional diversity indices we computed?
+
+```{r pairs-fundiversity, options}
+panel.cor = function(x, y, digits = 2, prefix = "", cex.cor, ...)
+{
+  usr <- par("usr"); on.exit(par(usr))
+  par(usr = c(0, 1, 0, 1))
+  r <- abs(cor(x, y, use = "complete.obs"))
+  txt <- format(c(r, 0.123456789), digits = digits)[1]
+  txt <- paste0(prefix, txt)
+  if(missing(cex.cor)) cex.cor <- 0.8/strwidth(txt)
+  text(0.5, 0.5, txt, cex = cex.cor * r)
+}
+
+pairs(~FEve + Q + FRic, data = site_env_fd, lower.panel = panel.smooth,
+      upper.panel = panel.cor, gap = 0, row1attop = FALSE)
+```
+One issue we're having with our functional diversity indices is also that some of them correlate with species richness:
+
+```{r pairs-fd-richness}
+site_rich_fd = merge(
+  site_fd,
+  plot_data[, c("plot.code", "ntaxa")],
+  by = "plot.code"
+)
+
+pairs(ntaxa ~ FRic + FEve + Q, data = site_rich_fd, upper.panel = panel.cor)
+```
+
+Because we are using indices computed with biomass values the indices should be more related to the total biomass values than species richness. Let's get the total biomass values per site and correlate it with functional diversity indices.
+
+```{r biomass-fd}
+site_biomass = rowSums(sp_com)
+site_biomass = stack(site_biomass)
+
+site_biomass$plot.code = site_biomass$ind
+site_biomass$tot_biomass   = site_biomass$values
+
+site_biomass = site_biomass[, c("plot.code", "tot_biomass")]
+
+site_rich_fd = merge(
+  site_rich_fd,
+  site_biomass,
+  by = "plot.code"
+)
+
+pairs(tot_biomass ~ FRic + FEve + Q, data = site_rich_fd,
+      upper.panel = panel.cor)
+```
+**Questions for you**
+
+* **Q15**: How does the relationship between indices with species richness compare with the one observed with total biomass values? (You can use the function `cor.test()` if you want to test the association)
+
+## Null modeling
+
+The principle of null modelling is to create random communities following certain rules to get an expected distribution of diversity metrics while keeping some properties of the data constant. In our case, we know that functional diversity is directly linked to the number of species, so we want to keep the species richness constant while changing the distribution of functional diversity.
+
+Because the site-species matrix contains biomass values which are not discrete, the classical swapping algorithms will not work to maintain total biomass per site and species overall biomass. The solution is then to perform a null model based on trait values only. In this way it will give us a null distribution of trait values while maintaining the same richness per plot and the same relative biomass distribution.
+
+To do so we'll shuffle the trait table along species. **Caution**: in our case we do not want to break the links that exist between trait values, so we will be shuffling entire rows of traits and not trait individually. This would result in a different null model otherwise.
+
+Because we were using the PCoA axes as our "synthetic traits" above we'll perform the shuffling between species names on these PCoA axes.
+
+```{r null-traits}
+# Set random seed so that everybody gets the same null traits
+set.seed(20210705)
+
+# Number of null simulations
+# CAUTION: increasing this number may increase future computation time by a lot
+n_null = 99
+
+# Repeat the operation as many times as set aboev
+null_traits = lapply(seq.int(n_null), function(x) {
+  null_trait = trait_pcoa$li
+  
+  # Shuffle species names
+  null_species = sample(rownames(trait_pcoa$li), nrow(trait_pcoa$li))
+  
+  # Replace species name in table
+  rownames(null_trait) = null_species
+  
+  # Do not forget to return the modified table!
+  return(null_trait)
+})
+
+str(null_traits, max.l = 0)
+head(null_traits[[1]])
+```
+
+We now obtain a distribution of null traits on which we still need to compute functional diversity indices. We'll apply similar steps as above to perform the functional diversity computation. But in this case we'll have to apply the step for each distribution of null trait.
+
+```{r null-fd}
+# Beware this make take a long time
+null_fd = lapply(seq(length(null_traits)), function(y) {
+  
+  x = null_traits[[y]]
+  
+  null_fric = fundiversity::fd_fric(x, sp_com, stand = FALSE)
+  null_raoq = fundiversity::fd_raoq(x, sp_com)
+  null_feve = fundiversity::fd_feve(x, sp_com)
+  
+  # Combine all null functional diversity values
+  null_all = merge(
+    merge(null_fric, null_raoq, by = "site"), null_feve, by = "site"
+  )
+  
+  # Null Index to separate between all null simulations
+  null_all$null_id = y
+  
+  return(null_all)
+})
+
+null_fd_all = do.call(rbind.data.frame, null_fd)
+head(null_fd_all)
+```
+
+We now observe a list of null functional diversity metrics for each site.
+Because computing functional diversity on null traits is computationally intensive, running more simulations can take a long time. We've included a version of the null functional diversity values with 999 simulations in the `data/` folder. We're now going to use this precomputed version to get a better approximation of the expected distribution under the null hypothesis.
+
+```{r null-fd-999}
+null_fd_999 = readRDS("data/null_fd_999.Rds")
+
+head(null_fd_999)
+```
+
+With this null distribution we can now compare the observed values of functional diversity with the null ones. Let's for example focus on the site `"a100f177r"`:
+
+```{r null-fd-comp}
+# The observed value of FRic for the site
+subset(site_fd, plot.code == "a100f177r")$FRic
+
+# The null distribution of FRic for the same site
+summary(subset(null_fd_999, site == "a100f177r")$FRic)
+```
+
+We can visualize this comparison with an histogram:
+
+```{r hist-null-fric}
+par(mfrow = c(1, 1))
+# Visualize histogram of null values
+hist(subset(null_fd_999, site == "a100f177r")$FRic,
+     breaks = 20,
+     xlab = "null Functional Richness",
+     ylab = "Frequency",
+     main = "FRic comparison for site 'a100f177r'")
+abline(v = subset(site_fd, plot.code == "a100f177r")$FRic,
+       col = "darkred", lwd = 2)
+```
+
+**Question for you**
+
+* **Q16**: How would describe verbally the position of the observed value of FRic for site "a100f177r" compared to the null distribution?
+
+To get a proper estimate of the relartive position of the observed value compared to the null distribution we have to build the Empirical Cumulative Distribution Function (ECDF) that will give us the exact quantile of the observed value. We will do so with the `ecdf()` function:
+
+```{r ecdf-one-site}
+# Build the ECDF
+one_null_fric_ecdf = ecdf(subset(null_fd_999, site == "a100f177r")$FRic)
+
+# Then actually use it
+obs_fric = subset(site_fd, plot.code == "a100f177r")$FRic
+
+one_null_fric_ecdf(obs_fric)
+```
+
+**Question for you**
+
+* **Q17**: What's the quantile of the observed FRic value in the end?
+
+This gives us an empirical comparison of the observed value with the null distribution. However, in macro-ecology we prefer to even standardize further through the use of Standardized Effect Sizes (SES). As it is done in the article we are using for our analyses. These are simpler to compute than ECDF and simplify the interpretation. SESs are computed in the following way:
+
+$$
+SES_i = \frac{\overline{y_{\text{null}, i}} - y_{\text{obs}, i}}{\text{SD}_{\text{null}, i}}
+$$
+with $SES_i$ the standardized effect size of the index at site $i$, $\overline{y_{\text{null}, i}}$ the average observed value along the null distribution of the index at site $i$, $y_{\text{obs}, i}$, and $\text{SD}_{\text{null}, i}$ the standard deviation of the null distribution of the index at site $i$. This index is negative when the observation is smaller than the average of the null distribution, and positive otherwise. In the literature an SES value under -2 or above 2 is generally considered as significant.
+
+**However**, note that there are controversies in the literature about the use of SESs compared to the use of the ECDF because we're only leveraging on the use of the mean and standard deviation of the null distribution instead of using the entirety of the distribution.
+
+Now we need to compute the average and standard deviation of the null distribution for each index and each site. We will do so using the `aggregate()` function.
+
+```{r fd-ses-aggregate}
+# Compute average and standard deviation of null distribution
+mean_null_fd = aggregate(
+  cbind(mean_FRic = FRic, mean_Q = Q, mean_FEve = FEve) ~ site,
+  data = null_fd_999, FUN = mean, na.rm = TRUE
+)
+sd_null_fd   = aggregate(
+  cbind(sd_FRic = FRic, sd_Q = Q, sd_FEve = FEve) ~ site, data = null_fd_999,
+  FUN = sd, na.rm = TRUE
+)
+
+# Merge null mean & sd with observed values
+obs_null_fd = merge(
+  site_fd,
+  merge(mean_null_fd, sd_null_fd, by = "site"),
+  by.x = "plot.code", by.y = "site"
+)
+
+# Compute SES
+obs_null_fd$ses_FRic = (obs_null_fd$mean_FRic - obs_null_fd$FRic)/obs_null_fd$sd_FRic
+obs_null_fd$ses_Q = (obs_null_fd$mean_Q - obs_null_fd$Q)/obs_null_fd$sd_Q
+obs_null_fd$ses_FEve = (obs_null_fd$mean_FEve - obs_null_fd$FEve)/obs_null_fd$sd_FEve
+
+# Cleaner table
+ses_fd = obs_null_fd[, c("plot.code", "FRic", "Q", "FEve", "ses_FRic", "ses_Q",
+                         "ses_FEve")]
+```
+
+**Question for you**
+
+* **Q18**: Using the `subset()` function with the greater (or equal) than `>=` and the lower (or equal) than `<=`, can you determine how many sites show a significant deviation from the null observation? (absolute SES >= 2)
+* **Q19**: Using similar code as used for observed values, what are the relationships between SES values and forest loss?
+
+
+## Mapping functional diversity
+
+One of the joy of doing macro-ecology is to work with spatial data. Spatial data means that we have to draw maps and this can help uncover structures in our data. In this section of the tutorial we're going to use both the observed and SES functional diversity indices to draw maps and compare them to maps of species richness to visualize the geographical structure of the dataset. We we'll be using the packages `sf` for creating and manipulating spatial data, `rnaturalearth` to get background maps, and `ggplot2` to show them. **Nota Bene**: The goal of this particular section is to make nice visualizations of our data and see potential structure, it is not to teach the particular concept around spatial data and spatial visualization that have their own challenges. If you had trouble installing the `sf` package which may be quite capricious or if you feel lost in the meaning of the code of this section, it's fine, you can skip it.
+
+Looking back at the plot level data we have the coordinates of the plot in UTM coordinates:
+
+```{r plot-coord}
+head(plot_data[, c(1, 4, 5)])
+
+plot_sf = sf::st_as_sf(
+  plot_data[, c(1:7)],
+  coords = c("north", "east"),
+  crs = sf::st_crs("+proj=utm +zone=50 +datum=WGS84 +units=m +no_defs")
+)
+```
+
+We can represent a basic map to see the location of the plot at world scale:
+
+```{r world-map}
+library("ggplot2")
+
+ggplot() +
+  geom_sf(data = rnaturalearth::ne_countries(returnclass = "sf")) +
+  geom_sf(data = plot_sf, aes(color = forestloss17)) +
+  scale_color_viridis_c() +
+  coord_sf(crs = sf::st_crs("+proj=eck4")) +  # Set projection
+  labs(title = "Map of the concerned plots at world scale") +
+  theme_bw()
+```
+
+We see that all of our plots are indeed in Malaysia so we can focus there:
+
+```{r malaysia-map}
+ggplot() +
+  geom_sf(data = rnaturalearth::ne_countries(continent = "Asia",
+                                             returnclass = "sf")) +
+  geom_sf(data = plot_sf, aes(color = forestloss17)) +
+  scale_color_viridis_c() +
+  coord_sf(crs = sf::st_crs(3376), xlim = c(-1072025.83, 1053446.00),
+           ylim = c(85496.43, 767752.41)) +
+  labs(title = "Map of plots focused on Malaysia") +
+ggspatial::annotation_scale() +
+  theme_bw()
+```
+
+We can even zoom even more onto the plots to see them better:
+
+```{r zoom-map}
+ggplot() +
+  geom_sf(data = rnaturalearth::ne_countries(country = "Malaysia",
+                                             returnclass = "sf")) +
+  geom_sf(data = plot_sf, aes(color = forestloss17)) +
+  scale_color_viridis_c() +
+  coord_sf(crs = sf::st_crs(3376), xlim = c(800000, 890000),
+           ylim = c(500000, 550000)) +
+  labs(title = "Map of plots zoomed-in on Sabah region") +
+  ggspatial::annotation_scale() +
+  ggspatial::annotation_north_arrow(location = "br") +
+  theme_bw()
+```
+
+We can even add background information to better distinguish the plots in context (beware this will download map tiles from the internet):
+
+```{r context-map}
+ggplot() +
+  ggspatial::annotation_map_tile(zoomin = -1) +
+  geom_sf(data = plot_sf, aes(color = forestloss17)) +
+  scale_color_viridis_c() +
+  coord_sf(crs = sf::st_crs(3376), xlim = c(800000, 890000),
+           ylim = c(500000, 550000)) +
+  labs(title = "Map of plots zoomed-in on Sabah region") +
+  ggspatial::annotation_scale() +
+  ggspatial::annotation_north_arrow(location = "br") +
+  theme_bw()
+```
+
+Because of the group of plots on the West we can't clearly see the distinction between plots let's focus on the ones that show a gradient in forest loss:
+
+```{r context-map-2}
+ggplot() +
+  ggspatial::annotation_map_tile(zoomin = -1) +
+  geom_sf(data = subset(plot_sf, block != "og"),
+          aes(color = forestloss17)) +
+  scale_color_viridis_c() +
+  coord_sf(crs = sf::st_crs(3376), xlim = c(875000, 890000),
+           ylim = c(518500, 531000)) +
+  labs(title = "Map of all plots but block 'og'") +
+  ggspatial::annotation_scale() +
+  ggspatial::annotation_north_arrow(location = "br") +
+  theme_bw()
+```
+
+And we can now visualize the map of the SES of functional diversity indices
+
+```{r fd-map}
+ggplot() +
+  geom_sf(
+    data = merge(subset(plot_sf, block != "og"), ses_fd, by = "plot.code"),
+    aes(color = ses_Q)
+  ) +
+  scale_color_distiller(type = "div", palette = "RdYlBu",
+                        name =  "SES of Rao's Quadratic Entropy") +
+  coord_sf(crs = sf::st_crs(3376), xlim = c(875000, 890000),
+           ylim = c(518500, 531000)) +
+  labs(title = "Map of all plots but block 'og'") +
+  ggspatial::annotation_scale() +
+  ggspatial::annotation_north_arrow(location = "br") +
+  theme_gray()
+
+```
+
+Even with all this effort it is not clear how the SES varies between sites. But at least you're more informed about where the data we're studying comes from.
