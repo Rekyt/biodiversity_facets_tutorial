@@ -10,7 +10,7 @@ navbar:
     icon: fa-home 
     href: index.html
   - text: Setup
-    icon: fa-circle-info
+    icon: fa-archway
     href: 00-setup.html
   - text: 1 - Loading Data
     href: 01-load-data.html
