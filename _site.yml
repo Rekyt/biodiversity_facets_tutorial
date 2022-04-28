@@ -9,7 +9,7 @@ navbar:
   - text: Home
     icon: fa-home 
     href: index.html
-  - text: 00-Setup
+  - text: Setup
     icon: fa-circle-info
     href: 00-setup.html
   - text: 1 - Loading Data
@@ -29,3 +29,4 @@ output:
     highlight: textmate
     lib_dir: site_libs
     self_contained: no
+    code_download: true
