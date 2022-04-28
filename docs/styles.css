@@ -10,16 +10,7 @@
   padding-top: 5px;
   padding-bottom: 5px;
   font-size: 20px;
-  background: linear-gradient(to bottom, #eec275, #f0c883);
-    background-color: rgba(0, 0, 0, 0);
-    background-position-x: 0%;
-    background-position-y: 0%;
-    background-repeat: repeat;
-    background-attachment: scroll;
-    background-image: linear-gradient(rgb(238, 194, 117), rgb(240, 200, 131));
-    background-size: auto;
-    background-origin: padding-box;
-    background-clip: border-box;
+  background: #f0c883;
   border-color: #eec275;
   margin-top: 0px;
   margin-left: -5px;
