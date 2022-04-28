@@ -212,7 +212,7 @@ ggplot() +
 
 By eye at least, the pattern doesn't seem obvious on the map. And the observed SES values seems to vary widely within each forest block.
 
-# Comparing facets
+## Comparing facets
 
 One burning question in the scientific literature and that is quite debated still is the relationship between taxonomic, functional, and phylogenetic diversity [@Pavoine_Correlations_2013].
 
