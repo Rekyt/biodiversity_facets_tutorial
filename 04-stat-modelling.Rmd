@@ -49,10 +49,12 @@ plot(mod_taxa_loss$model$forestloss17, mod_taxa_loss$model$ntaxa,
 abline(coef = coef(mod_taxa_loss), col = "darkred", lwd = 1)
 ```
 
-**Questions for you**
+::: {.questions}
+#### Questions for you
 
 * **Q29**: How would you qualify the effect of forest loss on the taxa richness?
 * **Q30**: With the same formula build similar models with the other predictors `roaddensprim` and `roaddistprim`. How do they compare with forest loss?
+:::
 
 ```{r mod-taxa-other-disturbances, include = FALSE}
 mod_taxa_dens = lm(ntaxa ~ roaddensprim, data = plot_div_env)
@@ -91,9 +93,11 @@ mod_pd_all = lm(
 )
 ```
 
-**Question for you**
+::: {.questions}
+#### Question for you
 
 * **Q31**: What can you say about the effect of the disturbances on the different diversity metrics? What are the explanatory power of our models?
+:::
 
 To explain the issues we have with the models we can look at the model diagnostics:
 

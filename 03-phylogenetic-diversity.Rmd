@@ -25,10 +25,12 @@ phylo_tree
 str(phylo_tree)
 ```
 
-**Questions from you**
+::: {.questions}
+#### Questions from you
 
 * **Q20**: How many taxa are in the phylogenetic tree?
 * **Q21**: How does this number compare to the number of taxa found in the dataset?
+:::
 
 You can visualize the taxa in the phylogenetic tree in the `tip.label` slot of the phylogenetic tree:
 
@@ -36,9 +38,11 @@ You can visualize the taxa in the phylogenetic tree in the `tip.label` slot of t
 phylo_tree$tip.label
 ```
 
-**Question for you**
+::: {.questions}
+#### Question for you
 
 * **Q22**: What do you notice with the species names? Especially compared to the ones available in `species_traits`.
+:::
 
 To solve the naming issue we'll have to match the names used in the phylogenetic tree to the species code used in the site-species matrix. For that we'll match the epitheton to the first code available. You do not need to understand this code and can just copy-paste it to execute it because we're going to use it further down.
 
@@ -149,11 +153,12 @@ obs_mpd = data.frame(
 obs_mpd = merge(obs_mpd, plot_data[, c("plot.code", "forestloss17", "ntaxa")])
 ```
 
-**Questions for you**
+::: {.questions}
+#### Questions for you
 
 * **Q23**: What is the relationship between the weighted and the unweighted version of the MPD?
 * **Q24**: What are the relationships between MPD and taxa richness? And with forest loss? Plot these relationships to visualize them and use the `cor.test()` function to validate your observations.
-
+:::
 
 ## Null modeling 
 
@@ -181,12 +186,13 @@ We'll now load the version with 999 iterations.
 ses_mpd_999 = readRDS("data/null_mpd_999.Rds")
 ```
 
-**Questions for you**
+::: {.questions}
+#### Questions for you
 
 * **Q25**: Explain what does the column `mpd.obs.z` means? How does this compare with the SES values we computed for functional diversity indices?
 * **Q26**: How does the standardized value relates with taxa richness?
 * **Q27**: What are the relationships between MPD values considering null models and forest loss? Visualize the relationships with the `plot()` function, validate your observations with the `cor.test()` function.
-
+:::
 
 ## Mapping phylogenetic diversity
 
@@ -236,9 +242,10 @@ pairs(all_diversity[, c("ntaxa", "ses_FRic", "ses_Q", "ses_FEve", "mpd.obs.z")],
       upper.panel = panel.cor)
 ```
 
-**Question for you**
+::: {.questions}
+#### Question for you
 
 * **Q28**: How are related are observed values of functional diversity and phylogenetic diversity? What about the SESs?
-
+:::
 
 ## References
