@@ -19,10 +19,10 @@ navbar:
     icon: fas fa-tree
     href: 02-functional-diversity.html
   - text: Phylogenetic Diversity
-    icon: fa-trees
+    icon: fas fa-trees
     href: 03-phylogenetic-diversity.html
   - text: Modelling
-    icon: fa-analytics
+    icon: fas fa-analytics
     href: 04-stat-modelling.html
 
 output:
