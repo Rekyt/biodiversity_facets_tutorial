@@ -34,6 +34,8 @@
 <link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
 <script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
+<script src="site_libs/navigation-1.1/sourceembed.js"></script>
 <link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
 <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
@@ -62,6 +64,11 @@ if (window.hljs) {
 
 
 
+<style type="text/css">
+#rmd-source-code {
+  display: none;
+}
+</style>
 
 
 
@@ -225,6 +232,9 @@ $(document).ready(function () {
 </style>
 
 <!-- code folding -->
+<style type="text/css">
+.code-folding-btn { margin-bottom: 4px; }
+</style>
 
 
 
@@ -333,9 +343,9 @@ div.tocify {
 </li>
 <li>
   <a href="00-setup.html">
-    <span class="fa fa-circle-info"></span>
+    <span class="fa fa-archway"></span>
      
-    00-Setup
+    Setup
   </a>
 </li>
 <li>
@@ -360,6 +370,13 @@ div.tocify {
 
 <div id="header">
 
+<div class="btn-group pull-right float-right">
+<button type="button" class="btn btn-default btn-xs btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<ul class="dropdown-menu dropdown-menu-right" style="min-width: 50px;">
+<li><a id="rmd-download-source" href="#">Download Rmd</a></li>
+</ul>
+</div>
+
 
 
 <h1 class="title toc-ignore">Macroecology and Macroevolution under
@@ -373,7 +390,7 @@ Global Changes - “Biodiversity facets in macro-space”</h1>
 <p>This the first practical session in the course “Macroecology and
 Macroevolution under Global Change”. This it the practical session
 companion to the lectures on biodiversity facets L2 and L3.</p>
-<p><strong>Year</strong>: 2021</p>
+<p><strong>Year</strong>: 2022</p>
 <p><strong>Instructors</strong>: Matthias Grenié &amp; Marten Winter</p>
 <p>Contact us via Slack or email for any further questions.</p>
 <div id="goals" class="section level2">
@@ -463,6 +480,7 @@ Hébert.</li>
 4.0</a></p>
 </div>
 
+<div id="rmd-source-code">LS0tCnRpdGxlOiBNYWNyb2Vjb2xvZ3kgYW5kIE1hY3JvZXZvbHV0aW9uIHVuZGVyIEdsb2JhbCBDaGFuZ2VzIC0gIkJpb2RpdmVyc2l0eSBmYWNldHMgaW4gbWFjcm8tc3BhY2UiCmF1dGhvcjogIk1hdHRoaWFzIEdyZW5pw6kgJiBNYXJ0ZW4gV2ludGVyIgotLS0KCjwhLS0gUkVBRE1FLm1kIGlzIGdlbmVyYXRlZCBmcm9tIFJFQURNRS5SbWQuIFBsZWFzZSBlZGl0IHRoYXQgZmlsZSAtLT4KCmBgYHtyLCBpbmNsdWRlID0gRkFMU0V9CmtuaXRyOjpvcHRzX2NodW5rJHNldCgKICBjb2xsYXBzZSA9IFRSVUUsCiAgY29tbWVudCA9ICIjPiIKKQpgYGAKClRoaXMgdGhlIGZpcnN0IHByYWN0aWNhbCBzZXNzaW9uIGluIHRoZSBjb3Vyc2UgIk1hY3JvZWNvbG9neSBhbmQgTWFjcm9ldm9sdXRpb24gdW5kZXIgR2xvYmFsIENoYW5nZSIuIFRoaXMgaXQgdGhlIHByYWN0aWNhbCBzZXNzaW9uIGNvbXBhbmlvbiB0byB0aGUgbGVjdHVyZXMgb24gYmlvZGl2ZXJzaXR5IGZhY2V0cyBMMiBhbmQgTDMuCgoqKlllYXIqKjogMjAyMgoKKipJbnN0cnVjdG9ycyoqOiBNYXR0aGlhcyBHcmVuacOpICYgTWFydGVuIFdpbnRlcgoKQ29udGFjdCB1cyB2aWEgU2xhY2sgb3IgZW1haWwgZm9yIGFueSBmdXJ0aGVyIHF1ZXN0aW9ucy4KCgojIyBHb2FscwoKKiBNYW5pcHVsYXRlIHJlc2VhcmNoIG9wZW4gZGF0YTsKKiBMZWFybiBob3cgdG8gY29tcHV0ZSBmdW5jdGlvbmFsIGRpdmVyc2l0eSBpbmRpY2VzIHdpdGggYGZ1bmRpdmVyc2l0eWAgKGxvYWQgdHJhaXQgZGF0YSwgYnVpbGQgYSBmdW5jdGlvbmFsIHNwYWNlLCBjb21wdXRlIGluZGljZXMpOwoqIExlYXJuIGhvdyB0byBjb21wdXRlIHBoeWxvZ2VuZXRpYyBkaXZlcnNpdHkgaW5kaWNlcyB3aXRoIGBhcGVgIGFuZCBgcGljYW50ZWAgKGxvYWQgcGh5bG9nZW5ldGljIHRyZWUsIHZpc3VhbGl6ZSBwaHlsb2dlbmV0aWMgdHJlZSwgY29tcHV0ZSBpbmRpY2VzKTsKKiBGYW1pbGlhcml6ZSB3aXRoIG51bGwgbW9kZWxzOwoqIEtub3cgdGhlIGRpZmZlcmVuY2UgYmV0d2VlbiBmYWNldHMgb2YgZnVuY3Rpb25hbCBhbmQgcGh5bG9nZW5ldGljIGRpdmVyc2l0eSBpbmRpY2VzOwoqIFZpc3VhbGl6ZSBiaW9kaXZlcnNpdHkgZmFjZXRzIG9uIHRoZSBtYXA7CiogU2hvdyB0aGUgZWZmZWN0IG9mIGxvZ2dpbmcgaW4gYSB0cm9waWNhbCBmb3Jlc3QgY29udGV4dCBvbiBzb21lIGJpb2RpdmVyc2l0eSBmYWNldHMuCgojIyBIb3cgdG8gdXNlIGl0PwoKMS4gKipPbmxpbmUqKiBJdCBpcyBhY2Nlc3NpYmxlIG9ubGluZSBhdCBodHRwczovL3Jla3l0LmdpdGh1Yi5pby9iaW9kaXZlcnNpdHlfZmFjZXRzX3R1dG9yaWFsLyBjbGljayBvbiBgVHV0b3JpYWxgIGluIHRoZSBuYXZpZ2F0aW9uIGJhciB0byBhY2Nlc3MgdGhlIHR1dG9yaWFsLgoxLiAqKk9ubGluZSoqIGlmIHRoZSB3ZWJzaXRlIGhhdmUgaXNzdWUgeW91IGNhbiBhY2Nlc3MgYSBzaW1pbGFyIHZlcnNpb24gd2l0aCB0aGUgZm9sbG93aW5nIGNvbW1hbmQ6IGh0dHBzOi8vaHRtbHByZXZpZXcuZ2l0aHViLmlvLz9odHRwczovL2dpdGh1Yi5jb20vUmVreXQvYmlvZGl2ZXJzaXR5X2ZhY2V0c190dXRvcmlhbC9ibG9iL21haW4vZG9jcy9pbmRleC5odG1sCjEuICoqT2ZmbGluZSoqIFlvdSBjYW4gYWNjZXNzIG9wZW4gdGhlIGBkaXZlcnNpdHlfZmFjZXRzX3R1dG9yaWFsLlJtZGAgZmlsZSBpbiBSU3R1ZGlvIHRvIGZvbGxvdyBhbG9uZy4KMS4gKipPZmZsaW5lKiogWW91IGNhbiBhbHNvIG9wZW4gdGhlIGBkaXZlcnNpdHlfZmFjZXRzX3R1dG9yaWFsLlJgIGZpbGUgaW4gUlN0dWRpbyB0byBnZXQgb25seSB0aGUgY29kZSB0byBleGVjdXRlIGV4YWN0bHkgdGhlIGNvZGVzIGhlcmUuCgojIyBEYXRhIHByb3ZlbmFuY2UKClRoZSBkYXRhIHdlJ2xsIGJlIHVzaW5nIHRocm91Z2hvdXQgdGhlIHR1dG9yaWFsIGNvbWVzIGZyb20gdGhlIGZvbGxvd2luZyBhcnRpY2xlOiAKCj4gRMO2YmVydCwgVC5GLiwgV2ViYmVyLCBCLkwuLCBTdWdhdSwgSi5CLiwgRGlja2luc29uLCBLLkouTS4gYW5kIERpZGhhbSwgUi5LLiAoMjAxNyksIExvZ2dpbmcgaW5jcmVhc2VzIHRoZSBmdW5jdGlvbmFsIGFuZCBwaHlsb2dlbmV0aWMgZGlzcGVyc2lvbiBvZiB1bmRlcnN0b3JleSBwbGFudCBjb21tdW5pdGllcyBpbiB0cm9waWNhbCBsb3dsYW5kIHJhaW4gZm9yZXN0LiBKIEVjb2wsIDEwNTogMTIzNS0xMjQ1LiBodHRwczovL2RvaS5vcmcvMTAuMTExMS8xMzY1LTI3NDUuMTI3OTQKClRoZSBkYXRhIGhhcyBiZWVuIGRlcG9zaXRlZCBvbiBhIG9wZW4gZGF0YSByZXBvc2l0b3J5IGNhbGxlZCBkcnlhZCB3aXRoIHRoZSBmb2xsb3dpbmcgcmVmZXJlbmNlOgoKPiBEw7ZiZXJ0LCBUaW1tIEYuIGV0IGFsLiAoMjAxOCksIERhdGEgZnJvbTogTG9nZ2luZyBpbmNyZWFzZXMgdGhlIGZ1bmN0aW9uYWwgYW5kIHBoeWxvZ2VuZXRpYyBkaXNwZXJzaW9uIG9mIHVuZGVyc3RvcmV5IHBsYW50IGNvbW11bml0aWVzIGluIHRyb3BpY2FsIGxvd2xhbmQgcmFpbmZvcmVzdCwgRHJ5YWQsIERhdGFzZXQsIGh0dHBzOi8vZG9pLm9yZy8xMC41MDYxL2RyeWFkLmY3N3A3CgojIyBHb2luZyBGdXJ0aGVyCgpPdGhlciBjb3Vyc2VzIG9uIGJpb2RpdmVyc2l0eSBmYWNldHMgYW5kIHBvdGVudGlhbCBpbnRlcmVzdGluZyBwYXBlcnMgJiB0b29sczoKCiogVGhlIFtgRkRgXShodHRwczovL2NyYW4uci1wcm9qZWN0Lm9yZy9wYWNrYWdlPUZEKSBwYWNrYWdlIGlzIHRoZSByZWZlcmVuY2UgcGFja2FnZSB0byBjb21wdXRlIGZ1bmN0aW9uYWwgZGl2ZXJzaXR5IGluZGljZXMuCiogVGhlIFtNb2Rlcm4gY29uY2VwdHMgYW5kIG1ldGhvZHMgaW4gTWFjcm9lY29sb2d5IGFuZCBCaW9nZW9ncmFwaHldKGh0dHBzOi8vZ2l0aHViLmNvbS9wYXRyaWNrd2VpZ2VsdC9NQ01NQi8pIGNvdXJzZSBhY2Nlc3NpYmxlIHdpdGggdGhpcyBsaW5rOiBodHRwOi8vaHRtbHByZXZpZXcuZ2l0aHViLmlvLz9odHRwczovL2dpdGh1Yi5jb20vcGF0cmlja3dlaWdlbHQvTUNNTUIvYmxvYi9tYXN0ZXIvaW5kZXguaHRtbC4KKiBUaGUgW0xlZ3JhcyBldCBhbC4gMjAxOCBwYXBlcl0oaHR0cHM6Ly9kb2kub3JnLzEwLjEwMTYvai5hY3Rhby4yMDE4LjAyLjAwNykgb24gZnVuY3Rpb25hbCBkaXZlcnNpdHkgY29uY2VwdHMuCiogVGhlIFtDb21tdW5pdHkgUGh5bG9nZW5ldGljcyBpbiBSIFdvcmtzaG9wXShodHRwczovL3BlZHJvaGJyYWdhLmdpdGh1Yi5pby9Db21tdW5pdHlQaHlsb2dlbmV0aWNzLVdvcmtzaG9wL0NvbW11bml0eVBoeWxvZ2VuZXRpY3MtV29ya3Nob3AuaHRtbCkgYnkgUGVkcm8gSGVucmlxdWUgUC4gQnJhZ2EgYW5kIEthdGhlcmluZSBIw6liZXJ0LgoKCiMjIExpY2Vuc2UKCltDQy1CWSA0LjBdKGh0dHBzOi8vY3JlYXRpdmVjb21tb25zLm9yZy9saWNlbnNlcy9ieS80LjAvKQo=</div>
 
 
 </div>
@@ -498,6 +516,11 @@ $(document).ready(function () {
 </script>
 
 <!-- code folding -->
+<script>
+$(document).ready(function () {
+  window.initializeSourceEmbed("index.Rmd");
+});
+</script>
 
 <script>
 $(document).ready(function ()  {

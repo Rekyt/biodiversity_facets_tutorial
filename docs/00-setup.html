@@ -34,6 +34,8 @@
 <link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
 <script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
+<script src="site_libs/navigation-1.1/sourceembed.js"></script>
 <link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
 <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
@@ -62,6 +64,11 @@ if (window.hljs) {
 
 
 
+<style type="text/css">
+#rmd-source-code {
+  display: none;
+}
+</style>
 
 
 
@@ -225,6 +232,9 @@ $(document).ready(function () {
 </style>
 
 <!-- code folding -->
+<style type="text/css">
+.code-folding-btn { margin-bottom: 4px; }
+</style>
 
 
 
@@ -333,9 +343,9 @@ div.tocify {
 </li>
 <li>
   <a href="00-setup.html">
-    <span class="fa fa-circle-info"></span>
+    <span class="fa fa-archway"></span>
      
-    00-Setup
+    Setup
   </a>
 </li>
 <li>
@@ -360,12 +370,19 @@ div.tocify {
 
 <div id="header">
 
+<div class="btn-group pull-right float-right">
+<button type="button" class="btn btn-default btn-xs btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<ul class="dropdown-menu dropdown-menu-right" style="min-width: 50px;">
+<li><a id="rmd-download-source" href="#">Download Rmd</a></li>
+</ul>
+</div>
+
 
 
 <h1 class="title toc-ignore">00 - Setup - Installing Required
 Software</h1>
 <h4 class="author">Matthias Grenié &amp; Marten Winter</h4>
-<h4 class="date">Monday April 29th 2022</h4>
+<h4 class="date">April 28 2022</h4>
 
 </div>
 
@@ -417,6 +434,7 @@ come to you to solve the issue</p>
 </div>
 </div>
 
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiMDAgLSBTZXR1cCAtIEluc3RhbGxpbmcgUmVxdWlyZWQgU29mdHdhcmUiCmF1dGhvcjogIk1hdHRoaWFzIEdyZW5pw6kgJiBNYXJ0ZW4gV2ludGVyIgpkYXRlOiAiYHIgZm9ybWF0KFN5cy50aW1lKCksICclQiAlZCAlWScpYCIKb3V0cHV0OiBodG1sX2RvY3VtZW50CmJpYmxpb2dyYXBoeTogYmlibGlvZ3JhcGh5LmJpYgplZGl0b3Jfb3B0aW9uczoKICBjaHVua19vdXRwdXRfdHlwZTogY29uc29sZQotLS0KCmBgYHtyIHNldHVwLCBpbmNsdWRlPUZBTFNFfQprbml0cjo6b3B0c19jaHVuayRzZXQoZWNobyA9IFRSVUUsIGV2YWwgPSBGQUxTRSkKYGBgCgoKIyBTZXR1cAoKIyMgUlN0dWRpbwoKRG91YmxlLWNsaWNrIG9uIHRoZSBgLlJwcm9qYCBmaWxlIHdoaWNoIGlzIGFzIHRoZSByb290IG9mIHRoZSBmb2xkZXIgeW91IGRvd25sb2FkZWQuIFRoaXMgc2hvdWxkIG9wZW4gYSBuZXcgc2Vzc2lvbiBpbiBSU3R1ZGlvIHRoYXQgd2lsbCBzdGFydCBhdCB0aGUgcm9vdCBvZiB0aGUgcHJvamVjdCBmb2xkZXIuCgojIyBGb2xsb3dpbmcgdGhlIHR1dG9yaWFsCgpUbyBmb2xsb3cgdGhlIHR1dG9yaWFsIHlvdSBoYXZlIHBsZW50eSBvZiBvcHRpb25zOgoKMS4gSXQgaXMgYWNjZXNzaWJsZSBvbmxpbmUgYXQgaHR0cHM6Ly9yZWt5dC5naXRodWIuaW8vYmlvZGl2ZXJzaXR5X2ZhY2V0c190dXRvcmlhbC8gY2xpY2sgb24gYFR1dG9yaWFsYCBpbiB0aGUgbmF2aWdhdGlvbiBiYXIgdG8gYWNjZXNzIHRoZSB0dXRvcmlhbC4KMS4gWW91IGNhbiBhY2Nlc3Mgb3BlbiB0aGUgYGRpdmVyc2l0eV9mYWNldHNfdHV0b3JpYWwuUm1kYCBpbiBSU3R1ZGlvIHRvIGZvbGxvdyBhbG9uZy4KMS4gWW91IGNhbiBhbHNvIG9wZW4gdGhlIGBkaXZlcnNpdHlfZmFjZXRzX3R1dG9yaWFsLlJgIGluIFJTdHVkaW8gdG8gZ2V0IG9ubHkgdGhlIGNvZGUgdG8gZXhlY3V0ZSBleGFjdGx5IHRoZSBjb2RlcyBoZXJlLgoKIyMgSW5zdGFsbGluZyBuZWVkZWQgcGFja2FnZXMKCldlIHdpbGwgdXNlIHNvbWUgc3BlY2lmaWMgcGFja2FnZXMgaW4gdGhlIHJlc3Qgb2YgdGhlIHR1dG9yaWFsLiBUbyBtYWtlIHN1cmUgeW91IGhhdmUgdGhlbSBwbGVhc2UgcnVuIHRoZSBmb2xsb3dpbmcgY29tbWFuZDoKCmBgYHtyIGluc3RhbGwtcGtncywgZXZhbCA9IEZBTFNFfQppbnN0YWxsLnBhY2thZ2VzKAogIGMoImFkZTQiLAogICAgImFwZSIsCiAgICAiRkQiLAogICAgImZ1bmRpdmVyc2l0eSIsCiAgICAiZ2dwbG90MiIsCiAgICAiZ2dzcGF0aWFsIiwKICAgICJwZXJmb3JtYW5jZSIsCiAgICAicGljYW50ZSIsCiAgICAicm5hdHVyYWxlYXJ0aCIsCiAgICAic2YiKQopCmBgYAoKPiAqKk5vdGUqKjogSWYgeW91IGVuY291bnRlciB0cm91YmxlIHdoaWxlIGluc3RhbGxpbmcgc29mdHdhcmUgbm90aWZ5IG1lIGF0IHRoZSBiZWdpbm5pbmcgb2YgdGhlIHByYWN0aWNhbCBzZXNzaW9uIGFuZCBJJ2xsIGNvbWUgdG8geW91IHRvIHNvbHZlIHRoZSBpc3N1ZQo=</div>
 
 
 </div>
@@ -452,6 +470,11 @@ $(document).ready(function () {
 </script>
 
 <!-- code folding -->
+<script>
+$(document).ready(function () {
+  window.initializeSourceEmbed("00-setup.Rmd");
+});
+</script>
 
 <script>
 $(document).ready(function ()  {

@@ -34,6 +34,8 @@
 <link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
 <script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
+<script src="site_libs/navigation-1.1/codefolding.js"></script>
+<script src="site_libs/navigation-1.1/sourceembed.js"></script>
 <link href="site_libs/highlightjs-9.12.0/textmate.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
 <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
@@ -62,6 +64,11 @@ if (window.hljs) {
 
 
 
+<style type="text/css">
+#rmd-source-code {
+  display: none;
+}
+</style>
 
 
 
@@ -225,6 +232,9 @@ $(document).ready(function () {
 </style>
 
 <!-- code folding -->
+<style type="text/css">
+.code-folding-btn { margin-bottom: 4px; }
+</style>
 
 
 
@@ -333,9 +343,9 @@ div.tocify {
 </li>
 <li>
   <a href="00-setup.html">
-    <span class="fa fa-circle-info"></span>
+    <span class="fa fa-archway"></span>
      
-    00-Setup
+    Setup
   </a>
 </li>
 <li>
@@ -360,6 +370,13 @@ div.tocify {
 
 <div id="header">
 
+<div class="btn-group pull-right float-right">
+<button type="button" class="btn btn-default btn-xs btn-secondary btn-sm dropdown-toggle" data-toggle="dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span>Code</span> <span class="caret"></span></button>
+<ul class="dropdown-menu dropdown-menu-right" style="min-width: 50px;">
+<li><a id="rmd-download-source" href="#">Download Rmd</a></li>
+</ul>
+</div>
+
 
 
 <h1 class="title toc-ignore">Biodiversity Facets tutorial</h1>
@@ -373,6 +390,7 @@ div.tocify {
 <h1>References</h1>
 </div>
 
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiQmlvZGl2ZXJzaXR5IEZhY2V0cyB0dXRvcmlhbCIKYXV0aG9yOiAiTWF0dGhpYXMgR3JlbmnDqSAmIE1hcnRlbiBXaW50ZXIiCmRhdGU6ICJNb25kYXkgSnVseSA1dGggMjAyMSIKb3V0cHV0OgogIGh0bWxfZG9jdW1lbnQ6CiAgICB0b2M6IHllcwpiaWJsaW9ncmFwaHk6IGJpYmxpb2dyYXBoeS5iaWIKZWRpdG9yX29wdGlvbnM6CiAgY2h1bmtfb3V0cHV0X3R5cGU6IGNvbnNvbGUKLS0tCgpgYGB7ciBzZXR1cCwgaW5jbHVkZT1GQUxTRX0Ka25pdHI6Om9wdHNfY2h1bmskc2V0KGVjaG8gPSBUUlVFLCBldmFsID0gRkFMU0UpCmBgYAoKCgoKCiMgUmVmZXJlbmNlcwo=</div>
 
 
 </div>
@@ -408,6 +426,11 @@ $(document).ready(function () {
 </script>
 
 <!-- code folding -->
+<script>
+$(document).ready(function () {
+  window.initializeSourceEmbed("diversity_facets_tutorial.Rmd");
+});
+</script>
 
 <script>
 $(document).ready(function ()  {
