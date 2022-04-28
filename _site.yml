@@ -10,19 +10,19 @@ navbar:
     icon: fa-home 
     href: index.html
   - text: Setup
-    icon: fa-circle-info
+    icon: fas fa-info-circle
     href: 00-setup.html
   - text: Loading Data
-    icon: fa-circle-1
+    icon: fas fa-table
     href: 01-load-data.html
   - text: Functional Diversity
-    icon: fa-circle-2
+    icon: fas fa-tree
     href: 02-functional-diversity.html
   - text: Phylogenetic Diversity
-    icon: fa-circle-3
+    icon: fas fa-trees
     href: 03-phylogenetic-diversity.html
   - text: Modelling
-    icon: fa-circle-4
+    icon: fas fa-chart-scatter
     href: 04-stat-modelling.html
 
 output:
