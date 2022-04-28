@@ -1,7 +1,5 @@
 ---
-title: "04 - Statistical Modelling"
-author: "Matthias Grenié & Marten Winter"
-date: "`r format(Sys.time(), '%B %d %Y')`"
+title: "Statistical Modelling"
 output: html_document
 bibliography: bibliography.bib
 editor_options:

@@ -1,7 +1,5 @@
 ---
-title: "02 - Computing Phylogenetic Diversity Indices"
-author: "Matthias Grenié & Marten Winter"
-date: "`r format(Sys.time(), '%B %d %Y')`"
+title: "Computing Phylogenetic Diversity Indices"
 output: html_document
 bibliography: bibliography.bib
 editor_options:

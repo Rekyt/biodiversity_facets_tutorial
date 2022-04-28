@@ -1,7 +1,5 @@
 ---
-title: "02 - Computing Functional Diversity Indices"
-author: "Matthias Grenié & Marten Winter"
-date: "`r format(Sys.time(), '%B %d %Y')`"
+title: "Computing Functional Diversity Indices"
 output: html_document
 bibliography: bibliography.bib
 editor_options:

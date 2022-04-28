@@ -1,6 +1,7 @@
 ---
 title: Macroecology and Macroevolution under Global Changes - "Biodiversity facets in macro-space"
 author: "Matthias Grenié & Marten Winter"
+date: "`r format(Sys.time(), '%B %d %Y')`"
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->

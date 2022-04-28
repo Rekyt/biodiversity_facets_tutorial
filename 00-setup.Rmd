@@ -1,7 +1,5 @@
 ---
-title: "00 - Setup - Installing Required Software"
-author: "Matthias Grenié & Marten Winter"
-date: "`r format(Sys.time(), '%B %d %Y')`"
+title: "Installing Required Packages"
 output: html_document
 bibliography: bibliography.bib
 editor_options:

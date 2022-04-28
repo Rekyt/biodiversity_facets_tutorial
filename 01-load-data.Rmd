@@ -1,7 +1,5 @@
 ---
-title: "01 - Context and Data Description"
-author: "Matthias Grenié & Marten Winter"
-date: "`r format(Sys.time(), '%B %d %Y')`"
+title: "Context and Data Description"
 output: html_document
 bibliography: bibliography.bib
 editor_options:
