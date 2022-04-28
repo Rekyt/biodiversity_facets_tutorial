@@ -10,15 +10,19 @@ navbar:
     icon: fa-home 
     href: index.html
   - text: Setup
-    icon: fa-archway
+    icon: fa-circle-info
     href: 00-setup.html
-  - text: 1 - Loading Data
+  - text: Loading Data
+    icon: fa-circle-1
     href: 01-load-data.html
-  - text: 2 - Functional Diversity
+  - text: Functional Diversity
+    icon: fa-circle-2
     href: 02-functional-diversity.html
-  - text: 3 - Phylogenetic Diversity
+  - text: Phylogenetic Diversity
+    icon: fa-circle-3
     href: 03-phylogenetic-diversity.html
-  - text: 4 - Modelling
+  - text: Modelling
+    icon: fa-circle-4
     href: 04-stat-modelling.html
 
 output:
@@ -30,3 +34,5 @@ output:
     lib_dir: site_libs
     self_contained: no
     code_download: true
+    include:
+      after_body: _footer.html
