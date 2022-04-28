@@ -24,6 +24,8 @@ navbar:
 output:
   html_document:
     theme: united
+    toc: true
+    toc_float: true
     highlight: textmate
     lib_dir: site_libs
     self_contained: no

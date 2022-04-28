@@ -2,9 +2,7 @@
 title: "00 - Setup - Installing Required Software"
 author: "Matthias Grenié & Marten Winter"
 date: "Monday April 29th 2022"
-output:
-  html_document:
-    toc: yes
+output: html_document
 bibliography: bibliography.bib
 editor_options:
   chunk_output_type: console
