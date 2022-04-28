@@ -9,7 +9,7 @@ This the first practical session in the course “Macroecology and
 Macroevolution under Global Change”. This it the practical session
 companion to the lectures on biodiversity facets L2 and L3.
 
-**Year**: 2021
+**Year**: 2022
 
 **Instructors**: Matthias Grenié & Marten Winter
 
