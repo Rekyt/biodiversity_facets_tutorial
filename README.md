@@ -1,7 +1,7 @@
-Macroecology and Macroevolution under Global Changes - “Biodiversity
-facets in macro-space”
+Biodiversity Facets Practical Session
 ================
 Matthias Grenié & Marten Winter
+May 02 2022
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
@@ -83,4 +83,5 @@ tools:
 
 ## License
 
-[CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/)
+[CC-BY 4.0](https://creativecommons.org/licenses/by/4.0/) Matthias
+Grenié
