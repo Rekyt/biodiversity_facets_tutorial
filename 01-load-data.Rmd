@@ -29,7 +29,8 @@ Our goal with this tutorial is to reproduce the analyses from the paper and anal
 This practical session comes with some slides that cover the general context of
 the study as well as some basic facts regarding functional diversity indices.
 
-```{r download-slides, echo = FALSE}
+
+```{r download-slides, echo = FALSE, results='asis'}
 downloadthis::download_link(
   link = "https://github.com/Rekyt/biodiversity_facets_tutorial/raw/main/biodiversity_facets_presentation.odp",
   button_label = "Download Slides",
@@ -53,7 +54,7 @@ The fact that these data researchers provided the full dataset including all dat
 
 To get the data you can follow the above-mentioned link https://doi.org/10.5061/dryad.f77p7 and click on the "Download Dataset" button available on the top right of the webpage. It will download a .zip file that you can unzip in the folder you created for the project. This will create a folder named `doi_10.5061_dryad.f77p7__v1` that contains all needed data files.
 
-```{r download-data, echo = FALSE}
+```{r download-data, echo = FALSE, results='asis'}
 downloadthis::download_link(
   link = "https://datadryad.org/stash/downloads/download_resource/5179",
   button_label = "Download Original Data Files",
