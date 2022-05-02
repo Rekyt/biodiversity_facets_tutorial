@@ -2,6 +2,7 @@
 title: Biodiversity Facets Practical Session
 author: "Matthias Grenié & Marten Winter"
 date: "`r format(Sys.time(), '%B %d %Y')`"
+always_allow_html: true
 ---
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
@@ -34,10 +35,33 @@ Contact us via Slack or email for any further questions.
 
 ## How to use it?
 
-1. **Online** It is accessible online at https://rekyt.github.io/biodiversity_facets_tutorial/ click on `Tutorial` in the navigation bar to access the tutorial.
+1. **Online** It is accessible online at https://rekyt.github.io/biodiversity_facets_tutorial/ click on `Setup` in the navigation bar to access the tutorial.
 1. **Online** if the website have issue you can access a similar version with the following command: https://htmlpreview.github.io/?https://github.com/Rekyt/biodiversity_facets_tutorial/blob/main/docs/index.html
-1. **Offline** You can access open the `diversity_facets_tutorial.Rmd` file in RStudio to follow along.
+1. **Offline** You can download the merged `diversity_facets_tutorial.Rmd` file by clicking the button below.
 1. **Offline** You can also open the `diversity_facets_tutorial.R` file in RStudio to get only the code to execute exactly the codes here.
+
+
+```{r download-single-rmd-file, eval = TRUE, echo = FALSE}
+downloadthis::download_link(
+  link = "https://github.com/Rekyt/biodiversity_facets_tutorial/raw/main/diversity_facets_tutorial.Rmd",
+  button_label = "Download Single Rmd file",
+  button_type = "danger",
+  has_icon = TRUE,
+  icon = "fa fa-save",
+  self_contained = FALSE
+)
+```
+
+```{r download-single-r-file, eval = TRUE, echo = FALSE}
+downloadthis::download_link(
+  link = "https://github.com/Rekyt/biodiversity_facets_tutorial/raw/main/diversity_facets_tutorial.Rmd",
+  button_label = "Download Single R file",
+  button_type = "danger",
+  has_icon = TRUE,
+  icon = "fa fa-save",
+  self_contained = FALSE
+)
+```
 
 ## Data provenance
 
@@ -49,6 +73,16 @@ The data has been deposited on a open data repository called dryad with the foll
 
 > Döbert, Timm F. et al. (2018), Data from: Logging increases the functional and phylogenetic dispersion of understorey plant communities in tropical lowland rainforest, Dryad, Dataset, https://doi.org/10.5061/dryad.f77p7
 
+```{r download-data, echo = FALSE, eval = TRUE}
+downloadthis::download_link(
+  link = "https://datadryad.org/stash/downloads/download_resource/5179",
+  button_label = "Download Original Data Files",
+  button_type = "danger",
+  has_icon = TRUE,
+  icon = "fa fa-save",
+  self_contained = FALSE
+)
+```
 
 ## Going Further
 
