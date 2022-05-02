@@ -16,7 +16,7 @@ Now that we computed functional diversity, its SES, and put it on the map. We ca
 
 We included a copy of the phylogenetic tree used in the article (it is given in the Supplementary Information). It is named `phylo_tree.nwk` in the `data/` folder.
 
-```{r download-tree, echo = FALSE, results='asis'}
+```{r download-tree, echo = FALSE, eval = TRUE}
 downloadthis::download_link(
   link = "https://raw.githubusercontent.com/Rekyt/biodiversity_facets_tutorial/266bbec610f55525d2ec8d36b3fbf978cffa7aa4/data/doi_10.5061_dryad.f77p7__v1/phylo_tree.nwk",
   button_label = "Download Phylogenetic Tree",

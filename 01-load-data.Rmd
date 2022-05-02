@@ -28,39 +28,16 @@ This practical session comes with some slides that cover the general context of
 the study as well as some basic facts regarding functional diversity indices.
 
 
-```{r download-slides}
-library("downloadthis")
-download_link(
+```{r download-slides, eval = TRUE}
+downloadthis::download_link(
   link = "https://github.com/Rekyt/biodiversity_facets_tutorial/raw/main/biodiversity_facets_presentation.odp",
-  button_label = "Download Slides",
+  button_label = "Download Context Slides",
+  button_type = "danger",
   has_icon = TRUE,
   icon = "fa fa-save"
 )
 ```
 
-```{r}
-## Link in Github repo
-download_link(
-  link = "https://github.com/fmmattioni/downloadthis/raw/master/inst/example/file_1.pdf",
-  button_label = "Download pdf file",
-  button_type = "danger",
-  has_icon = TRUE,
-  icon = "fa fa-save",
-  self_contained = FALSE
-)
-```
-
-```{r, results='asis'}
-## Link in Github repo
-download_link(
-  link = "https://github.com/fmmattioni/downloadthis/raw/master/inst/example/file_1.pdf",
-  button_label = "Download pdf file",
-  button_type = "danger",
-  has_icon = TRUE,
-  icon = "fa fa-save",
-  self_contained = FALSE
-)
-```
 
 ## Loading the data
 
@@ -74,7 +51,7 @@ The fact that these data researchers provided the full dataset including all dat
 
 To get the data you can follow the above-mentioned link https://doi.org/10.5061/dryad.f77p7 and click on the "Download Dataset" button available on the top right of the webpage. It will download a .zip file that you can unzip in the folder you created for the project. This will create a folder named `doi_10.5061_dryad.f77p7__v1` that contains all needed data files.
 
-```{r download-data, echo = FALSE, results='asis'}
+```{r download-data, echo = FALSE, eval = TRUE}
 downloadthis::download_link(
   link = "https://datadryad.org/stash/downloads/download_resource/5179",
   button_label = "Download Original Data Files",
@@ -86,10 +63,9 @@ downloadthis::download_link(
 ```
 
 
-
 ### Summarizing the data
 
-The zip file contains 5 files (also available in the `data/doi_10.5061_dryad.f77p7__v1/` folder):
+The zip file contains 4 files (also available in the `data/doi_10.5061_dryad.f77p7__v1/` folder):
 
 * `README.txt` which is a text file that describes the content of the other files with great precision. It details all the columns available in the other files.
 * `PlotData.csv` is a comma-separated file that describes characteristics for each of the sampled vegetation plots including logging metrics, environmental variables as well as taxonomic, functional and phylogenetic diversity indices (to which we'll compare the indices we compute ourselves).
@@ -117,7 +93,7 @@ str(plot_species_data[, 1:5])
 summary(head(plot_species_data)[,1:5])
 dim(plot_species_data)
 
-# Transform one column for further analyzed
+# Transform one column for further analyses
 species_traits$seed = ordered(species_traits$seed)
 str(species_traits)
 summary(species_traits)

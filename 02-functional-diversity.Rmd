@@ -264,7 +264,7 @@ pairs(tot_biomass ~ FRic + FEve + Q, data = site_rich_fd,
 * **Q15**: How does the relationship between indices with species richness compare with the one observed with total biomass values? (You can use the function `cor.test()` if you want to test the association)
 :::
 
-## Null modeling
+## Null modelling
 
 The principle of null modelling is to create random communities following certain rules to get an expected distribution of diversity metrics while keeping some properties of the data constant. In our case, we know that functional diversity is directly linked to the number of species, so we want to keep the species richness constant while changing the distribution of functional diversity.
 
