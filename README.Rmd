@@ -50,22 +50,6 @@ The data has been deposited on a open data repository called dryad with the foll
 > Döbert, Timm F. et al. (2018), Data from: Logging increases the functional and phylogenetic dispersion of understorey plant communities in tropical lowland rainforest, Dryad, Dataset, https://doi.org/10.5061/dryad.f77p7
 
 
-## Associated presentation
-
-This practical session comes with some slides that cover the general context of
-the study as well as some basic facts regarding functional diversity indices.
-
-```{r download-slides, echo = FALSE}
-downloadthis::download_link(
-  link = "https://github.com/Rekyt/biodiversity_facets_tutorial/raw/main/biodiversity_facets_presentation.odp",
-  button_label = "Download Slides",
-  button_type = "danger",
-  has_icon = TRUE,
-  icon = "fa fa-save",
-  self_contained = FALSE
-)
-```
-
 ## Going Further
 
 Other courses on biodiversity facets and potential interesting papers & tools:

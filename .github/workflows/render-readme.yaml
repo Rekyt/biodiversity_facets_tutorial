@@ -35,7 +35,7 @@ jobs:
         run: |
           R -e 'install.packages(c("renv", "remotes"))'
           R -e 'renv::restore()'
-          R -e 'remotes::install_cran(c("rmarkdown", "downloadthis"))'
+          R -e 'remotes::install_cran("rmarkdown")'
 
       - name: Render README 
         run: |

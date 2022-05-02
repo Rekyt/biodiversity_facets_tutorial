@@ -24,6 +24,23 @@ The tropical lowland rain forests on the island of Borneo are floristically amon
 Our goal with this tutorial is to reproduce the analyses from the paper and analyze how logging impacts the different facets of the diversity of the understorey vegetation, and to reveal to what extent similar facets give similar answers. The general goal is to familiarize yourself with the data and functions needed to compute diversity indices. As well the general principles behind them.
 
 
+## Associated slides
+
+This practical session comes with some slides that cover the general context of
+the study as well as some basic facts regarding functional diversity indices.
+
+```{r download-slides, echo = FALSE}
+downloadthis::download_link(
+  link = "https://github.com/Rekyt/biodiversity_facets_tutorial/raw/main/biodiversity_facets_presentation.odp",
+  button_label = "Download Slides",
+  button_type = "danger",
+  has_icon = TRUE,
+  icon = "fa fa-save",
+  self_contained = FALSE
+)
+```
+
+
 ## Loading the data
 
 Fortunately for us, the authors of the study have shared openly the data they used in their article [@Dobert_Data_2018]. They are available through the Dryad platform at the following link: https://doi.org/10.5061/dryad.f77p7
