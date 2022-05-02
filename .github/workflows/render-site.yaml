@@ -34,9 +34,9 @@ jobs:
 
       - name: Install packages
         run: |
-          R -e 'install.packages(c("renv", "remotes", "downloadthis"))'
+          R -e 'install.packages(c("renv", "remotes"))'
           R -e 'renv::restore()'
-          R -e 'remotes::install_cran("rmarkdown")'
+          R -e 'remotes::install_cran(c("rmarkdown", "downloadthis"))'
       
       - name: Copy README.Rmd into index.Rmd
         run: |
