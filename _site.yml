@@ -25,7 +25,7 @@ navbar:
     icon: fas fa-chart-bar
     href: 04-stat-modelling.html
   - text: Answers
-    icon: fas fa-circle-exclamation
+    icon: fas fa-exclamation-circle
     href: 99-answers.html
 
 output:
