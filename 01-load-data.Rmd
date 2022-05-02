@@ -36,7 +36,18 @@ The fact that these data researchers provided the full dataset including all dat
 
 To get the data you can follow the above-mentioned link https://doi.org/10.5061/dryad.f77p7 and click on the "Download Dataset" button available on the top right of the webpage. It will download a .zip file that you can unzip in the folder you created for the project. This will create a folder named `doi_10.5061_dryad.f77p7__v1` that contains all needed data files.
 
-**NOTE**: We've also included a copy of the unzipped file in the `data` folder of the practical project.
+```{r download-data, echo = FALSE}
+downloadthis::download_link(
+  link = "https://datadryad.org/stash/downloads/download_resource/5179",
+  button_label = "Download Original Data Files",
+  button_type = "danger",
+  has_icon = TRUE,
+  icon = "fa fa-save",
+  self_contained = FALSE
+)
+```
+
+
 
 ### Summarizing the data
 
@@ -45,7 +56,6 @@ The zip file contains 5 files (also available in the `data/doi_10.5061_dryad.f77
 * `README.txt` which is a text file that describes the content of the other files with great precision. It details all the columns available in the other files.
 * `PlotData.csv` is a comma-separated file that describes characteristics for each of the sampled vegetation plots including logging metrics, environmental variables as well as taxonomic, functional and phylogenetic diversity indices (to which we'll compare the indices we compute ourselves).
 * `PlotSpeciesData.csv` is a comma-separated file that contains a matrix of biomass values for the plant taxa sampled across the sampled vegetation plots.
-* `phylo_tree.nwk` the phylogenetic tree describing the relationships between species.
 * `SpeciesTraitData.csv` contains the complete list of species  sampled across all vegetation plots, with their associated traits both continuous and discrete.
 
 We will load each of the file (apart from the phylogenetic tree) in your workspace now with the `read.csv()` function:

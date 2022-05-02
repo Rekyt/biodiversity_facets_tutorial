@@ -34,7 +34,7 @@ jobs:
 
       - name: Install packages
         run: |
-          R -e 'install.packages(c("renv", "remotes"))'
+          R -e 'install.packages(c("renv", "remotes", "downloadthis"))'
           R -e 'renv::restore()'
           R -e 'remotes::install_cran("rmarkdown")'
       
