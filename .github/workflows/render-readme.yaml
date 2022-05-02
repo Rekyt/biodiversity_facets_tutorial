@@ -2,6 +2,7 @@ on:
   push:
     paths:
       - 'README.Rmd'
+      - '.github/workflows/render-readme.yaml'
 
 name: Render README
 
@@ -34,7 +35,7 @@ jobs:
         run: |
           R -e 'install.packages(c("renv", "remotes"))'
           R -e 'renv::restore()'
-          R -e 'remotes::install_cran("rmarkdown")'
+          R -e 'remotes::install_cran(c("rmarkdown", "downloadthis"))'
 
       - name: Render README 
         run: |
