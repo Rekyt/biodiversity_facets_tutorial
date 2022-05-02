@@ -2,8 +2,6 @@
 title: "Context and Data Description"
 output: html_document
 bibliography: bibliography.bib
-editor_options:
-  chunk_output_type: console
 ---
 
 ```{r setup, include = FALSE}
@@ -30,17 +28,27 @@ This practical session comes with some slides that cover the general context of
 the study as well as some basic facts regarding functional diversity indices.
 
 
-```{r download-slides, echo = FALSE, results='asis'}
-downloadthis::download_link(
+```{r download-slides}
+library("downloadthis")
+download_link(
   link = "https://github.com/Rekyt/biodiversity_facets_tutorial/raw/main/biodiversity_facets_presentation.odp",
   button_label = "Download Slides",
+  has_icon = TRUE,
+  icon = "fa fa-save"
+)
+```
+
+```{r}
+## Link in Github repo
+download_link(
+  link = "https://github.com/fmmattioni/downloadthis/raw/master/inst/example/file_1.pdf",
+  button_label = "Download pdf file",
   button_type = "danger",
   has_icon = TRUE,
   icon = "fa fa-save",
   self_contained = FALSE
 )
 ```
-
 
 ## Loading the data
 
