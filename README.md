@@ -35,14 +35,21 @@ Contact us via Slack or email for any further questions.
 
 1.  **Online** It is accessible online at
     <https://rekyt.github.io/biodiversity_facets_tutorial/> click on
-    `Tutorial` in the navigation bar to access the tutorial.
+    `Setup` in the navigation bar to access the tutorial.
 2.  **Online** if the website have issue you can access a similar
     version with the following command:
     <https://htmlpreview.github.io/?https://github.com/Rekyt/biodiversity_facets_tutorial/blob/main/docs/index.html>
-3.  **Offline** You can access open the `diversity_facets_tutorial.Rmd`
-    file in RStudio to follow along.
+3.  **Offline** You can download the merged
+    `diversity_facets_tutorial.Rmd` file by clicking the button below.
 4.  **Offline** You can also open the `diversity_facets_tutorial.R` file
     in RStudio to get only the code to execute exactly the codes here.
+
+<a href="https://github.com/Rekyt/biodiversity_facets_tutorial/raw/main/diversity_facets_tutorial.Rmd">
+<button class="btn btn-danger"><i class="fa fa-save"></i> Download Single Rmd file</button>
+</a>
+<a href="https://github.com/Rekyt/biodiversity_facets_tutorial/raw/main/diversity_facets_tutorial.Rmd">
+<button class="btn btn-danger"><i class="fa fa-save"></i> Download Single R file</button>
+</a>
 
 ## Data provenance
 
@@ -62,6 +69,10 @@ the following reference:
 > functional and phylogenetic dispersion of understorey plant
 > communities in tropical lowland rainforest, Dryad, Dataset,
 > <https://doi.org/10.5061/dryad.f77p7>
+
+<a href="https://datadryad.org/stash/downloads/download_resource/5179">
+<button class="btn btn-danger"><i class="fa fa-save"></i> Download Original Data Files</button>
+</a>
 
 ## Going Further
 
