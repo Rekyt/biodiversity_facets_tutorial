@@ -47,7 +47,7 @@ Contact us via Slack or email for any further questions.
 <a href="https://github.com/Rekyt/biodiversity_facets_tutorial/raw/main/diversity_facets_tutorial.Rmd">
 <button class="btn btn-danger"><i class="fa fa-save"></i> Download Single Rmd file</button>
 </a>
-<a href="https://github.com/Rekyt/biodiversity_facets_tutorial/raw/main/diversity_facets_tutorial.Rmd">
+<a href="https://github.com/Rekyt/biodiversity_facets_tutorial/raw/main/diversity_facets_tutorial.R">
 <button class="btn btn-danger"><i class="fa fa-save"></i> Download Single R file</button>
 </a>
 
