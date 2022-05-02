@@ -54,7 +54,7 @@ downloadthis::download_link(
 
 ```{r download-single-r-file, eval = TRUE, echo = FALSE}
 downloadthis::download_link(
-  link = "https://github.com/Rekyt/biodiversity_facets_tutorial/raw/main/diversity_facets_tutorial.Rmd",
+  link = "https://github.com/Rekyt/biodiversity_facets_tutorial/raw/main/diversity_facets_tutorial.R",
   button_label = "Download Single R file",
   button_type = "danger",
   has_icon = TRUE,
