@@ -14,9 +14,9 @@ knitr::opts_chunk$set(
 )
 ```
 
-This the first practical session in the course "Macroecology and Macroevolution under Global Change". This it the practical session companion to the lectures on biodiversity facets L2 and L3.
+This the first practical session in the course "Macroecology under Global Change". This it the practical session companion to the lectures on biodiversity facets.
 
-**Year**: 2022
+**Year**: 2023
 
 **Instructors**: Matthias Grenié & Marten Winter
 
